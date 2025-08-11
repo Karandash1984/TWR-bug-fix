@@ -1,0 +1,18 @@
+Total 17
+USA_infiltrate_labour_unions
+RGO_fighter_n_bombers
+GER_Victory_At_GCW_desc
+freeeoaming_ost
+governmentappointed_ost
+ost_colonial_ready
+ENOUGH_SUPPORT_IN_NORTH_AFRICA
+UMBERTO_II_DESC
+ship_hull_very_light
+ship_hull_more_light
+ITA_ciano_1960
+ta_intervention
+nuclear_scientist_production_modifier
+nuclear_misslle_strike
+modifier_state_production_speed_commercial_nuclear_reactor_factor
+SAF_mining_subsidies
+modifier_experience_gain_MBT_combat
