@@ -2067,7 +2067,7 @@ country_event = {
 	fire_only_once = yes
 
 	option = {
-		name = twrnewpolitic.2.b #arrow cross successful
+		name = twrnewpolitic.2.a #arrow cross successful
 		add_stability = -0.2
 		add_popularity = {
 			ideology = fascist
