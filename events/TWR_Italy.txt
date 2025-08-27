@@ -369,6 +369,11 @@ country_event = {
 		hidden_effect = {
 			set_country_flag = execute_the_royals
 		}
+		trigger = {
+			NOT = {
+				has_country_flag = ITA_fascism_failed
+			}
+		}
 	}
 	option = {
 		name = twritalypolitics.108.b
@@ -529,16 +534,7 @@ country_event = {
 				id = twritalypolitics.112
 				days = 3
 			}
-		}
-		create_country_leader = {
-			name = "Comitato di Liberazione Nazionale"
-			desc = "Italian_Congress_DESC"
-			picture = "ITA_CLN_portrait.dds"
-			expire = "1965.1.1"
-			ideology = social_democracy
-			traits = {
-			}
-		}
+		}=
 		set_politics = {
 			ruling_party = social_democrat
 		}
@@ -645,6 +641,11 @@ country_event = {
 		clear_all_hos = yes
 		set_cosmetic_tag = ITA_republic
 		end_coalition = yes
+		trigger = {
+			NOT = {
+				has_country_flag = ITA_fascism_failed
+			}
+		}
 	}
 	option = {
 		name = twritalypolitics.114.b		#Monarchy
@@ -4343,6 +4344,24 @@ country_event = {
 	}
 	option = {
 		name = twritalyforeign.20.c
+		
+		trigger = {
+			NOT = {
+				has_idea = Iberia_Pact
+				has_idea = Iberia_Pact_1
+			}
+			
+			has_war = no
+			is_in_faction = no
+			NOT = {
+				has_government = marxist_leninist
+				has_government = bolshevik_leninist
+				has_government = socialist
+				has_government = conservative
+				has_government = liberal
+				has_government = social_democrat
+			}
+		}
 		ai_chance = {
 			base = 1
 			modifier = {
@@ -4361,18 +4380,6 @@ country_event = {
 			country_event = {
 				id = twritalyforeign.23
 				days = 1
-			}
-		}
-		trigger = {
-			has_war = no
-			is_in_faction = no
-			NOT = {
-				has_government = marxist_leninist
-				has_government = bolshevik_leninist
-				has_government = socialist
-				has_government = conservative
-				has_government = liberal
-				has_government = social_democrat
 			}
 		}
 	}
@@ -4510,6 +4517,23 @@ country_event = {
 	}
 	option = {
 		name = twritalyforeign.25.c
+		trigger = {
+			NOT = {
+				has_idea = Iberia_Pact
+				has_idea = Iberia_Pact_1
+			}
+			
+			has_war = no
+			is_in_faction = no
+			NOT = {
+				has_government = marxist_leninist
+				has_government = bolshevik_leninist
+				has_government = socialist
+				has_government = conservative
+				has_government = liberal
+				has_government = social_democrat
+			}
+		}
 		ai_chance = {
 			base = 0
 		}
@@ -4522,18 +4546,6 @@ country_event = {
 			country_event = {
 				id = twritalyforeign.28
 				days = 1
-			}
-		}
-		trigger = {
-			has_war = no
-			is_in_faction = no
-			NOT = {
-				has_government = marxist_leninist
-				has_government = bolshevik_leninist
-				has_government = socialist
-				has_government = conservative
-				has_government = liberal
-				has_government = social_democrat
 			}
 		}
 	}
