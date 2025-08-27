@@ -37,7 +37,7 @@ GER_southern_europe_influence = {
 		fire_only_once = no
 		days_re_enable = 30
 		ai_will_do = {
-			factor = 15
+			factor = 50
 		}
 		complete_effect = {
 			log = "[GetDateText]: [Root.GetName]: Decision HUN_use_german_grants"
@@ -46,6 +46,10 @@ GER_southern_europe_influence = {
 				country_event = twrhungary.110
 				add_to_variable = {
 					var = german_bund_influence
+					value = 5
+				}
+				subtract_from_variable = {
+					var = hungarian_establishment_influence
 					value = 5
 				}
 				clamp_hungarian_variables = yes
@@ -845,7 +849,7 @@ diplomatic_decisions = {
 			RKA
 			RGO
 			SSB
-			SBA
+			#SBA
 			BUL
 			ROM
 			HUN
@@ -1097,6 +1101,88 @@ diplomatic_decisions = {
 	}
 }
 
+GER_ww3_cat = {
+	GER_first_ceasefire = {
+		icon = GFX_decision_generic_GER_flag
+		ai_will_do = {
+			factor = 50
+		}
+		visible = {
+			NOT = {
+				has_global_flag = GER_first_ww3_ceasefire_unavailable
+			}
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = GER_all_TA_in_europe_defeated
+				USA = {
+					all_allied_country = {
+						if = {
+							limit = {
+								capital_scope = {
+									is_on_continent = europe
+								}
+								NOT = {
+									tag = ICE
+									tag = CYP
+									tag = ENG
+								}
+							}
+							has_capitulated = yes
+						}
+					}
+				}
+				
+			}
+			ENG = {
+				has_capitulated = yes
+			}
+			NOT = {
+				has_war_with = RUZ
+			}
+			surrender_progress < 0.01
+		}
+		days_remove = 180
+		remove_effect = {
+			USA = {
+				country_event = twrta.121
+			}
+		}
+		cancel_trigger = {
+			NOT = {
+					custom_trigger_tooltip = {
+					tooltip = GER_all_TA_in_europe_defeated
+					USA = {
+						all_allied_country = {
+							if = {
+								limit = {
+									capital_scope = {
+										is_on_continent = europe
+									}
+									NOT = {
+										tag = ICE
+										tag = CYP
+										tag = ENG
+									}
+								}
+								has_capitulated = yes
+							}
+						}
+					}
+					
+				}
+				ENG = {
+					has_capitulated = yes
+				}
+				NOT = {
+					has_war_with = RUZ
+				}
+				surrender_progress < 0.01
+			}
+		}
+	}
+}
+
 GER_civil_war_cat = {
 	GER_enforced_TA_ceasefire = {
 		icon = generic_operation
@@ -1106,6 +1192,16 @@ GER_civil_war_cat = {
 					controller = {
 						is_in_faction_with = TOR
 					}
+				}
+			}
+			if = {
+				limit = {
+					FFR = {
+						is_in_faction_with = TOR
+					}
+				}
+				FFR = {
+					has_capitulated = yes
 				}
 			}
 		}
@@ -1126,6 +1222,17 @@ GER_civil_war_cat = {
 		complete_effect = {
 			log = "[GetDateText]: [Root.GetName]: Decision GER_enforced_TA_ceasefire"			#SI
 			news_event = twrta.8889
+			
+			if = {
+				limit = {
+					FFR = {
+						is_in_faction_with = TOR
+					}
+				}
+				annex_country = {
+					target = FFR
+				}
+			}
 			hidden_effect = {
 				set_global_flag = TA_GCW_FORCED_CEASEFIRE
 				clr_global_flag = TA_FAILED_TO_INVADE
@@ -1479,6 +1586,7 @@ GER_civil_war_cat = {
 		}
 	}
 	GCW_manstein_question = {
+		icon = generic_political_discourse
 		allowed = {
 			OR = {
 				tag = HGR
@@ -1542,6 +1650,7 @@ GER_civil_war_cat = {
 		}
 	}
 	GCW_political_chaos = {
+		icon = revolt
 		allowed = {
 			OR = {
 				tag = GER
@@ -1687,7 +1796,7 @@ GER_civil_war_cat = {
 		}
 	}
 	GER_appeal_to_the_hardliners = {
-		icon = generic_ignite_civil_war
+		icon = generic_political_discourse
 		available = {
 			TAG = HGR
 		}
@@ -1722,7 +1831,7 @@ GER_civil_war_cat = {
 		}
 	}
 	GER_norwegian_legions = {
-		icon = generic_ignite_civil_war
+		icon = eng_blackshirt_march
 		available = {
 			AND = {
 				OR = {
@@ -1778,7 +1887,7 @@ GER_civil_war_cat = {
 		}
 	}
 	GER_summoning_the_reserves = {
-		icon = generic_ignite_civil_war
+		icon = eng_blackshirt_march
 		allowed = {
 			OR = {
 				TAG = GER
@@ -1906,7 +2015,7 @@ GER_civil_war_cat = {
 				TAG = HSS
 			}
 		}
-		icon = generic_ignite_civil_war
+		icon = generic_operation
 		available = {
 			has_completed_focus = GER_Total_Gamble
 		}
@@ -1938,7 +2047,7 @@ GER_civil_war_cat = {
 				TAG = HSS
 			}
 		}
-		icon = generic_ignite_civil_war
+		icon = oil
 		available = {
 			has_war = yes
 		}
@@ -1973,7 +2082,7 @@ GER_civil_war_cat = {
 		}
 	}
 	GER_fort_construction = {
-		icon = generic_ignite_civil_war
+		icon = resources
 		allowed = {
 			OR = {
 				TAG = GER
@@ -2014,7 +2123,7 @@ GER_civil_war_cat = {
 		}
 	}
 	GER_conscription_drive = {
-		icon = generic_ignite_civil_war
+		icon = eng_blackshirt_march
 		allowed = {
 			OR = {
 				TAG = GER
@@ -2050,7 +2159,7 @@ GER_civil_war_cat = {
 		}
 	}
 	GER_salvage_wartime_equipment = {
-		icon = generic_ignite_civil_war
+		icon = generic_industry
 		allowed = {
 			OR = {
 				TAG = GER
@@ -2124,7 +2233,7 @@ GER_civil_war_cat = {
 		}
 	}
 	GER_confiscate_medical_supplies = {
-		icon = generic_ignite_civil_war
+		icon = generic_civil_support
 		allowed = {
 			OR = {
 				TAG = GER
@@ -2284,7 +2393,7 @@ GER_civil_war_cat = {
 		days_re_enable = 60
 	}
 	GER_propaganda_boost = {
-		icon = generic_ignite_civil_war
+		icon = eng_propaganda_campaigns
 		available = {
 			AND = {
 				OR = {
@@ -2359,7 +2468,7 @@ GER_civil_war_cat = {
 		days_remove = 90
 	}
 	GER_summon_the_national_garrison = {
-		icon = generic_ignite_civil_war
+		icon = eng_blackshirt_march
 		available = {
 			OR = {
 				TAG = GER
@@ -2466,7 +2575,7 @@ GER_civil_war_cat = {
 		fire_only_once = yes
 	}
 	GER_arm_the_Allgemeine_SS = {
-		icon = generic_ignite_civil_war
+		icon = eng_blackshirt_march
 		available = {
 			OR = {
 				TAG = HSS
@@ -2581,7 +2690,7 @@ GER_civil_war_cat = {
 		}
 	}
 	GER_generalgouvernment_borders = {
-		icon = generic_ignite_civil_war
+		icon = eng_trade_unions_support
 		available = {
 			OR = {
 				TAG = GER
@@ -2694,7 +2803,7 @@ GER_civil_war_cat = {
 
 GER_hitlers_successor = {
 	GER_pick_speer = {
-		icon = generic_ignite_civil_war
+		icon = eng_trade_unions_demand
 		available = {
 			custom_trigger_tooltip = {
 				tooltip = SPEER_TRUSTED_BY_HITLER
@@ -2733,7 +2842,7 @@ GER_hitlers_successor = {
 		}
 	}
 	GER_pick_bormann = {
-		icon = generic_ignite_civil_war
+		icon = eng_trade_unions_demand
 		available = {
 			custom_trigger_tooltip = {
 				tooltip = BORMANN_TRUSTED_BY_HITLER
@@ -2772,7 +2881,7 @@ GER_hitlers_successor = {
 		}
 	}
 	GER_pick_himmler = {
-		icon = generic_ignite_civil_war
+		icon = eng_trade_unions_demand
 		available = {
 			custom_trigger_tooltip = {
 				tooltip = HIMMLER_TRUSTED_BY_HITLER
@@ -2811,7 +2920,7 @@ GER_hitlers_successor = {
 		}
 	}
 	GER_pick_goering = {
-		icon = generic_ignite_civil_war
+		icon = eng_trade_unions_demand
 		available = {
 			custom_trigger_tooltip = {
 				tooltip = GOERING_TRUSTED_BY_HITLER
@@ -2850,7 +2959,7 @@ GER_hitlers_successor = {
 		}
 	}
 	GER_pick_goebbels = {
-		icon = generic_ignite_civil_war
+		icon = eng_trade_unions_demand
 		available = {
 			custom_trigger_tooltip = {
 				tooltip = GOEBBELS_TRUSTED_BY_HITLER
@@ -2889,7 +2998,7 @@ GER_hitlers_successor = {
 		}
 	}
 	GER_announce_the_successor = {
-		icon = generic_ignite_civil_war
+		icon = eng_propaganda_campaigns
 		available = {
 			OR = {
 				has_country_flag = goebbelsopted
@@ -2944,7 +3053,7 @@ political_actions = {
 		}
 	}
 	GER_sg_load_tree = {
-		icon = generic_ignite_civil_war
+		icon = generic_form_nation
 		available = {
 			tag = GER
 		}
@@ -2962,7 +3071,7 @@ political_actions = {
 		}
 	}
 	GER_b_load_tree = {
-		icon = generic_ignite_civil_war
+		icon = generic_form_nation
 		available = {
 			tag = GER
 		}
@@ -2980,7 +3089,7 @@ political_actions = {
 		}
 	}
 	GER_goe_load_tree = {
-		icon = generic_ignite_civil_war
+		icon = generic_form_nation
 		available = {
 			tag = GER
 		}
@@ -2998,7 +3107,7 @@ political_actions = {
 		}
 	}
 	GER_heer_load_tree = {
-		icon = generic_ignite_civil_war
+		icon = generic_form_nation
 		available = {
 			tag = HGR
 		}
@@ -3016,7 +3125,7 @@ political_actions = {
 		}
 	}
 	GER_himmler_load_tree = {
-		icon = generic_ignite_civil_war
+		icon = generic_form_nation
 		available = {
 			tag = HSS
 		}
@@ -3034,7 +3143,7 @@ political_actions = {
 		}
 	}
 	GER_council_load_tree = {
-		icon = generic_ignite_civil_war
+		icon = generic_form_nation
 		available = {
 			tag = GER
 		}
@@ -3055,7 +3164,7 @@ political_actions = {
 
 GER_education = {
 	GER_education_reform = {
-		icon = generic_ignite_civil_war
+		icon = eng_trade_unions_support
 		available = {
 			original_tag = GER
 			has_global_flag = german_education
@@ -3079,7 +3188,7 @@ GER_education = {
 		}
 	}
 	GER_military_education = {
-		icon = generic_ignite_civil_war
+		icon = eng_blackshirt_march
 		available = {
 			original_tag = GER
 			has_global_flag = german_education
@@ -3099,7 +3208,7 @@ GER_education = {
 		}
 	}
 	GER_art_of_war = {
-		icon = generic_ignite_civil_war
+		icon = prepare_for_war
 		available = {
 			original_tag = GER
 			has_global_flag = german_education
@@ -3125,7 +3234,7 @@ GER_education = {
 		}
 	}
 	GER_aryan_education = {
-		icon = generic_ignite_civil_war
+		icon = eng_blackshirt_speech
 		available = {
 			original_tag = GER
 			has_global_flag = german_education
@@ -3150,7 +3259,7 @@ GER_education = {
 		}
 	}
 	GER_role_of_german_girls = {
-		icon = generic_ignite_civil_war
+		icon = farm
 		available = {
 			original_tag = GER
 			has_global_flag = german_education
@@ -3174,7 +3283,7 @@ GER_education = {
 
 GER_military_reform = {
 	GER_expanding_the_reserve = {
-		icon = generic_ignite_civil_war
+		icon = eng_blackshirt_march
 		available = {
 			original_tag = GER
 			has_country_flag = hitlermilitaryreform
@@ -3202,7 +3311,7 @@ GER_military_reform = {
 		}
 	}
 	GER_reviewing_past_conflicts = {
-		icon = generic_ignite_civil_war
+		icon = eng_trade_unions_demand
 		available = {
 			original_tag = GER
 			has_country_flag = hitlermilitaryreform
@@ -3235,7 +3344,7 @@ GER_military_reform = {
 
 GER_spying_for_hitler = {
 	GER_spy_on_ss = {
-		icon = generic_ignite_civil_war
+		icon = generic_political_discourse
 		available = {
 			original_tag = GER
 			has_completed_focus = GER_Spy_On_The_Inners
@@ -3258,7 +3367,7 @@ GER_spying_for_hitler = {
 		}
 	}
 	GER_spy_on_army = {
-		icon = generic_ignite_civil_war
+		icon = generic_political_discourse
 		available = {
 			original_tag = GER
 			has_completed_focus = GER_Spy_On_The_Inners
@@ -3281,7 +3390,7 @@ GER_spying_for_hitler = {
 		}
 	}
 	GER_spy_on_party = {
-		icon = generic_ignite_civil_war
+		icon = generic_political_discourse
 		available = {
 			original_tag = GER
 			has_completed_focus = GER_Spy_On_The_Inners
@@ -3307,7 +3416,7 @@ GER_spying_for_hitler = {
 
 GER_propaganda_ost = {
 	GER_third_wave_fake_press = {
-		icon = generic_ignite_civil_war
+		icon = eng_propaganda_campaigns
 		available = {
 			has_war = no
 		}
@@ -3332,7 +3441,7 @@ GER_propaganda_ost = {
 		}
 	}
 	GER_real_evidences = {
-		icon = generic_ignite_civil_war
+		icon = eng_trade_unions_demand
 		available = {
 			has_war = no
 		}
@@ -3357,7 +3466,7 @@ GER_propaganda_ost = {
 		}
 	}
 	GER_overseas_testimony = {
-		icon = generic_ignite_civil_war
+		icon = ger_mefo_bills
 		available = {
 			has_war = no
 		}
@@ -3386,7 +3495,7 @@ GER_propaganda_ost = {
 
 GER_freeroaming_ostlands = {
 	GER_encouraging_adventures = {
-		icon = generic_ignite_civil_war
+		icon = eng_trade_unions_support
 		available = {
 			original_tag = GER
 			has_global_flag = freeroaming_ost
@@ -3403,9 +3512,9 @@ GER_freeroaming_ostlands = {
 		complete_effect = {
 			log = "[GetDateText]: [Root.GetName]: Decision GER_encouraging_adventures"
 			add_ideas = ost_adventures
-			SBA = {
-				add_ideas = ost_adventures_rk
-			}
+			#SBA = {
+			#	add_ideas = ost_adventures_rk
+			#}
 			RGO = {
 				add_ideas = ost_adventures_rk
 			}
@@ -3424,7 +3533,7 @@ GER_freeroaming_ostlands = {
 		}
 	}
 	GER_conduct_ost_censuses = {
-		icon = generic_ignite_civil_war
+		icon = eng_trade_unions_demand
 		available = {
 			original_tag = GER
 			has_global_flag = freeroaming_ost
@@ -3448,7 +3557,7 @@ GER_freeroaming_ostlands = {
 
 GER_governmentappointed_ost = {
 	GER_ready_a_colonial_mission = {
-		icon = generic_ignite_civil_war
+		icon = eng_blackshirt_march
 		available = {
 			original_tag = GER
 		}
@@ -3470,7 +3579,7 @@ GER_governmentappointed_ost = {
 		}
 	}
 	GER_settle_polen = {
-		icon = generic_ignite_civil_war
+		icon = eng_blackshirt_march
 		available = {
 			original_tag = GER
 			has_country_flag = ost_colonial_ready
@@ -3494,7 +3603,7 @@ GER_governmentappointed_ost = {
 		}
 	}
 	GER_settle_ostland = {
-		icon = generic_ignite_civil_war
+		icon = eng_blackshirt_march
 		available = {
 			original_tag = GER
 			has_country_flag = ost_colonial_ready
@@ -3518,7 +3627,7 @@ GER_governmentappointed_ost = {
 		}
 	}
 	GER_settle_ukraine = {
-		icon = generic_ignite_civil_war
+		icon = eng_blackshirt_march
 		available = {
 			original_tag = GER
 			has_country_flag = ost_colonial_ready
@@ -3542,7 +3651,7 @@ GER_governmentappointed_ost = {
 		}
 	}
 	GER_settle_moskow = {
-		icon = generic_ignite_civil_war
+		icon = eng_blackshirt_march
 		available = {
 			original_tag = GER
 			has_country_flag = ost_colonial_ready
@@ -3566,7 +3675,7 @@ GER_governmentappointed_ost = {
 		}
 	}
 	GER_settle_mountains = {
-		icon = generic_ignite_civil_war
+		icon = eng_blackshirt_march
 		available = {
 			original_tag = GER
 			has_country_flag = ost_colonial_ready
@@ -3593,7 +3702,7 @@ GER_governmentappointed_ost = {
 
 GER_nsdap_reform = {
 	nsdap_sub_branches = {
-		icon = generic_ignite_civil_war
+		icon = eng_trade_unions_support
 		available = {
 			original_tag = GER
 			has_idea = GER_Nazi_Reformed
@@ -3612,7 +3721,7 @@ GER_nsdap_reform = {
 		}
 	}
 	nsdap_youth_politics = {
-		icon = generic_ignite_civil_war
+		icon = eng_blackshirt_march
 		available = {
 			original_tag = GER
 			has_idea = GER_Nazi_Reformed
@@ -3631,7 +3740,7 @@ GER_nsdap_reform = {
 		}
 	}
 	nsdap_debate_improvements = {
-		icon = generic_ignite_civil_war
+		icon = generic_political_discourse
 		available = {
 			original_tag = GER
 			has_idea = GER_Nazi_Reformed
@@ -3660,7 +3769,7 @@ GER_power_struggle_decisions = {
 	#########SPEER END GOALS###########
 	speer_secure_power_safe = {
 		#safely
-		icon = generic_ignite_civil_war
+		icon = generic_political_discourse
 		available = {
 			original_tag = GER
 			check_variable = {
@@ -3697,7 +3806,7 @@ GER_power_struggle_decisions = {
 	}
 	speer_secure_power_risky = {
 		#mildly risky
-		icon = generic_ignite_civil_war
+		icon = generic_political_discourse
 		available = {
 			original_tag = GER
 			check_variable = {
@@ -3745,7 +3854,7 @@ GER_power_struggle_decisions = {
 	}
 	speer_secure_power_frick = {
 		#why the fuck
-		icon = generic_ignite_civil_war
+		icon = generic_political_discourse
 		available = {
 			original_tag = GER
 			check_variable = {
@@ -3794,7 +3903,7 @@ GER_power_struggle_decisions = {
 	#########SPEERS SHIT##########
 	##############SPEER ARMY###############
 	speer_meet_the_army_full_effort = {
-		icon = generic_ignite_civil_war
+		icon = generic_political_discourse
 		available = {
 			has_country_flag = speer_picked
 			original_tag = GER
@@ -3850,7 +3959,7 @@ GER_power_struggle_decisions = {
 		}
 	}
 	speer_meet_the_army_medium_effort = {
-		icon = generic_ignite_civil_war
+		icon = generic_political_discourse
 		available = {
 			has_country_flag = speer_picked
 			original_tag = GER
@@ -3906,7 +4015,7 @@ GER_power_struggle_decisions = {
 		}
 	}
 	speer_meet_the_army_least_effort = {
-		icon = generic_ignite_civil_war
+		icon = generic_political_discourse
 		available = {
 			has_country_flag = speer_picked
 			original_tag = GER
@@ -3963,7 +4072,7 @@ GER_power_struggle_decisions = {
 	}
 	##############POLITICAL STRUGGLE SPEER###############
 	speer_secure_party_full_effort = {
-		icon = generic_ignite_civil_war
+		icon = generic_political_discourse
 		available = {
 			has_country_flag = speer_picked
 			original_tag = GER
@@ -4019,7 +4128,7 @@ GER_power_struggle_decisions = {
 		}
 	}
 	speer_secure_party_medium_effort = {
-		icon = generic_ignite_civil_war
+		icon = generic_political_discourse
 		available = {
 			has_country_flag = speer_picked
 			original_tag = GER
@@ -4075,7 +4184,7 @@ GER_power_struggle_decisions = {
 		}
 	}
 	speer_secure_party_least_effort = {
-		icon = generic_ignite_civil_war
+		icon = generic_political_discourse
 		available = {
 			has_country_flag = speer_picked
 			original_tag = GER
@@ -4132,7 +4241,7 @@ GER_power_struggle_decisions = {
 	}
 	##############PUBLIC SUPPORT SWAYING###############
 	speer_passionate_speeches = {
-		icon = generic_ignite_civil_war
+		icon = eng_blackshirt_speech
 		available = {
 			has_country_flag = speer_picked
 			original_tag = GER
@@ -4190,7 +4299,7 @@ GER_power_struggle_decisions = {
 		}
 	}
 	speer_goebbels_speeches = {
-		icon = generic_ignite_civil_war
+		icon = eng_blackshirt_speech
 		available = {
 			has_country_flag = speer_picked
 			original_tag = GER
@@ -4248,7 +4357,7 @@ GER_power_struggle_decisions = {
 		}
 	}
 	speer_public_visits = {
-		icon = generic_ignite_civil_war
+		icon = generic_political_discourse
 		available = {
 			has_country_flag = speer_picked
 			original_tag = GER
@@ -4307,7 +4416,7 @@ GER_power_struggle_decisions = {
 	}
 	#######SPEER SPECIAL DECISIONS######
 	speer_enforce_army_full_loyalty = {
-		icon = generic_ignite_civil_war
+		icon = generic_civil_support
 		available = {
 			check_variable = {
 				var = speerpower
@@ -4358,7 +4467,7 @@ GER_power_struggle_decisions = {
 		}
 	}
 	speer_goebbels_coop = {
-		icon = generic_ignite_civil_war
+		icon = generic_civil_support
 		available = {
 			has_country_flag = speer_picked
 			original_tag = GER
@@ -4407,7 +4516,7 @@ GER_power_struggle_decisions = {
 		}
 	}
 	speer_bormann_burgund_deal = {
-		icon = generic_ignite_civil_war
+		icon = generic_political_discourse
 		available = {
 			OR = {
 				AND = {
@@ -4488,7 +4597,7 @@ GER_power_struggle_decisions = {
 	#########GOEBBELS END GOALS###########
 	goebbels_secure_power_safe = {
 		#safely
-		icon = generic_ignite_civil_war
+		icon = generic_political_discourse
 		available = {
 			original_tag = GER
 			check_variable = {
@@ -4525,7 +4634,7 @@ GER_power_struggle_decisions = {
 	}
 	goebbels_secure_power_risky = {
 		#mildly risky
-		icon = generic_ignite_civil_war
+		icon = generic_political_discourse
 		available = {
 			original_tag = GER
 			check_variable = {
@@ -4573,7 +4682,7 @@ GER_power_struggle_decisions = {
 	}
 	goebbels_secure_power_frick = {
 		#why the fuck
-		icon = generic_ignite_civil_war
+		icon = generic_political_discourse
 		available = {
 			original_tag = GER
 			check_variable = {
@@ -4622,7 +4731,7 @@ GER_power_struggle_decisions = {
 	#########GOEBBELSS SHIT##########
 	##############GOEBBELS ARMY###############
 	goebbels_meet_the_army_full_effort = {
-		icon = generic_ignite_civil_war
+		icon = generic_political_discourse
 		available = {
 			has_country_flag = goebbels_picked
 			original_tag = GER
@@ -4678,7 +4787,7 @@ GER_power_struggle_decisions = {
 		}
 	}
 	goebbels_meet_the_army_medium_effort = {
-		icon = generic_ignite_civil_war
+		icon = generic_political_discourse
 		available = {
 			has_country_flag = goebbels_picked
 			original_tag = GER
@@ -4734,7 +4843,7 @@ GER_power_struggle_decisions = {
 		}
 	}
 	goebbels_meet_the_army_least_effort = {
-		icon = generic_ignite_civil_war
+		icon = generic_political_discourse
 		available = {
 			has_country_flag = goebbels_picked
 			original_tag = GER
@@ -4791,7 +4900,7 @@ GER_power_struggle_decisions = {
 	}
 	##############POLITICAL STRUGGLE GOEBBELS###############
 	goebbels_secure_party_full_effort = {
-		icon = generic_ignite_civil_war
+		icon = generic_political_discourse
 		available = {
 			has_country_flag = goebbels_picked
 			original_tag = GER
@@ -4847,7 +4956,7 @@ GER_power_struggle_decisions = {
 		}
 	}
 	goebbels_secure_party_medium_effort = {
-		icon = generic_ignite_civil_war
+		icon = generic_political_discourse
 		available = {
 			has_country_flag = goebbels_picked
 			original_tag = GER
@@ -4903,7 +5012,7 @@ GER_power_struggle_decisions = {
 		}
 	}
 	goebbels_secure_party_least_effort = {
-		icon = generic_ignite_civil_war
+		icon = generic_political_discourse
 		available = {
 			has_country_flag = goebbels_picked
 			original_tag = GER
@@ -4960,7 +5069,7 @@ GER_power_struggle_decisions = {
 	}
 	##############PUBLIC SUPPORT SWAYING###############
 	goebbels_speeches = {
-		icon = generic_ignite_civil_war
+		icon = eng_blackshirt_speech
 		available = {
 			has_country_flag = goebbels_picked
 			original_tag = GER
@@ -5018,7 +5127,7 @@ GER_power_struggle_decisions = {
 		}
 	}
 	goebbels_grand_speeches = {
-		icon = generic_ignite_civil_war
+		icon = eng_blackshirt_speech
 		available = {
 			has_country_flag = goebbels_picked
 			original_tag = GER
@@ -5076,7 +5185,7 @@ GER_power_struggle_decisions = {
 		}
 	}
 	goebbels_public_visits = {
-		icon = generic_ignite_civil_war
+		icon = generic_political_discourse
 		available = {
 			has_country_flag = goebbels_picked
 			original_tag = GER
@@ -5135,7 +5244,7 @@ GER_power_struggle_decisions = {
 	}
 	#######GOEBBELS SPECIAL DECISIONS######
 	goebbels_popular_demand = {
-		icon = generic_ignite_civil_war
+		icon = generic_civil_support
 		available = {
 			check_variable = {
 				var = goebbelspower
@@ -5183,7 +5292,7 @@ GER_power_struggle_decisions = {
 		}
 	}
 	goebbels_remove_speer = {
-		icon = generic_ignite_civil_war
+		icon = generic_civil_support
 		available = {
 			has_country_flag = goebbels_picked
 			original_tag = GER
@@ -5237,7 +5346,7 @@ GER_power_struggle_decisions = {
 		}
 	}
 	goebbels_remove_bormann = {
-		icon = generic_ignite_civil_war
+		icon = generic_civil_support
 		available = {
 			has_country_flag = goebbels_picked
 			original_tag = GER
@@ -5291,7 +5400,7 @@ GER_power_struggle_decisions = {
 		}
 	}
 	goebbels_remove_himmler = {
-		icon = generic_ignite_civil_war
+		icon = generic_civil_support
 		available = {
 			has_country_flag = goebbels_picked
 			original_tag = GER
@@ -5347,7 +5456,7 @@ GER_power_struggle_decisions = {
 	#########BORMANN END GOALS###########
 	bormann_secure_power_safe = {
 		#safely
-		icon = generic_ignite_civil_war
+		icon = generic_political_discourse
 		available = {
 			original_tag = GER
 			check_variable = {
@@ -5384,7 +5493,7 @@ GER_power_struggle_decisions = {
 	}
 	bormann_secure_power_risky = {
 		#mildly risky
-		icon = generic_ignite_civil_war
+		icon = generic_political_discourse
 		available = {
 			original_tag = GER
 			check_variable = {
@@ -5432,7 +5541,7 @@ GER_power_struggle_decisions = {
 	}
 	bormann_secure_power_frick = {
 		#why the fuck
-		icon = generic_ignite_civil_war
+		icon = generic_political_discourse
 		available = {
 			original_tag = GER
 			check_variable = {
@@ -5481,7 +5590,7 @@ GER_power_struggle_decisions = {
 	#########BORMANNS SHIT##########
 	##############BORMANN ARMY###############
 	bormann_meet_the_army_full_effort = {
-		icon = generic_ignite_civil_war
+		icon = generic_political_discourse
 		available = {
 			has_country_flag = bormann_picked
 			original_tag = GER
@@ -5537,7 +5646,7 @@ GER_power_struggle_decisions = {
 		}
 	}
 	bormann_meet_the_army_medium_effort = {
-		icon = generic_ignite_civil_war
+		icon = generic_political_discourse
 		available = {
 			has_country_flag = bormann_picked
 			original_tag = GER
@@ -5593,7 +5702,7 @@ GER_power_struggle_decisions = {
 		}
 	}
 	bormann_meet_the_army_least_effort = {
-		icon = generic_ignite_civil_war
+		icon = generic_political_discourse
 		available = {
 			has_country_flag = bormann_picked
 			original_tag = GER
@@ -5650,7 +5759,7 @@ GER_power_struggle_decisions = {
 	}
 	##############POLITICAL STRUGGLE BORMANN###############
 	bormann_secure_party_full_effort = {
-		icon = generic_ignite_civil_war
+		icon = generic_political_discourse
 		available = {
 			has_country_flag = bormann_picked
 			original_tag = GER
@@ -5706,7 +5815,7 @@ GER_power_struggle_decisions = {
 		}
 	}
 	bormann_secure_party_medium_effort = {
-		icon = generic_ignite_civil_war
+		icon = generic_political_discourse
 		available = {
 			has_country_flag = bormann_picked
 			original_tag = GER
@@ -5762,7 +5871,7 @@ GER_power_struggle_decisions = {
 		}
 	}
 	bormann_secure_party_least_effort = {
-		icon = generic_ignite_civil_war
+		icon = generic_political_discourse
 		available = {
 			has_country_flag = bormann_picked
 			original_tag = GER
@@ -5819,7 +5928,7 @@ GER_power_struggle_decisions = {
 	}
 	##############PUBLIC SUPPORT SWAYING###############
 	bormann_party_pr_offensive = {
-		icon = generic_ignite_civil_war
+		icon = eng_propaganda_campaigns
 		available = {
 			has_country_flag = bormann_picked
 			original_tag = GER
@@ -5877,7 +5986,7 @@ GER_power_struggle_decisions = {
 		}
 	}
 	bormann_terror_on_others = {
-		icon = generic_ignite_civil_war
+		icon = generic_scorched_earth
 		available = {
 			has_country_flag = bormann_picked
 			original_tag = GER
@@ -5935,7 +6044,7 @@ GER_power_struggle_decisions = {
 		}
 	}
 	bormann_spokesperson_public_visits = {
-		icon = generic_ignite_civil_war
+		icon = generic_political_discourse
 		available = {
 			has_country_flag = bormann_picked
 			original_tag = GER
@@ -5994,7 +6103,7 @@ GER_power_struggle_decisions = {
 	}
 	#######BORMANN SPECIAL DECISIONS######
 	bormann_party_loyalty = {
-		icon = generic_ignite_civil_war
+		icon = generic_political_discourse
 		available = {
 			check_variable = {
 				var = bormannpower
@@ -6042,7 +6151,7 @@ GER_power_struggle_decisions = {
 		}
 	}
 	bormann_remove_speer = {
-		icon = generic_ignite_civil_war
+		icon = generic_civil_support
 		available = {
 			has_country_flag = bormann_picked
 			original_tag = GER
@@ -6093,7 +6202,7 @@ GER_power_struggle_decisions = {
 		}
 	}
 	bormann_remove_goebbels = {
-		icon = generic_ignite_civil_war
+		icon = generic_civil_support
 		available = {
 			has_country_flag = bormann_picked
 			original_tag = GER
@@ -6146,7 +6255,7 @@ GER_power_struggle_decisions = {
 	#########HIMMLER END GOALS###########
 	himmler_secure_power_safe = {
 		#safely
-		icon = generic_ignite_civil_war
+		icon = generic_political_discourse
 		available = {
 			original_tag = GER
 			check_variable = {
@@ -6183,7 +6292,7 @@ GER_power_struggle_decisions = {
 	}
 	himmler_secure_power_risky = {
 		#mildly risky
-		icon = generic_ignite_civil_war
+		icon = generic_political_discourse
 		available = {
 			original_tag = GER
 			check_variable = {
@@ -6231,7 +6340,7 @@ GER_power_struggle_decisions = {
 	}
 	himmler_secure_power_frick = {
 		#why the fuck
-		icon = generic_ignite_civil_war
+		icon = generic_political_discourse
 		available = {
 			original_tag = GER
 			check_variable = {
@@ -6280,7 +6389,7 @@ GER_power_struggle_decisions = {
 	#########HIMMLERS SHIT##########
 	##############HIMMLER ARMY###############
 	himmler_expand_the_ss_full_effort = {
-		icon = generic_ignite_civil_war
+		icon = generic_political_discourse
 		available = {
 			has_country_flag = himmler_picked
 			original_tag = GER
@@ -6336,7 +6445,7 @@ GER_power_struggle_decisions = {
 		}
 	}
 	himmler_expand_the_ss_medium_effort = {
-		icon = generic_ignite_civil_war
+		icon = generic_political_discourse
 		available = {
 			has_country_flag = himmler_picked
 			original_tag = GER
@@ -6392,7 +6501,7 @@ GER_power_struggle_decisions = {
 		}
 	}
 	himmler_expand_the_ss_least_effort = {
-		icon = generic_ignite_civil_war
+		icon = generic_political_discourse
 		available = {
 			has_country_flag = himmler_picked
 			original_tag = GER
@@ -6449,7 +6558,7 @@ GER_power_struggle_decisions = {
 	}
 	##############POLITICAL STRUGGLE HIMMLER###############
 	himmler_secure_party_full_effort = {
-		icon = generic_ignite_civil_war
+		icon = generic_political_discourse
 		available = {
 			has_country_flag = himmler_picked
 			original_tag = GER
@@ -6505,7 +6614,7 @@ GER_power_struggle_decisions = {
 		}
 	}
 	himmler_secure_party_medium_effort = {
-		icon = generic_ignite_civil_war
+		icon = generic_political_discourse
 		available = {
 			has_country_flag = himmler_picked
 			original_tag = GER
@@ -6561,7 +6670,7 @@ GER_power_struggle_decisions = {
 		}
 	}
 	himmler_secure_party_least_effort = {
-		icon = generic_ignite_civil_war
+		icon = generic_political_discourse
 		available = {
 			has_country_flag = himmler_picked
 			original_tag = GER
@@ -6618,7 +6727,7 @@ GER_power_struggle_decisions = {
 	}
 	##############PUBLIC SUPPORT SWAYING###############
 	himmler_party_fear = {
-		icon = generic_ignite_civil_war
+		icon = generic_political_discourse
 		available = {
 			has_country_flag = himmler_picked
 			original_tag = GER
@@ -6676,7 +6785,7 @@ GER_power_struggle_decisions = {
 		}
 	}
 	himmler_crackdown_oppositions = {
-		icon = generic_ignite_civil_war
+		icon = generic_civil_support
 		available = {
 			has_country_flag = himmler_picked
 			original_tag = GER
@@ -6734,7 +6843,7 @@ GER_power_struggle_decisions = {
 		}
 	}
 	himmler_public_terror = {
-		icon = generic_ignite_civil_war
+		icon = generic_scorched_earth
 		available = {
 			has_country_flag = himmler_picked
 			original_tag = GER
@@ -6793,7 +6902,7 @@ GER_power_struggle_decisions = {
 	}
 	#######HIMMLER SPECIAL DECISIONS######
 	himmler_party_loyalty = {
-		icon = generic_ignite_civil_war
+		icon = generic_political_discourse
 		available = {
 			check_variable = {
 				var = himmlerpower
@@ -6841,7 +6950,7 @@ GER_power_struggle_decisions = {
 		}
 	}
 	himmler_remove_speer = {
-		icon = generic_ignite_civil_war
+		icon = generic_civil_support
 		available = {
 			has_country_flag = himmler_picked
 			original_tag = GER
@@ -6892,7 +7001,7 @@ GER_power_struggle_decisions = {
 		}
 	}
 	himmler_remove_goebbels = {
-		icon = generic_ignite_civil_war
+		icon = generic_civil_support
 		available = {
 			has_country_flag = himmler_picked
 			original_tag = GER
@@ -6945,7 +7054,7 @@ GER_power_struggle_decisions = {
 	#########GOERING END GOALS###########
 	goering_secure_power_safe = {
 		#safely
-		icon = generic_ignite_civil_war
+		icon = generic_political_discourse
 		available = {
 			original_tag = GER
 			check_variable = {
@@ -6981,7 +7090,7 @@ GER_power_struggle_decisions = {
 	}
 	goering_secure_power_risky = {
 		#mildly risky
-		icon = generic_ignite_civil_war
+		icon = generic_political_discourse
 		available = {
 			original_tag = GER
 			check_variable = {
@@ -7028,7 +7137,7 @@ GER_power_struggle_decisions = {
 	}
 	goering_secure_power_frick = {
 		#why the fuck
-		icon = generic_ignite_civil_war
+		icon = generic_political_discourse
 		available = {
 			original_tag = GER
 			check_variable = {
@@ -7076,7 +7185,7 @@ GER_power_struggle_decisions = {
 	#########GOERINGS SHIT##########
 	##############GOERING ARMY###############
 	goering_meet_the_army_full_effort = {
-		icon = generic_ignite_civil_war
+		icon = generic_political_discourse
 		available = {
 			has_country_flag = goering_picked
 			original_tag = GER
@@ -7131,7 +7240,7 @@ GER_power_struggle_decisions = {
 		}
 	}
 	goering_meet_the_army_medium_effort = {
-		icon = generic_ignite_civil_war
+		icon = generic_political_discourse
 		available = {
 			has_country_flag = goering_picked
 			original_tag = GER
@@ -7186,7 +7295,7 @@ GER_power_struggle_decisions = {
 		}
 	}
 	goering_meet_the_army_least_effort = {
-		icon = generic_ignite_civil_war
+		icon = generic_political_discourse
 		available = {
 			has_country_flag = goering_picked
 			original_tag = GER
@@ -7242,7 +7351,7 @@ GER_power_struggle_decisions = {
 	}
 	##############POLITICAL STRUGGLE GOERING###############
 	goering_secure_party_full_effort = {
-		icon = generic_ignite_civil_war
+		icon = generic_political_discourse
 		available = {
 			has_country_flag = goering_picked
 			original_tag = GER
@@ -7297,7 +7406,7 @@ GER_power_struggle_decisions = {
 		}
 	}
 	goering_secure_party_medium_effort = {
-		icon = generic_ignite_civil_war
+		icon = generic_political_discourse
 		available = {
 			has_country_flag = goering_picked
 			original_tag = GER
@@ -7352,7 +7461,7 @@ GER_power_struggle_decisions = {
 		}
 	}
 	goering_secure_party_least_effort = {
-		icon = generic_ignite_civil_war
+		icon = generic_political_discourse
 		available = {
 			has_country_flag = goering_picked
 			original_tag = GER
@@ -7408,7 +7517,7 @@ GER_power_struggle_decisions = {
 	}
 	##############PUBLIC SUPPORT SWAYING###############
 	goering_passionate_public_stunts = {
-		icon = generic_ignite_civil_war
+		icon = generic_political_discourse
 		available = {
 			has_country_flag = goering_picked
 			original_tag = GER
@@ -7465,7 +7574,7 @@ GER_power_struggle_decisions = {
 		}
 	}
 	goering_speeches = {
-		icon = generic_ignite_civil_war
+		icon = eng_blackshirt_speech
 		available = {
 			has_country_flag = goering_picked
 			original_tag = GER
@@ -7521,7 +7630,7 @@ GER_power_struggle_decisions = {
 		}
 	}
 	goering_public_visits = {
-		icon = generic_ignite_civil_war
+		icon = generic_political_discourse
 		available = {
 			has_country_flag = goering_picked
 			original_tag = GER
@@ -7579,7 +7688,7 @@ GER_power_struggle_decisions = {
 	}
 	#######GOERING SPECIAL DECISIONS######
 	goering_enforce_army_full_loyalty = {
-		icon = generic_ignite_civil_war
+		icon = generic_political_discourse
 		available = {
 			check_variable = {
 				var = goeringpower
@@ -7628,7 +7737,7 @@ GER_power_struggle_decisions = {
 		}
 	}
 	goering_goebbels_coop = {
-		icon = generic_ignite_civil_war
+		icon = generic_civil_support
 		available = {
 			has_country_flag = goering_picked
 			original_tag = GER
@@ -7676,7 +7785,7 @@ GER_power_struggle_decisions = {
 		}
 	}
 	goering_burgund_deal = {
-		icon = generic_ignite_civil_war
+		icon = generic_political_discourse
 		available = {
 			has_country_flag = goering_picked
 			original_tag = GER
@@ -7966,7 +8075,7 @@ GER_bring_the_RKs_back_into_the_fold_decisions = {
 					tag = RKA
 					tag = GGP
 					tag = RGO
-					tag = SBA
+					#tag = SBA
 				}
 				NOT = {
 					is_subject_of = ROOT
@@ -7978,7 +8087,15 @@ GER_bring_the_RKs_back_into_the_fold_decisions = {
 			}
 		}
 		available = {
-			#has_war = no
+			has_war = no
+			FROM = {
+				OR = {
+					is_neighbor_of = ROOT
+					any_neighbor_country = {
+						is_subject_of = ROOT
+					}
+				}
+			}
 		}
 		fire_only_once = yes
 		ai_will_do = {
@@ -8015,7 +8132,7 @@ GER_bring_the_RKs_back_into_the_fold_decisions = {
 					tag = RKA
 					tag = GGP
 					tag = RGO
-					tag = SBA
+					#tag = SBA
 				}
 				NOT = {
 					is_subject_of = ROOT
@@ -8026,6 +8143,14 @@ GER_bring_the_RKs_back_into_the_fold_decisions = {
 		}
 		available = {
 			has_war = no
+			FROM = {
+				OR = {
+					is_neighbor_of = ROOT
+					any_neighbor_country = {
+						is_subject_of = ROOT
+					}
+				}
+			}
 		}
 		fire_only_once = yes
 		ai_will_do = {
@@ -8189,6 +8314,13 @@ GER_bring_the_RKs_back_into_the_fold_decisions = {
 		icon = ger_reichskommissariats
 		target_trigger = {
 			FROM = {
+				any_neighbor_country = {
+					OR = {
+						tag = ROOT
+						is_subject_of = ROOT
+						is_in_faction_with = ROOT
+					}
+				}
 				AND = {
 					OR = {
 						tag = DON
@@ -8230,6 +8362,7 @@ GER_bring_the_RKs_back_into_the_fold_decisions = {
 						tag = SLV
 						tag = BLG
 						tag = RSB
+						tag = SBA
 					}
 					NOT = {
 						is_subject_of = ROOT
@@ -8381,6 +8514,14 @@ GER_bring_the_RKs_back_into_the_fold_decisions = {
 			NOT = {
 				tag = HSS
 				has_focus_tree = himmler_germany
+			}
+			OR = {
+				RGO = {
+					is_neighbor_of = ROOT
+					any_neighbor_country = {
+						is_subject_of = ROOT
+					}
+				}
 			}
 		}
 		visible = {

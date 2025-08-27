@@ -2599,6 +2599,33 @@
 		}
 	}
 
+	FROM_has_opposing_ideology = {
+	OR = {
+		AND = {
+			is_democratic = yes
+			FROM = { is_fascist = yes }
+		}
+		AND = {
+		is_communist = yes
+		FROM = { OR = { is_fascist = yes has_government = paternal_autocrat
+		NOT = { 
+		has_country_leader_ideology = pragmatic_socialism
+		has_country_leader_ideology = bulganinism
+					}
+				}
+			}
+		}
+		AND = {
+			is_fascist = yes
+			FROM = { OR = { is_communist = yes is_democratic = yes } }
+		}
+		AND = {
+			has_government = paternal_autocrat
+			FROM = { is_communist = yes }
+			}
+		}
+	}
+
 	has_opposing_ideology_root_owner = {
 	OR = {
 		AND = {
@@ -2807,6 +2834,7 @@
 			has_idea_with_trait = AM_Mad_Man
 			has_idea_with_trait = AM_Space_Enthusiast
 			has_idea_with_trait = AM_Gosplan_Boss
+			has_idea_with_trait = AM_Socialist_Self_Management_Theorist
 		}
 	}
 
@@ -2924,6 +2952,8 @@
 		}
 	}
 	is_sphere_leader = {
+		custom_trigger_tooltip = {
+		tooltip = IS_A_GREAT_SPHERE_LEADER
 		OR = {
 		has_country_flag = FLAG_GERMAN_LEADER
 		has_country_flag = FLAG_ITALIAN_LEADER
@@ -2932,6 +2962,7 @@
 		has_country_flag = FLAG_INDIAN_LEADER
 		has_country_flag = FLAG_SOVIET_LEADER
 		has_country_flag = FLAG_RUSSIAN_LEADER
+			}
 		}
 	}
 	is_in_the_un = {
@@ -2977,6 +3008,1085 @@
 		}
 		
 	}
+###################################################################################################
+
+	#ENG_subsphere_influence
+	#FRA_subsphere_influence
+	#FFR_subsphere_influence
+	#JAP_subsphere_influence
+	#VIN_subsphere_influence
+	#ARG_subsphere_influence
+	#BRA_subsphere_influence
+	#EGY_subsphere_influence
+
+	#FROM is Target
+	#ROOT is Sender
+
+	valid_subsphere_influence_target_trigger = {
+		custom_trigger_tooltip = {
+		tooltip = BATTLEFIELD_SUBSPHERE_STATE
+		if = {
+		limit = { ROOT = { tag = BR3 } }
+		FROM = {
+		is_subject = no
+		OR = {
+		has_idea = ENG_subsphere_member_modifier
+		has_country_flag = VALID_SUBSPHERELING_BATTLE_ENG
+				}
+			}
+		}
+
+		if = {
+		limit = { ROOT = { tag = FA3 } }
+		FROM = {
+		is_subject = no
+		OR = {
+		has_idea = FRA_subsphere_member_modifier
+		has_country_flag = VALID_SUBSPHERELING_BATTLE_FRA
+				}
+			}
+		}
+
+		if = {
+		limit = { ROOT = { tag = FR3 } }
+		FROM = {
+		is_subject = no
+		OR = {
+		has_idea = FFR_subsphere_member_modifier
+		has_country_flag = VALID_SUBSPHERELING_BATTLE_FFR
+				}
+			}
+		}
+		
+		if = {
+		limit = { ROOT = { tag = JP3 } }
+		FROM = {
+		is_subject = no
+		OR = {
+		has_idea = JAP_subsphere_member_modifier
+		has_country_flag = VALID_SUBSPHERELING_BATTLE_JAP
+				}
+			}
+		}
+
+		if = {
+		limit = { ROOT = { tag = VN3 } }
+		FROM = {
+		is_subject = no
+		OR = {
+		has_idea = VIN_subsphere_member_modifier
+		has_country_flag = VALID_SUBSPHERELING_BATTLE_VIN
+				}
+			}
+		}
+
+		if = {
+		limit = { ROOT = { tag = AG3 } }
+		FROM = {
+		is_subject = no
+		OR = {
+		has_idea = ARG_subsphere_member_modifier
+		has_country_flag = VALID_SUBSPHERELING_BATTLE_ARG
+				}
+			}
+		}
+
+		if = {
+		limit = { ROOT = { tag = BZ3 } }
+		FROM = {
+		is_subject = no
+		OR = {
+		has_idea = BRA_subsphere_member_modifier
+		has_country_flag = VALID_SUBSPHERELING_BATTLE_BRA
+				}
+			}
+		}
+
+		if = {
+		limit = { ROOT = { tag = EG3 } }
+		FROM = {
+		is_subject = no
+		OR = {
+		has_idea = EGY_subsphere_member_modifier
+		has_country_flag = VALID_SUBSPHERELING_BATTLE_EGY
+				}
+			}
+		}
+
+		if = {
+		limit = { ROOT = { tag = MX3 } }
+		FROM = {
+		is_subject = no
+		OR = {
+		has_idea = MEX_subsphere_member_modifier
+		has_country_flag = VALID_SUBSPHERELING_BATTLE_MEX
+				}
+			}
+		}
+
+		if = {
+		limit = { ROOT = { tag = SD3 } }
+		FROM = {
+		is_subject = no
+		OR = {
+		has_idea = SAU_subsphere_member_modifier
+		has_country_flag = VALID_SUBSPHERELING_BATTLE_SAU
+				}
+			}
+		}
+		if = {
+		limit = { ROOT = { tag = SA3 } }
+		FROM = {
+		is_subject = no
+		OR = {
+		has_idea = SAF_subsphere_member_modifier
+		has_country_flag = VALID_SUBSPHERELING_BATTLE_SAF
+				}
+			}
+		}
+		if = {
+		limit = { ROOT = { tag = IR3 } }
+		FROM = {
+		is_subject = no
+		OR = {
+		has_idea = IRQ_subsphere_member_modifier
+		has_country_flag = VALID_SUBSPHERELING_BATTLE_IRQ
+				}
+			}
+		}
+
+		if = {
+		limit = { ROOT = { tag = SI3 } }
+		FROM = {
+		is_subject = no
+		OR = {
+		has_idea = SIA_subsphere_member_modifier
+		has_country_flag = VALID_SUBSPHERELING_BATTLE_SIA
+				}
+			}
+		}
+		if = {
+		limit = { ROOT = { tag = IN3 } }
+		FROM = {
+		is_subject = no
+		OR = {
+		has_idea = INS_subsphere_member_modifier
+		has_country_flag = VALID_SUBSPHERELING_BATTLE_INS
+				}
+			}
+		}
+		if = {
+		limit = { ROOT = { tag = TK3 } }
+		FROM = {
+		is_subject = no
+		OR = {
+		has_idea = TUR_subsphere_member_modifier
+		has_country_flag = VALID_SUBSPHERELING_BATTLE_TUR
+				}
+			}
+		}
+
+		if = {
+		limit = { ROOT = { tag = DR3 } }
+		FROM = {
+		is_subject = no
+		OR = {
+		has_idea = DDR_subsphere_member_modifier
+		has_country_flag = VALID_SUBSPHERELING_BATTLE_DDR
+				}
+			}
+		}
+		if = {
+		limit = { ROOT = { tag = PL3 } }
+		FROM = {
+		is_subject = no
+		OR = {
+		has_idea = POL_subsphere_member_modifier
+		has_country_flag = VALID_SUBSPHERELING_BATTLE_POL
+				}
+			}
+		}
+		if = {
+		limit = { ROOT = { tag = YUG } }
+		FROM = {
+		is_subject = no
+		OR = {
+		has_idea = YUG_subsphere_member_modifier
+		has_country_flag = VALID_SUBSPHERELING_BATTLE_YUG
+					}
+				}
+			}
+		}
+	}
+
+	FROM_is_not_in_my_subsphere_trigger = {
+		if = {
+		limit = { ROOT = { tag = BR3 } }
+		FROM = {
+		NOT = { has_idea = ENG_subsphere_member_modifier }
+			}
+		}
+		if = {
+		limit = { ROOT = { tag = FA3 } }
+		FROM = {
+		NOT = { has_idea = FRA_subsphere_member_modifier }
+			}
+		}
+		if = {
+		limit = { ROOT = { tag = FR3 } }
+		FROM = {
+		NOT = { has_idea = FFR_subsphere_member_modifier }
+			}
+		}
+		if = {
+		limit = { ROOT = { tag = JP3 } }
+		FROM = {
+		NOT = { has_idea = JAP_subsphere_member_modifier }
+			}
+		}
+		if = {
+		limit = { ROOT = { tag = VN3 } }
+		FROM = {
+		NOT = { has_idea = VIN_subsphere_member_modifier }
+			}
+		}
+		if = {
+		limit = { ROOT = { tag = AG3 } }
+		FROM = {
+		NOT = { has_idea = ARG_subsphere_member_modifier }
+			}
+		}
+		if = {
+		limit = { ROOT = { tag = BZ3 } }
+		FROM = {
+		NOT = { has_idea = BRA_subsphere_member_modifier }
+			}
+		}
+		if = {
+		limit = { ROOT = { tag = EG3 } }
+		FROM = {
+		NOT = { has_idea = EGY_subsphere_member_modifier }
+			}
+		}
+		if = {
+		limit = { ROOT = { tag = MX3 } }
+		FROM = {
+		NOT = { has_idea = MEX_subsphere_member_modifier }
+			}
+		}
+
+		if = {
+		limit = { ROOT = { tag = SD3 } }
+		FROM = {
+		NOT = { has_idea = SAU_subsphere_member_modifier }
+			}
+		}
+		if = {
+		limit = { ROOT = { tag = SA3 } }
+		FROM = {
+		NOT = { has_idea = SAF_subsphere_member_modifier }
+			}
+		}
+		if = {
+		limit = { ROOT = { tag = IR3 } }
+		FROM = {
+		NOT = { has_idea = IRQ_subsphere_member_modifier }
+			}
+		}
+		if = {
+		limit = { ROOT = { tag = SI3 } }
+		FROM = {
+		NOT = { has_idea = SIA_subsphere_member_modifier }
+			}
+		}
+		if = {
+		limit = { ROOT = { tag = IN3 } }
+		FROM = {
+		NOT = { has_idea = INS_subsphere_member_modifier }
+			}
+		}
+		if = {
+		limit = { ROOT = { tag = TK3 } }
+		FROM = {
+		NOT = { has_idea = TUR_subsphere_member_modifier }
+			}
+		}
+
+		if = {
+		limit = { ROOT = { tag = DR3 } }
+		FROM = {
+		NOT = { has_idea = DDR_subsphere_member_modifier }
+			}
+		}
+		if = {
+		limit = { ROOT = { tag = PL3 } }
+		FROM = {
+		NOT = { has_idea = POL_subsphere_member_modifier }
+			}
+		}
+		if = {
+		limit = { ROOT = { tag = YUG } }
+		FROM = {
+		NOT = { has_idea = YUG_subsphere_member_modifier }
+			}
+		}
+	}
+
+	FROM_is_in_my_subsphere_trigger = {
+		if = {
+		limit = { ROOT = { tag = BR3 } }
+		FROM = {
+		has_idea = ENG_subsphere_member_modifier
+			}
+		}
+		if = {
+		limit = { ROOT = { tag = FA3 } }
+		FROM = {
+		has_idea = FRA_subsphere_member_modifier
+			}
+		}
+		if = {
+		limit = { ROOT = { tag = FR3 } }
+		FROM = {
+		has_idea = FFR_subsphere_member_modifier
+			}
+		}
+		if = {
+		limit = { ROOT = { tag = JP3 } }
+		FROM = {
+		has_idea = JAP_subsphere_member_modifier
+			}
+		}
+		if = {
+		limit = { ROOT = { tag = VN3 } }
+		FROM = {
+		has_idea = VIN_subsphere_member_modifier
+			}
+		}
+		if = {
+		limit = { ROOT = { tag = AG3 } }
+		FROM = {
+		has_idea = ARG_subsphere_member_modifier
+			}
+		}
+		if = {
+		limit = { ROOT = { tag = BZ3 } }
+		FROM = {
+		has_idea = BRA_subsphere_member_modifier
+			}
+		}
+		if = {
+		limit = { ROOT = { tag = EG3 } }
+		FROM = {
+		has_idea = EGY_subsphere_member_modifier
+			}
+		}
+		if = {
+		limit = { ROOT = { tag = MX3 } }
+		FROM = {
+		has_idea = MEX_subsphere_member_modifier
+			}
+		}
+
+		if = {
+		limit = { ROOT = { tag = SD3 } }
+		FROM = {
+		has_idea = SAU_subsphere_member_modifier
+			}
+		}
+		if = {
+		limit = { ROOT = { tag = SA3 } }
+		FROM = {
+		has_idea = SAF_subsphere_member_modifier
+			}
+		}
+		if = {
+		limit = { ROOT = { tag = IR3 } }
+		FROM = {
+		has_idea = IRQ_subsphere_member_modifier
+			}
+		}
+		if = {
+		limit = { ROOT = { tag = SI3 } }
+		FROM = {
+		has_idea = SIA_subsphere_member_modifier
+			}
+		}
+		if = {
+		limit = { ROOT = { tag = IN3 } }
+		FROM = {
+		has_idea = INS_subsphere_member_modifier
+			}
+		}
+		if = {
+		limit = { ROOT = { tag = TK3 } }
+		FROM = {
+		has_idea = TUR_subsphere_member_modifier
+			}
+		}
+
+		if = {
+		limit = { ROOT = { tag = DR3 } }
+		FROM = {
+		has_idea = DDR_subsphere_member_modifier
+			}
+		}
+		if = {
+		limit = { ROOT = { tag = PL3 } }
+		FROM = {
+		has_idea = POL_subsphere_member_modifier
+			}
+		}
+		if = {
+		limit = { ROOT = { tag = YUG } }
+		FROM = {
+		has_idea = YUG_subsphere_member_modifier
+			}
+		}
+		
+	}
+
+	ROOT_is_in_FROM_subsphere_trigger = {
+		custom_trigger_tooltip = {
+		tooltip = IS_OUR_SUBSPHERE_LEADER
+		if = {
+		limit = { FROM = { tag = BR3 } }
+		ROOT = {
+		has_idea = ENG_subsphere_member_modifier
+			}
+		}
+		if = {
+		limit = { FROM = { tag = FA3 } }
+		ROOT = {
+		has_idea = FRA_subsphere_member_modifier
+			}
+		}
+		if = {
+		limit = { FROM = { tag = FR3 } }
+		ROOT = {
+		has_idea = FFR_subsphere_member_modifier
+			}
+		}
+		if = {
+		limit = { FROM = { tag = JP3 } }
+		ROOT = {
+		has_idea = JAP_subsphere_member_modifier
+			}
+		}
+		if = {
+		limit = { FROM = { tag = VN3 } }
+		ROOT = {
+		has_idea = VIN_subsphere_member_modifier
+			}
+		}
+		if = {
+		limit = { FROM = { tag = AG3 } }
+		ROOT = {
+		has_idea = ARG_subsphere_member_modifier
+			}
+		}
+		if = {
+		limit = { FROM = { tag = BZ3 } }
+		ROOT = {
+		has_idea = BRA_subsphere_member_modifier
+			}
+		}
+		if = {
+		limit = { FROM = { tag = EG3 } }
+		ROOT = {
+		has_idea = EGY_subsphere_member_modifier
+			}
+		}
+		if = {
+		limit = { FROM = { tag = MX3 } }
+		ROOT = {
+		has_idea = MEX_subsphere_member_modifier
+			}
+		}
+
+		if = {
+		limit = { FROM = { tag = SD3 } }
+		ROOT = {
+		has_idea = SAU_subsphere_member_modifier
+			}
+		}
+		if = {
+		limit = { FROM = { tag = SA3 } }
+		ROOT = {
+		has_idea = SAF_subsphere_member_modifier
+			}
+		}
+		if = {
+		limit = { FROM = { tag = IR3 } }
+		ROOT = {
+		has_idea = IRQ_subsphere_member_modifier
+			}
+		}
+		if = {
+		limit = { FROM = { tag = SI3 } }
+		ROOT = {
+		has_idea = SIA_subsphere_member_modifier
+			}
+		}
+		if = {
+		limit = { FROM = { tag = IN3 } }
+		ROOT = {
+		has_idea = INS_subsphere_member_modifier
+			}
+		}
+		if = {
+		limit = { FROM = { tag = TK3 } }
+		ROOT = {
+		has_idea = TUR_subsphere_member_modifier
+			}
+		}
+
+		if = {
+		limit = { FROM = { tag = DR3 } }
+		ROOT = {
+		has_idea = DDR_subsphere_member_modifier
+			}
+		}
+		if = {
+		limit = { FROM = { tag = PL3 } }
+		ROOT = {
+		has_idea = POL_subsphere_member_modifier
+			}
+		}
+		if = {
+		limit = { FROM = { tag = YUG } }
+		ROOT = {
+		has_idea = YUG_subsphere_member_modifier
+				}
+			}
+		}
+	}
+
+	is_in_any_subsphere = {
+		OR = {
+			has_idea = ENG_subsphere_member_modifier
+			has_idea = FRA_subsphere_member_modifier
+			has_idea = FFR_subsphere_member_modifier
+			has_idea = JAP_subsphere_member_modifier
+			has_idea = VIN_subsphere_member_modifier
+			has_idea = ARG_subsphere_member_modifier
+			has_idea = BRA_subsphere_member_modifier
+			has_idea = EGY_subsphere_member_modifier
+			has_idea = MEX_subsphere_member_modifier
+
+			has_idea = SAU_subsphere_member_modifier
+			has_idea = SAF_subsphere_member_modifier
+			has_idea = IRQ_subsphere_member_modifier
+			has_idea = SIA_subsphere_member_modifier
+			has_idea = INS_subsphere_member_modifier
+			has_idea = TUR_subsphere_member_modifier
+
+			has_idea = DDR_subsphere_member_modifier
+			has_idea = POL_subsphere_member_modifier
+			has_idea = YUG_subsphere_member_modifier
+		}
+	}
+
+	OTHER_SUBSPHERE_has_influence_in_FROM = {
+
+	custom_trigger_tooltip = {
+	tooltip = OTHER_SECONDARY_POWERS_HAS_INFLUENCE
+	if = {
+		limit = { ROOT = { NOT = { tag = BR3 } } }
+		FROM = {
+		check_variable = {
+		var = ENG_subsphere_influence
+		value = 0
+		compare = greater_than
+			}
+		}
+	}
+
+	if = {
+		limit = { ROOT = { NOT = { tag = FA3 } } }
+		FROM = {
+		check_variable = {
+		var = FRA_subsphere_influence
+		value = 0
+		compare = greater_than
+			}
+		}
+	}
+
+	if = {
+		limit = { ROOT = { NOT = { tag = FR3 } } }
+		FROM = {
+		check_variable = {
+		var = FFR_subsphere_influence
+		value = 0
+		compare = greater_than
+			}
+		}
+	}
+
+	if = {
+		limit = { ROOT = { NOT = { tag = JP3 } } }
+		FROM = {
+		check_variable = {
+		var = JAP_subsphere_influence
+		value = 0
+		compare = greater_than
+			}
+		}
+	}
+
+	if = {
+		limit = { ROOT = { NOT = { tag = VN3 } } }
+		FROM = {
+		check_variable = {
+		var = VIN_subsphere_influence
+		value = 0
+		compare = greater_than
+			}
+		}
+	}
+
+	if = {
+		limit = { ROOT = { NOT = { tag = AG3 } } }
+		FROM = {
+		check_variable = {
+		var = ARG_subsphere_influence
+		value = 0
+		compare = greater_than
+			}
+		}
+	}
+
+	if = {
+		limit = { ROOT = { NOT = { tag = BZ3 } } }
+		FROM = {
+		check_variable = {
+		var = BRA_subsphere_influence
+		value = 0
+		compare = greater_than
+			}
+		}
+	}
+
+	if = {
+		limit = { ROOT = { NOT = { tag = EG3 } } }
+		FROM = {
+		check_variable = {
+		var = EGY_subsphere_influence
+		value = 0
+		compare = greater_than
+			}
+		}
+	}
+
+	if = {
+		limit = { ROOT = { NOT = { tag = MX3 } } }
+		FROM = {
+		check_variable = {
+		var = MEX_subsphere_influence
+		value = 0
+		compare = greater_than
+			}
+		}
+	}
+
+	if = {
+    limit = { ROOT = { NOT = { tag = SD3 } } }
+    FROM = {
+        check_variable = {
+            var = SAU_subsphere_influence
+            value = 0
+            compare = greater_than
+			}
+		}
+	}
+
+	if = {
+		limit = { ROOT = { NOT = { tag = SA3 } } }
+		FROM = {
+			check_variable = {
+				var = SAF_subsphere_influence
+				value = 0
+				compare = greater_than
+			}
+		}
+	}
+
+	if = {
+		limit = { ROOT = { NOT = { tag = IR3 } } }
+		FROM = {
+			check_variable = {
+				var = IRQ_subsphere_influence
+				value = 0
+				compare = greater_than
+			}
+		}
+	}
+
+	if = {
+		limit = { ROOT = { NOT = { tag = SI3 } } }
+		FROM = {
+			check_variable = {
+				var = SIA_subsphere_influence
+				value = 0
+				compare = greater_than
+			}
+		}
+	}
+
+	if = {
+		limit = { ROOT = { NOT = { tag = IN3 } } }
+		FROM = {
+			check_variable = {
+				var = INS_subsphere_influence
+				value = 0
+				compare = greater_than
+			}
+		}
+	}
+
+	if = {
+		limit = { ROOT = { NOT = { tag = TK3 } } }
+		FROM = {
+			check_variable = {
+				var = TUR_subsphere_influence
+				value = 0
+				compare = greater_than
+			}
+		}
+	}
+
+	if = {
+		limit = { ROOT = { NOT = { tag = DR3 } } }
+		FROM = {
+			check_variable = {
+				var = DDR_subsphere_influence
+				value = 0
+				compare = greater_than
+			}
+		}
+	}
+
+	if = {
+		limit = { ROOT = { NOT = { tag = PL3 } } }
+		FROM = {
+			check_variable = {
+				var = POL_subsphere_influence
+				value = 0
+				compare = greater_than
+			}
+		}
+	}
+
+	if = {
+		limit = { ROOT = { NOT = { tag = YUG } } }
+		FROM = {
+			check_variable = {
+				var = YUG_subsphere_influence
+				value = 0
+				compare = greater_than
+			}
+		}
+	}
+
+
+		}
+	}
+
+	FROM_is_in_any_subsphere = {
+		FROM = {
+		custom_trigger_tooltip = {
+			tooltip = IS_IN_ANY_SUBPHERE_TT
+			OR = {
+			has_idea = ENG_subsphere_member_modifier
+			has_idea = FRA_subsphere_member_modifier
+			has_idea = FFR_subsphere_member_modifier
+			has_idea = JAP_subsphere_member_modifier
+			has_idea = VIN_subsphere_member_modifier
+			has_idea = ARG_subsphere_member_modifier
+			has_idea = BRA_subsphere_member_modifier
+			has_idea = EGY_subsphere_member_modifier
+			has_idea = MEX_subsphere_member_modifier
+
+			has_idea = SAU_subsphere_member_modifier
+			has_idea = SAF_subsphere_member_modifier
+			has_idea = IRQ_subsphere_member_modifier
+			has_idea = SIA_subsphere_member_modifier
+			has_idea = INS_subsphere_member_modifier
+			has_idea = TUR_subsphere_member_modifier
+			has_idea = DDR_subsphere_member_modifier
+			has_idea = POL_subsphere_member_modifier
+			has_idea = YUG_subsphere_member_modifier
+				}
+			}
+		}
+	}
+
+	is_subsphere_leader = {
+		custom_trigger_tooltip = {
+		tooltip = IS_SECONDARY_POWER
+		AND = {
+		OR = {
+		tag = BR3
+		tag = FA3
+		tag = FR3
+		tag = JP3
+		tag = VN3
+		tag = AG3
+		tag = BZ3
+		tag = EG3
+		tag = MX3
+
+		tag = SD3
+		tag = SA3
+		tag = IR3
+		tag = SI3
+		tag = IN3
+		tag = TK3
+
+		tag = DR3
+		tag = PL3
+		tag = YUG
+		}
+		has_idea = GENERIC_subsphere_leader
+			}
+		}
+	}
+
+	10_subsphere_influence_on_FROM = {
+	custom_trigger_tooltip = {
+	tooltip = OTHER_SECONDARY_POWERS_HAS_INFLUENCE
+	if = {
+		limit = { ROOT = { NOT = { tag = BR3 } } }
+		FROM = {
+		check_variable = {
+		var = ENG_subsphere_influence
+		value = 10
+		compare = greater_than_or_equals
+			}
+		}
+	}
+
+	if = {
+		limit = { ROOT = { NOT = { tag = FA3 } } }
+		FROM = {
+		check_variable = {
+		var = FRA_subsphere_influence
+		value = 10
+		compare = greater_than_or_equals
+			}
+		}
+	}
+
+	if = {
+		limit = { ROOT = { NOT = { tag = FR3 } } }
+		FROM = {
+		check_variable = {
+		var = FFR_subsphere_influence
+		value = 10
+		compare = greater_than_or_equals
+			}
+		}
+	}
+
+	if = {
+		limit = { ROOT = { NOT = { tag = JP3 } } }
+		FROM = {
+		check_variable = {
+		var = JAP_subsphere_influence
+		value = 10
+		compare = greater_than_or_equals
+			}
+		}
+	}
+
+	if = {
+		limit = { ROOT = { NOT = { tag = VN3 } } }
+		FROM = {
+		check_variable = {
+		var = VIN_subsphere_influence
+		value = 10
+		compare = greater_than_or_equals
+			}
+		}
+	}
+
+	if = {
+		limit = { ROOT = { NOT = { tag = AG3 } } }
+		FROM = {
+		check_variable = {
+		var = ARG_subsphere_influence
+		value = 10
+		compare = greater_than_or_equals
+			}
+		}
+	}
+
+	if = {
+		limit = { ROOT = { NOT = { tag = BZ3 } } }
+		FROM = {
+		check_variable = {
+		var = BRA_subsphere_influence
+		value = 10
+		compare = greater_than_or_equals
+			}
+		}
+	}
+
+	if = {
+		limit = { ROOT = { NOT = { tag = EG3 } } }
+		FROM = {
+		check_variable = {
+		var = EGY_subsphere_influence
+		value = 10
+		compare = greater_than_or_equals
+			}
+		}
+	}
+
+	if = {
+		limit = { ROOT = { NOT = { tag = MX3 } } }
+		FROM = {
+		check_variable = {
+		var = MEX_subsphere_influence
+		value = 10
+		compare = greater_than_or_equals
+			}
+		}
+	}
+
+	if = {
+		limit = { ROOT = { NOT = { tag = SD3 } } }
+		FROM = {
+		check_variable = {
+		var = SAU_subsphere_influence
+		value = 10
+		compare = greater_than_or_equals
+			}
+		}
+	}
+	
+	if = {
+		limit = { ROOT = { NOT = { tag = SA3 } } }
+		FROM = {
+		check_variable = {
+		var = SAF_subsphere_influence
+		value = 10
+		compare = greater_than_or_equals
+			}
+		}
+	}
+
+	if = {
+		limit = { ROOT = { NOT = { tag = IR3 } } }
+		FROM = {
+		check_variable = {
+		var = IRQ_subsphere_influence
+		value = 10
+		compare = greater_than_or_equals
+			}
+		}
+	}
+
+	if = {
+		limit = { ROOT = { NOT = { tag = SI3 } } }
+		FROM = {
+		check_variable = {
+		var = SIA_subsphere_influence
+		value = 10
+		compare = greater_than_or_equals
+			}
+		}
+	}
+
+	if = {
+		limit = { ROOT = { NOT = { tag = IN3 } } }
+		FROM = {
+		check_variable = {
+		var = INS_subsphere_influence
+		value = 10
+		compare = greater_than_or_equals
+			}
+		}
+	}
+
+	if = {
+		limit = { ROOT = { NOT = { tag = TK3 } } }
+		FROM = {
+		check_variable = {
+		var = TUR_subsphere_influence
+		value = 10
+		compare = greater_than_or_equals
+			}
+		}
+	}
+
+	if = {
+		limit = { ROOT = { NOT = { tag = DR3 } } }
+		FROM = {
+		check_variable = {
+		var = DDR_subsphere_influence
+		value = 10
+		compare = greater_than_or_equals
+			}
+		}
+	}
+
+	if = {
+		limit = { ROOT = { NOT = { tag = PL3 } } }
+		FROM = {
+		check_variable = {
+		var = POL_subsphere_influence
+		value = 10
+		compare = greater_than_or_equals
+			}
+		}
+	}
+
+	if = {
+		limit = { ROOT = { NOT = { tag = YUG } } }
+		FROM = {
+		check_variable = {
+		var = YUG_subsphere_influence
+		value = 10
+		compare = greater_than_or_equals
+			}
+		}
+	}
+
+		}
+	}
+
+	
+	is_a_battleground_subsphere_target_trigger = {
+		FROM = {
+		NOT = { has_country_flag = BLOCKING_ALL_POSSIBLE_INCREASE_SUBSPHERE }
+		count_triggers = {
+		amount = 2
+		has_country_flag = VALID_SUBSPHERELING_BATTLE_ENG
+		has_country_flag = VALID_SUBSPHERELING_BATTLE_FRA
+		has_country_flag = VALID_SUBSPHERELING_BATTLE_FFR
+		has_country_flag = VALID_SUBSPHERELING_BATTLE_JAP
+		has_country_flag = VALID_SUBSPHERELING_BATTLE_VIN
+		has_country_flag = VALID_SUBSPHERELING_BATTLE_ARG
+		has_country_flag = VALID_SUBSPHERELING_BATTLE_BRA
+		has_country_flag = VALID_SUBSPHERELING_BATTLE_MEX
+		has_country_flag = VALID_SUBSPHERELING_BATTLE_EGY
+
+		has_country_flag = VALID_SUBSPHERELING_BATTLE_SAU
+		has_country_flag = VALID_SUBSPHERELING_BATTLE_SAF
+		has_country_flag = VALID_SUBSPHERELING_BATTLE_IRQ
+		has_country_flag = VALID_SUBSPHERELING_BATTLE_SIA
+		has_country_flag = VALID_SUBSPHERELING_BATTLE_INS
+		has_country_flag = VALID_SUBSPHERELING_BATTLE_TUR
+		has_country_flag = VALID_SUBSPHERELING_BATTLE_DDR
+		has_country_flag = VALID_SUBSPHERELING_BATTLE_POL
+		has_country_flag = VALID_SUBSPHERELING_BATTLE_YUG
+			}
+		}
+	}
+
+######################################################################################################
 
 	is_in_my_sphere_target_trigger = {
 		if = {
@@ -3008,15 +4118,6 @@
 			has_country_flag = FLAG_TA_BATTLEGROUND
 			has_country_flag = FLAG_TA_ALIGNED
 			is_in_faction_with = ROOT
-			is_puppet_of = ROOT
-					}
-				}
-			}
-		else_if = {
-		limit = { ROOT = { tag = ENG } }
-		FROM = {
-		OR = {
-			has_idea = COM_commonwealth_of_nations
 			is_puppet_of = ROOT
 				}
 			}
@@ -3095,15 +4196,6 @@
 			has_country_flag = FLAG_TA_ALIGNED
 			is_in_faction_with = ROOT
 			is_puppet_of = ROOT
-					}
-				}
-			}
-		else_if = {
-		limit = { ROOT = { tag = ENG } }
-		FROM = {
-		OR = {
-			has_idea = COM_commonwealth_of_nations
-			is_puppet_of = ROOT
 				}
 			}
 		}
@@ -3181,24 +4273,15 @@
 				}
 			}
 		else_if = {
-		limit = { ROOT = { tag = ENG } }
-		FROM = {
-		OR = {
-			has_idea = COM_commonwealth_of_nations
-			is_puppet_of = ROOT
-				}
-			}
-		}
-		else_if = {
 		limit = { ROOT = { has_country_flag = FLAG_CHINA_ALIGNED } }
 		FROM = {
 		OR = {
 			has_country_flag = FLAG_CHINA_ALIGNED
 			is_in_faction_with = ROOT
 			is_puppet_of = ROOT
-					}
 				}
 			}
+		}
 		else_if = {
 		limit = { ROOT = { has_country_flag = FLAG_INDIAN_ALIGNED } }
 		FROM = {
@@ -3220,6 +4303,79 @@
 				}
 			}
 		else_if = {
+		limit = { ROOT = { has_country_flag = FLAG_RUSSIAN_ALIGNED } }
+		FROM = {
+		OR = {
+			has_country_flag = FLAG_RUSSIAN_ALIGNED
+			is_in_faction_with = ROOT
+			is_puppet_of = ROOT
+				}
+			}
+		}
+	}
+
+	is_in_my_actual_same_sphere_target_trigger_3 = {
+		if = {
+		limit = { ROOT = { has_country_flag = FLAG_GERMAN_ALIGNED } }
+		FROM = {
+		OR = {
+			has_country_flag = FLAG_GERMAN_ALIGNED
+			is_in_faction_with = ROOT
+			is_puppet_of = ROOT
+					}
+				}
+			}
+		if = {
+		limit = { ROOT = { has_country_flag = FLAG_ITALIAN_ALIGNED } }
+		FROM = {
+		OR = {
+			has_country_flag = FLAG_ITALIAN_ALIGNED
+			is_in_faction_with = ROOT
+			is_puppet_of = ROOT
+					}
+				}
+			}
+		if = {
+		limit = { ROOT = { has_country_flag = FLAG_TA_ALIGNED } }
+		FROM = {
+		OR = {
+			has_country_flag = FLAG_TA_ALIGNED
+			is_in_faction_with = ROOT
+			is_puppet_of = ROOT
+					}
+				}
+			}
+		if = {
+		limit = { ROOT = { has_country_flag = FLAG_CHINA_ALIGNED } }
+		FROM = {
+		OR = {
+			has_country_flag = FLAG_CHINA_ALIGNED
+			is_in_faction_with = ROOT
+			is_puppet_of = ROOT
+					}
+				}
+			}
+		if = {
+		limit = { ROOT = { has_country_flag = FLAG_INDIAN_ALIGNED } }
+		FROM = {
+		OR = {
+			has_country_flag = FLAG_INDIAN_ALIGNED
+			is_in_faction_with = ROOT
+			is_puppet_of = ROOT
+					}
+				}
+			}
+		if = {
+		limit = { ROOT = { has_country_flag = FLAG_SOVIET_ALIGNED } }
+		FROM = {
+		OR = {
+			has_country_flag = FLAG_SOVIET_ALIGNED
+			is_in_faction_with = ROOT
+			is_puppet_of = ROOT
+					}
+				}
+			}
+		if = {
 		limit = { ROOT = { has_country_flag = FLAG_RUSSIAN_ALIGNED } }
 		FROM = {
 		OR = {
@@ -3286,13 +4442,6 @@
 			has_country_flag = FLAG_TA_BATTLEGROUND
 			has_country_flag = FLAG_TA_ALIGNED
 			is_in_faction_with = ROOT
-			is_puppet_of = ROOT
-				}
-			}
-		else_if = {
-		limit = { tag = ENG }
-		OR = {
-			has_idea = COM_commonwealth_of_nations
 			is_puppet_of = ROOT
 				}
 			}
@@ -3364,18 +4513,6 @@ is_in_my_sphere_state_owner_target_trigger = {
 				has_country_flag = FLAG_TA_BATTLEGROUND
 				has_country_flag = FLAG_TA_ALIGNED
 				is_in_faction_with = ROOT
-				is_puppet_of = ROOT
-			}
-		}
-	}
-	else_if = {
-		limit = {
-			tag = ENG
-			has_country_flag = FLAG_TA_ALIGNED
-		}
-		FROM.OWNER = {
-			OR = {
-				has_idea = COM_commonwealth_of_nations
 				is_puppet_of = ROOT
 			}
 		}
@@ -3820,4 +4957,318 @@ TWR_should_have_german_medals_trigger = {
 }
 TWR_should_have_any_unique_medals_trigger = {
 	TWR_should_have_german_medals_trigger = yes
+}
+
+
+#PAIN IN THE ASS
+FROM_greater_than_others_subsphere = {
+	custom_trigger_tooltip = {
+	tooltip = SUBSPHERE_GREATER_THAN_OTHERS
+
+	#FIRST STEP - GET OUR SPHERE VAR
+	if = {
+		limit = { ROOT = { tag = BR3 } }
+		FROM = {
+		set_temp_variable = { ROOT_subsphere_influence = ENG_subsphere_influence }
+			}
+		}
+	if = {
+		limit = { ROOT = { tag = FA3 } }
+		FROM = {
+		set_temp_variable = { ROOT_subsphere_influence = FRA_subsphere_influence }
+			}
+		}
+	if = {
+		limit = { ROOT = { tag = FR3 } }
+		FROM = {
+		set_temp_variable = { ROOT_subsphere_influence = FFR_subsphere_influence }
+			}
+		}
+	if = {
+		limit = { ROOT = { tag = JP3 } }
+		FROM = {
+		set_temp_variable = { ROOT_subsphere_influence = JAP_subsphere_influence }
+			}
+		}
+	if = {
+		limit = { ROOT = { tag = VN3 } }
+		FROM = {
+		set_temp_variable = { ROOT_subsphere_influence = VIN_subsphere_influence }
+			}
+		}
+	if = {
+		limit = { ROOT = { tag = AG3 } }
+		FROM = {
+		set_temp_variable = { ROOT_subsphere_influence = ARG_subsphere_influence }
+			}
+		}
+	if = {
+		limit = { ROOT = { tag = BZ3 } }
+		FROM = {
+		set_temp_variable = { ROOT_subsphere_influence = BRA_subsphere_influence }
+			}
+		}
+	if = {
+		limit = { ROOT = { tag = MX3 } }
+		FROM = {
+		set_temp_variable = { ROOT_subsphere_influence = MEX_subsphere_influence }
+			}
+		}
+	if = {
+		limit = { ROOT = { tag = EG3 } }
+		FROM = {
+		set_temp_variable = { ROOT_subsphere_influence = EGY_subsphere_influence }
+			}
+		}
+
+	if = {
+		limit = { ROOT = { tag = SD3 } }
+		FROM = {
+		set_temp_variable = { ROOT_subsphere_influence = SAU_subsphere_influence }
+			}
+		}
+	if = {
+		limit = { ROOT = { tag = SA3 } }
+		FROM = {
+		set_temp_variable = { ROOT_subsphere_influence = SAF_subsphere_influence }
+			}
+		}
+	if = {
+		limit = { ROOT = { tag = IR3 } }
+		FROM = {
+		set_temp_variable = { ROOT_subsphere_influence = IRQ_subsphere_influence }
+			}
+		}
+	if = {
+		limit = { ROOT = { tag = SI3 } }
+		FROM = {
+		set_temp_variable = { ROOT_subsphere_influence = SIA_subsphere_influence }
+			}
+		}
+	if = {
+		limit = { ROOT = { tag = IN3 } }
+		FROM = {
+		set_temp_variable = { ROOT_subsphere_influence = INS_subsphere_influence }
+			}
+		}
+	if = {
+		limit = { ROOT = { tag = TK3 } }
+		FROM = {
+		set_temp_variable = { ROOT_subsphere_influence = TUR_subsphere_influence }
+			}
+		}
+
+	if = {
+		limit = { ROOT = { tag = DR3 } }
+		FROM = {
+		set_temp_variable = { ROOT_subsphere_influence = DDR_subsphere_influence }
+			}
+		}
+	if = {
+		limit = { ROOT = { tag = PL3 } }
+		FROM = {
+		set_temp_variable = { ROOT_subsphere_influence = POL_subsphere_influence }
+			}
+		}
+	if = {
+		limit = { ROOT = { tag = YUG } }
+		FROM = {
+		set_temp_variable = { ROOT_subsphere_influence = YUG_subsphere_influence }
+			}
+		}
+
+
+	#SECOND STEP
+	if = {
+		limit = { ROOT = { NOT = { tag = BR3 } } }
+		FROM = {
+		check_variable = { ROOT_subsphere_influence > ENG_subsphere_influence }
+			}
+		}
+	if = {
+		limit = { ROOT = { NOT = { tag = FA3 } } }
+		FROM = {
+		check_variable = { ROOT_subsphere_influence > FRA_subsphere_influence }
+			}
+		}
+	if = {
+		limit = { ROOT = { NOT = { tag = FR3 } } }
+		FROM = {
+		check_variable = { ROOT_subsphere_influence > FFR_subsphere_influence }
+			}
+		}
+	if = {
+		limit = { ROOT = { NOT = { tag = JP3 } } }
+		FROM = {
+			check_variable = { ROOT_subsphere_influence > JAP_subsphere_influence }
+		}
+	}
+	if = {
+		limit = { ROOT = { NOT = { tag = VN3 } } }
+		FROM = {
+			check_variable = { ROOT_subsphere_influence > VIN_subsphere_influence }
+		}
+	}
+	if = {
+		limit = { ROOT = { NOT = { tag = AG3 } } }
+		FROM = {
+			check_variable = { ROOT_subsphere_influence > ARG_subsphere_influence }
+		}
+	}
+	if = {
+		limit = { ROOT = { NOT = { tag = BZ3 } } }
+		FROM = {
+			check_variable = { ROOT_subsphere_influence > BRA_subsphere_influence }
+		}
+	}
+	if = {
+		limit = { ROOT = { NOT = { tag = MX3 } } }
+		FROM = {
+			check_variable = { ROOT_subsphere_influence > MEX_subsphere_influence }
+		}
+	}
+	if = {
+		limit = { ROOT = { NOT = { tag = EG3 } } }
+		FROM = {
+			check_variable = { ROOT_subsphere_influence > EGY_subsphere_influence }
+		}
+	}
+	if = {
+		limit = { ROOT = { NOT = { tag = SD3 } } }
+		FROM = {
+			check_variable = { ROOT_subsphere_influence > SAU_subsphere_influence }
+		}
+	}
+	if = {
+		limit = { ROOT = { NOT = { tag = SA3 } } }
+		FROM = {
+			check_variable = { ROOT_subsphere_influence > SAF_subsphere_influence }
+		}
+	}
+	if = {
+		limit = { ROOT = { NOT = { tag = IR3 } } }
+		FROM = {
+			check_variable = { ROOT_subsphere_influence > IRQ_subsphere_influence }
+		}
+	}
+	if = {
+		limit = { ROOT = { NOT = { tag = SI3 } } }
+		FROM = {
+			check_variable = { ROOT_subsphere_influence > SIA_subsphere_influence }
+		}
+	}
+	if = {
+		limit = { ROOT = { NOT = { tag = IN3 } } }
+		FROM = {
+			check_variable = { ROOT_subsphere_influence > INS_subsphere_influence }
+		}
+	}
+	if = {
+		limit = { ROOT = { NOT = { tag = TK3 } } }
+		FROM = {
+			check_variable = { ROOT_subsphere_influence > TUR_subsphere_influence }
+			}
+		}
+
+	if = {
+		limit = { ROOT = { NOT = { tag = DR3 } } }
+		FROM = {
+			check_variable = { ROOT_subsphere_influence > DDR_subsphere_influence }
+			}
+		}
+	if = {
+		limit = { ROOT = { NOT = { tag = PL3 } } }
+		FROM = {
+			check_variable = { ROOT_subsphere_influence > POL_subsphere_influence }
+			}
+		}
+	if = {
+		limit = { ROOT = { NOT = { tag = YUG } } }
+		FROM = {
+			check_variable = { ROOT_subsphere_influence > YUG_subsphere_influence }
+			}
+		}
+	}
+}
+
+valid_trigger_arms_dealing_with_FROM = {
+	NOT = {
+		has_country_flag = ONGOING_ARMS_DEAL_TALKS
+	}
+	FROM = {
+		NOT = {
+			has_country_flag = HIDING_STOCKPILE_DECISION
+		}
+		NOT = {
+			has_country_flag = CURRENTLY_CONSIDERING_PROPOSAL
+		}
+	}
+	OR = {
+		AND = {
+		num_of_civilian_factories_available_for_projects > 2
+		custom_trigger_tooltip = {
+		#This is for factory count
+		tooltip = DOES_NOT_EXCEED_LIMIT_ONCE_TAKEN
+		set_temp_variable = {
+			CHECK_EXCEEDING = GEN_ARMS_DEAL_CIV_USE
+		}
+		add_to_temp_variable = {
+			CHECK_EXCEEDING = GEN_ARMS_DEAL_TOOLTIP
+		}
+		check_variable = {
+			var = CHECK_EXCEEDING
+			value = LIMIT_GEN_ARMS_DEAL_CIV_USE
+			compare = less_than_or_equals
+				}
+			}
+		}
+		check_for_resources = yes
+		has_political_power > 100
+	}
+}
+
+check_for_resources = {
+	OR = {
+		AND = {
+			has_resources_in_country = {
+			resource = oil
+			amount > 15
+			extracted = yes
+			}
+
+			has_resources_in_country = {
+			resource = rubber
+			amount > 15
+			extracted = yes
+			}
+		}
+
+		AND = {
+			has_resources_in_country = {
+			resource = steel
+			amount > 20
+			extracted = yes
+			}
+
+			has_resources_in_country = {
+			resource = aluminium
+			amount > 20
+			extracted = yes
+			}
+		}
+
+		AND = {
+			has_resources_in_country = {
+			resource = tungsten
+			amount > 20
+			extracted = yes
+			}
+
+			has_resources_in_country = {
+			resource = chromium
+			amount > 20
+			extracted = yes
+			}
+		}
+	}
 }
