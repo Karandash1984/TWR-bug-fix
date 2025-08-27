@@ -530,6 +530,10 @@ UKR_surrender_to_POL_desc:0 "We have to admit that the war has not gone our way.
 
 recalling_the_reichkommisars:0 "Recall the Reichkommisar"
 recalling_the_reichkommisars_desc:0 "Despite having mostly cleared the territory of mainland Germany of Nazism, there are still holdouts in the east who rule their own hermit kingdoms on the territory their Reichkommisariat still holds. They obviously have no way of continuing the policy of Germanisation with the lack of support from the mainland. However they are well equipped to rule their petty fiefdoms for the forseeable future. We must demand an end to their brutal and arrogant lifestyles and their return to Germany immediately. This is our mess, we need to clean it up."
+
+destroy_the_reichkommisars:0 "Destroy the Reichskommisars"
+destroy_the_reichkommisars_desc:0 "The Reichskommisars who defied us are well equipped to rule their petty fiefdoms for the forseeable future. We must put an end to their brutal and arrogant lifestyles and their return to order immediately. This is our mess, we need to clean it up."
+
 join_coalition_against_RKs:0 "Join The coalition Against the Reichkommissariats"
 join_coalition_against_RKs_desc:0 "The resolution in the UN calling for an armed intervention against the remaining Reichkommissariats initiated by Germany herself has passed. We now have the opportunity to legally destroy the last bastions of Nazism."
 
