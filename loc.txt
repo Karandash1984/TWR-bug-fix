@@ -1,4 +1,4 @@
-Total 16
+Total 17
 USA_infiltrate_labour_unions
 RGO_fighter_n_bombers
 freeeoaming_ost
@@ -15,3 +15,4 @@ nuclear_misslle_strike
 modifier_state_production_speed_commercial_nuclear_reactor_factor
 SAF_mining_subsidies
 modifier_experience_gain_MBT_combat
+reunified_russia
