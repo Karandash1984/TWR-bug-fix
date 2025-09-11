@@ -1,4 +1,4 @@
-Total 20
+Total 21
 USA_infiltrate_labour_unions
 RGO_fighter_n_bombers
 freeeoaming_ost
@@ -19,3 +19,4 @@ reunified_russia
 twroccupation.154.t
 twroccupation.154.d
 twroccupation.101.t
+german_education
