@@ -880,7 +880,7 @@ ost_colonial_ready: "Colonial Mission Ready"
 
 ENOUGH_SUPPORT_IN_NORTH_AFRICA: "Enough Support In North Africa"
 
-UMBERTO_II_DESC: "King Umberto II"
+UMBERTO_II_DESC: "King Umberto, son of Victor Emmanuel the Third, is the current King of the Italy. Served as a Commander in the Western Front, Umberto is also nicknamed 'The May King'."
 
 ship_hull_very_light: "Corvette"
 
@@ -903,3 +903,51 @@ twroccupation.154.t: "Fate of Khiva"
 twroccupation.154.d: "With the Fate of Khiva, we must now decide on the territory's future"
 
 twroccupation.101.t: "Fate of Bhutan"
+
+german_education: "German Education"
+
+helicopter_research: "Helicopter Research Speed"
+
+GER_Controls_The_Sky_desc: "Air superiority has always been a deciding factor in our military strategy, ever since the days of the Blitzkrieg. Now, if we wish to rule over the land of Berlin, we must rule over its airspace as well. On a very tactical level, we require more aircraft to directly support our brave soldiers...Far more aircraft than what we can currently produce. We must change that."
+
+GER_Victory_At_GCW_desc: "At last, it ends. May we never again see the day where Germans slaughter Germans so readily. May we never again see our homeland destroyed, not through foreign invasion, but our own suicidal fervor. For the sake of those already passed, and for those who reside in whatever future the victors decide to bring about, they must wield the power they earned through bloodshed wisely and unquestionably."
+
+TEMPORARY_TRUCE_GERMANS: "Temporary Truce"
+
+modifier_state_repair_speed_infrastructure_factor: "Infrastucture Repair Speed"
+
+modifier_state_repair_speed_arms_factory_factor: "Arms Factory Repair Speed"
+
+modifier_state_repair_speed_industrial_complex_factor: "Industrial Complex Repair Speed"
+
+modifier_state_repair_speed_air_base_factor: "Air Base Repair Speed"
+
+modifier_state_repair_speed_supply_node_factor: "Supply Node Repair Speed"
+
+modifier_state_repair_speed_rail_way_factor: "Railway Repair Speed"
+
+modifier_state_repair_speed_naval_base_factor: "Naval Base Repair Speed"
+
+modifier_state_repair_speed_bunker_factor: "Bunker Repair Speed"
+
+modifier_state_repair_speed_coastal_bunker_factor: "Coastal Bunker Repair Speed"
+
+modifier_state_repair_speed_dockyard_factor: "Dockyard Repair Speed"
+
+modifier_state_repair_speed_anti_air_building_factor: "Anti-Air Repair Speed"
+
+modifier_state_repair_speed_synthetic_refinery_factor: "Synthetic Refinery Repair Speed"
+
+modifier_state_repair_speed_fuel_silo_factor: "Fuel Silo Repair Speed"
+
+modifier_state_repair_speed_naval_facility_factor: "Naval Facility Repair Speed"
+
+modifier_state_repair_speed_air_facility_factor: "Air Facility Repair Speed"
+
+modifier_state_repair_speed_land_facility_factor: "Land Facility Repair Speed"
+
+modifier_state_repair_speed_nuclear_facility_factor: "Nuclear Facility Repair Speed"
+
+modifier_state_repair_speed_rocket_site_factor: "Rocket Site Repair Speed"
+
+modifier_state_repair_speed_radar_station_factor: "Radar Station Repair Speed"
