@@ -169,57 +169,57 @@ GER_southern_europe_influence = {
 }
 
 diplomatic_decisions = {
-	GER_persian_legion = {
-		icon = generic_prepare_civil_war
-		allowed = {
-			OR = {
-				tag = GER
-				tag = HGR
-				tag = HSS
-			}
-		}
-		available = {
-			has_war = no
-			PER = {
-				is_fascist = yes
-				has_war_with = IRA
-			}
-		}
-		visible = {
-			country_exists = PER
-			has_global_flag = TWR_iranian_civil_war
-			OR = {
-				has_government = national_socialist
-				has_government = fascist
-			}
-		}
-		fire_only_once = yes
-		ai_will_do = {
-			factor = 50
-		}
-		cost = 50
-		days_remove = 14
-		complete_effect = {
-			log = "[GetDateText]: [Root.GetName]: Decision GER_persian_legion"
-		}
-		remove_effect = {
-			add_ai_strategy = {
-				type = support
-				id = PER
-				value = 100
-			}
-			add_ai_strategy = {
-				type = send_volunteers_desire
-				id = PER
-				value = 100
-			}
-			add_relation_modifier = {
-				target = PER
-				modifier = volunteer_limit_plus_two
-			}
-			set_global_flag = GER_SUPPORTED_PER
-		}
-	}
+#	GER_persian_legion = { # MOVED TO PERSIAN DECISION CATEGORY
+#		icon = generic_prepare_civil_war
+#		allowed = {
+#			OR = {
+#				tag = GER
+#				tag = HGR
+#				tag = HSS
+#			}
+#		}
+#		available = {
+#			has_war = no
+#			PER = {
+#				is_fascist = yes
+#				has_war_with = IRA
+#			}
+#		}
+#		visible = {
+#			country_exists = PER
+#			has_global_flag = TWR_iranian_civil_war
+#			OR = {
+#				has_government = national_socialist
+#				has_government = fascist
+#			}
+#		}
+#		fire_only_once = yes
+#		ai_will_do = {
+#			factor = 50
+#		}
+#		cost = 50
+#		days_remove = 14
+#		complete_effect = {
+#			log = "[GetDateText]: [Root.GetName]: Decision GER_persian_legion"
+#		}
+#		remove_effect = {
+#			add_ai_strategy = {
+#				type = support
+#				id = PER
+#				value = 100
+#			}
+#			add_ai_strategy = {
+#				type = send_volunteers_desire
+#				id = PER
+#				value = 100
+#			}
+#			add_relation_modifier = {
+#				target = PER
+#				modifier = volunteer_limit_plus_two
+#			}
+#			set_global_flag = GER_SUPPORTED_PER
+#		}
+#	}
 	GER_persian_benefits = {
 		icon = generic_prepare_civil_war
 		allowed = {
@@ -1092,7 +1092,10 @@ diplomatic_decisions = {
 		cost = freedec?0
 		fire_only_once = yes
 		complete_effect = {
-			create_faction = "Neue Ordnung"
+			create_faction_from_template = { name = GER_FACTION_NAME template = faction_template_generic }
+			add_faction_goal_slot = { category = short_term  value = -10 }
+			add_faction_goal_slot = { category = medium_term value = -10 }
+			add_faction_goal_slot = { category = long_term   value = -10 }
 			set_country_flag = FLAG_GERMAN_LEADER
 			force_update_map_mode = {
 				mapmode = TWR_sphere_of_influence_map_mode
@@ -3562,7 +3565,7 @@ GER_governmentappointed_ost = {
 			original_tag = GER
 		}
 		cost = 100
-		days_re_enable = 150
+		days_re_enable = 50
 		ai_will_do = {
 			factor = 30
 		}
@@ -3718,6 +3721,11 @@ GER_nsdap_reform = {
 		fire_only_once = yes
 		complete_effect = {
 			log = "[GetDateText]: [Root.GetName]: Decision nsdap_sub_branches"
+			add_stability = 0.05
+			add_popularity = {
+				ideology = national_socialist
+				popularity = 0.05
+			}
 		}
 	}
 	nsdap_youth_politics = {
@@ -3737,6 +3745,11 @@ GER_nsdap_reform = {
 		fire_only_once = yes
 		complete_effect = {
 			log = "[GetDateText]: [Root.GetName]: Decision nsdap_youth_politics"
+			add_war_support = 0.05
+			add_popularity = {
+				ideology = national_socialist
+				popularity = 0.05
+			}
 		}
 	}
 	nsdap_debate_improvements = {
@@ -8174,7 +8187,6 @@ GER_bring_the_RKs_back_into_the_fold_decisions = {
 					tag = RMO
 					tag = RKA
 					tag = GGP
-					tag = BKU
 					tag = PET
 					tag = STR
 					tag = WSP
@@ -8227,7 +8239,6 @@ GER_bring_the_RKs_back_into_the_fold_decisions = {
 					tag = RMO
 					tag = RKA
 					tag = GGP
-					tag = BKU
 					tag = PET
 					tag = STR
 					tag = WSP
@@ -8248,7 +8259,6 @@ GER_bring_the_RKs_back_into_the_fold_decisions = {
 					tag = RMO
 					tag = RKA
 					tag = GGP
-					tag = BKU
 					tag = PET
 					tag = STR
 					tag = WSP
@@ -8283,7 +8293,6 @@ GER_bring_the_RKs_back_into_the_fold_decisions = {
 		target_trigger = {
 			FROM = {
 				OR = {
-					tag = BKU
 					tag = PET
 					tag = STR
 					tag = WSP
@@ -8338,7 +8347,7 @@ GER_bring_the_RKs_back_into_the_fold_decisions = {
 							}
 						}
 						tag = MTR
-						tag = AZR
+						tag = ARM
 						tag = KAM
 						tag = NOG
 						tag = RAC
@@ -9089,92 +9098,92 @@ GER_bring_the_RKs_back_into_the_fold_decisions = {
 			}
 		}
 	}
-	GER_demand_rightful_land_GEO = {
-		icon = ger_reichskommissariats
-		visible = {
-			NOT = {
-				owns_state = 964
-				#country_exists = RKA
-			}
-			OR = {
-				owns_state = 229
-				RKA = {
-					owns_state = 229
-				}
-			}
-		}
-		available = {
-			has_war = no
-			NOT = {
-				owns_state = 964
-				#country_exists = RKA
-			}
-		}
-		target_trigger = {
-			FROM = {
-				NOT = {
-					OR = {
-						tag = RKA
-						tag = ROS
-						tag = SOV
-					}
-				}
-				owns_state = 964
-				is_neighbor_of = ROOT
-			}
-		}
-		fire_only_once = yes
-		ai_will_do = {
-			factor = 500
-		}
-		cost = 8
-		complete_effect = {
-			log = "[GetDateText]: [Root.GetName]: Decision GER_demand_rightful_land_GEO"
-			FROM = {
-				country_event = {
-					id = twrrkauprisings.10109
-					hours = 3
-				}
-			}
-		}
-	}
-	GER_demand_rightful_land_ARM = {
-		icon = ger_reichskommissariats
-		visible = {
-			NOT = {
-				owns_state = 968
-				country_exists = RKA
-			}
-		}
-		available = {
-			has_war = no
-			NOT = {
-				owns_state = 968
-				country_exists = RKA
-			}
-		}
-		target_trigger = {
-			FROM = {
-				tag = ARM
-				owns_state = 968
-				is_neighbor_of = ROOT
-			}
-		}
-		fire_only_once = yes
-		ai_will_do = {
-			factor = 500
-		}
-		cost = 8
-		complete_effect = {
-			log = "[GetDateText]: [Root.GetName]: Decision GER_demand_rightful_land_ARM"
-			FROM = {
-				country_event = {
-					id = twrrkauprisings.10109
-					hours = 3
-				}
-			}
-		}
-	}
+	# GER_demand_rightful_land_GEO = {
+	# 	icon = ger_reichskommissariats
+	# 	visible = {
+	# 		NOT = {
+	# 			owns_state = 964
+	# 			#country_exists = RKA
+	# 		}
+	# 		OR = {
+	# 			owns_state = 229
+	# 			RKA = {
+	# 				owns_state = 229
+	# 			}
+	# 		}
+	# 	}
+	# 	available = {
+	# 		has_war = no
+	# 		NOT = {
+	# 			owns_state = 964
+	# 			#country_exists = RKA
+	# 		}
+	# 	}
+	# 	target_trigger = {
+	# 		FROM = {
+	# 			NOT = {
+	# 				OR = {
+	# 					tag = RKA
+	# 					tag = ROS
+	# 					tag = SOV
+	# 				}
+	# 			}
+	# 			owns_state = 964
+	# 			is_neighbor_of = ROOT
+	# 		}
+	# 	}
+	# 	fire_only_once = yes
+	# 	ai_will_do = {
+	# 		factor = 500
+	# 	}
+	# 	cost = 8
+	# 	complete_effect = {
+	# 		log = "[GetDateText]: [Root.GetName]: Decision GER_demand_rightful_land_GEO"
+	# 		FROM = {
+	# 			country_event = {
+	# 				id = twrrkauprisings.10109
+	# 				hours = 3
+	# 			}
+	# 		}
+	# 	}
+	# }
+	# GER_demand_rightful_land_ARM = {
+	# 	icon = ger_reichskommissariats
+	# 	visible = {
+	# 		NOT = {
+	# 			owns_state = 968
+	# 			country_exists = RKA
+	# 		}
+	# 	}
+	# 	available = {
+	# 		has_war = no
+	# 		NOT = {
+	# 			owns_state = 968
+	# 			country_exists = RKA
+	# 		}
+	# 	}
+	# 	target_trigger = {
+	# 		FROM = {
+	# 			tag = ARM
+	# 			owns_state = 968
+	# 			is_neighbor_of = ROOT
+	# 		}
+	# 	}
+	# 	fire_only_once = yes
+	# 	ai_will_do = {
+	# 		factor = 500
+	# 	}
+	# 	cost = 8
+	# 	complete_effect = {
+	# 		log = "[GetDateText]: [Root.GetName]: Decision GER_demand_rightful_land_ARM"
+	# 		FROM = {
+	# 			country_event = {
+	# 				id = twrrkauprisings.10109
+	# 				hours = 3
+	# 			}
+	# 		}
+	# 	}
+	# }
 	GER_restore_order_to_netherlands = {
 		icon = ger_reichskommissariats
 		available = {
@@ -9789,6 +9798,31 @@ GER_bring_the_RKs_back_into_the_fold_decisions = {
 						}
 					}
 				}
+			}
+		}
+	}
+	GER_caucasus_questions = {
+		icon = ger_reichskommissariats
+		available = {
+			OR = {
+				controls_rka_fully = yes
+				RKA = {
+					exists = yes
+					is_subject_of = ROOT
+					has_war = no
+				}
+			}
+			AZR = {
+				exists = yes
+			}
+		}
+		ai_will_do = {
+			base = 100
+		}
+		fire_only_once = yes
+		complete_effect = {
+			country_event = {
+				id = twrrkauprisings.505
 			}
 		}
 	}
@@ -10408,12 +10442,10 @@ GER_build_breitspurbahns = {
 		}
 		available = {
 			owns_state = 5
-			OR = {
 				AND = {
 					RMO = {
 						is_puppet_of = ROOT
 						owns_state = 219
-					}
 				}
 				ROS = {
 					is_puppet_of = ROOT

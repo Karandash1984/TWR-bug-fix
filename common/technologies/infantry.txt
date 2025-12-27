@@ -2240,7 +2240,7 @@ technologies = {
 			motorized_equipment_2
 		}
 		path = {
-			leads_to_tech = motorised_infantry_4
+			leads_to_tech = motorised_infantry_3
 			research_cost_coeff = 1
 		}
 
@@ -2296,8 +2296,8 @@ technologies = {
 		#UNLOCKED BY PROJECT
 		special_project_specialization = { specialization_land }
 	}
-	motorised_infantry_4 = {
-		on_research_complete = {log = "[GetDateText]: [Root.GetName]: add tech motorised_infantry_4"}
+	motorised_infantry_3 = {
+		on_research_complete = {log = "[GetDateText]: [Root.GetName]: add tech motorised_infantry_3"}
 
 		enable_equipments = {
 			motorized_equipment_3

@@ -1,4 +1,4 @@
-version="1.1.4"
+version="1.2"
 tags={
 	"Fixes"
 }
@@ -7,5 +7,5 @@ dependencies={
 }
 picture="thumbnail.png"
 name="TWR small bug fix"
-supported_version="1.16.*"
+supported_version="1.17.*"
 remote_file_id="3537348202"

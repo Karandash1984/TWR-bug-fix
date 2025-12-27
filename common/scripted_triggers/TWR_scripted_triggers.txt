@@ -13,7 +13,6 @@
 				tag = CHI
 				tag = KOR
 				tag = RUS
-				tag = ISR
 				tag = CAN
 				tag = QUE
 				original_tag = SER
@@ -62,7 +61,8 @@
 				tag = ALB
 				tag = GRE
 				tag = ARM
-				tag = SYR
+				original_tag = SYR
+				original_tag = LEB
 				tag = IDE
 				tag = TIB
 				tag = SAR
@@ -78,6 +78,8 @@
 				tag = BUL
 				tag = HUN
 				original_tag = ROM
+				tag = EGY
+				tag = YEM
 				tag = QUE
 				tag = SLO
 				tag = KRA
@@ -96,6 +98,8 @@
 				tag = MON
 				tag = SAF
 				tag = UNQ
+				tag = ISR
+				tag = PAL
 		}
 	}
 	controls_rmo_to_ural = {
@@ -763,15 +767,6 @@
 			971 = {
 				is_controlled_by = ROOT
 			}
-			969 = {
-				is_controlled_by = ROOT
-			}
-			967 = {
-				is_controlled_by = ROOT
-			}
-			968 = {
-				is_controlled_by = ROOT
-			}
 			964 = {
 				is_controlled_by = ROOT
 			}
@@ -797,9 +792,6 @@
 				is_controlled_by = ROOT
 			}
 			232 = {
-				is_controlled_by = ROOT
-			}
-			229 = {
 				is_controlled_by = ROOT
 			}
 			217 = {
@@ -1044,15 +1036,6 @@
 			971 = {
 				is_fully_controlled_by = ROOT
 			}
-			969 = {
-				is_fully_controlled_by = ROOT
-			}
-			967 = {
-				is_fully_controlled_by = ROOT
-			}
-			968 = {
-				is_fully_controlled_by = ROOT
-			}
 			#964 = {
 			#	is_fully_controlled_by = ROOT
 			#}
@@ -1078,9 +1061,6 @@
 				is_fully_controlled_by = ROOT
 			}
 			232 = {
-				is_fully_controlled_by = ROOT
-			}
-			229 = {
 				is_fully_controlled_by = ROOT
 			}
 			217 = {
@@ -1952,15 +1932,6 @@
 			971 = {
 				is_controlled_by  = PREV
 			}
-			969 = {
-				is_controlled_by  = PREV
-			}
-			967 = {
-				is_controlled_by  = PREV
-			}
-			968 = {
-				is_controlled_by  = PREV
-			}
 			964 = {
 				is_controlled_by  = PREV
 			}
@@ -1986,9 +1957,6 @@
 				is_controlled_by  = PREV
 			}
 			232 = {
-				is_controlled_by  = PREV
-			}
-			229 = {
 				is_controlled_by  = PREV
 			}
 			217 = {
@@ -2254,15 +2222,6 @@
 			971 = {
 				is_fully_controlled_by = PREV
 			}
-			969 = {
-				is_fully_controlled_by = PREV
-			}
-			967 = {
-				is_fully_controlled_by = PREV
-			}
-			968 = {
-				is_fully_controlled_by = PREV
-			}
 			964 = {
 				is_fully_controlled_by = PREV
 			}
@@ -2288,9 +2247,6 @@
 				is_fully_controlled_by = PREV
 			}
 			232 = {
-				is_fully_controlled_by = PREV
-			}
-			229 = {
 				is_fully_controlled_by = PREV
 			}
 			217 = {
@@ -2633,16 +2589,26 @@
 			ROOT = { is_fascist = yes }
 		}
 		AND = {
+			OR = {
+				has_country_leader_ideology = pragmatic_socialism
+				has_country_leader_ideology = bulganinism
 			is_communist = yes
-			ROOT = { OR = { is_fascist = yes has_government = paternal_autocrat } }
+			}
+			ROOT = { 
+				OR = { is_fascist = yes has_government = paternal_autocrat } 
+				NOT = { 
+					has_country_leader_ideology = pragmatic_socialism 
+					has_country_leader_ideology = bulganinism 
+				} 
+			}
 			}
 		AND = {
 			is_fascist = yes
-			ROOT = { OR = { is_communist = yes is_democratic = yes } }
+			ROOT = { OR = { is_communist = yes has_country_leader_ideology = pragmatic_socialism has_country_leader_ideology = bulganinism is_democratic = yes } }
 		}
 		AND = {
 			has_government = paternal_autocrat
-			ROOT = { is_communist = yes }
+			ROOT = { OR = { is_communist = yes has_country_leader_ideology = pragmatic_socialism has_country_leader_ideology = bulganinism } }
 			}
 		}
 	}
@@ -2712,7 +2678,7 @@
 	SD_Minister_Allowed = { OR = { has_government = social_democrat has_government = socialist is_in_coalition_with_social_democrat = yes } }
 	ANA_Minister_Allowed = { has_government = socialist }
 	
-	LWR_Minister_Allowed = { OR = { is_communist = yes has_government = social_democrat is_in_coalition_with_socialist = yes } }
+	LWR_Minister_Allowed = { OR = { is_communist = yes has_government = social_democrat is_in_coalition_with_socialist = yes  } }
 	LE_Minister_Allowed = { OR = { is_communist = yes is_in_coalition_with_bolshevik_leninist = yes } }
 	ST_Minister_Allowed = { OR = { is_communist = yes is_in_coalition_with_marxist_leninist = yes } }
 	SOV_PAT_Minister_Allowed = { OR = { is_communist = yes has_government = social_democrat has_government = paternal_autocrat is_democratic = yes } }
@@ -2720,175 +2686,74 @@
 	
 ############################################## check for having advisors ###################################################
 	has_head_of_government = {
-		OR = {
-			has_idea_with_trait = HoG_Silent_Workhorse
-			has_idea_with_trait = HoG_Naive_Optimist
-			has_idea_with_trait = HoG_Flamboyant_Tough_Guy
-			has_idea_with_trait = HoG_Happy_Amateur
-			has_idea_with_trait = HoG_Backroom_Backstabber
-			has_idea_with_trait = HoG_Smiling_Oilman
-			has_idea_with_trait = HoG_Old_General
-			has_idea_with_trait = HoG_Old_Admiral
-			has_idea_with_trait = HoG_Old_Airmarshal
-			has_idea_with_trait = HoG_Political_Protege
-			has_idea_with_trait = HoG_Ambitious_Union_Boss
-			has_idea_with_trait = HoG_Corporate_Suit
-			has_idea_with_trait = HoG_Local_Tyrant
-			has_idea_with_trait = HoG_Old_Lawyer
-			has_idea_with_trait = HoG_Bulldog
-			has_idea_with_trait = HoG_Imperialist_Buffoon
-			has_idea_with_trait = HoG_The_Tiger
-			has_idea_with_trait = HoG_Revolutionary_Leader
-			has_idea_with_trait = HoG_The_Brown_Eminence
-			has_idea_with_trait = HoG_Guilty_Man
-			has_idea_with_trait = HoG_The_Pacifier
-			has_idea_with_trait = HoG_Collectivizer
-			has_idea_with_trait = HoG_Razor
-			has_idea_with_trait = HoG_Zhou_enlai
-			has_idea_with_trait = HoG_Jiang_jieshi_1
-			has_idea_with_trait = HoG_Sun_Zhongshan_2
+		amount_taken_ideas = {
+			amount > 0
+			slots = {
+				Head_of_Government
+			}
 		}
 	}
 
 	has_foreign_minsiter = {
-		OR = {
-			has_idea_with_trait = FM_Biased_Intellectual
-			has_idea_with_trait = FM_Ideological_Crusader
-			has_idea_with_trait = FM_Apologetic_Clerk
-			has_idea_with_trait = FM_Iron_Fisted_Brute
-			has_idea_with_trait = FM_Great_Compromiser
-			has_idea_with_trait = FM_General_Staffer
-			has_idea_with_trait = FM_The_Cloak_N_Dagger_Schemer
-			has_idea_with_trait = FM_Respectable_Compromiser
-			has_idea_with_trait = FM_Salesman_Of_Deception
-			has_idea_with_trait = FM_The_Appeaser
-			has_idea_with_trait = FM_Fascist_Crusader
-			has_idea_with_trait = FM_Aggressive_Nationalist
-			has_idea_with_trait = FM_Persuader_Of_Democracies
-			has_idea_with_trait = FM_Father_Of_United_Nations
-			has_idea_with_trait = FM_Ambassador_To_UN
-			has_idea_with_trait = FM_Supporter_Of_Friendly_Relations
-			has_idea_with_trait = FM_Messianic_Zealot
-			has_idea_with_trait = FM_Traveling_Salesman
+		amount_taken_ideas = {
+			amount > 0
+			slots = {
+				Foreign_Minister
+			}
 		}
 	}
 
 	has_minister_of_security = {
-		OR = {
-			has_idea_with_trait = MoS_Silent_Lawyer
-			has_idea_with_trait = MoS_Compassionate_Gentleman
-			has_idea_with_trait = MoS_Crime_Fighter
-			has_idea_with_trait = MoS_Prince_Of_Terror
-			has_idea_with_trait = MoS_Back_Stabber
-			has_idea_with_trait = MoS_Man_Of_The_People
-			has_idea_with_trait = MoS_Efficient_Sociopath
-			has_idea_with_trait = MoS_Crooked_Kleptocrat
-			has_idea_with_trait = MoS_Media_Magnate
-			has_idea_with_trait = MoS_Health_And_Safety
-			has_idea_with_trait = MoS_Secret_Police_Chief
-			has_idea_with_trait = MoS_SS_Reichsfuhrer
-			has_idea_with_trait = MoS_Ruthless_Organizer
-			has_idea_with_trait = MoS_Master_Of_Propaganda
-			has_idea_with_trait = MoS_Purged_Purger
-			has_idea_with_trait = MoS_Director_Of_FBI
-			has_idea_with_trait = MoS_Opposer_Of_The_Far_Right
-			has_idea_with_trait = MoS_Culture_Warrior
-			has_idea_with_trait = MoS_Dai_li_1
+		amount_taken_ideas = {
+			amount > 0
+			slots = {
+				Minister_of_Security
+			}
 		}
 	}
 
 	has_armaments_minister = {
-		OR = {
-			has_idea_with_trait = AM_Administrative_Genius
-			has_idea_with_trait = AM_Resource_Industrialist
-			has_idea_with_trait = AM_Laissez-faire_Capitalist
-			has_idea_with_trait = AM_Theoretical_Scientist
-			has_idea_with_trait = AM_Military_Entrepreneur
-			has_idea_with_trait = AM_Corrupt_Kleptocrat
-			has_idea_with_trait = AM_Oil_Baron
-			has_idea_with_trait = AM_Steel_Magnate
-			has_idea_with_trait = AM_Industrial_Chemist
-			has_idea_with_trait = AM_Planned_Economy_Proponent
-			has_idea_with_trait = AM_Keynesian_Economy
-			has_idea_with_trait = AM_Reformer
-			has_idea_with_trait = AM_Construction_Magnate
-			has_idea_with_trait = AM_Balanced_Budget_Economy
-			has_idea_with_trait = AM_Mixed_Economy
-			has_idea_with_trait = AM_Battle_Fleet_Proponent
-			has_idea_with_trait = AM_Submarine_Proponent
-			has_idea_with_trait = AM_Tank_Proponent
-			has_idea_with_trait = AM_Infantry_Proponent
-			has_idea_with_trait = AM_Air_To_Ground_Proponent
-			has_idea_with_trait = AM_Air_To_Sea_Proponent
-			has_idea_with_trait = AM_Strategic_Air_Proponent
-			has_idea_with_trait = AM_Air_Superiority_Proponent
-			has_idea_with_trait = AM_Genius_Organizer
-			has_idea_with_trait = AM_Organization_todt
-			has_idea_with_trait = AM_Autarkic_Fascist
-			has_idea_with_trait = AM_Iron_Lazar
-			has_idea_with_trait = AM_Orthodox_Economist
-			has_idea_with_trait = AM_Secretary_Of_War
-			has_idea_with_trait = AM_Secretary_Of_The_Interior
-			has_idea_with_trait = AM_Supporter_Of_Devaluation
-			has_idea_with_trait = AM_Opposer_To_Military_Spending
-			has_idea_with_trait = AM_Mad_Man
-			has_idea_with_trait = AM_Space_Enthusiast
-			has_idea_with_trait = AM_Gosplan_Boss
-			has_idea_with_trait = AM_Socialist_Self_Management_Theorist
+		amount_taken_ideas = {
+			amount > 0
+			slots = {
+				Minister_of_Economy
+			}
 		}
 	}
 
 	has_chief_of_staff = {
-		OR = {
-			has_idea_with_trait = CoStaff_School_Of_Manoeuvre
-			has_idea_with_trait = CoStaff_School_Of_Fire_Support
-			has_idea_with_trait = CoStaff_School_Of_Mass_Combat
-			has_idea_with_trait = CoStaff_School_Of_Psychology
-			has_idea_with_trait = CoStaff_School_Of_Defence
-			has_idea_with_trait = CoStaff_Commando_Doctrine_Staff
-			has_idea_with_trait = CoStaff_Counterattack_Genius
-			has_idea_with_trait = CoStaff_Popular_Military_Leader
-			has_idea_with_trait = CoStaff_Stubborn_Disciplinarian
-			has_idea_with_trait = CoStaff_Deep_Battle_Proponent
-			has_idea_with_trait = CoStaff_Fortifications_Supporter
+		amount_taken_ideas = {
+			amount > 0
+			slots = {
+				Chief_of_Staff
+			}
 		}
 	}
 
 	has_chief_of_army = {
-		OR = {
-			has_idea_with_trait = CoArmy_Elastic_Defence_Doctrine
-			has_idea_with_trait = CoArmy_Static_Defence_Doctrine
-			has_idea_with_trait = CoArmy_Decisive_Battle_Doctrine
-			has_idea_with_trait = CoArmy_Armoured_Spearhead_Doctrine
-			has_idea_with_trait = CoArmy_Guns_And_Butter_Doctrine
-			has_idea_with_trait = CoArmy_Commando_Doctrine_Army
-			has_idea_with_trait = CoArmy_Doctrine_Of_Autonomy
-			has_idea_with_trait = CoArmy_Innovative_Offensive_General
-			has_idea_with_trait = CoArmy_Guerilla_Warfare_Doctrine
-			has_idea_with_trait = CoArmy_Undersecretary_Of_War
-			has_idea_with_trait = CoArmy_Static_Defense_Supporter
+		amount_taken_ideas = {
+			amount > 0
+			slots = {
+				Chief_of_Army
+			}
 		}
 	}
 
 	has_chief_of_navy = {
-		OR = {
-			has_idea_with_trait = CoNavy_Open_Seas_Doctrine
-			has_idea_with_trait = CoNavy_Decisive_Naval_Battle_Doctrine
-			has_idea_with_trait = CoNavy_Power_Projection_Doctrine
-			has_idea_with_trait = CoNavy_Indirect_Approach_Doctrine
-			has_idea_with_trait = CoNavy_Base_Control_Doctrine
-			has_idea_with_trait = CoNavy_Old_School_Admiral
+		amount_taken_ideas = {
+			amount > 0
+			slots = {
+				Chief_of_Navy
+			}
 		}
 	}
 
 	has_chief_of_air = {
-		OR = {
-			has_idea_with_trait = Coair_superiority_Doctrine
-			has_idea_with_trait = CoAir_Naval_Aviation_Doctrine
-			has_idea_with_trait = CoAir_Army_Aviation_Doctrine
-			has_idea_with_trait = CoAir_Carpet_Bombing_Doctrine
-			has_idea_with_trait = CoAir_Vertical_Envelopment_Doctrine
-			has_idea_with_trait = CoAir_The_Iron_Knight
+		amount_taken_ideas = {
+			amount > 0
+			slots = {
+				Chief_of_Airforce
+			}
 		}
 	}	
 	is_claim_or_core_of_ROOT = {
@@ -4898,57 +4763,97 @@ has_coalition_with_target = {
 }
 
 is_in_coalition_with_marxist_leninist = {
+	if = {
+	limit = { NOT = { has_government = marxist_leninist } }
 	set_temp_variable = { coalition_target = token:marxist_leninist }
 	has_coalition_with_target = yes
-	NOT = { has_government = marxist_leninist }
+	}
 }
 
 is_in_coalition_with_bolshevik_leninist = {
+	if = {
+	limit = { NOT = { has_government = bolshevik_leninist } }
 	set_temp_variable = { coalition_target = token:bolshevik_leninist }
 	has_coalition_with_target = yes
-	NOT = { has_government = bolshevik_leninist }
+	}
 }
 
 is_in_coalition_with_socialist = {
+	if = {
+	limit = { NOT = { has_government = socialist } }
 	set_temp_variable = { coalition_target = token:socialist }
 	has_coalition_with_target = yes
-	NOT = { has_government = socialist }
+	}
 }
 
 is_in_coalition_with_social_democrat = {
+	if = {
+	limit = { NOT = { has_government = social_democrat } }
 	set_temp_variable = { coalition_target = token:social_democrat }
 	has_coalition_with_target = yes
-	NOT = { has_government = social_democrat }
+	}
 }
 
 is_in_coalition_with_liberal = {
+	if = {
+	limit = { NOT = { has_government = liberal } }
 	set_temp_variable = { coalition_target = token:liberal }
 	has_coalition_with_target = yes
-	NOT = { has_government = liberal }
+	}
 }
 
 is_in_coalition_with_conservative = {
+	if = {
+	limit = { NOT = { has_government = conservative } }
 	set_temp_variable = { coalition_target = token:conservative }
 	has_coalition_with_target = yes
-	NOT = { has_government = conservative }
+	}
 }
 
 is_in_coalition_with_paternal_autocrat = {
+	if = {
+	limit = { NOT = { has_government = paternal_autocrat } }
 	set_temp_variable = { coalition_target = token:paternal_autocrat }
 	has_coalition_with_target = yes
-	NOT = { has_government = paternal_autocrat }
+	}
 }
 
 is_in_coalition_with_fascist = {
+	if = {
+	limit = { NOT = { has_government = fascist } }
 	set_temp_variable = { coalition_target = token:fascist }
 	has_coalition_with_target = yes
-	NOT = { has_government = fascist }
+	}
 }
 
 is_in_coalition_with_national_socialist = {
+	if = {
+	limit = { NOT = { has_government = national_socialist } }
 	set_temp_variable = { coalition_target = token:national_socialist }
 	has_coalition_with_target = yes
-	NOT = { has_government = national_socialist }
+	}
+}
+
+is_arab_country = {
+	OR = {
+		original_tag = MOR
+		original_tag = ALG
+		original_tag = TUN
+		original_tag = LBA
+		original_tag = EGY
+		original_tag = PAL
+		original_tag = SUD
+		original_tag = JOR
+		original_tag = LEB
+		original_tag = SYR
+		original_tag = IRQ
+		original_tag = SAU
+		original_tag = YEM
+		original_tag = OMA
+		original_tag = UAE
+		original_tag = QAT
+		original_tag = SUD
+	}
 }
 
 TWR_should_have_german_medals_trigger = {

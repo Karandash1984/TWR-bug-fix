@@ -1007,6 +1007,10 @@ country_event = { #German Garrison flees - new person in charge
 			expire = "1964.2.26" 
 			ideology = national_socialism
 			traits = { experienced_administrator }
+		}			
+		swap_ideas = {
+			remove_idea = kleptocratic_regime
+			add_idea = dictatorship
 		}							
 	}
 }   
@@ -1082,6 +1086,11 @@ country_event = { #SS too strong - Janko Coup
 			expire = "1964.2.26" 
 			ideology = national_socialism
 			traits = { volksgruppenfuhrer }
+		}	
+					
+		swap_ideas = {
+			remove_idea = dictatorship
+			add_idea = fanatical_dictatorship
 		}	
 		unlock_national_focus = SBA_End_Jankos_Game
 	}
@@ -1167,8 +1176,8 @@ country_event = { #Defeat in Banat - Banat
 		name = twrbanat.40.a
 		remove_state_claim = 82
 		add_political_power = -200
-		war_support_factor = -0.2
-		stability_factor = -0.2
+		add_war_support = -0.2
+		add_stability = -0.2
 	}
 }
 
@@ -1186,7 +1195,7 @@ country_event = { #Banat Defeated - Romania/Whoever owns it
 	option = { 
 		name = twrbanat.41.a
 		add_political_power = 50
-		war_support_factor = 0.1
+		add_war_support = 0.1
 	}
 }
 
@@ -1204,8 +1213,8 @@ country_event = { #Banat Victory - Romania/Whoever owns it
 	option = { 
 		name = twrbanat.42.a
 		add_political_power = -100
-		war_support_factor = -0.1
-		stability_factor = -0.1
+		add_war_support = -0.1
+		add_stability = -0.1
 		effect_tooltip = {
 			SBA = {
 				transfer_state = 82

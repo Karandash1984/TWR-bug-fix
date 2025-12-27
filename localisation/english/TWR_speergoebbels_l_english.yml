@@ -870,13 +870,7 @@ SAF_mining_subsidies: "Mining Subsidies"
 
 RGO_fighter_n_bombers: "Fighters And Bombers"
 
-freeroaming_ost: "Freeroaming Ost"
-
 ideology_PAF:0 "§gAuthoritarian§!"
-
-governmentappointed_ost: "Government Appointed"
-
-ost_colonial_ready: "Colonial Mission Ready"
 
 ENOUGH_SUPPORT_IN_NORTH_AFRICA: "Enough Support In North Africa"
 
@@ -903,8 +897,6 @@ twroccupation.154.t: "Fate of Khiva"
 twroccupation.154.d: "With the Fate of Khiva, we must now decide on the territory's future"
 
 twroccupation.101.t: "Fate of Bhutan"
-
-german_education: "German Education"
 
 helicopter_research: "Helicopter Research Speed"
 
