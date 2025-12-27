@@ -3613,7 +3613,12 @@ USA_europe_cleanup = {
 							is_coastal = yes
 							
 						}
-						
+						NOT = {
+							tag = ROM
+							tag = GEO
+							tag = UKR
+							tag = RGO
+						}
 					}
 					any_neighbor_country = {
 						is_ally_of_ROOT = yes
@@ -3643,7 +3648,6 @@ USA_europe_cleanup = {
 					tag = MTR
 					tag = RAR
 					tag = ENG
-					tag = SBA
 					tag = GER
 					tag = ZHU
 					tag = NOG
@@ -3653,7 +3657,10 @@ USA_europe_cleanup = {
 					tag = LZG
 					tag = LIT
 					tag = DDR
+					tag = WSP
 					}
+					
+				
 			}
 		}
 
