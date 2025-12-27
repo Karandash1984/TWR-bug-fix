@@ -1,9 +1,6 @@
-Total 44
+Total 40
 USA_infiltrate_labour_unions
 RGO_fighter_n_bombers
-freeeoaming_ost
-governmentappointed_ost
-ost_colonial_ready
 ENOUGH_SUPPORT_IN_NORTH_AFRICA
 UMBERTO_II_DESC
 ship_hull_very_light
@@ -19,7 +16,6 @@ reunified_russia
 twroccupation.154.t
 twroccupation.154.d
 twroccupation.101.t
-german_education
 helicopter_research
 GER_Controls_The_Sky_desc
 GER_Victory_At_GCW_desc

@@ -16905,6 +16905,15 @@ country_event = { #Kenya Self Government
 		}
 		KEN = {
 			add_ideas = COM_commonwealth_of_nations
+			hidden_effect = {
+				set_politics = {
+					ruling_party = conservative
+				}
+				add_popularity = {
+					ideology = conservative
+					popularity = 0.5
+				}
+			}
 		}
 		hidden_effect = {
 		country_event = { id = twrbritaindecol.45 days = 400 random = 300 }
@@ -16976,7 +16985,9 @@ country_event = { #Nigerian Home Rule
 		set_country_flag = FLAG_TA_BATTLEGROUND
 		#set_country_flag = FLAG_CHINA_BATTLEGROUND
 		}
-
+		797 = {
+			transfer_state_to = 789.owner
+		}
 		#Become battleground for TA and RAJ and maybe China
 		custom_effect_tooltip = colonial_battleground_tt
 	}

@@ -265,6 +265,11 @@ country_event = {
 		hidden_effect = {
 			set_country_flag = fascists_harsh_sentence_ITA
 		}
+		trigger = {
+			NOT = {
+				has_country_flag = ITA_fascism_failed
+			}
+		}
 	}
 	option = {
 		name = twritalypolitics.107.b
@@ -369,6 +374,21 @@ country_event = {
 		hidden_effect = {
 			set_country_flag = execute_the_royals
 		}
+		if = {
+			limit = {
+				has_country_flag = ITA_fascism_failed
+			}
+			swap_ideas = {
+				remove_idea = dictatorship
+				add_idea = facade_democracy
+			}
+		}
+		else = {
+			swap_ideas = {
+				remove_idea = dictatorship
+				add_idea = established_democracy
+			}
+		}
 		trigger = {
 			NOT = {
 				has_country_flag = ITA_fascism_failed
@@ -384,6 +404,21 @@ country_event = {
 		hidden_effect = {
 			set_country_flag = demote_the_royals
 		}
+		if = {
+			limit = {
+				has_country_flag = ITA_fascism_failed
+			}
+			swap_ideas = {
+				remove_idea = dictatorship
+				add_idea = facade_democracy
+			}
+		}
+		else = {
+			swap_ideas = {
+				remove_idea = dictatorship
+				add_idea = established_democracy
+			}
+		}
 		set_politics = {
 			ruling_party = liberal
 		}
@@ -396,6 +431,21 @@ country_event = {
 		}
 		hidden_effect = {
 			set_country_flag = keep_the_royals
+		}
+		if = {
+			limit = {
+				has_country_flag = ITA_fascism_failed
+			}
+			swap_ideas = {
+				remove_idea = dictatorship
+				add_idea = facade_democracy
+			}
+		}
+		else = {
+			swap_ideas = {
+				remove_idea = dictatorship
+				add_idea = established_democracy
+			}
 		}
 		set_politics = {
 			ruling_party = conservative
@@ -424,6 +474,11 @@ country_event = {
 		}
 		hidden_effect = {
 			set_country_flag = italian_republic
+		}
+		trigger = {
+			NOT = {
+				has_country_flag = ITA_fascism_failed
+			}
 		}
 	}
 	option = {
@@ -534,9 +589,12 @@ country_event = {
 				id = twritalypolitics.112
 				days = 3
 			}
-		}=
+		}
 		set_politics = {
 			ruling_party = social_democrat
+		}
+		ai_chance = {
+			base = 1
 		}
 	}
 	option = {
@@ -564,6 +622,9 @@ country_event = {
 				days = 3
 			}
 		}
+		ai_chance = {
+			base = 100
+		}
 	}
 	option = {
 		name = twritalypolitics.111.c		#chrisdems in power
@@ -590,6 +651,9 @@ country_event = {
 				id = twritalypolitics.112
 				days = 3
 			}
+		}
+		ai_chance = {
+			base = 100
 		}
 	}
 	option = {
@@ -621,6 +685,9 @@ country_event = {
 				id = twritalypolitics.112
 				days = 3
 			}
+		}
+		ai_chance = {
+			base = 100
 		}
 	}
 }
@@ -1106,10 +1173,10 @@ country_event = {
 		news_event = {
 			id = twrnews.123
 		}
-		load_focus_tree = {
-			tree = ITA_ciano_1960
-			keep_completed = yes
-		}
+		#load_focus_tree = {
+		#	tree = ITA_ciano_1960
+		#	keep_completed = yes
+		#}
 		ciano_victory_gui = yes
 	}
 	option = {
@@ -1146,10 +1213,10 @@ country_event = {
 		news_event = {
 			id = twrnews.122
 		}
-		load_focus_tree = {
-			tree = ITA_balbo_1960
-			keep_completed = yes
-		}
+		#load_focus_tree = {
+		#	tree = ITA_balbo_1960
+		#	keep_completed = yes
+		#}
 		balbo_victory_gui = yes
 		add_stability = -0.05
 	}
@@ -1244,10 +1311,10 @@ country_event = {
 		news_event = {
 			id = twrnews.122
 		}
-		load_focus_tree = {
-			tree = ITA_balbo_1960
-			keep_completed = yes
-		}
+		#load_focus_tree = {
+		#	tree = ITA_balbo_1960
+		#	keep_completed = yes
+		#}
 		balbo_victory_gui = yes
 	}
 }
@@ -1280,10 +1347,10 @@ country_event = {
 		news_event = {
 			id = twrnews.123
 		}
-		load_focus_tree = {
-			tree = ITA_ciano_1960
-			keep_completed = yes
-		}
+		#load_focus_tree = {
+		#	tree = ITA_ciano_1960
+		#	keep_completed = yes
+		#}
 		ciano_victory_gui = yes
 	}
 }
@@ -3040,6 +3107,8 @@ country_event = {
 			effect_tooltip = {
 				custom_effect_tooltip = ITA_montengero_to_albania
 				transfer_state = 105
+				transfer_state = 1229
+				transfer_state = 1230
 			}
 		}
 	}
@@ -3050,7 +3119,10 @@ country_event = {
 			base = 0
 		}
 		add_to_variable = {
-			ita_var_coup_chance = 0.15
+			ita_var_coup_chance = 0.1
+		}
+		add_to_variable = {
+			ita_var_domestic_opposition = 0.05
 		}
 		add_to_variable = {
 			ita_var_gcf_loyalty = -0.05
@@ -3070,9 +3142,12 @@ country_event = {
 			effect_tooltip = {
 				custom_effect_tooltip = ITA_montengero_to_albania
 				transfer_state = 105
+				transfer_state = 1229
+				transfer_state = 1230
 			}
 		}
 		clamp_italian_variables = yes
+		custom_effect_tooltip = ita_increase_unrest_mainland_tt
 		custom_effect_tooltip = ita_increase_coup_chance_tt
 		custom_effect_tooltip = ita_decrease_loyalty_gcf_tt
 		custom_effect_tooltip = ita_decrease_loyalty_mvsn_tt
@@ -3092,10 +3167,14 @@ country_event = {
 				limit = {
 					ALB = {
 						controls_state = 105
+						controls_state = 1229
+						controls_state = 1230
 					}
 				}
 				ALB = {
 					transfer_state = 105
+				transfer_state = 1229
+				transfer_state = 1230
 				}
 			}
 			white_peace = ALB
@@ -3118,7 +3197,10 @@ country_event = {
 			country_event = twritalyalbania.5
 		}
 		add_to_variable = {
-			ita_var_coup_chance = 0.3
+			ita_var_domestic_opposition = 0.2
+		}
+		add_to_variable = {
+			ita_var_coup_chance = 0.25
 		}
 		add_to_variable = {
 			ita_var_gcf_loyalty = -0.2
@@ -3127,6 +3209,7 @@ country_event = {
 			ita_var_mvsn_loyalty = -0.25
 		}
 		clamp_italian_variables = yes
+		custom_effect_tooltip = ita_increase_unrest_mainland_tt
 		custom_effect_tooltip = ita_increase_coup_chance_tt
 		custom_effect_tooltip = ita_decrease_loyalty_gcf_tt
 		custom_effect_tooltip = ita_decrease_loyalty_mvsn_tt
