@@ -1093,9 +1093,11 @@ diplomatic_decisions = {
 		fire_only_once = yes
 		complete_effect = {
 			create_faction_from_template = { name = GER_FACTION_NAME template = faction_template_generic }
+				hidden_effect = {
 			add_faction_goal_slot = { category = short_term  value = -10 }
 			add_faction_goal_slot = { category = medium_term value = -10 }
 			add_faction_goal_slot = { category = long_term   value = -10 }
+				}
 			set_country_flag = FLAG_GERMAN_LEADER
 			force_update_map_mode = {
 				mapmode = TWR_sphere_of_influence_map_mode
@@ -1202,6 +1204,7 @@ GER_civil_war_cat = {
 					FFR = {
 						is_in_faction_with = TOR
 					}
+					NOT = { country_exists = FRA }
 				}
 				FFR = {
 					has_capitulated = yes
