@@ -943,3 +943,7 @@ modifier_state_repair_speed_nuclear_facility_factor: "Nuclear Facility Repair Sp
 modifier_state_repair_speed_rocket_site_factor: "Rocket Site Repair Speed"
 
 modifier_state_repair_speed_radar_station_factor: "Radar Station Repair Speed"
+
+category_APC: "APC"
+
+VEN_American_Companies_in_Venezuela: "American Companies in Venezuela"
