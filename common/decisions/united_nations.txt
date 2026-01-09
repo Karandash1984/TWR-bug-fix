@@ -1,0 +1,2137 @@
+united_nations_category = {
+#Embargo fascist states
+#Global Intervention
+UNSC_auto_abstain = {
+    activation = {
+        has_global_flag = ACTIVE_UNSC_RESOLUTION
+		check_variable = { voted_for_resolution < 1 }
+        is_in_the_unsc = yes
+    }
+    available = {
+        custom_trigger_tooltip = {
+        tooltip = has_vote_in_UNSC
+        check_variable = { voted_for_resolution = 1 }
+        }
+        has_global_flag = ACTIVE_UNSC_RESOLUTION
+    }
+    complete_effect = {
+    }
+    timeout_effect = {
+        custom_effect_tooltip = WE_WILL_ABSTAIN
+        hidden_effect = {
+        set_variable = { un_resolution_vote = 3 }
+        add_to_variable = { global.un_resolution_vote_abstain = 1 }
+        set_variable = { voted_for_resolution = 1 }
+        end_resolution = yes
+        }
+    }
+    days_mission_timeout = 60
+    is_good = no
+    icon = generic_UN
+    selectable_mission = no
+}
+UNSC_non_perm_rotate = {
+    activation = {
+        always = no
+    }
+    available = {
+        always = no
+    }
+    icon = generic_UN
+    is_good = yes
+    days_mission_timeout = 730
+    selectable_mission = no
+    complete_effect = {
+    }
+    timeout_effect = {
+        country_event = united_nations.6
+    }
+}
+UN_secretary_general_election_timer = {
+    activation = {
+        always = no
+    }
+    available = {
+        always = no
+    }
+    icon = generic_UN
+    is_good = yes
+    days_mission_timeout = 1825
+    selectable_mission = no
+    complete_effect = {
+    }
+    timeout_effect = {
+        hidden_effect = {
+        country_event = twrunvotingtrigger.1
+        }
+    }
+}
+UN_secretary_general_election_timer_run_off = {
+    activation = {
+        always = no
+    }
+    available = {
+        always = no
+    }
+    icon = generic_UN
+    is_good = yes
+    days_mission_timeout = 90
+    selectable_mission = no
+    complete_effect = {
+    }
+    timeout_effect = {
+        hidden_effect = {
+        country_event = twrunvotingtrigger.1
+        }
+    }
+}
+UN_secretary_general_election_in_progress = {
+    activation = {
+        always = no
+    }
+    available = {
+        always = no
+    }
+    icon = generic_UN
+    is_good = yes
+    days_mission_timeout = 50
+    selectable_mission = no
+    complete_effect = {
+    }
+    timeout_effect = {
+        country_event = twrunvoting.1002
+    }
+}
+ENG_call_for_international_sanctions_on_saf = {
+    allowed = { NOT = { tag = SAF } }	  
+    available = {
+    NOT = { has_global_flag = ONGOING_UN_RESOLUTION_GENERAL }
+    SAF = { NOT = { is_in_my_sphere_target_trigger_2 = yes } }
+    SAF = {
+    has_opinion = {
+    target = SAF
+    value < 50
+            }
+        }
+    }
+    visible = {
+    country_exists = SAF
+    SAF = { OR = { has_country_flag = SAF_HORRIBLE is_fascist = yes } }
+    is_in_the_unsc = yes
+    }
+    fire_only_once = yes
+    cost = 20
+
+    complete_effect = {
+        log = "[GetDateText]: [Root.GetName]: Decision ENG_call_for_international_sanctions_on_saf"
+        UN_clr_all_UNGA = yes
+        set_variable = { global.UN_general_assembly_resolution = 8 }
+        start_unga_resolution = yes
+    }
+    ai_will_do = {
+        base = 100
+    }
+}
+CHI_build_UN_HQ_2 = {
+    icon = generic_construction
+        cost = 100
+    allowed = {
+        tag = CHI
+    }
+    ai_will_do = {
+        factor = 500
+    }
+    fire_only_once = yes
+    available = {
+        has_country_flag = Can_Build_UN_HQ_2
+        has_completed_focus = CHI_Second_UN_HQ
+    }
+    visible = {
+        has_completed_focus = CHI_Second_UN_HQ
+    }
+    selectable_mission = yes
+    days_remove = 250
+    activation = {
+        #always = no
+        has_country_flag = Can_Build_UN_HQ_2
+    }
+    
+    remove_effect = {
+        hidden_effect = {
+            country_event = twrmakebuilding.12
+            1116 = {
+                add_province_modifier = {
+                    static_modifiers = { terrain_UNHQ_Shanghai }
+                    province = { id = 13421 }	 
+                }
+                remove_core_of = CHI
+                add_core_of = UNQ
+               
+            }
+            1115 = {
+                set_state_name = UNHQ_Newyork_2
+            }
+            add_victory_points = {
+                province = 13421
+                value = 10
+            }
+            set_province_name = {
+                id = 13420
+                name = UNHQ_Newyork_3
+            }
+            set_province_name = {
+                id = 13421
+                name = UNHQ_Shanghai_3
+            }
+            goto_state = 1116
+            
+        }
+        1116 = {
+            set_state_name = UNHQ_Shanghai_2
+        }
+
+        UNQ = {
+            transfer_state = 1116
+            add_state_core = 1116
+        }
+      
+        news_event = twrchinaforeign.116
+    }
+    cancel_trigger = {
+        NOT = {
+            has_country_flag = Can_Build_UN_HQ_2
+        }
+    }
+}
+
+
+CHI_request_military_intervention_on_PRC = {
+    icon = generic_construction
+    allowed = {
+        tag = CHI
+    }
+    ai_will_do = {
+        factor = 500
+    }
+    icon = generic_UN
+    fire_only_once = yes
+    visible = {
+        has_completed_focus = CHI_Securing_Foreign_Support
+        has_war_with = PRC
+        NOT = { has_global_flag = ACTIVE_UNSC_RESOLUTION }
+    }
+    cost = 50
+    
+    complete_effect = {
+    TWR_war_on_prc_effect = yes
+    }
+}
+
+USA_propose_UN_germany_concept = {
+    cost = 20
+    fire_only_once = yes
+    icon = generic_UN
+    visible = {
+        is_in_the_unsc = yes
+        NOT = { has_global_flag = SOMEONE_STARTED_THE_UNGCU_MOTION }
+        NOT = { has_global_flag = ACTIVE_UNSC_RESOLUTION }
+        NOT = {
+            tag = GER
+            tag = HSS
+            tag = HGR
+            tag = PGR
+        }
+    }
+    available = {
+        AND = {
+        OR = {
+        country_exists = GER
+        country_exists = HSS
+        AND = {
+            country_exists = HGR
+            is_democratic = no
+            }
+        }
+        OR = {
+        has_global_flag = {
+            flag = german_civil_war_started
+            days > 365
+        }
+        has_war_with = GER
+        has_war_with = HSS
+        has_war_with = HGR
+        AND = {
+        tag = USA
+        has_completed_focus = USA_European_Strategy
+                }
+            }
+        }
+    }
+    visible = {
+    NOT = { has_global_flag = GCU_UN_DECISION }
+    }
+    complete_effect = {
+        set_global_flag = SOMEONE_STARTED_THE_UNGCU_MOTION
+        TWR_ungcu_resolution_effect = yes
+    }
+    ai_will_do = {
+        factor = 30
+    }
+}
+
+USA_back_the_war_against_nazism = {
+    cost = 20
+    fire_only_once = yes
+    icon = generic_UN
+    visible = {
+        is_in_the_unsc = yes
+        has_country_flag = BACK_THE_WAR_AGAINST_NAZIS
+        NOT = { has_global_flag = ACTIVE_UNSC_RESOLUTION }
+        NOT = {
+            tag = GER
+            tag = HSS
+            tag = HGR
+            tag = PGR
+        }
+
+        OR = {
+        has_war_with = GER
+        has_war_with = HSS
+        has_war_with = HGR
+        }
+    }
+    complete_effect = {
+        TWR_ta_germany_war_resolution_effect = yes
+    }
+    ai_will_do = {
+        factor = 30
+    }
+}
+
+
+GENERIC_request_peacekeepers = {
+    cost = 20
+    fire_only_once = yes
+    icon = generic_UN
+    visible = {
+        OR = {
+        is_in_the_un = yes
+        }
+        OR = {
+        is_major = no
+        AND = {
+        tag = CHI
+        has_completed_focus = CHI_Requesting_UN_Aid
+            }
+        }
+        is_fascist = no
+        NOT = { has_global_flag = ACTIVE_UNSC_RESOLUTION }
+        NOT = { has_idea_with_trait = UN_peacekeeping_mission }
+    }
+    available = {
+        OR = {
+        AND = {
+        has_civil_war = yes
+        longest_war_length > 2
+        }
+        AND = {
+            has_defensive_war = yes
+            any_enemy_country = { has_civil_war = no }
+            has_civil_war = no
+            longest_war_length > 5
+        } 
+        has_stability < 0.1
+            }
+    }
+    complete_effect = {
+        TWR_motion_for_peacekeeping_mission = yes
+    }
+    ai_will_do = {
+        factor = 30
+    }
+}
+
+#Perhaps, in the future, UN can acquire funds, and then WPF aid takes some of it off
+#Then, countries have to put funds into UN for UN to distribute them
+WPF_aid_active = {
+    cost = 90
+    fire_only_once = yes
+    icon = generic_UN
+    visible = {
+        OR = {
+        is_in_the_un = yes
+        }
+        is_major = no
+        is_fascist = no
+        has_global_flag = WFP_ENACTED
+    }
+    available = {
+    OR = {
+    has_defensive_war = yes
+    has_civil_war = yes
+    has_stability < 0.1
+    num_of_available_civilian_factories < 5
+        }
+    UNQ = {
+    has_equipment = {
+    support_equipment > 49
+            }
+        }
+    }
+    days_remove = 120
+    modifier = {
+    stability_factor = 0.05
+    monthly_population = 0.03
+    experience_loss_factor = 0.05
+    production_factory_efficiency_gain_factor = 0.01
+    political_power_factor = -0.5
+    }
+    remove_effect = {
+    country_event = united_nations.10
+    }
+    complete_effect = {
+    UNQ = {
+    add_equipment_to_stockpile = {
+    type = support_equipment
+    amount = -50
+            }
+        }
+    }
+    ai_will_do = {
+        factor = 30
+    }
+}
+
+IMF_assistance_active = {
+    cost = 75
+    fire_only_once = yes
+    icon = dolla_bills
+    visible = {
+        is_in_the_un = yes
+        is_fascist = no
+        has_global_flag = NEW_WORLD_ORDAH_NEW_WORLD_ORDAH
+    }
+    available = {
+    has_war = no
+    num_of_available_civilian_factories < 15
+    }
+    days_remove = 120
+    modifier = {
+    political_power_factor = -0.5
+    local_resources_factor = -0.25
+    }
+    remove_effect = {
+    add_offsite_building = { type = industrial_complex level = -3 }
+    }
+    complete_effect = {
+    country_event = united_nations.11
+    add_offsite_building = { type = industrial_complex level = 3 }
+    }
+    ai_will_do = {
+        factor = 30
+    }
+}
+
+UN_volunteers_to_intervention = {
+    cost = 55
+    fire_only_once = yes
+    icon = generic_UN
+    visible = {
+        has_global_flag = UNITED_NATIONS_COMMAND_ESTABLISHED
+        has_war = no
+        is_in_the_un = yes
+        is_fascist = no
+        any_country = {
+        AND = {
+        has_idea = United_Nations_TAGGED_FOR_DEATH
+        has_war = yes
+            }
+        }
+        NOT = {
+        has_relation_modifier = {
+        target = FROM
+        modifier = volunteer_limit_plus_one
+            }
+        has_relation_modifier = {
+        target = FROM
+        modifier = volunteer_limit_plus_two
+            }
+        has_relation_modifier = {
+        target = FROM
+        modifier = volunteer_limit_plus_three
+            }
+        has_war_with = FROM
+        has_war_together_with = FROM
+        }
+    }
+    targets_dynamic = yes
+    target_trigger = {
+        FROM = {
+            is_in_the_un = yes
+            any_enemy_country = {
+            has_idea = United_Nations_TAGGED_FOR_DEATH
+            NOT = { tag = GSR }
+            }
+        }
+    }
+    complete_effect = {
+    add_relation_modifier = {
+        target = FROM
+        modifier = volunteer_limit_plus_one
+    }
+    add_ai_strategy = {
+        type = send_volunteers_desire
+        id = FROM
+        value = 100
+    }
+    add_war_support = 0.05
+    }
+    ai_will_do = {
+        factor = 30
+    }
+}
+
+international_coalition_against_RKS = {
+    icon = generic_UN
+    fire_only_once = yes
+    cost = 30
+    ai_will_do = {
+        factor = 500
+    }
+    visible = {
+        is_democratic = yes
+        OR = {
+        capital_scope = {
+            is_on_continent = europe
+            }
+        tag = USA  
+        }
+        is_in_the_un = yes
+        NOT = { has_global_flag = fash_resolution_happened }
+        NOT = { has_active_mission = UNGA_decision_10 }
+        NOT = { has_global_flag = RKS_DECISION_CLICKED }
+    }
+    available = {
+        2 = {
+        owner = { is_fascist = no has_war = no } 
+        }
+        855 = {
+        owner = { is_fascist = no has_war = no } 
+        }
+        NOT = { has_global_flag = ONGOING_UN_RESOLUTION_GENERAL }
+    }
+
+    complete_effect = {
+        UN_clr_all_UNGA = yes
+        set_variable = { global.UN_general_assembly_resolution = 10 }
+        start_unga_resolution = yes
+        set_global_flag = RKS_DECISION_CLICKED
+	}
+}
+
+replace_un_membership_seats_test = {
+    icon = generic_UN
+    fire_only_once = yes
+    cost = 30
+    ai_will_do = {
+        factor = 500
+    }
+    visible = {
+        always = no
+        #This is a tempalte for swapping
+    }
+    available = {
+        NOT = { has_global_flag = ONGOING_UN_RESOLUTION_GENERAL }
+    }
+    allowed = { tag = CHI }
+
+    complete_effect = {
+        clear_global_event_target = replaced_country
+        clear_global_event_target = replacer_country
+        UN_clr_all_UNGA = yes
+
+        LAO = {
+        save_global_event_target_as = replaced_country
+        }
+        VIN = {
+        save_global_event_target_as = replacer_country
+        }
+        
+        set_variable = { global.UN_general_assembly_resolution = 11 }
+        start_unga_resolution = yes
+	}
+}
+
+USA_support_congo_membership_instead = {
+    icon = generic_UN
+    fire_only_once = yes
+    cost = 50
+    ai_will_do = {
+        factor = 500
+    }
+    visible = {
+		COG = {
+		is_in_the_un = no
+		}
+        country_exists = COG
+        country_exists = BEL
+    }
+    available = {
+        NOT = { has_global_flag = ONGOING_UN_RESOLUTION_GENERAL }
+		COG = {
+		has_war_with = BEL	
+		}
+		BEL = {
+		is_democratic = no
+		}
+        OR = {
+		has_completed_focus = USA_AfroAsia_Strategy
+        has_completed_focus = CHI_Our_Comrades_In_Africa
+        }
+    }
+    allowed = {
+    OR = {
+    tag = USA
+    tag = CHI
+        }
+    }
+
+    complete_effect = {
+		add_opinion_modifier = {
+		target = COG
+		modifier = took_stand_for_us
+		}
+
+		add_opinion_modifier = {
+		target = BEL
+		modifier = large_decrease
+		}
+
+        clear_global_event_target = replaced_country
+        clear_global_event_target = replacer_country
+        UN_clr_all_UNGA = yes
+
+        BEL = {
+        save_global_event_target_as = replaced_country
+        }
+        COG = {
+        save_global_event_target_as = replacer_country
+        }
+        
+        set_variable = { global.UN_general_assembly_resolution = 11 }
+        start_unga_resolution = yes
+
+        if = {
+        limit = { tag = USA }
+        COG = {
+        custom_effect_tooltip = WE_CAN_INFLUENCE_THIS_NATION
+        set_country_flag = FLAG_TA_BATTLEGROUND
+            }
+        }
+        if = {
+        limit = { tag = CHI }
+        COG = {
+        custom_effect_tooltip = WE_CAN_INFLUENCE_THIS_NATION
+        set_country_flag = FLAG_CHINA_BATTLEGROUND
+            }
+        }
+	}
+}
+
+NUG_replace_UN_seat = {
+    icon = generic_UN
+    fire_only_once = yes
+    cost = 50
+    ai_will_do = {
+        factor = 500
+    }
+    visible = {
+        has_global_flag = BURMESE_RIVAL_GOVERNMENT_FORMED_CHECK
+		NUG = {
+		is_in_the_un = no
+		}
+        BUR = {
+		is_in_the_un = yes
+		}
+        country_exists = BUR
+        country_exists = NUG
+    }
+    available = {
+        NOT = { has_global_flag = ONGOING_UN_RESOLUTION_GENERAL }
+
+		NOT = {
+        AND = {
+        OR = {
+        tag = USA
+        tag = ENG
+        }
+        AND = {
+        BUR = { has_country_flag = FLAG_TA_ALIGNED }
+                }
+            }
+        }
+
+		NUG = {
+		is_democratic = yes
+		}
+
+        is_democratic = yes
+    }
+    allowed = {
+    OR = {
+    tag = USA
+    tag = ENG
+    tag = CHI
+        }
+    }
+
+    complete_effect = {
+		add_opinion_modifier = {
+		target = NUG
+		modifier = took_stand_for_us
+		}
+
+		add_opinion_modifier = {
+		target = BUR
+		modifier = large_decrease
+		}
+
+        clear_global_event_target = replaced_country
+        clear_global_event_target = replacer_country
+        UN_clr_all_UNGA = yes
+
+        BUR = {
+        save_global_event_target_as = replaced_country
+        }
+        NUG = {
+        save_global_event_target_as = replacer_country
+        }
+        
+        set_variable = { global.UN_general_assembly_resolution = 11 }
+        start_unga_resolution = yes
+	}    
+}
+
+UN_fuck_fascists = {
+    visible = {
+        is_in_array = { global.TWR_UN_array = THIS }
+        is_major = yes
+    }
+    visible = {
+    has_global_flag = UN_resolution_eradicate_fascism
+    NOT = {
+    has_war_with = FROM
+        }
+    }
+    targets_dynamic = yes
+    target_trigger = {
+        FROM = {
+            is_fascist = yes
+            OR = {
+            capital_scope = {
+            is_on_continent = europe
+                }
+            tag = SAF
+            }
+
+            NOT = { has_country_flag = HERMIT_FASCIST_STATE }
+        }
+    }
+    complete_effect = {
+        create_wargoal = {
+        type = annex_everything
+        target = FROM
+        }
+        FROM = {
+        set_country_flag = TARGET_OF_FASCIST_ERADICATION_WAR
+        }
+        set_country_flag = GOING_AGAINST_@FROM
+    }
+}
+
+UN_united_nations_command = {
+    visible = {
+        is_in_array = { global.TWR_UN_array = THIS }
+        is_major = yes
+    }
+    visible = {
+    NOT = { has_global_flag = ACTIVE_UNSC_RESOLUTION }
+    OR = {
+    has_global_flag = UN_resolution_eradicate_fascism
+    has_global_flag = un_authorised_war
+    has_completed_focus = CHI_UN_on_the_march
+    }
+    NOT = { has_global_flag = UNITED_NATIONS_COMMAND_ESTABLISHED }
+    }
+
+    icon = generic_UN
+    cost = 35
+
+    complete_effect = {
+    TWR_un_command_effect = yes
+    }
+}
+
+UN_united_nations_fascist_order = {
+    visible = {
+        has_global_flag = UNITED_NATIONS_COMMAND_ESTABLISHED
+        is_in_array = { global.TWR_UNSC_array = THIS }
+        is_major = yes
+    }
+    visible = {
+    NOT = { has_global_flag = ACTIVE_UNSC_RESOLUTION }
+    }
+
+    available = {
+    has_war = yes
+    any_enemy_country = {
+    is_fascist = yes
+        }
+    }
+
+    icon = generic_UN
+    cost = 25
+
+    complete_effect = {
+    TWR_war_on_fash_effect = yes
+    }
+}
+
+
+GENERIC_WFP_form = {
+		allowed = {
+        OR = {
+        tag = USA
+        tag = ENG
+        tag = CHI
+            }
+        }	  
+		available = {
+		NOT = { has_global_flag = ONGOING_UN_RESOLUTION_GENERAL }
+        NOT = { has_country_leader_with_trait = isolationist }
+        OR = {
+        has_completed_focus = CHI_UN_on_the_march
+        has_completed_focus = USA_Reconstruction_of_Europe
+        has_completed_focus = ENG_boost_UN_role_con_lib
+        has_completed_focus = ENG_boost_UN_role_lab_lib
+            }
+        has_war = no
+		}
+		visible = {
+		is_in_the_un = yes
+        is_fascist = no
+        NOT = { has_global_flag = WFP_ENACTED }
+		}
+		fire_only_once = yes
+		cost = 80
+        icon = handing_bills
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision GENERIC_WFP_form"
+
+			UN_clr_all_UNGA = yes
+			set_variable = { global.UN_general_assembly_resolution = 12 }
+			start_unga_resolution = yes
+		}
+		ai_will_do = {
+			factor = 100
+		}
+	}
+
+GENERIC_bretton_woods_time = {
+		allowed = {
+        OR = {
+        tag = USA
+        tag = ENG
+        tag = CHI
+            }
+        }	  
+		available = {
+		NOT = { has_global_flag = ONGOING_UN_RESOLUTION_GENERAL }
+        NOT = { has_country_leader_with_trait = isolationist }
+        count_triggers = {
+        amount = 4
+        126 = { owner = { OR = { is_fascist = no is_in_the_un = yes } } }
+        16 = { owner = { OR = { is_fascist = no is_in_the_un = yes } } }
+        855 = { owner = { OR = { is_fascist = no is_in_the_un = yes } } }
+        2 = { owner = { OR = { is_fascist = no is_in_the_un = yes } } }
+        613 = { owner = { OR = { is_fascist = no is_in_the_un = yes } } }
+        }
+        has_war = no
+		}
+		visible = {
+		is_in_the_un = yes
+        is_fascist = no
+        NOT = { has_global_flag = NEW_WORLD_ORDAH_NEW_WORLD_ORDAH }
+		}
+		fire_only_once = yes
+		cost = 95
+        icon = dolla_bills
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision GENERIC_bretton_woods_time"
+
+			UN_clr_all_UNGA = yes
+			set_variable = { global.UN_general_assembly_resolution = 13 }
+			start_unga_resolution = yes
+		}
+		ai_will_do = {
+			factor = 100
+		}
+	}
+
+SAF_namibia_peaceful = {
+		allowed = {
+        tag = SAF
+        }	  
+		available = {
+		NOT = { has_global_flag = ONGOING_UN_RESOLUTION_GENERAL }
+        has_country_flag = REFORMS_IN_SWA_SAF
+        owns_state = 541
+        owns_state = 945
+        has_war = no
+		}
+		visible = {
+		is_in_the_un = yes
+        is_fascist = no
+        has_country_flag = REFORMS_IN_SWA_SAF
+		}
+		fire_only_once = yes
+		cost = 15
+        icon = generic_decision
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision SAF_namibia_peaceful"
+			UN_clr_all_UNGA = yes
+			set_variable = { global.UN_general_assembly_resolution = 14 }
+			start_unga_resolution = yes
+		}
+		ai_will_do = {
+			factor = 100
+		}
+	}
+
+
+SSNP_intervention_against = {
+        cost = 50
+        fire_only_once = yes
+        icon = generic_UN
+        visible = {
+        OR = {
+        is_in_the_unsc = yes
+        tag = UNQ
+        }
+        is_fascist = no
+        GSR = {
+        count_triggers = {
+            amount = 3
+            has_war_with = ISR
+            has_war_with = JOR
+            has_war_with = ROJ
+            has_war_with = IRQ
+            has_war_with = EGY
+            has_war_with = PAL
+        }
+        has_completed_focus = SYR_the_opporunity_to_strike
+            }
+        }
+        available = {
+        NOT = { has_global_flag = ONGOING_UN_RESOLUTION_GENERAL }
+        NOT = { has_country_leader_with_trait = isolationist }
+        has_war = no
+        }
+        complete_effect = {
+            TWR_intervention_on_ssnp_effect = yes
+        }
+        ai_will_do = {
+            factor = 50
+        }
+    }
+
+UN_support_peacekeeping_mission = {
+    visible = {
+        is_in_array = { global.TWR_UN_array = THIS }
+    }
+    allowed = {
+        NOT = { tag = UNQ }
+    }
+    targets_dynamic = yes
+    target_trigger = {
+        FROM = {
+            has_idea_with_trait = UN_peacekeeping_mission
+        }
+    }
+    available = {
+    has_war = no
+    has_opinion = {
+    target = FROM
+    value > -1
+        }
+    }
+    ai_will_do = {
+    base = 5
+    modifier = {
+        add = 10
+        OR = {
+        has_army_size = {
+	    size > 3
+			}
+        }
+		OR = {
+		is_major = yes
+		is_democratic = yes
+			}
+    	}
+    modifier = {
+        add = 20
+        has_country_flag = AI_UN_eager_peacekeeper
+        }
+	}
+	cancel_trigger = {
+	has_war = yes
+	FROM = {
+	NOT = { has_idea_with_trait = UN_peacekeeping_mission }
+		}
+    }
+    icon = eng_trade_unions_support
+    custom_cost_trigger = {
+    has_manpower > 99
+    command_power > 19
+	}
+	custom_cost_text = UN_PEACEKEEPING_COST_MISSION
+    days_remove = 60
+    targeted_modifier = {
+    stability_factor = 0.01
+    }
+    complete_effect = {
+    add_manpower = -100
+    hidden_effect = {
+    add_to_variable = {
+    var = peacekeeping_mission_time_count
+    value = 1
+            }
+        }
+    }
+    remove_effect = {
+    add_manpower = 100
+
+    #Rewards
+    random_list = {
+    25 = { country_event = united_nations.4 }
+    30 = { country_event = united_nations.1 }
+    25 = { country_event = united_nations.3 }
+    20 = { }
+    }
+
+    #Losses
+    random_list = {
+    60 = { }
+    40 = { country_event = united_nations.2 }
+    }
+
+    #Special Spirit
+    hidden_effect = {
+    if = {
+    limit = { check_variable = { peacekeeping_mission_time_count > 60 } NOT = { has_idea = UN_peacekeeping_champ } }
+    random_list = {
+    1 = { country_event = united_nations.5 }
+    99 = {}
+                    }
+                }
+            }
+        }
+	}
+
+#Send men and equipment to UN
+UN_transfer_un_personnel = {
+    visible = {
+        is_in_array = { global.TWR_UN_array = THIS }
+    }
+    targets = { UNQ }
+    days_re_enable = 100
+    available = {
+    has_manpower > 999
+    has_war = no
+    UNQ = {
+    has_manpower < 90000
+        }
+    }
+    ai_will_do = {
+    base = 5
+    modifier = {
+        add = 5
+        has_manpower > 100000
+    	}
+    modifier = {
+        add = 20
+        has_country_flag = AI_UN_eager_peacekeeper
+        }
+	}
+	cancel_trigger = {
+	has_war = yes
+	FROM = {
+	NOT = { has_idea_with_trait = UN_peacekeeping_mission }
+		}
+    }
+    icon = generic_operation
+    custom_cost_trigger = {
+    has_manpower > 1000
+	}
+	custom_cost_text = UN_SEND_MEN_TO_UN_1000
+
+    complete_effect = {
+    random_list = {
+    25 = { army_experience = 5 }
+    25 = { army_experience = 10 }
+    25 = { army_experience = 15 }
+    25 = {
+    army_experience = 15
+    add_doctrine_cost_reduction = {
+	cost_reduction = 0.1
+	uses = 1
+	category = land_doctrine
+            }
+        }
+    }
+    UNQ = {
+    add_manpower = 1000
+    }
+    hidden_effect = {
+    add_to_variable = {
+    var = peacekeeping_mission_time_count
+    value = 1
+            }
+        }
+    #Special Spirit
+    hidden_effect = {
+    add_manpower = -1000
+    if = {
+    limit = { check_variable = { peacekeeping_mission_time_count > 60 } NOT = { has_idea = UN_peacekeeping_champ } }
+    random_list = {
+    1 = { country_event = united_nations.5 }
+    99 = {}
+                    }
+                }
+            }
+    }
+}
+
+UN_transfer_surplus_rifles = {
+    visible = {
+        is_in_array = { global.TWR_UN_array = THIS }
+    }
+    targets = { UNQ }
+    days_re_enable = 100
+    available = {
+    has_equipment = {
+    infantry_equipment > 499
+    }
+    UNQ = {
+    has_equipment = {
+    infantry_equipment < 1000
+        }
+    }
+    has_war = no
+    }
+    ai_will_do = {
+    base = 5
+    modifier = {
+        add = 10
+        has_equipment = {
+        infantry_equipment > 2000
+        }
+		OR = {
+		is_major = yes
+		is_democratic = yes
+			}
+    	}
+    modifier = {
+        add = 20
+        has_country_flag = AI_UN_eager_peacekeeper
+        }
+	}
+	cancel_trigger = {
+	has_war = yes
+	FROM = {
+	NOT = { has_idea_with_trait = UN_peacekeeping_mission }
+		}
+    }
+    icon = generic_prepare_civil_war
+    custom_cost_trigger = {
+    has_equipment = {
+    infantry_equipment > 499
+        }
+	}
+	custom_cost_text = UN_SEND_GUN_500
+
+    complete_effect = {
+    send_equipment = {
+    equipment = infantry_equipment
+    amount = 500
+    target = UNQ
+    }
+    hidden_effect = {
+    add_to_variable = {
+    var = peacekeeping_mission_time_count
+    value = 1
+            }
+        }
+    #Special Spirit
+    hidden_effect = {
+    if = {
+    limit = { check_variable = { peacekeeping_mission_time_count > 60 } NOT = { has_idea = UN_peacekeeping_champ } }
+    random_list = {
+    1 = { country_event = united_nations.5 }
+    99 = {}
+                    }
+                }
+            }
+    }
+}
+
+UN_transfer_support_equipment = {
+    visible = {
+        is_in_array = { global.TWR_UN_array = THIS }
+    }
+    targets = { UNQ }
+    days_re_enable = 100
+    available = {
+    has_equipment = {
+    support_equipment > 49
+    }
+    UNQ = {
+    has_equipment = {
+    support_equipment < 999
+        }
+    }
+    has_war = no
+    }
+    ai_will_do = {
+    base = 5
+    modifier = {
+        add = 10
+        has_equipment = {
+        support_equipment > 500
+        }
+		OR = {
+		is_major = yes
+		is_democratic = yes
+			}
+    	}
+    modifier = {
+        add = 20
+        has_country_flag = AI_UN_eager_peacekeeper
+        }
+	}
+	cancel_trigger = {
+	has_war = yes
+	FROM = {
+	NOT = { has_idea_with_trait = UN_peacekeeping_mission }
+		}
+    }
+    icon = generic_prepare_civil_war
+    custom_cost_trigger = {
+    has_equipment = {
+    support_equipment > 49
+        }
+	}
+	custom_cost_text = UN_SEND_SUPPORT_50
+
+    complete_effect = {
+    send_equipment = {
+    equipment = support_equipment
+    amount = 50
+    target = UNQ
+    }
+    hidden_effect = {
+    add_to_variable = {
+    var = peacekeeping_mission_time_count
+    value = 1
+            }
+        }
+    #Special Spirit
+    hidden_effect = {
+    if = {
+    limit = { check_variable = { peacekeeping_mission_time_count > 60 } NOT = { has_idea = UN_peacekeeping_champ } }
+    random_list = {
+    1 = { country_event = united_nations.5 }
+    99 = {}
+                    }
+                }
+            }
+    }
+}
+
+UN_transfer_at_equipment = {
+    visible = {
+        is_in_array = { global.TWR_UN_array = THIS }
+    }
+    targets = { UNQ }
+    days_re_enable = 100
+    available = {
+    has_equipment = {
+    anti_tank_equipment > 49
+    }
+    has_war = no
+    UNQ = {
+    has_equipment = {
+    anti_tank_equipment < 100
+            }
+        }
+    }
+    ai_will_do = {
+    base = 5
+    modifier = {
+        add = 10
+        has_equipment = {
+        anti_tank_equipment > 500
+        }
+		OR = {
+		is_major = yes
+		is_democratic = yes
+			}
+    	}
+    modifier = {
+        add = 20
+        has_country_flag = AI_UN_eager_peacekeeper
+        }
+	}
+	cancel_trigger = {
+	has_war = yes
+	FROM = {
+	NOT = { has_idea_with_trait = UN_peacekeeping_mission }
+		}
+    }
+    icon = generic_prepare_civil_war
+    custom_cost_trigger = {
+    has_equipment = {
+    anti_tank_equipment > 49
+        }
+	}
+	custom_cost_text = UN_SEND_AT_50
+
+    complete_effect = {
+    send_equipment = {
+    equipment = anti_tank_equipment
+    amount = 50
+    target = UNQ
+    }
+    hidden_effect = {
+    add_to_variable = {
+    var = peacekeeping_mission_time_count
+    value = 1
+            }
+        }
+    #Special Spirit
+    hidden_effect = {
+    if = {
+    limit = { check_variable = { peacekeeping_mission_time_count > 60 } NOT = { has_idea = UN_peacekeeping_champ } }
+    random_list = {
+    1 = { country_event = united_nations.5 }
+    99 = {}
+                    }
+                }
+            }
+    }
+}
+
+UN_transfer_motor_equipment = {
+    visible = {
+        is_in_array = { global.TWR_UN_array = THIS }
+    }
+    targets = { UNQ }
+    days_re_enable = 100
+    available = {
+    has_equipment = {
+    motorized_equipment > 19
+    }
+    has_war = no
+    UNQ = {
+    has_equipment = {
+    motorized_equipment < 40
+            }
+        }
+    }
+    ai_will_do = {
+    base = 5
+    modifier = {
+        add = 10
+        has_equipment = {
+        motorized_equipment > 300
+        }
+		OR = {
+		is_major = yes
+		is_democratic = yes
+			}
+    	}
+    modifier = {
+        add = 20
+        has_country_flag = AI_UN_eager_peacekeeper
+        }
+	}
+	cancel_trigger = {
+	has_war = yes
+	FROM = {
+	NOT = { has_idea_with_trait = UN_peacekeeping_mission }
+		}
+    }
+    icon = generic_prepare_civil_war
+    custom_cost_trigger = {
+    has_equipment = {
+    motorized_equipment > 19
+        }
+	}
+	custom_cost_text = UN_SEND_TRUCK_20
+
+    complete_effect = {
+    send_equipment = {
+    equipment = motorized_equipment
+    amount = 20
+    target = UNQ
+    }
+    hidden_effect = {
+    add_to_variable = {
+    var = peacekeeping_mission_time_count
+    value = 1
+            }
+        }
+    #Special Spirit
+    hidden_effect = {
+    if = {
+    limit = { check_variable = { peacekeeping_mission_time_count > 60 } NOT = { has_idea = UN_peacekeeping_champ } }
+    random_list = {
+    1 = { country_event = united_nations.5 }
+    99 = {}
+                    }
+                }
+            }
+    }
+}
+
+UN_peacekeeper_group_form = {
+    allowed = { tag = UNQ }
+    cost = 0
+    ai_will_do = {
+    base = 900
+    }
+    available = {
+    NOT = {
+    num_divisions > UNQ_DIVISION_CAP
+    }
+    has_manpower > 3299
+    has_equipment = {
+    infantry_equipment > 1
+    }
+    has_equipment = {
+    support_equipment > 1
+        }
+    }
+
+    days_re_enable = 100
+    complete_effect = {
+    add_manpower = -3300
+    random_owned_controlled_state = {
+    create_unit = {
+    division = "name = \"United Nations Peacekeeping Force\" division_template = \"Peacekeeper Group\" start_equipment_factor = 0.01 start_manpower_factor = 1.0"
+    owner = UNQ
+		    }
+        }
+    }
+}
+
+UN_peacekeeper_mission_form = {
+    allowed = { tag = UNQ }
+    cost = 0
+    ai_will_do = {
+    base = 900
+    }
+    available = {
+    NOT = {
+    num_divisions > UNQ_DIVISION_CAP
+    }
+    has_manpower > 7299
+    has_equipment = {
+    infantry_equipment > 1
+    }
+    has_equipment = {
+    support_equipment > 1
+        }
+    }
+
+    days_re_enable = 100
+    complete_effect = {
+    add_manpower = -7300
+    random_owned_controlled_state = {
+    create_unit = {
+    division = "name = \"United Nations Peacekeeping Mission\" division_template = \"Peacekeeping Mission\" start_equipment_factor = 0.01 start_manpower_factor = 1.0"
+    owner = UNQ
+		    }
+        }
+    }
+}
+
+
+UN_send_voltuneers = {
+    allowed = { tag = UNQ }
+    targets_dynamic = yes
+    target_trigger = {
+        FROM = {
+            OR = {
+            has_idea_with_trait = UN_peacekeeping_mission
+            AND = {
+            is_in_the_un = yes
+            NOT = {
+            any_enemy_country = {
+                is_in_the_un = yes
+                }
+            }
+            any_enemy_country = {
+                tag = GSR
+                }
+            has_global_flag = UNITED_NATIONS_ANTI_SSNP
+                }
+            }
+        }
+    }
+    available = {
+        FROM = {
+        NOT = { has_country_flag = ALREADY_SENT_MEN_UN }
+        OR = {
+        has_defensive_war = yes 
+        has_civil_war = yes
+        any_enemy_country = {
+        has_idea = United_Nations_TAGGED_FOR_DEATH
+                }
+        
+        AND = {
+            FROM = { is_in_the_un = yes }
+            NOT = {
+            any_enemy_country = {
+                is_in_the_un = yes
+                }
+            }
+            any_enemy_country = {
+                tag = GSR
+                }
+            has_global_flag = UNITED_NATIONS_ANTI_SSNP
+                }
+            }
+        }
+    }
+    visible = {
+    }
+    ai_will_do = {
+        base = 100
+    }
+    icon = generic_prepare_civil_war
+    cost = 0
+
+    complete_effect = {
+        FROM = { set_country_flag = ALREADY_SENT_MEN_UN }
+        add_relation_modifier = {
+            target = FROM
+            modifier = volunteer_limit_plus_one
+        }
+        if = {
+        limit = {
+        any_enemy_country = {
+                tag = GSR
+                }
+            }
+        add_relation_modifier = {
+            target = FROM
+            modifier = volunteer_limit_plus_two
+            }
+        }
+        add_ai_strategy = {
+            type = send_volunteers_desire
+            id = FROM
+            value = 100
+        }
+    }
+}
+
+UN_attack_buff_un_military_command = {
+    allowed = { tag = UNQ }
+    targets_dynamic = yes
+    target_trigger = {
+        FROM = {
+            is_fascist = yes
+            is_in_the_un = no
+            has_war = yes
+            any_enemy_country = {
+            is_in_the_un = yes
+            }
+
+            NOT = { tag = NRI }
+            NOT = { tag = GSR }
+        }
+    }
+    available = {
+    }
+    visible = {
+    has_global_flag = UNITED_NATIONS_FASCIST_WIPE
+    has_global_flag = UNITED_NATIONS_COMMAND_ESTABLISHED
+    }
+    ai_will_do = {
+        base = 100
+    }
+    icon = generic_prepare_civil_war
+    cost = 0
+    days_remove = 365
+    modifier = {
+    }
+    targeted_modifier = {
+    tag = FROM
+    attack_bonus_against = 0.99
+    }
+    complete_effect = {
+        FROM = {
+        if = {
+        limit = { NOT = { has_idea = United_Nations_TAGGED_FOR_DEATH } }
+        add_ideas = United_Nations_TAGGED_FOR_DEATH
+            }
+        }
+    }
+}
+
+#DODGING UN SANCTIONS
+
+
+#THE FOLLOWING FIRES FOR UNQ
+UNGA_decision_0 = {
+    activation = {
+        always = no
+    }
+    available = {
+        always = no
+    }
+    cancel_trigger = {
+        #UN has fallen its jover
+    }
+    icon = mission_icon
+    is_good = yes
+    days_mission_timeout = 15
+    selectable_mission = no
+    timeout_effect = {
+        }
+    }
+#European Situation Report
+UNGA_decision_2 = {
+    activation = {
+        always = no
+    }
+    available = {
+        always = no
+    }
+    cancel_trigger = {
+        #UN has fallen its jover
+    }
+    icon = mission_icon
+    is_good = yes
+    days_mission_timeout = 15
+    selectable_mission = no
+    timeout_effect = {
+        custom_effect_tooltip = RESOLUTION_WILL_BE_ADOPTED_IF_SIMPLE_MAJORITY
+
+        if = {
+            limit = {
+                check_variable = {
+                    var = global.unga_yes
+                    value = global.unga_no
+                    compare = less_than_or_equals
+                }
+            }
+           
+        }
+
+        if = {
+            limit = {
+                check_variable = {
+                    var = global.unga_yes
+                    value = global.unga_no
+                    compare = greater_than
+                }
+            }
+            add_to_array = { global.TWR_UN_general_assembly_past_resolution_array = 2 }
+            news_event = UNnews.16
+            
+            
+        }
+        UN_clr_all_UNGA = yes
+    }
+}
+#UN Partition of Palestine?
+UNGA_decision_7 = {
+    activation = {
+        always = no
+    }
+    available = {
+        always = no
+    }
+    cancel_trigger = {
+        #UN has fallen its jover
+    }
+    icon = mission_icon
+    is_good = yes
+    days_mission_timeout = 15
+    selectable_mission = no
+    timeout_effect = {
+        custom_effect_tooltip = RESOLUTION_WILL_BE_ADOPTED_IF_SIMPLE_MAJORITY
+
+        if = {
+            limit = {
+                check_variable = {
+                    var = global.unga_yes
+                    value = global.unga_no
+                    compare = less_than_or_equals
+                }
+            }
+            news_event = UNnews.14
+            set_global_flag = UN_PALESTINE_PARTITION_SHOT_DOWN
+            clr_global_flag = ONGOING_UN_RESOLUTION_THING_FOR_PAL
+            ISR = {
+                country_event = {
+                    id = twrpalestine.11
+                    days = 5
+                }
+            }
+        }
+
+        if = {
+            limit = {
+                check_variable = {
+                    var = global.unga_yes
+                    value = global.unga_no
+                    compare = greater_than
+                }
+            }
+            add_to_array = { global.TWR_UN_general_assembly_past_resolution_array = 7 }
+            news_event = UNnews.15
+            
+            set_global_flag = UN_PALESTINE_PARTITION_ACCEPTED
+            clr_global_flag = ONGOING_UN_RESOLUTION_THING_FOR_PAL
+            
+            ISR = {
+                country_event = {
+                    id = twrpalestine.10
+                    days = 10
+                }
+            }
+        }
+        UN_clr_all_UNGA = yes
+    }
+}
+
+#UN Sanctioning South Africa
+    UNGA_decision_8 = {
+    activation = {
+        always = no
+    }
+    available = {
+        always = no
+    }
+    cancel_trigger = {
+        #UN has fallen its jover
+    }
+    icon = mission_icon
+    is_good = yes
+    days_mission_timeout = 15
+    selectable_mission = no
+    timeout_effect = {
+
+    if = {
+	limit = {
+    check_variable = {
+    var = global.unga_yes
+    value = global.unga_no
+    compare = less_than_or_equals
+        }
+    }
+    news_event = UNnews.2
+    }
+
+    if = {
+	limit = {
+    check_variable = {
+    var = global.unga_yes
+    value = global.unga_no
+    compare = greater_than
+        }
+    }
+    news_event = UNnews.3
+	every_country = {
+	limit = { is_in_the_un = yes }
+	add_opinion_modifier = {
+    target = SAF
+    modifier = sanctions
+        }
+    }
+    SAF = { TWR_remove_from_un = yes set_country_flag = UN_SANCTIONED_FLAG }
+    add_to_array = { global.TWR_UN_general_assembly_past_resolution_array = 8 }
+    }
+    
+    UN_clr_all_UNGA = yes
+       }
+   }
+
+#UN Second HQ in Shanghai
+
+#New UN building in Shanghai
+
+UNGA_decision_9 = {
+    activation = {
+        always = no
+    }
+    available = {
+        always = no
+    }
+    cancel_trigger = {
+        #UN has fallen its jover
+    }
+
+    icon = mission_icon
+    is_good = yes
+    days_mission_timeout = 15
+    selectable_mission = no
+
+    timeout_effect = {
+
+    if = {
+    limit = {
+    check_variable = {
+    var = global.unga_yes
+    value = global.unga_no
+    compare = less_than_or_equals
+        }
+    }
+    news_event = UNnews.2
+    }
+
+    #SUCCESS
+    if = {
+    limit = {
+    check_variable = {
+    var = global.unga_yes
+    value = global.unga_no
+    compare = greater_than
+        }
+    }
+    news_event = twrchinaforeign.115
+    CHI = {
+    set_country_flag = Can_Build_UN_HQ_2
+                }
+    add_to_array = { global.TWR_UN_general_assembly_past_resolution_array = 9 }
+            }
+    
+    UN_clr_all_UNGA = yes
+        }
+    }
+
+#Eradicate Fascism
+    UNGA_decision_10 = {
+        activation = {
+            always = no
+        }
+        available = {
+            always = no
+        }
+        cancel_trigger = {
+            #UN has fallen its jover
+        }
+
+        icon = mission_icon
+        is_good = yes
+        days_mission_timeout = 15
+        selectable_mission = no
+
+        timeout_effect = {
+        #FAILURE
+        if = {
+        limit = {
+        check_variable = {
+        var = global.unga_yes
+        value = global.unga_no
+        compare = less_than_or_equals
+            }
+        }
+        news_event = UNnews.2
+        }
+
+        #SUCCESS
+        if = {
+        limit = {
+        check_variable = {
+        var = global.unga_yes
+        value = global.unga_no
+        compare = greater_than
+            }
+        }
+        add_to_array = { global.TWR_UN_general_assembly_past_resolution_array = 10 }
+        news_event = twrheernews.14
+	    set_global_flag = UN_resolution_eradicate_fascism
+            }
+        
+        UN_clr_all_UNGA = yes
+        }
+    }
+
+#Swap Recognition
+    UNGA_decision_11 = {
+    activation = {
+        always = no
+    }
+    available = {
+        always = no
+    }
+    cancel_trigger = {
+        #UN has fallen its jover
+    }
+    icon = mission_icon
+    is_good = yes
+    days_mission_timeout = 15
+    selectable_mission = no
+    timeout_effect = {
+     #FAILURE
+        if = {
+        limit = {
+        check_variable = {
+        var = global.unga_yes
+        value = global.unga_no
+        compare = less_than_or_equals
+            }
+        }
+        news_event = UNnews.2
+        }
+
+        #SUCCESS
+        if = {
+        limit = {
+        check_variable = {
+        var = global.unga_yes
+        value = global.unga_no
+        compare = greater_than
+            }
+        }
+        event_target:replacer_country = {
+		TWR_add_to_un = yes
+			}
+		event_target:replaced_country = {
+		TWR_remove_from_un = yes
+			}
+        news_event = UNnews.6
+            }
+        
+        UN_clr_all_UNGA = yes
+        }
+    }
+
+
+#WFP
+    UNGA_decision_12 = {
+    activation = {
+        always = no
+    }
+    available = {
+        always = no
+    }
+    cancel_trigger = {
+        #UN has fallen its jover
+    }
+    icon = mission_icon
+    is_good = yes
+    days_mission_timeout = 15
+    selectable_mission = no
+    timeout_effect = {
+     #FAILURE
+        if = {
+        limit = {
+        check_variable = {
+        var = global.unga_yes
+        value = global.unga_no
+        compare = less_than_or_equals
+            }
+        }
+        news_event = UNnews.2
+        }
+
+        #SUCCESS
+        if = {
+        limit = {
+        check_variable = {
+        var = global.unga_yes
+        value = global.unga_no
+        compare = greater_than
+            }
+        }
+        set_global_flag = WFP_ENACTED
+        news_event = UNnews.7
+        hidden_effect = {
+		add_to_array = { global.TWR_UN_programme_array = 3 }
+		        }
+            }
+        
+        UN_clr_all_UNGA = yes
+        }
+    }
+
+#Bretton Woods
+    UNGA_decision_13 = {
+    activation = {
+        always = no
+    }
+    available = {
+        always = no
+    }
+    cancel_trigger = {
+        #UN has fallen its jover
+    }
+    icon = mission_icon
+    is_good = yes
+    days_mission_timeout = 15
+    selectable_mission = no
+    timeout_effect = {
+     #FAILURE
+        if = {
+        limit = {
+        check_variable = {
+        var = global.unga_yes
+        value = global.unga_no
+        compare = less_than_or_equals
+            }
+        }
+        news_event = UNnews.2
+        }
+
+        #SUCCESS
+        if = {
+        limit = {
+        check_variable = {
+        var = global.unga_yes
+        value = global.unga_no
+        compare = greater_than
+            }
+        }
+        set_global_flag = NEW_WORLD_ORDAH_NEW_WORLD_ORDAH
+        news_event = UNnews.8
+        hidden_effect = {
+		add_to_array = { global.TWR_UN_programme_array = 4 }
+		        }
+            }
+        
+        UN_clr_all_UNGA = yes
+        }
+    }
+
+
+#Namibia 1
+    UNGA_decision_14 = {
+    activation = {
+        always = no
+    }
+    available = {
+        always = no
+    }
+    cancel_trigger = {
+        #UN has fallen its jover
+    }
+    icon = mission_icon
+    is_good = yes
+    days_mission_timeout = 15
+    selectable_mission = no
+    timeout_effect = {
+     #FAILURE
+        if = {
+        limit = {
+        check_variable = {
+        var = global.unga_yes
+        value = global.unga_no
+        compare = less_than_or_equals
+            }
+        }
+        news_event = UNnews.12
+        }
+
+        #SUCCESS
+        if = {
+            limit = {
+                check_variable = {
+                    var = global.unga_yes
+                    value = global.unga_no
+                    compare = greater_than
+                }
+            }
+            news_event = UNnews.13
+            hidden_effect = {
+                add_to_array = { global.TWR_UN_general_assembly_past_resolution_array = 11 }
+            }
+        }
+        UN_clr_all_UNGA = yes
+        }
+    }
+
+# #Israel-Palestine 1
+# UNGA_decision_15 = {
+#     activation = {
+#         always = no
+#     }
+#     available = {
+#         always = no
+#     }
+#     cancel_trigger = {
+#         #UN has fallen its jover
+#     }
+#     icon = mission_icon
+#     is_good = yes
+#     days_mission_timeout = 15
+#     selectable_mission = no
+#     timeout_effect = {
+#      #FAILURE
+#         if = {
+#         limit = {
+#         check_variable = {
+#         var = global.unga_yes
+#         value = global.UN_simple_majority
+#         compare = less_than
+#             }
+#         }
+#         news_event = UNnews.14
+#         }
+
+#         #SUCCESS
+#         if = {
+#             limit = {
+#                 check_variable = {
+#                     var = global.unga_yes
+#                     value = global.UN_simple_majority
+#                     compare = greater_than_or_equals
+#                 }
+#             }
+#             news_event = UNnews.15
+#             hidden_effect = {
+#                 add_to_array = { global.TWR_UN_general_assembly_past_resolution_array = 12 }
+#             }
+#         }
+#         UN_clr_all_UNGA = yes
+#     }
+# }
+
+
+#THE FOLLOWING FIRES FOR WORLD
+#GENERIC FOR WORLD UNGA
+    UNGA_active_decision = {
+    activation = {
+        always = no
+        }
+    available = {
+        always = no
+        }
+    icon = mission_icon
+    is_good = yes
+    days_mission_timeout = 15
+    selectable_mission = no
+    timeout_effect = {
+    custom_effect_tooltip = RESOLUTION_WILL_BE_ADOPTED_IF_SIMPLE_MAJORITY
+        }
+    }
+}
