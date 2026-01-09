@@ -1,4 +1,4 @@
-Total 13
+Total 16
 
 EN:
 Fixed the incorrect year for the "Cyclic Rate Reducer" and "Spring Washer" technologies
@@ -14,6 +14,9 @@ Converted all statinig to stating on german events
 Changed Re-establish a Czech State to Restablish Czech State to look as other Restablish decisions
 Fix wrong event on attacking or increasing someone influence with senate debate on Hitlers Germany
 Clean SPA_ideas_of_an_european_community focus effects
+Remove n from IRQ_Development_plans_desc
+Fixed that UN_transfer_motor_equipment checked for anti tank equipment
+Remove unnecessary prerequisites from some Russian Reunification decisions
 
 RU:
 Исправил неверно установленный год для технологий "Cyclic Rate Reducer" и "Spring Washer"
@@ -29,3 +32,6 @@ twrbritainpolitics.91.c теперь не отображает тултип ка
 Изменил Re-establish a Czech State на Restablish Czech State чтобы выглядело так же как и другие такие решения
 Исправил неправильный ивент при увеличении или уменьшении чьего-либо влияния через сенат при Гитлере
 Изменил эффекты испанского фокуса SPA_ideas_of_an_european_community убрав бесполезную часть
+Убрал лишнюю n в начале IRQ_Development_plans_desc
+Исправил что UN_transfer_motor_equipment вместо моторизации проверял противотанковое снаряжение у ООН
+Убрал лишние требования у некоторых решений Russian Reunification
