@@ -587,8 +587,8 @@ IRQ_Aerial_Reconnaissance_desc:0 "Perhaps one of the greatest advantages of havi
  IRQ_won_crisis_republican:0 "§GArabia has been united under the revolutionary banner!§!"
  IRQ_suez_war_victory_republic_tt:0 "§GIt is time to begin rebuilding the Arab world under a new, republican banner.§!"
  IRQ_suez_war_victory_hashemite_tt:0 "§GAs Faisal envisioned, we will rebuild.§!"
- IRQ_hashemite_credits_tt:0 "§GYes, he is.§!\n\n§YOn behalf of Hammurabi and the rest of the Thousand Week Reich team, we thank you for playing Israel and hope you enjoyed!§!"
- IRQ_republican_credits_tt:0 "§YYet, what its fate will end up being is yet undecided...§!\n\n§YOn behalf of Hammurabi and the rest of the Thousand Week Reich team, we thank you for playing Israel and hope you enjoyed!§!"
+ IRQ_hashemite_credits_tt:0 "§GYes, he is.§!\n\n§YOn behalf of Hammurabi and the rest of the Thousand Week Reich team, we thank you for playing Iraq and hope you enjoyed!§!"
+ IRQ_republican_credits_tt:0 "§YYet, what its fate will end up being is yet undecided...§!\n\n§YOn behalf of Hammurabi and the rest of the Thousand Week Reich team, we thank you for playing Iraq and hope you enjoyed!§!"
 
  #NEW 
  IRQ_Development_office: "Development Office"

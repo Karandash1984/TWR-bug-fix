@@ -2713,7 +2713,7 @@ SOV_ASSR_decisions = {
 				}
 			}
 		}
- 		588 = {
+ 		970 = {
  		create_unit = {
 	    division = "name = \"1-ya Osetinskiy Pekhotnaya Diviziya\" division_template = \"Osetinskiy Pekhotnaya Diviziya\" start_experience_factor = 1.0 start_equipment_factor = 0.6"
 	    owner = ROOT
@@ -4364,7 +4364,7 @@ russian_reconquest = {
 		fire_only_once = yes
 
 		ai_will_do = {
-			base = 80
+			base = 150
 			modifier = {
 				factor = 0
 				AND = {
@@ -5818,6 +5818,10 @@ russian_reconquest = {
 			996 = { add_core_of = ROOT }
 			584 = { add_core_of = ROOT }
 			997 = { add_core_of = ROOT }
+			1087 = { add_core_of = ROOT }
+			1088 = { add_core_of = ROOT }
+			1089 = { add_core_of = ROOT }
+			1090 = { add_core_of = ROOT }
 		}
 	}
 
