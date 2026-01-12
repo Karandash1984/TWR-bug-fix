@@ -1219,7 +1219,7 @@ GER_civil_war_cat = {
 			OR = {
 				TAG = GER
 				TAG = HGR
-				TAG = GER
+				TAG = HSS
 			}
 			has_war_with = TOR
 			has_global_flag = TA_FAILED_TO_INVADE
@@ -8019,6 +8019,12 @@ GER_bring_the_RKs_back_into_the_fold_decisions = {
 		days_remove = 50
 		ai_will_do = {
 			factor = 20
+			modifier = {
+				factor = 0
+				FRA = {
+					is_in_faction = yes
+				}
+			}
 		}
 		modifier = {
 			political_power_cost = 0.1
@@ -9814,9 +9820,6 @@ GER_bring_the_RKs_back_into_the_fold_decisions = {
 					is_subject_of = ROOT
 					has_war = no
 				}
-			}
-			AZR = {
-				exists = yes
 			}
 		}
 		ai_will_do = {
