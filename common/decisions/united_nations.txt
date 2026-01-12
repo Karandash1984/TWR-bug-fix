@@ -339,6 +339,7 @@ GENERIC_request_peacekeepers = {
             any_enemy_country = { has_civil_war = no }
             has_civil_war = no
             longest_war_length > 5
+            surrender_progress > 0.05
         } 
         has_stability < 0.1
             }
