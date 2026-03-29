@@ -1,10 +1,9 @@
-Total 16
+Total 15
 
 EN:
 Fixed the incorrect year for the "Cyclic Rate Reducer" and "Spring Washer" technologies
 Hidden all encryption and decryption technologies if you own "La Resistance" DLC
 Fixed the issue where the 23rd Amendment Ratified event was triggered instead of the 23rd Amendment event
-Fixed that Taft expanded education act doesnt checked ONGOING_LEGISLATION_DELIBERATION country flag
 Friedrich Olbrichf is now available with national socialism government for Heer Junta
 Hitler spy decisions now fire only once
 Mussolini can no longer be appointer as a minister after death
@@ -22,7 +21,6 @@ RU:
 Исправил неверно установленный год для технологий "Cyclic Rate Reducer" и "Spring Washer"
 Спрятал все технологии шифровки и дешифровки для тех кто владеет "La Resistance" DLC
 Исправил момент когда выходил ивент 23rd Amendment Ratified вместо ивента 23rd Amendment
-Исправил что expanded education act Тафта не проверял ONGOING_LEGISLATION_DELIBERATION country flag
 Friedrich Olbrichf теперь доступен при идеологии национал-социализма для того чтобы в Немецкой Военной Хунте не сниматься с должности сразу после назначения
 Решения слежки Гитлера теперь можно взять лишь один раз
 Сделал что вы теперь не сможете назначить Муссолини на пост министра после его смерти

@@ -302,11 +302,10 @@ USA_SCOTUS_category = {
 	remove_effect = {
 	clr_country_flag = ONGOING_COURT_DECISION_TIMER
 	#Brown v Board 524
-	if = {
-			}
 		}
 	}
 	USA_pending_court_decision_miracle = {
+	icon = eng_trade_unions_support
 	visible = {
 	has_country_flag = MIRACLE_CASE
 	}
@@ -691,6 +690,8 @@ USA_campaign_trail_cat = {
 				always = no
 			}
 		}
+
+		icon = eng_propaganda_campaigns
 
 		cancel_if_not_visible = yes
 		is_good = yes
@@ -3653,7 +3654,7 @@ USA_europe_cleanup = {
 					tag = NOG
 					tag = CDA
 					tag = KMY
-					tag = KAM
+					original_tag = KAM
 					tag = LZG
 					tag = LIT
 					tag = DDR
@@ -3694,7 +3695,7 @@ USA_europe_cleanup = {
 					tag = NOG
 					tag = CDA
 					tag = KMY
-					tag = KAM
+					original_tag = KAM
 					tag = LZG
 					tag = LIT
 					tag = DDR
@@ -3732,7 +3733,7 @@ USA_europe_cleanup = {
 					tag = NOG
 					tag = CDA
 					tag = KMY
-					tag = KAM
+					original_tag = KAM
 					tag = LZG
 					tag = LIT
 					tag = DDR
@@ -5416,6 +5417,7 @@ USA_congress = {
             base = 30
         }
 		complete_effect = {
+		set_country_flag = ONGOING_LEGISLATION_DELIBERATION
 		#Set baseline support here
 		USA_set_gop_lib_support = yes
 		USA_set_dem_lib_support = yes
@@ -6297,6 +6299,7 @@ USA_congress = {
 		USA_set_all_dem_support = yes
 		set_country_flag = BIPARTISAN_BILL
 			}
+		set_country_flag = ONGOING_LEGISLATION_DELIBERATION
 		}
 
 		remove_effect = {

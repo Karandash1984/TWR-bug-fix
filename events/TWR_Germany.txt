@@ -1217,6 +1217,7 @@ country_event = {
 	option = {
 		name = twrgermany.5.a #use the Gestapo
 		add_ideas = GER_spying
+		custom_effect_tooltip = HIMMLER_BOOST
 		hidden_effect = { 
 			set_country_flag = spying_on_tops 
 			set_country_flag = usingthegestapo
@@ -1233,6 +1234,7 @@ country_event = {
 	option = {
 		name = twrgermany.5.b #use a special party detachment
 		add_ideas = GER_spying
+		custom_effect_tooltip = BORMANN_BOOST
 		hidden_effect = { 
 			set_country_flag = spying_on_tops
 			set_country_flag = bormanninvestigating 
@@ -2385,13 +2387,6 @@ country_event = { #Germany demands our subjugation no exception
 		ai_chance = {
 			base = 75
 		}
-		#GRM = { annex_country = { target = RGO } }
-		GRM = { puppet = RGO }
-		RGO = {
-		change_to_german_alignment = yes
-		transfer_state = 137
-		transfer_state = 196
-		}
 		if = {
 			limit = {
 				tag = RGO
@@ -2401,7 +2396,6 @@ country_event = { #Germany demands our subjugation no exception
 						has_country_leader = { name = "Hans Speidel"  ruling_only = yes }
 						has_country_leader = { name = "Franz Halder"  ruling_only = yes }
 					}
-					
 				 }
 			}
 			RGO = { 
@@ -2412,6 +2406,21 @@ country_event = { #Germany demands our subjugation no exception
 				set_cosmetic_tag = RGORK
 				remove_ideas = fanatical_dictatorship
 				add_ideas = authoritarian_system
+				GRM = { puppet = RGO }
+			} 
+			RGO = {
+				change_to_german_alignment = yes
+				transfer_state = 137
+				transfer_state = 196
+				every_owned_state = {
+					limit = {
+						NOT = {
+							state = 137
+							state = 196
+						}
+					}
+					transfer_state_to = GRM
+				}
 			} 
 		}
 		else = {
@@ -2419,6 +2428,20 @@ country_event = { #Germany demands our subjugation no exception
 				set_cosmetic_tag = RGORK
 				remove_ideas = fanatical_dictatorship
 				add_ideas = authoritarian_system
+			} 
+			RGO = {
+				change_to_german_alignment = yes
+				transfer_state = 137
+				transfer_state = 196
+				every_owned_state = {
+					limit = {
+						NOT = {
+							state = 137
+							state = 196
+						}
+					}
+					transfer_state_to = GRM
+				}
 			} 
 		}
 		

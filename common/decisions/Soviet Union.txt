@@ -1925,73 +1925,6 @@ SOV_bulganin_decisions = {
  			}
 		}
 	}
-	SOV_BULGANIN_coup_commie_tags = {
-	allowed = {
-	tag = SOV
-	}
-		target_trigger = {
-			FROM = {
-				OR = {
-					tag = AZR
-					tag = RAC
-					tag = SUK 
-					tag = SMO
-					tag = CDA
-					tag = BLR
-					tag = BLG
-				}
-			}
-		}
-		icon = generic_nationalism
-		available = {
-		has_completed_focus = SOV_convincing_pragmatists
-		FROM = {
-		is_communist = yes 
-		has_war = no
-		NOT = {
-		has_government = paternal_autocrat
-		has_country_flag = DEFIANT_AGAINST_SOVIET
-				}
-			}
-		has_war = no
-		has_government = paternal_autocrat
-		}
-
-		visible = {
-			FROM = {
-			is_communist = yes 
-			has_war = no
-			NOT = {
-			has_government = paternal_autocrat
-				}	
-			}
-		}
-
-		fire_only_once = yes
-
-		ai_will_do = {
-			factor = 70
-		}
-		custom_cost_trigger = {
-			has_political_power > 60
-			has_manpower > 3000
-		}
-		custom_cost_text = SOV_PARTISAN_COUP_EM
-		modifier = {
-		consumer_goods_factor = 0.05
-		political_power_factor = -0.1
-		}
-		complete_effect = {
-		add_manpower = -3000
-		add_political_power = -60
-		}
-		remove_effect = {
-		FROM = {
-		country_event = twrBULGANIN.17
-			}
-		}
-		days_remove = 60
-	}	
 }
 SOV_ASSR_decisions = {
 	SOV_Nenets_ASSR = {
@@ -2884,6 +2817,7 @@ SOV_ASSR_decisions = {
 		icon = eng_trade_unions_support
 		available = {
 		owns_state = 233
+		owns_state = 1236
 		}
 
 		fire_only_once = yes
@@ -2907,15 +2841,24 @@ SOV_ASSR_decisions = {
             233 = {
             custom_effect_tooltip = setup_assr_here
             }
+			1236 = {
+            custom_effect_tooltip = setup_assr_here
+            }
  		hidden_effect = {
  		if = {
  		limit = { tag = SBR }
             233 = {
                 add_dynamic_modifier = { modifier = SBR_assrs }
             } 
+			1236 = {
+                add_dynamic_modifier = { modifier = SBR_assrs }
+            } 
 		}		
  		else = {
             233 = {
+                add_dynamic_modifier = { modifier = chechen_ingush_assr_flag_i }
+            }
+			1236 = {
                 add_dynamic_modifier = { modifier = chechen_ingush_assr_flag_i }
             }
         }
@@ -3247,6 +3190,64 @@ SOV_ASSR_decisions = {
             }
 		}
 	}
+	SOV_Fate_of_Baltics = {
+	
+		icon = eng_trade_unions_support
+		available = {
+			owns_state = 13
+			owns_state = 191
+			owns_state = 12
+			owns_state = 1017
+			owns_state = 190
+			owns_state = 11
+			owns_state = 189
+			owns_state = 188
+		}
+
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 2
+			modifier = {
+				OR = {
+					AND = {
+						owns_state = 398
+						owns_state = 408
+					}
+					has_political_power > 300
+				}
+				factor = 50
+			}
+		}
+
+		cost = 70
+		complete_effect = {
+		if = {
+		limit = { tag = SBR }
+ 		13 = { custom_effect_tooltip = setup_assr_here }
+ 		191 = { custom_effect_tooltip = setup_assr_here }
+ 		12 = { custom_effect_tooltip = setup_assr_here }
+ 		1017 = { custom_effect_tooltip = setup_assr_here }
+		190 = { custom_effect_tooltip = setup_assr_here }
+		11 = { custom_effect_tooltip = setup_assr_here }
+		189 = { custom_effect_tooltip = setup_assr_here }
+		188 = { custom_effect_tooltip = setup_assr_here }
+ 		hidden_effect = {
+ 		13 = { add_dynamic_modifier = { modifier = SBR_assrs } }
+ 		191 = { add_dynamic_modifier = { modifier = SBR_assrs } }
+ 		12 = { add_dynamic_modifier = { modifier = SBR_assrs } }
+ 		1017 = { add_dynamic_modifier = { modifier = SBR_assrs } }
+		190 = { add_dynamic_modifier = { modifier = SBR_assrs } }
+		11 = { add_dynamic_modifier = { modifier = SBR_assrs } }
+		189 = { add_dynamic_modifier = { modifier = SBR_assrs } }
+		188 = { add_dynamic_modifier = { modifier = SBR_assrs } }
+			}
+ 		}
+		else = {
+		country_event = twrSSRS.11
+			}
+		}
+	}
 	SOV_Fate_of_Belarus = {
 
 		icon = eng_trade_unions_support
@@ -3302,7 +3303,36 @@ SOV_ASSR_decisions = {
 	
 		icon = eng_trade_unions_support
 		available = {
-		controls_ruk = yes
+		owns_state = 228
+		owns_state = 227
+		owns_state = 200
+		owns_state = 196
+		owns_state = 137
+		owns_state = 221
+		owns_state = 988
+		owns_state = 226
+		owns_state = 197
+		owns_state = 989
+		owns_state = 192
+
+		owns_state = 225
+		owns_state = 259
+		owns_state = 203
+		owns_state = 198
+
+		owns_state = 193
+		owns_state = 193
+		owns_state = 987
+		owns_state = 202
+		owns_state = 201
+		owns_state = 986
+		owns_state = 199
+		owns_state = 93
+		owns_state = 992
+		owns_state = 91
+		owns_state = 984
+		owns_state = 89
+		owns_state = 985
 		}
 
 		fire_only_once = yes
@@ -3329,11 +3359,31 @@ SOV_ASSR_decisions = {
  		197 = { custom_effect_tooltip = setup_assr_here }
  		203 = { custom_effect_tooltip = setup_assr_here }
  		202 = { custom_effect_tooltip = setup_assr_here }
+		201 = { custom_effect_tooltip = setup_assr_here }
+		986 = { custom_effect_tooltip = setup_assr_here }
+		199 = { custom_effect_tooltip = setup_assr_here }
+		198 = { custom_effect_tooltip = setup_assr_here }
+		93 = { custom_effect_tooltip = setup_assr_here }
+		992 = { custom_effect_tooltip = setup_assr_here }
+		91 = { custom_effect_tooltip = setup_assr_here }
+		984 = { custom_effect_tooltip = setup_assr_here }
+		89 = { custom_effect_tooltip = setup_assr_here }
+		985 = { custom_effect_tooltip = setup_assr_here }
  		hidden_effect = {
  		226 = { add_dynamic_modifier = { modifier = SBR_assrs } }
  		197 = { add_dynamic_modifier = { modifier = SBR_assrs } }
  		203 = { add_dynamic_modifier = { modifier = SBR_assrs } }
  		202 = { add_dynamic_modifier = { modifier = SBR_assrs } }
+		201 = { add_dynamic_modifier = { modifier = SBR_assrs } }
+		986 = { add_dynamic_modifier = { modifier = SBR_assrs } }
+		199 = { add_dynamic_modifier = { modifier = SBR_assrs } }
+		198 = { add_dynamic_modifier = { modifier = SBR_assrs } }
+		93 = { add_dynamic_modifier = { modifier = SBR_assrs } }
+		992 = { add_dynamic_modifier = { modifier = SBR_assrs } }
+		91 = { add_dynamic_modifier = { modifier = SBR_assrs } }
+		984 = { add_dynamic_modifier = { modifier = SBR_assrs } }
+		89 = { add_dynamic_modifier = { modifier = SBR_assrs } }
+		985 = { add_dynamic_modifier = { modifier = SBR_assrs } }
 			}
  		}
 		else = {
@@ -3716,6 +3766,7 @@ SOV_ASSR_decisions = {
     	amount = 1
 		owns_state = 742
 		owns_state = 996
+		owns_state = 1090
 			}
 		}
 
@@ -3728,6 +3779,7 @@ SOV_ASSR_decisions = {
 					AND = {
 						owns_state = 398
 						owns_state = 408
+						owns_state = 1090
 					}
 					has_political_power > 300
 				}
@@ -3755,6 +3807,16 @@ SOV_ASSR_decisions = {
 		996 = { custom_effect_tooltip = setup_assr_here }
 		hidden_effect = {
 		996 = { add_dynamic_modifier = { modifier = SBR_assrs } }
+			}		
+		}
+		if = {
+		limit = { 
+		tag = SBR 
+		owns_state = 1090
+		}
+		1090 = { custom_effect_tooltip = setup_assr_here }
+		hidden_effect = {
+		1090 = { add_dynamic_modifier = { modifier = SBR_assrs } }
 			}		
 		}
 		if = {
@@ -4019,17 +4081,7 @@ russian_reconquest = {
 
 		target_trigger = {
 			FROM = {
-				OR = {
-					tag = AZR
-					tag = RAC
-					tag = SUK 
-					tag = SMO
-					tag = CDA
-					tag = BLR
-					tag = GEO
-					tag = ARM
-					tag = BLG
-				}
+				soviet_splinter_tags = yes
 				NOT = { is_subject_of = ROOT }
 				NOT = {
 				tag = ROOT
@@ -4055,20 +4107,18 @@ russian_reconquest = {
 		visible = {
 			is_communist = yes
 			owns_state = 398
-			NOT = {
-			has_country_leader = {
-		    name = "Ivan Turkenich"
-		    ruling_only = yes
-				}
-			tag = KAZ
-			tag = NOV
-			}
+			#The leading Soviet govt
 			FROM = {
 				NOT = { is_subject_of = ROOT }
 				exists = yes
 				is_subject = no
 				is_neighbor_of = ROOT	
-				is_communist = yes		
+				OR = {
+				has_government = marxist_leninist
+				has_government = bolshevik_leninist
+				has_country_leader_ideology = pragmatic_socialism
+				has_country_leader_ideology = bulganinism
+				}	
 				NOT = {
 				tag = ROOT
 				}
@@ -4094,171 +4144,6 @@ russian_reconquest = {
 			clr_country_flag = IN_PROGRESS_PREVENT_BREAK
 		}
 	}
-	SOV_com_to_com_demands_SPEC = {
-		icon = generic_nationalism
-
-		target_trigger = {
-			FROM = {
-				OR = {
-					tag = AZR
-					tag = RAC
-					tag = SUK 
-					tag = SMO
-					tag = CDA
-					tag = BLR
-					tag = GEO
-					tag = ARM
-					tag = BLG
-				}
-				NOT = { is_subject_of = ROOT }
-				exists = yes
-				is_subject = no
-				is_neighbor_of = ROOT
-				NOT = {
-				tag = ROOT
-				}
-			}
-		}
-		available = {
-			is_communist = yes
-			FROM = {
-				has_war = no
-			is_neighbor_of = ROOT	
-			is_communist = yes
-			}
-			NOT = {
-			has_country_flag = IN_PROGRESS_PREVENT_BREAK
-			}
-		}
-		visible = {
-			is_communist = yes
-			owns_state = 398
-			OR = {
-			has_country_leader = {
-		    name = "Ivan Turkenich"
-		    ruling_only = yes
-				}
-			AND = {
-			has_country_leader = {
-		    name = "Vasily Rakov"
-		    ruling_only = yes
-				}
-			has_completed_focus = KAZ_crimson_union_rises
-				}
-			tag = NOV
-			}
-			FROM = {
-				NOT = { is_subject_of = ROOT }
-				exists = yes
-				is_subject = no
-				is_neighbor_of = ROOT	
-				is_communist = yes	
-				NOT = {
-				tag = ROOT
-				}	
-			}
-		}
-
-		fire_only_once = yes
-
-		ai_will_do = {
-			factor = 50
-		}
-
-		days_remove = 7
-
-		complete_effect = {
-			log = "[GetDateText]: [Root.GetName]: Decision SOV_com_to_com_demands_SPEC"
-			set_country_flag = IN_PROGRESS_PREVENT_BREAK
-		}
-		remove_effect = {
-			FROM = {
-				country_event = twrrusreconquest.1
-			}
-			clr_country_flag = IN_PROGRESS_PREVENT_BREAK
-		}
-	}
-	SOV_com_to_com_demands_BULGANIN = {
-		icon = generic_nationalism
-
-		target_trigger = {
-			FROM = {
-				OR = {
-					tag = AZR
-					tag = RAC
-					tag = SUK 
-					tag = SMO
-					tag = CDA
-					tag = BLR
-					tag = BLG
-				}
-				NOT = { is_subject_of = ROOT }
-				exists = yes
-				has_war = no
-				is_subject = no
-				is_neighbor_of = ROOT
-				NOT = {
-				tag = ROOT
-				}
-			}
-		}
-		available = {
-			NOT = {
-				has_country_flag = IN_PROGRESS_PREVENT_BREAK
-			}
-			FROM = {
-				has_war = no
-			is_neighbor_of = ROOT
-			has_government = paternal_autocrat
-			}
-		}
-		visible = {
-			has_government = paternal_autocrat
-			owns_state = 398
-			OR = {
-			has_country_leader = {
-		    name = "Nikolai Bulganin"
-		    ruling_only = yes
-				}
-			AND = {
-			has_country_leader = {
-		    name = "Andrey Vlasov"
-		    ruling_only = yes
-		    		}
-		    has_completed_focus = KAZ_crimson_union_rises
-				}
-			}
-			FROM = {
-				NOT = { is_subject_of = ROOT }
-				exists = yes
-				is_subject = no
-				is_neighbor_of = ROOT	
-				has_government = paternal_autocrat	
-				NOT = {
-				tag = ROOT
-				}
-			}
-		}
-
-		fire_only_once = yes
-
-		ai_will_do = {
-			factor = 50
-		}
-
-		days_remove = 7
-
-		complete_effect = {
-			log = "[GetDateText]: [Root.GetName]: Decision SOV_com_to_com_demands_BULGANIN"
-			set_country_flag = IN_PROGRESS_PREVENT_BREAK
-		}
-		remove_effect = {
-			FROM = {
-				country_event = twrrusreconquest.1
-			}
-			clr_country_flag = IN_PROGRESS_PREVENT_BREAK
-		}
-	}
 	SOV_restore_order = {
 		icon = generic_nationalism
 		allowed = {
@@ -4268,53 +4153,7 @@ russian_reconquest = {
 		}
 		target_trigger = {
 			FROM = {
-				OR = {
-					tag = DON
-					tag = MTR
-					tag = ZHU
-					tag = UKR
-					tag = KAM
-					tag = NOG
-					tag = LZG
-					tag = KMY
-					tag = UIA
-					tag = UKW
-					tag = WRM
-					tag = RMD 
-					tag = LAT 
-					tag = EST 
-					tag = LIT
-					tag = BKU 
-					tag = PET 
-					tag = STR 
-					tag = WSP 
-					tag = BGS
-					tag = GEO
-					tag = ARM
-					tag = AZR
-					tag = RAC
-					tag = SUK 
-					tag = SMO
-					tag = CDA
-					tag = BLR
-					tag = RSB
-					tag = RMD
-					tag = ARM
-					tag = GEO
-					tag = SOV
-					tag = TRV
-					tag = KAZ
-					tag = NOV
-					tag = KRA
-					tag = IRK
-					tag = KCS
-					tag = TAN
-					tag = RFP
-					tag = SBR
-					tag = RUS
-					tag = BLG
-					tag = CKR
-				}
+				soviet_splinter_tags = yes
 				NOT = {
 				tag = ROOT
 				}
@@ -4346,6 +4185,14 @@ russian_reconquest = {
 					has_war = yes
 				}
 			}
+			if = {
+				limit = {
+					is_communist = yes
+				}
+				NOT = {
+					FROM = { is_communist = yes }
+				}
+			}
 
 		}
 		visible = {
@@ -4359,9 +4206,11 @@ russian_reconquest = {
 				NOT = {
 				has_country_flag = NOT_INTERESTED_LMAO_SOV
 				}
+				NOT = {
+					has_war_with = ROOT
 			}
 		}
-		fire_only_once = yes
+		}
 
 		ai_will_do = {
 			base = 150
@@ -4409,6 +4258,23 @@ russian_reconquest = {
 					is_ally_with = TOR
 				}
 			}
+			modifier = {
+				factor = 100
+				FROM = {
+					OR = {
+						tag = RUS
+						tag = SOV
+						tag = SBR
+						tag = RFP
+						tag = TRV
+						tag = KAZ
+						tag = NOV
+						tag = IRK
+						tag = KRA
+						tag = KCS
+					}
+				}
+			}
 		}
 		war_with_target_on_timeout = yes
 		war_with_target_on_remove = yes
@@ -4433,49 +4299,7 @@ russian_reconquest = {
 		}
 		target_trigger = {
 			FROM = {
-				OR = {
-					tag = DON
-					tag = MTR
-					tag = ZHU
-					tag = UKR
-					tag = KAM
-					tag = NOG
-					tag = LZG
-					tag = KMY
-					tag = UIA
-					tag = UKW
-					tag = WRM
-					tag = RMD 
-					tag = LAT 
-					tag = EST 
-					tag = LIT 
-					tag = BKU 
-					tag = PET 
-					tag = STR 
-					tag = WSP 
-					tag = BGS
-					tag = GEO
-					tag = ARM
-					tag = AZR
-					tag = RAC
-					tag = SUK 
-					tag = SMO
-					tag = CDA
-					tag = BLR
-					tag = RSB
-					tag = RMD
-					tag = ARM
-					tag = GEO
-					tag = SOV
-					tag = KAZ
-					tag = NOV
-					tag = KRA
-					tag = IRK
-					tag = KCS
-					tag = TAN
-					tag = BLG
-					tag = CKR
-				}
+				soviet_splinter_tags = yes
 				NOT = {
 				tag = ROOT
 				}
@@ -4494,6 +4318,14 @@ russian_reconquest = {
 		            }
 		        }
 		    }
+			if = {
+				limit = {
+					is_communist = yes
+				}
+				NOT = {
+					FROM = { is_communist = yes }
+				}
+			}
 		}
 		visible = {
 			has_country_flag = WESTERN_RUSSIA_UNIFICATION
@@ -4509,7 +4341,6 @@ russian_reconquest = {
 				}
 			}
 		}
-		fire_only_once = yes
 
 		ai_will_do = {
 			factor = 80
@@ -4529,7 +4360,25 @@ russian_reconquest = {
 				}
 				factor = 2
 			}
+			modifier = {
+				factor = 100
+				FROM = {
+					OR = {
+						tag = RUS
+						tag = SOV
+						tag = SBR
+						tag = RFP
+						tag = TRV
+						tag = KAZ
+						tag = NOV
+						tag = IRK
+						tag = KRA
+						tag = KCS
+					}
+				}
+			}
 		}
+		
 		war_with_target_on_timeout = yes
 		war_with_target_on_remove = yes
 		cost = 10
@@ -4627,21 +4476,27 @@ russian_reconquest = {
 				FROM = {
 					is_subject_of = GRM
 				}
-				OR = {
+				AND = {
 					GRM = {
-						has_war_with_major = no
+						NOT = {
+							has_war_with = ITA
+							has_war_with = USA
+							has_war_with = ENG
 					}
+					}
+					NOT = {
 					AND = {
 						is_major = yes
 						OR = {
 							has_army_manpower = {
-								size > 1000000
+									size > 2000000
 							}
 							date > 1961.1.1
 						}
 					}
 				}
 			}
+		}
 		}
 		war_with_target_on_timeout = yes
 		war_with_target_on_remove = yes
@@ -5826,7 +5681,7 @@ russian_reconquest = {
 	}
 
 	SOV_karelia_or_war = {
-		icon = generic_ignite_civil_war
+		icon = eng_trade_unions_demand
 		fire_only_once = yes
 		available = { 
 			controls_state = 219
@@ -5868,7 +5723,7 @@ russian_reconquest = {
 	}
 
 	SOV_nakhichivan_reunification = {
-		icon = generic_ignite_civil_war
+		icon = eng_trade_unions_demand
 		fire_only_once = yes
 		available = { 
 			owns_state = 230
@@ -6355,85 +6210,6 @@ SOV_krugo_decisions = {
 		add_extra_state_shared_building_slots = 2
 			}
 		}
-	}
-}
-KAZ_special_couping = {
-	SOV_KAZ_coup_commie_tags = {
-	allowed = {
-	tag = SOV
-	}
-		target_trigger = {
-			FROM = {
-				OR = {
-					tag = AZR
-					tag = RAC
-					tag = SUK 
-					tag = SMO
-					tag = CDA
-					tag = BLR
-					tag = BLG
-				}
-			}
-		}
-		icon = generic_nationalism
-		available = {
-		has_completed_focus = KAZ_crimson_union_rises
-		FROM = {
-		has_war = no
-		NOT = {
-		has_government = ROOT
-		has_country_flag = DEFIANT_AGAINST_SOVIET
-				}
-			}
-		has_war = no
-		}
-
-		visible = {
-			KAZ = {
-			has_government = paternal_autocrat
-			}
-			FROM = {
-			is_communist = yes 
-			has_war = no
-			NOT = {
-			has_government = ROOT
-				}	
-			}
-		}
-
-		fire_only_once = yes
-
-		ai_will_do = {
-			factor = 70
-		}
-		custom_cost_trigger = {
-			has_political_power > 60
-			has_manpower > 3000
-		}
-		custom_cost_text = SOV_PARTISAN_COUP_EM
-		modifier = {
-		consumer_goods_factor = 0.01
-		political_power_factor = -0.1
-		}
-		complete_effect = {
-		add_manpower = -3000
-		add_political_power = -60
-		}
-		remove_effect = {
-		if = {
-		limit = { is_communist = yes }
-		FROM = {
-		country_event = twrBULGANIN.17
-				}
-			}
-		if = {
-		limit = { has_government = paternal_autocrat }
-		FROM = {
-		country_event = KAZ.52
-				}
-			}
-		}
-		days_remove = 60
 	}	
 }
 
@@ -6708,8 +6484,10 @@ SOV_diplo_decisions = {
 	SOV_diplo_invade_afghanistan = {
 		icon = generic_prepare_civil_war
 		visible = {
+			OR = {
 			has_focus_tree = RUS_suslov_tree_2
 			has_country_leader = { name = "Ivan Konev" ruling_only = yes}
+			}
 			can_declare_war_on = AFG
 		}
 
@@ -6738,8 +6516,10 @@ SOV_diplo_decisions = {
 	SOV_diplo_invade_iran = {
 		icon = generic_prepare_civil_war
 		visible = {
+			OR = {
 			has_focus_tree = RUS_suslov_tree_2
 			has_country_leader = { name = "Ivan Konev" ruling_only = yes}
+			}
 			can_declare_war_on = PER
 		}
 
@@ -6841,8 +6621,10 @@ SOV_diplo_decisions = {
 	SOV_diplo_host_ccp_exiles = {
 		icon = generic_political_discourse
 		visible = {
+			OR = {
 			has_country_leader = { name = "Ivan Turkenich" ruling_only = yes }
 			has_country_leader = { name = "Ivan Konev" ruling_only = yes }
+			}
 			country_exists = CHI
 			NOT = {
 			country_exists = PRC
@@ -6941,6 +6723,12 @@ SOV_diplo_decisions = {
 		cost = 50
 		days_remove = 30
 
+		visible = {
+			NOT = {
+				has_country_leader = { name = "Vasily Stalin" ruling_only = yes }
+			}
+		}
+
 		fire_only_once = yes
 
 		complete_effect = {
@@ -6966,6 +6754,9 @@ SOV_diplo_decisions = {
 					has_government = marxist_leninist
 				}
 				has_war = yes
+			}
+			NOT = {
+				has_country_leader = { name = "Vasily Stalin" ruling_only = yes }
 			}
 		}
 
@@ -7010,6 +6801,9 @@ SOV_diplo_decisions = {
 			}
 			NOT = {
 			has_completed_focus = KAZ_german_ceasefire
+			}
+			NOT = {
+				has_country_leader = { name = "Vasily Stalin" ruling_only = yes }
 			}
 		}
 
@@ -7080,38 +6874,8 @@ SOV_diplo_decisions = {
 			base = 1
 		}
 	}
-	SOV_diplo_declare_war_on_romania = {
-		icon = generic_prepare_civil_war
-	#demand land
-		visible = {
-			always = no
-		}
-
-		available = {
-			can_declare_war_on = ROM
-		}
-
-		cost = 50
-		days_remove = 30
-
-		fire_only_once = yes
-		war_with_on_remove = ROM
-
-		complete_effect = {
-			log = "[GetDateText]: [Root.GetName]: Decision SOV_diplo_declare_war_on_romania"
-		}
-		remove_effect = {
-			log = "[GetDateText]: [Root.GetName]: Decision remove SOV_diplo_declare_war_on_romania"
-			declare_war_on = { target = ROM type = annex_everything }
-		}
-
-		ai_will_do = {
-			base = 1
-		}
-	}
 	SOV_diplo_odessa_or_war = {
 		icon = eng_trade_unions_demand
-	#demand land
 		visible = {
 			NOT = {
 				owns_state = 198
@@ -7125,6 +6889,7 @@ SOV_diplo_decisions = {
 					SOV = {
 						can_declare_war_on = PREV
 					}
+					is_neighbor_of = SOV
 				}
 			}
 		}
@@ -7136,10 +6901,16 @@ SOV_diplo_decisions = {
 		war_with_on_remove = ROM
 
 		complete_effect = {
-			log = "[GetDateText]: [Root.GetName]: Decision SOV_diplo_declare_war_on_romania"
+			log = "[GetDateText]: [Root.GetName]: Decision SOV_diplo_odessa_or_war"
+			add_state_core = 198
+			add_state_core = 192
+			add_state_core = 78
+			add_state_core = 835
+			add_state_core = 836
+			add_state_core = 80
 		}
 		remove_effect = {
-			log = "[GetDateText]: [Root.GetName]: Decision remove SOV_diplo_declare_war_on_romania"
+			log = "[GetDateText]: [Root.GetName]: Decision remove SOV_diplo_odessa_or_war"
 			IF = {
 				limit = {
 					NUK = { exists = no }
@@ -7277,6 +7048,9 @@ SOV_diplo_decisions = {
 			is_communist = no
 			}
 		has_country_leader = { name = "Mikhail Suslov" ruling_only = yes }
+			}
+			NOT = {
+				has_country_leader = { name = "Vasily Stalin" ruling_only = yes }
 			}
 		}
 

@@ -714,6 +714,7 @@ NUG_replace_UN_seat = {
 }
 
 UN_fuck_fascists = {
+    icon = generic_ignite_civil_war
     visible = {
         is_in_array = { global.TWR_UN_array = THIS }
         is_major = yes
@@ -923,7 +924,10 @@ SSNP_intervention_against = {
         tag = UNQ
         }
         is_fascist = no
-        GSR = {
+        any_country = {
+        AND = {
+        original_tag = SYR
+	    has_country_flag = is_greater_syria_splinter
         count_triggers = {
             amount = 3
             has_war_with = ISR
@@ -935,6 +939,7 @@ SSNP_intervention_against = {
         }
         has_completed_focus = SYR_the_opporunity_to_strike
             }
+        }
         }
         available = {
         NOT = { has_global_flag = ONGOING_UN_RESOLUTION_GENERAL }
