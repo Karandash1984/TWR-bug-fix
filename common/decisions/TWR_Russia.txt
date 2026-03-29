@@ -1996,11 +1996,15 @@ russian_integration_decisions = {
 			996 = { add_core_of = ROOT }
 			584 = { add_core_of = ROOT }
 			997 = { add_core_of = ROOT }
+			1087 = { add_core_of = ROOT }
+			1088 = { add_core_of = ROOT }
+			1089 = { add_core_of = ROOT }
+			1090 = { add_core_of = ROOT }
 		}
 	}
 
 	karelia_or_war = {
-		icon = generic_ignite_civil_war
+		icon = eng_trade_unions_demand
 		fire_only_once = yes
 		available = { 
 			controls_state = 219
@@ -2013,7 +2017,7 @@ russian_integration_decisions = {
 			state = 213
 		}
 		visible = {
-			has_country_flag = CENTRAL_ASIA_REUNIFICATION
+			#has_country_flag = CENTRAL_ASIA_REUNIFICATION
 			NOT = {
 				controls_state = 213
 			}
@@ -2152,6 +2156,8 @@ russian_integration_decisions = {
 		}
 	}
 
+	#Negotiate with MTR
+
 	annex_cossacks = {
 		icon = infiltrate_state
 		fire_only_once = yes
@@ -2163,7 +2169,10 @@ russian_integration_decisions = {
 		}
 		available = { 
 			is_neighbor_of = DON
-			has_political_power > 50
+			has_war = no
+			NOT = {
+			DON = { has_cosmetic_tag = DON_FAILED }
+			}
 		}
 		visible = {
 			country_exists = DON
@@ -2183,10 +2192,69 @@ russian_integration_decisions = {
 					add_core_of = ROOT
 				}
 			}
+			if = {
+			limit = { DON = { num_subjects > 0 } }
+			DON = {
+			every_subject_country = {
+				DON = {
+				annex_country = {
+					target = PREV
+					transfer_troops = yes
+							}
+						}
+					}
+				}
+			}
 			annex_country = {
 				target = DON
 				transfer_troops = yes
 			}
+
+			country_event = rusreunification.12
+		}
+	}
+
+	annex_pskov = {
+		icon = infiltrate_state
+		fire_only_once = yes
+		allowed = { 
+			OR = {
+				tag = RMD
+				tag = RUS 
+			}
+		}
+		available = { 
+			is_neighbor_of = BLG
+			has_war = no
+		}
+		visible = {
+			country_exists = BLG
+			BLG = { has_cosmetic_tag = BLG_DEFEATED }
+		}
+		ai_will_do = {
+			factor = 100
+		}
+		cost = 50
+		is_good = yes
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision annex_pskov"
+			BLG = {
+				if = {
+				limit = { is_subject = yes }
+				overlord = {
+				country_event = rusreunification.13
+					}
+				}
+				every_owned_state = {
+					add_core_of = ROOT
+				}
+			}
+			annex_country = {
+				target = BLG
+				transfer_troops = yes
+			}
+
+			country_event = rusreunification.14
 		}
 	}
 
@@ -2727,45 +2795,7 @@ russia_reconquering = {
 		icon = generic_nationalism
 		target_trigger = {
 			FROM = {
-				OR = {
-					tag = DON
-					tag = MTR
-					tag = ZHU
-					tag = UKR
-					tag = KAM
-					tag = NOG
-					tag = LZG
-					tag = KMY
-					tag = UIA
-					tag = UKW
-					tag = WRM
-					tag = RMD 
-					tag = LAT 
-					tag = EST 
-					tag = LIT 
-					tag = RGO 
-					tag = RUK 
-					tag = ROS 
-					tag = RMO 
-					tag = RKA
-					tag = BKU 
-					tag = PET 
-					tag = STR 
-					tag = WSP 
-					tag = BGS
-					tag = GEO
-					tag = ARM
-					tag = AZR
-					tag = RAC
-					tag = SUK 
-					tag = SMO
-					tag = CDA
-					tag = BLR
-					tag = RMD
-					tag = BLG
-					tag = RSB
-					tag = CKR
-				}
+				soviet_splinter_tags = yes
 				NOT = { tag = ROOT }
 			}
 		}
@@ -2843,6 +2873,93 @@ russia_reconquering = {
 				type = annex_everything
 				target = FROM
 			}
+		}
+	}
+}
+
+political_actions = {
+	RUS_diplo_odessa_or_war = {
+		icon = eng_trade_unions_demand
+		visible = {
+			NOT = {
+				owns_state = 198
+				owns_state = 192
+			}
+			owns_state = 197
+			owns_state = 203
+			OR = {
+				has_completed_focus = RUS_Reconquest_Crossing_the_AA_Line
+				has_completed_focus = IRK_Soldiers_of_Global_Democracy
+				has_completed_focus = RMD_Towards_Liberation
+				has_completed_focus = RMD_Away_With_The_Past_In_With_The_Past
+				has_completed_focus = RFP_Reconquest_Look_Beyond_the_Line
+				has_completed_focus = SBR_Finish_The_Peoples_Revolution
+				has_completed_focus = KCS_Returning_Pan_Slavism_For_The_Modern_World
+				has_completed_focus = KRA_Zhukovs_Spectre_Haunts_Russia
+				has_completed_focus = KRA_Their_Land_Their_People_Their_Blood
+				has_completed_focus = KRA_Expanding_The_Reach
+				has_completed_focus = NOV_The_Two_Pillars_Concept
+				has_completed_focus = NOV_Zhdanovschina_Shines_Over_The_Urals
+				has_completed_focus = NRI_The_Union_of_Peoples
+				has_completed_focus = NRI_All_Under_A_Red_Banner
+				has_completed_focus = NRI_A_Common_Identity
+				has_completed_focus = NRI_Revisionist_Nationalism
+				has_completed_focus = NRI_Increase_Defence_Capacity
+			}
+		}
+
+		available = {
+			192 = {
+				owner = {
+					ROOT = {
+						can_declare_war_on = PREV
+					}
+					is_neighbor_of = ROOT
+				}
+			}
+		}
+
+		cost = 50
+		days_remove = 30
+
+		fire_only_once = yes
+		war_with_on_remove = ROM
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision RUS_diplo_odessa_or_war"
+			add_state_core = 198
+			add_state_core = 192
+			add_state_core = 78
+			add_state_core = 835
+			add_state_core = 836
+			add_state_core = 80
+		}
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision remove RUS_diplo_odessa_or_war"
+			IF = {
+				limit = {
+					NUK = { exists = no }
+				}
+				every_country = {
+					limit = {
+						owns_state = 198
+						owns_state = 192
+					}
+					country_event = twrsovdiplo.12
+				}
+			}
+			else_IF = {
+				limit = {
+					NUK = { exists = yes }
+				}
+				HUN = {
+					country_event = twrsovdiplo.12
+				}
+			}
+		}
+
+		ai_will_do = {
+			base = 1
 		}
 	}
 }

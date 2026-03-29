@@ -2469,6 +2469,8 @@
 			has_government = marxist_leninist
 			has_government = bolshevik_leninist
 			has_government = socialist
+			has_country_leader_ideology = pragmatic_socialism
+			has_country_leader_ideology = bulganinism
 		}
 	}
 
@@ -5175,5 +5177,85 @@ check_for_resources = {
 			extracted = yes
 			}
 		}
+	}
+}
+
+##Lesser Russian Tags
+soviet_splinter_tags = {
+	OR = {
+	original_tag = DON
+	original_tag = MTR
+	original_tag = ZHU
+	original_tag = UKR
+	original_tag = KAM
+	original_tag = NOG
+	original_tag = LZG
+	original_tag = KMY
+	original_tag = UIA
+	original_tag = UKW
+	original_tag = WRM
+	original_tag = LAT 
+	original_tag = EST 
+	original_tag = LIT
+	original_tag = BKU 
+	original_tag = PET
+	original_tag = STR 
+	original_tag = WSP 
+	original_tag = BGS
+	original_tag = GEO
+	original_tag = AZR
+	original_tag = RAC
+	original_tag = SUK 
+	original_tag = SMO
+	original_tag = CDA
+	original_tag = BLR
+	original_tag = RSB
+	original_tag = RMD
+	original_tag = ARM
+	original_tag = SOV
+	original_tag = TRV
+	original_tag = KAZ
+	original_tag = NOV
+	original_tag = KRA
+	original_tag = IRK
+	original_tag = KCS
+	original_tag = TAN
+	original_tag = RFP
+	original_tag = SBR
+	original_tag = BLG
+	original_tag = CKR
+
+	original_tag = ARR
+	original_tag = KRU
+	original_tag = SIS
+	original_tag = ABK
+	}
+}
+
+caucasus_tags = {
+	OR = {
+	original_tag = DON
+	original_tag = MTR
+	original_tag = ZHU
+	original_tag = UKR
+	original_tag = KAM
+	original_tag = NOG
+	original_tag = LZG
+	original_tag = KMY
+
+	original_tag = RAC
+	
+	original_tag = ARR
+	original_tag = KRU
+	original_tag = SIS
+	original_tag = ABK
+
+	original_tag = GEO
+	original_tag = AZR
+	original_tag = ARM
+
+	original_tag = CDA
+
+	original_tag = WRM
 	}
 }

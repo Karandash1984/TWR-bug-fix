@@ -273,6 +273,7 @@
  twriraq.87.d:0 "As the revolutionary flag flies over the Fertile Crescent, from the shores of Kuwait to the Sinai Desert, today dawns a new era for the Arab people. Never since the days of the great Caliphates has the Arab world been united as such, igniting in many of us the dream of a true Arab nation. In a congress in Baghdad, representatives of the new revolutionary governments across the Fertile Crescent have gathered to cement the formation of the new United Arab Republic - a federation of Arab states dedicated to the principles of nationalism, anti-imperialism and Arab unity. Now, all that is left is to finalize our membership in this great union!"
  twriraq.87.a:0 "Long Live the Great Homeland!"
 
+
  twriraq.88.t:0 "[FROM.GetNameDef] Joins the UAR" 
  twriraq.88.d:0 "The revolutionary government of [FROM.GetNameDef], led by [FROM.GetLeader], has officially joined the United Arab Republic. Together, we will bring about the new Arab revolution!"
  twriraq.88.a:0 "Hail united Arabia!"
@@ -281,6 +282,11 @@
  twriraq.99.d:0 "Nearly forty years ago, the first attempt at realizing the dream of a united Arab state as envisioned by King Faisal I was crushed under the boots of French imperialism as their barrage of artillery rained down onto the streets of Damascus. Forced to flee and accept the crown of Iraq, the Hashemite dynasty and the Arab people never gave up on their dream of Arab unity under the Sharifian banner.\n\nDespite the attempts of revolutionary governments to usurp the Arab nationalist cause for themselves and their own twisted beliefs, the Arab people have once again rallied behind the Hashemite cause, flocking to spread the banner of the Hashemite Arab Federation from the banks of the Persian Gulf to the shores of the Mediterranean. Now, the streets of Damascus, Baghdad, Amman, Aleppo, and hundreds of other cities across the Fertile Crescent echo with cries of 'Long Live the King!' as a new era for the Arab people dawns.\n\nAnd in the heart of Baghdad, in the Al-Rehab Palace, the King looks at the portrait on the wall, and asks:"
  twriraq.99.a:0 ""I know you would be proud, brother.""
  twriraq.99.b:0 ""Are you proud of me, grandfather?""
+
+ twriraq.98.t:0 "The New Hashemite Arabia"
+ twriraq.98.d:0 "[THIS.GetNewspaperHeader]Having thought by some to have lost their leadership over the pan-Arab movement with the rise of Sadat, the forces of the Hashemite kingdoms have dealt a decisive blow to the revolutionary republics led by Egypt.\n\nNow, with Egyptian armies retreating to Cairo and Hashemite armies having secured most of the Fertile Crescent, the Hashemite Arabia that was promised to Sharif Hussein back during the first World War appears to have become a reality. As the buildings of Baghdad, Damascus and Amman all wave the same banner that was raised over Mecca in 1916, a new era for the Arab people dawns, once again under its original leaders."
+ twriraq.98.a:0 "The old order rises anew."
+ 
 
  # british flavour events
  twriraq.100.t:0 "Iraq Nationalises Oil"
@@ -298,6 +304,12 @@
  
  IRQ_arab_crisis_ceasefire:0 "Ceasefire Negotiations"
  SYR_arab_crisis_ceasefire:0 "Ceasefire Negotiations"
+ IRQ_arab_crisis_volunteers_hashemite:0 "Deploy Armies to Iraq"
+ IRQ_arab_crisis_volunteers_asu:0 "Deploy Armies to Iraq"
+ IRQ_arab_crisis_volunteers_golden_square:0 "Deploy Armies to Iraq"
+ EGY_arab_crisis_volunteers_monarchist:0 "Deploy Armies to Egypt"
+ EGY_arab_crisis_volunteers_sadat:0 "Deploy Armies to Egypt"
+
 
  ## FOCUSES ###
  IRQ_new_year_old_rivalries:0 "New Year, Old Rivalries"
