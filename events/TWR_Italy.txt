@@ -3078,7 +3078,17 @@ country_event = {
 			target = ALB
 			type = annex_everything
 		}
-		
+		if = {
+			limit = {
+				MNT = {
+					is_ally_with = ALB
+				}
+			}
+			declare_war_on = {
+				target = MNT
+				type = annex_everything
+			}
+		}
 		custom_effect_tooltip = ITA_100_days_to_win
 		hidden_effect = {
 			country_event = {
@@ -3111,12 +3121,35 @@ country_event = {
 				transfer_state = 1230
 			}
 		}
+		ai_chance = {
+			base = 100
+			modifier = {
+			has_game_rule = {
+				rule = italian_albanian_war_ALB_outcome
+				option = ALBANIA_WINS
+			}
+			factor = 0
+			}
+		}
 	}
 	option = {
 		#Not worth it
 		name = twritalyalbania.3.b
+		ALB = {
+			country_event = {
+				id = twralbania.10
+				days = 2
+			}
+		}
 		ai_chance = {
 			base = 0
+			modifier = {
+			has_game_rule = {
+				rule = italian_albanian_war_ALB_outcome
+				option = ALBANIA_WINS
+			}
+			add = 100
+			}
 		}
 		add_to_variable = {
 			ita_var_coup_chance = 0.1
@@ -3178,6 +3211,11 @@ country_event = {
 				}
 			}
 			white_peace = ALB
+			white_peace = MNT
+			IEA = {
+				white_peace = ALB
+				white_peace = MNT
+			}
 		}
 	}
 	is_triggered_only = yes
@@ -3185,7 +3223,7 @@ country_event = {
 		ALB = {
 			exists = yes
 			has_war_with = ITA
-			has_capitulated = no
+			surrender_progress < 0.5
 			is_subject = no
 		}
 	}
@@ -3194,7 +3232,10 @@ country_event = {
 		#Joever
 		name = twritalyalbania.4.a
 		ALB = {
-			country_event = twritalyalbania.5
+			country_event = {
+				id = twritalyalbania.5
+				hours = 6
+			}
 		}
 		add_to_variable = {
 			ita_var_domestic_opposition = 0.2
@@ -3238,6 +3279,25 @@ country_event = {
 		add_popularity = {
 			ideology = ALB
 			popularity = 0.1
+		}
+		if = {
+			limit = {
+				any_country_with_original_tag = {
+					original_tag_to_check = SER
+					is_communist = yes
+				}
+			}
+			country_event = {
+				id = twralbania.11
+				days = 3
+			}
+			
+		}
+		else = {
+			country_event = {
+				id = twralbania.13
+				days = 3
+			}
 		}
 	}
 }
@@ -4139,14 +4199,15 @@ country_event = {
 					ideology = paternal_autocrat
 					popularity = 0.6
 				}
-				create_country_leader = {
-					name = "Regency"
+				add_country_leader_role = {
+					character = CRO_Regency
+					country_leader = {
 					desc = "CROATIAN_REGENCY_DESC"
-					picture = "Vacant_Crown.dds"
-					expire = "1965.1.1"
 					ideology = monarchism
-					traits = {
+						traits = { }
+						expire="1965.1.1"
 					}
+					promote_leader = yes 
 				}
 				load_focus_tree = CRO_Kingdom_Tree
 				complete_national_focus = CRO_Kingdom_As_Rome_Commands

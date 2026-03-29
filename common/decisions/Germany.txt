@@ -1235,8 +1235,13 @@ GER_civil_war_cat = {
 						is_in_faction_with = TOR
 					}
 				}
-				annex_country = {
-					target = FFR
+				FFR = {
+					every_owned_state = {
+						limit = {
+							is_on_continent = europe
+						}
+						transfer_state_to = GRM
+					}
 				}
 			}
 			hidden_effect = {
@@ -8355,32 +8360,42 @@ GER_bring_the_RKs_back_into_the_fold_decisions = {
 								}
 							}
 						}
-						tag = MTR
-						tag = ARM
-						tag = KAM
-						tag = NOG
-						tag = RAC
-						tag = LZG
-						tag = ZHU
-						tag = UKR
-						tag = SUK
-						tag = UKW
-						tag = POL
-						tag = SMO
-						tag = WRM
-						tag = RMD
-						tag = BLR
-						tag = LAT
-						tag = EST
-						tag = LIT
-						tag = CDA
-						tag = UIA
-						tag = URP
-						tag = KMY
-						tag = SLV
-						tag = BLG
-						tag = RSB
-						tag = SBA
+						original_tag = MTR
+						original_tag = ARM
+						original_tag = KAM
+						original_tag = NOG
+						original_tag = RAC
+						original_tag = LZG
+						original_tag = ZHU
+						original_tag = UKR
+						original_tag = SUK
+						original_tag = UKW
+						original_tag = POL
+						original_tag = SMO
+						original_tag = WRM
+						original_tag = RMD
+						original_tag = BLR
+						original_tag = LAT
+						original_tag = EST
+						original_tag = LIT
+						original_tag = CDA
+						original_tag = UIA
+						original_tag = URP
+						original_tag = KMY
+						original_tag = SLV
+						original_tag = BLG
+						original_tag = RSB
+						original_tag = SBA
+						original_tag = KRU
+						original_tag = ARR
+						AND = {
+						original_tag = GEO
+						is_communist = yes
+						}
+						AND = {
+						original_tag = AZR
+						is_communist = yes
+						}
 					}
 					NOT = {
 						is_subject_of = ROOT
@@ -8391,6 +8406,7 @@ GER_bring_the_RKs_back_into_the_fold_decisions = {
 						has_war_with = GGP
 					}
 					exists = yes
+					is_subject = no
 				}
 			}
 		}
@@ -9521,6 +9537,12 @@ GER_bring_the_RKs_back_into_the_fold_decisions = {
 						add_ideas = authoritarian_system
 						clr_country_flag = german_language
 						set_country_flag = russian_language
+						IF = {
+							limit = {
+								has_cosmetic_tag = RMO_KAMINSKI_REPUBLIC
+							}
+							drop_cosmetic_tag = yes
+						}
 						transfer_state = 219
 						remove_ideas = {
 							GER_RK_repression
@@ -9822,6 +9844,18 @@ GER_bring_the_RKs_back_into_the_fold_decisions = {
 				}
 			}
 		}
+		visible = {
+			country_exists = AZR
+			country_exists = GEO
+			AZR = {
+			is_communist = no
+			is_subject = no
+			}
+			GEO = {
+			is_communist = no
+			is_subject = no
+			}
+		}
 		ai_will_do = {
 			base = 100
 		}
@@ -9874,6 +9908,12 @@ GER_bring_the_RKs_back_into_the_fold_decisions = {
 						add_ideas = authoritarian_system
 						clr_country_flag = german_language
 						set_country_flag = is_normal_language
+						IF = {
+							limit = {
+								has_cosmetic_tag = RUK_UKRAINE
+							}
+							drop_cosmetic_tag = yes
+						}
 						transfer_state = 202
 						remove_ideas = {
 							GER_RK_repression
