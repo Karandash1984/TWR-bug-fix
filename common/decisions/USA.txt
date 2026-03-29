@@ -9642,7 +9642,7 @@ USA_crime_fighting = {
 		available = {
 		}
 		visible = {
-		NOT = { has_completed_focus = USA_Clamping_Down_on_Organised_Crime }
+		has_completed_focus = USA_Clamping_Down_on_Organised_Crime
 		any_owned_state = {
 		has_dynamic_modifier = {
    	 	modifier = USA_criminal_activity
