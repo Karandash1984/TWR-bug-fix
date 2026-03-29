@@ -1,4 +1,4 @@
-Total 47
+Total 48
 USA_infiltrate_labour_unions
 RGO_fighter_n_bombers
 ENOUGH_SUPPORT_IN_NORTH_AFRICA
@@ -46,3 +46,4 @@ aluminium_2_finished
 aluminium_3_finished
 aluminium_4_finished
 AKBAR_KHAN_DESC
+nerve_agents
