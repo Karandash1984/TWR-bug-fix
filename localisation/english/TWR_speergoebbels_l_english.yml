@@ -947,3 +947,8 @@ modifier_state_repair_speed_radar_station_factor: "Radar Station Repair Speed"
 category_APC: "APC"
 
 VEN_American_Companies_in_Venezuela: "American Companies in Venezuela"
+
+aluminium_1_finished: "§RThis tech has already been researched for this state§!"
+aluminium_2_finished: "§RThis tech has already been researched for this state§!"
+aluminium_3_finished: "§RThis tech has already been researched for this state§!"
+aluminium_4_finished: "§RThis tech has already been researched for this state§!"

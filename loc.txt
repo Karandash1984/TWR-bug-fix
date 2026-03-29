@@ -1,4 +1,4 @@
-Total 42
+Total 46
 USA_infiltrate_labour_unions
 RGO_fighter_n_bombers
 ENOUGH_SUPPORT_IN_NORTH_AFRICA
@@ -41,3 +41,7 @@ modifier_state_repair_speed_rocket_site_factor
 modifier_state_repair_speed_radar_station_factor
 category_APC
 VEN_American_Companies_in_Venezuela
+aluminium_1_finished
+aluminium_2_finished
+aluminium_3_finished
+aluminium_4_finished
