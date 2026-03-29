@@ -47,3 +47,4 @@ aluminium_3_finished
 aluminium_4_finished
 AKBAR_KHAN_DESC
 nerve_agents
+chemical_raids
