@@ -322,90 +322,49 @@ country_event = { #soviet proxy
 	option = { #luftwaffe take charge goering
 		name = gern.8.a
 		custom_effect_tooltip = GOERING_BOOST
+		custom_effect_tooltip = GER_luftwaffe_can_win
 		hidden_effect = {
 			add_to_variable = {
 				var = goeringpower
 				value = 0.2
 			}
-			random_list = {
-				50 = { 
 					country_event = { id = gern.9901 days = 15 } 
 					SOV = {
 						country_event = { id = gern.9903 days = 15 }
 					}
 				}
-				50 = {
-					country_event = { id = gern.9902 days = 15 } 
-					SOV = {
-						country_event = { id = gern.9904 days = 15 }
-					}
-				}
-			}
-		}
 	}
 	option = { #ground take charge speer
 		name = gern.8.b
-		random_list = {
-			50 = { 
-				country_event = { id = gern.9905 days = 15 } 
-				SOV = {
-					country_event = { id = gern.9907 days = 15 }
-				}
-			}
-			50 = {
+		custom_effect_tooltip = GER_soviet_border_is_manned
+		hidden_effect = {
 				country_event = { id = gern.9906 days = 15 } 
 				SOV = {
 					country_event = { id = gern.9908 days = 15 }
 				}
 			}
 		}		
-	}
 	option = { #waffen SS himmler
 		name = gern.8.c
-		custom_effect_tooltip = HIMMLER_BOOST
-			random_list = {
-				50 = { 
-					country_event = { id = gern.9909 days = 15 } 
-					SOV = {
-						country_event = { id = gern.9907 days = 15 }
-					}
-				}
-				50 = {
+		custom_effect_tooltip = GER_soviet_border_is_manned
+		hidden_effect = {
 					country_event = { id = gern.9910 days = 15 } #fail
 					SOV = {
 						country_event = { id = gern.9908 days = 15 }
 					}
 				}
-			}
-		hidden_effect = {
-			add_to_variable = {
-				var = himmlerpower
-				value = 0.2
-			}
-		}
+		
 	}
 	option = { #outsource the task to Einsatzgruppen
 		name = gern.8.e
-		custom_effect_tooltip = BORMANN_BOOST
-			random_list = {
-				50 = { 
-					country_event = { id = gern.9911 days = 15 } 
-					SOV = {
-						country_event = { id = gern.9907 days = 15 }
-					}
-				}
-				50 = {
+		custom_effect_tooltip = GER_soviet_border_is_manned
+		
+		hidden_effect = {
 					country_event = { id = gern.9912 days = 15 } #fail
 					SOV = {
 						country_event = { id = gern.9908 days = 15 }
 					}
-				}
-			}
-		hidden_effect = {
-			add_to_variable = {
-				var = bormannpower
-				value = 0.2
-			}
+			
 		}
 	}
 }
@@ -624,12 +583,7 @@ country_event = { #luftwaffe bombs
 	option = { #air raiding
 		name = gern.9901.a
 		add_war_support = 0.1
-		hidden_effect = {
-			add_to_variable = {
-				var = goeringpower
-				value = 0.1
-			}
-		}
+		
 	}
 }
 country_event = { #luftwaffe major failure
@@ -672,6 +626,11 @@ country_event = { #luftwaffe bombs soviets to oblivion
 	option = { #air raiding
 		name = gern.9903.a
 		random_owned_state = { 
+			limit = {
+				any_neighbor_state = {
+					is_controlled_by = RMO
+				}
+			}
 			damage_building = {
 				type = infrastructure
 				damage = 2
@@ -734,6 +693,13 @@ country_event = { #border war defeated
 		add_manpower = -4000
 		add_war_support = -0.1
 		add_political_power = -150
+		custom_effect_tooltip = HIMMLER_BOOST
+		hidden_effect = {
+			add_to_variable = {
+				var = himmlerpower
+				value = 0.2
+			}
+		}
 	}
 }
 country_event = { #soviet defeated
@@ -810,10 +776,11 @@ country_event = { #SS Defeat
 		add_stability = -0.05
 		add_war_support = -0.05
 		add_manpower = -3000
+		custom_effect_tooltip = HIMMLER_FALL
 		hidden_effect = {
-			subtract_from_variable = {
+			add_to_variable = {
 				var = himmlerpower
-				value = 0.4
+				value = -0.2
 			}
 		}
 	}
@@ -832,12 +799,6 @@ country_event = { #Einsatzgruppen victory
 	option = { #Waffen SS victory
 		name = gern.9911.a
 		add_stability = 0.1
-		hidden_effect = {
-			add_to_variable = {
-				var = bormannpower
-				value = 0.1
-			}
-		}
 	}
 }
 country_event = { #Einsatzgruppen Defeat
@@ -855,10 +816,11 @@ country_event = { #Einsatzgruppen Defeat
 		name = gern.9912.a
 		add_stability = -0.05
 		add_war_support = -0.1
+		custom_effect_tooltip = BORMANN_FALL
 		hidden_effect = {
-			subtract_from_variable = {
+			add_to_variable = {
 				var = bormannpower
-				value = 0.3
+				value = -0.2
 			}
 		}
 	}
@@ -1818,18 +1780,14 @@ country_event = {
 	option = {
 		name = twrgermany.33.a #pick someone
 		add_stability = -0.1
+		
 		hidden_effect = {
 			set_country_flag = ALLOWPICK
-		}
-		ai_chance = {
-			base = 1
-			modifier = {
-				factor = 0
-				has_global_flag = COUNTRY_PATH_GER_GCW_FORCE
-			}
+			# GAME RULE #
 			
 		}
-	}
+			}
+			
 	option = {
 		name = twrgermany.33.b
 		add_stability = 0.05
@@ -3061,23 +3019,23 @@ country_event = {
 			}
 		}
 		add_political_power = -200
-		random_list = {
-			50 = {
-				country_event = {
-					id = germanps.2 #Hitler stabilized
-					days = 0
+		hidden_effect = {
+			if = {
+				limit = {
+					has_country_leader_with_trait = cornered_fox
 				}
-			}
-			50 = {
 				country_event = {
 					id = germanps.5 #Hitler refuses treatment
 					days = 0
 				}
-				modifier = {
-				factor = 2
-				has_country_leader_with_trait = cornered_fox
-				}
 			}
+			else = {
+				country_event = {
+					id = germanps.2 #Hitler stabilized
+					days = 0
+				}
+				}
+			
 		}
 	}
 	option = {
@@ -3449,6 +3407,8 @@ country_event = {
 		hidden_effect = {
 			set_country_flag = announcedshits
 		}
+		news_event = germannews.9001
+		
 	}
 	option = {
 		name = germanps.479.b #keep it hidden from the public, for now
@@ -3531,18 +3491,58 @@ country_event = {
 	option = {
 		name = germanps.7.a
 		hidden_effect = { set_country_flag = heer_neutral } #Neutral Heer
+		ai_chance = {
+			base = 1
+			modifier = {
+				factor = 10000
+				has_global_flag = COUNTRY_PATH_GER_HIMMLER
+			}
+			modifier = {
+				factor = 10000
+				has_global_flag = COUNTRY_PATH_GER_ARMY
+			}
+			
+		}
 	}
 	option = {
 		name = germanps.7.b
 		hidden_effect = { set_country_flag = side_with_speer_and_goebbels } #Speer Goebbels Heer
+		ai_chance = {
+			base = 1
+			modifier = {
+				factor = 10000
+				has_global_flag = COUNTRY_PATH_GER_SPEER
+			}
+			modifier = {
+				factor = 10000
+				has_global_flag = COUNTRY_PATH_GER_GOEBBELS
+			}
+			
+		}
 	}
 	option = {
 		name = germanps.7.c
 		hidden_effect = { set_country_flag = side_with_the_senate } #Bormann Heer
+		ai_chance = {
+			base = 1
+			modifier = {
+				factor = 10000
+				has_global_flag = COUNTRY_PATH_GER_BORMANN
+			}
+			
+		}
 	}
 	option = {
 		name = germanps.7.e
 		hidden_effect = { set_country_flag = side_with_the_goering } #Goering Heer
+		ai_chance = {
+			base = 1
+			modifier = {
+				factor = 10000
+				has_global_flag = COUNTRY_PATH_GER_GOERING
+			}
+			
+		}
 	}
 } 
 
@@ -3658,6 +3658,17 @@ country_event = {
 		hidden_effect = { set_country_flag = sssolelyforce #SS Great Influence
 			country_event = { days = 10 id = germanps.14 }
 		}
+		ai_chance = {
+			base = 1
+			modifier = {
+				factor = 10000
+				OR = {
+					has_global_flag = COUNTRY_PATH_GER_HIMMLER
+					has_global_flag = COUNTRY_PATH_GER_BORMANN
+				}
+			}
+			
+		}
 	}
 
 	option = {
@@ -3771,11 +3782,19 @@ country_event = {
 
 	option = {
 		name = germanps.990.a
+		
 	}
 	option = {
 		name = germanps.990.b
 		hidden_effect = { 
 			set_country_flag = goering_chain
+		}
+		ai_chance = {
+			base = 1
+			modifier = {
+				factor = 10000
+				has_global_flag = COUNTRY_PATH_GER_GOERING
+			}
 		}
 	}
 }
@@ -3798,6 +3817,20 @@ country_event = {
 			set_country_flag = bormannoverpowered 
 			country_event = { days = 7 id = germanps.17 }
 		}
+		ai_chance = {
+			base = 1
+			modifier = {
+				factor = 10000
+				OR = {
+					has_global_flag = COUNTRY_PATH_GER_ARMY
+					has_global_flag = COUNTRY_PATH_GER_GOEBBELS
+					has_global_flag = COUNTRY_PATH_GER_SPEER
+					has_global_flag = COUNTRY_PATH_GER_GOERING
+					has_global_flag = COUNTRY_PATH_GER_HIMMLER
+				}
+			}
+			
+		}
 	}
 
 	option = {
@@ -3806,6 +3839,17 @@ country_event = {
 		hidden_effect = { 
 			set_country_flag = bormannlistensabit 
 			country_event = { days = 5 id = germanps.20 }
+		}
+		
+		ai_chance = {
+			base = 1
+			modifier = {
+				factor = 10000
+				OR = {
+					has_global_flag = COUNTRY_PATH_GER_BORMANN
+				}
+			}
+			
 		}
 	}
 
@@ -4007,6 +4051,20 @@ country_event = {
 			set_country_flag = senate_boiling_point 
 			country_event = { days = 5 id = germanps.19 }
 		}
+		ai_chance = {
+			base = 1
+			modifier = {
+				factor = 10000
+				OR = {
+					has_global_flag = COUNTRY_PATH_GER_ARMY
+					has_global_flag = COUNTRY_PATH_GER_GOEBBELS
+					has_global_flag = COUNTRY_PATH_GER_SPEER
+					has_global_flag = COUNTRY_PATH_GER_GOERING
+					has_global_flag = COUNTRY_PATH_GER_HIMMLER
+				}
+			}
+			
+		}
 	}
 
 	option = {
@@ -4071,55 +4129,43 @@ country_event = {
 		add_political_power = -100
 		add_stability = -0.1
 		hidden_effect = {
-		random_list = {
-			50 = {
-			country_event = { days = 0 id = germanps.21 } #SS Coup
-			modifier = {
-			factor = 2
-			check_variable = { var = himmlerpower value = 0.8 compare = greater_than_or_equals }
-			NOT = {
-			check_variable = { var = bormannpower value = 0.8 compare = greater_than_or_equals }
+			if =  {
+				limit = {
+					OR = {
+						check_variable = {
+							himmlerpower > bormannpower
+						}
+						AND = {
+							is_ai = yes
+							has_global_flag = COUNTRY_PATH_GER_HIMMLER
+							
+						}
 				}
+					NOT = {
+						AND = {
+							is_ai = yes
+							has_global_flag = COUNTRY_PATH_GER_BORMANN
+						}
+				}
+					
+				}
+				country_event = germanps.21
 			}
-			modifier = {
-			factor = 2
-			check_variable = { var = bormannpower value = 0.2 compare = less_than }
-				}
-			modifier = {
-			add = 20
-			check_variable = { var = himmlerpower value = 0.2 compare = greater_than_or_equals }
-			check_variable = { var = himmlerpower value = 0.8 compare = less_than }
-				}
-			modifier = {
-			add = 0
-			check_variable = { var = himmlerpower value = 0.2 compare = less_than }
-				}
+			else = {
+				country_event = germanps.22
 			}
-			50 = {
-			country_event = { days = 0 id = germanps.22 } #Bormann in power
+		
+		}
+		ai_chance = {
+			base = 1
 			modifier = {
-			factor = 2
-			check_variable = { var = bormannpower value = 0.8 compare = greater_than_or_equals }
-			NOT = {
-			check_variable = { var = himmlerpower value = 0.8 compare = greater_than_or_equals }
+				factor = 10000
+				OR = {
+					has_global_flag = COUNTRY_PATH_GER_HIMMLER
+					has_global_flag = COUNTRY_PATH_GER_BORMANN
 					}
 				}
-			modifier = {
-			factor = 1.5
-			check_variable = { var = bormannpower value = 0.8 compare = less_than }
-			check_variable = { var = bormannpower value = 0.6 compare = greater_than_or_equals }
-				}
-			modifier = {
-			add = 20
-			check_variable = { var = bormannpower value = 0.2 compare = greater_than_or_equals }
-			check_variable = { var = bormannpower value = 0.6 compare = less_than }
-					}
-			modifier = {
-			factor = 0
-			check_variable = { var = bormannpower value = 0.2 compare = less_than }
-					}
-				}
-			}
+			
 		}
 	}
 	option = {
@@ -4161,6 +4207,17 @@ country_event = {
 					}
 				}
 			}
+		}
+		ai_chance = {
+			base = 1
+			modifier = {
+				factor = 10000
+				OR = {
+					has_global_flag = COUNTRY_PATH_GER_HIMMLER
+					has_global_flag = COUNTRY_PATH_GER_BORMANN
+				}
+			}
+			
 		}
 	}
 }
@@ -4357,19 +4414,40 @@ country_event = {
 			60 = {
 			country_event = { days = 0 id = germanps.26 } #Bormann Oust
 			modifier = {
+				factor = 0
+				is_ai = yes
+				has_global_flag = COUNTRY_PATH_GER_BORMANN
+						}
+			modifier = {
+			factor = 0
+			check_variable = { var = bormannpower value = 0.7 compare = greater_than_or_equals }
+					}
+			modifier = {
 			add = 40
 			check_variable = { var = bormannpower value = 0.2 compare = less_than }
 				}
 			}
 			40  = {
+				
 			country_event = { days = 0 id = germanps.27 } #Bormann Stays
 			modifier = {
 			add = 60
-			check_variable = { var = bormannpower value = 0.6 compare = greater_than }
+			check_variable = { var = bormannpower value = 0.7 compare = greater_than_or_equals }
 					}
 			modifier = {
 			factor = 0
 			check_variable = { var = bormannpower value = 0.2 compare = less_than }
+					}
+					modifier = {
+				factor = 0
+				is_ai = yes
+				OR = {
+					has_global_flag = COUNTRY_PATH_GER_SPEER
+					has_global_flag = COUNTRY_PATH_GER_GOEBBELS
+					has_global_flag = COUNTRY_PATH_GER_GOERING
+					has_global_flag = COUNTRY_PATH_GER_ARMY
+					has_global_flag = COUNTRY_PATH_GER_HIMMLER
+				}
 					}
 				}
 			}
@@ -4385,12 +4463,47 @@ country_event = {
 		name = germanps.25.b
 		add_political_power = 100
 		add_stability = 0.1
+		hidden_effect = {
 		random_list = {
 			50 = {
 				country_event = { days = 0 id = germanps.26 } #Bormann Oust
+					
+				modifier = {
+				factor = 0
+				check_variable = { var = bormannpower value = 0.6 compare = greater_than_or_equals }
+						}
+				modifier = {
+				add = 40
+				check_variable = { var = bormannpower value = 0.2 compare = less_than }
+					}
+				modifier = {
+				factor = 0
+				is_ai = yes
+				has_global_flag = COUNTRY_PATH_GER_BORMANN
+						}
 			}
 			50  = {
 				country_event = { days = 0 id = germanps.27 } #Bormann in power
+				modifier = {
+				add = 60
+				check_variable = { var = bormannpower value = 0.6 compare = greater_than_or_equals }
+						}
+				modifier = {
+				factor = 0
+				check_variable = { var = bormannpower value = 0.2 compare = less_than }
+						}
+					modifier = {
+				factor = 0
+				is_ai = yes
+				OR = {
+					has_global_flag = COUNTRY_PATH_GER_SPEER
+					has_global_flag = COUNTRY_PATH_GER_GOEBBELS
+					has_global_flag = COUNTRY_PATH_GER_GOERING
+					has_global_flag = COUNTRY_PATH_GER_ARMY
+					has_global_flag = COUNTRY_PATH_GER_HIMMLER
+				}
+						}
+				}
 			}
 		}
 	}
@@ -4400,6 +4513,7 @@ country_event = {
 		add_stability = -0.3
 		add_war_support = -0.3
 		country_event = { days = 0 id = germanps.28 }
+		
 	}
 } 
 
@@ -4437,38 +4551,25 @@ country_event = {
 			has_country_flag = bormannousted
 			has_country_flag = side_with_speer_and_goebbels
 			has_country_flag = senate_division
+			has_global_flag = COUNTRY_PATH_GER_SPEER
+			has_global_flag = COUNTRY_PATH_GER_GOEBBELS
 			}
 		}
 		remove_ideas = GER_HoG_Martin_Bormann
 		set_country_flag = Martin_Bormann_unavailable
 		country_event = { days = 0 id = germanps.30 }
-	}
-
-	option = {
-		name = germanps.26.c
-		trigger = {
-			OR = {
-			has_country_flag = side_with_the_senate 
-			has_country_flag = heer_neutral
+		ai_chance = {
+			base = 1
+			modifier = {
+				factor = 10000
+				has_global_flag = COUNTRY_PATH_GER_SPEER
 			}
-		}
-		remove_ideas = GER_HoG_Martin_Bormann
-		set_country_flag = Martin_Bormann_unavailable
-		country_event = { days = 0 id = germanps.31 }
-	}
-
-	option = {
-		name = germanps.26.e
-		trigger = {
-			OR = {
-			has_country_flag = sssolelyforce
-			has_country_flag = ssrefusedbormann
-
+			modifier = {
+				factor = 10000
+				has_global_flag = COUNTRY_PATH_GER_GOEBBELS
 			}
+			
 		}
-		remove_ideas = GER_HoG_Martin_Bormann
-		set_country_flag = Martin_Bormann_unavailable
-		country_event = { days = 0 id = germanps.32 }
 	}
 
 	option = {
@@ -4478,12 +4579,68 @@ country_event = {
 				has_country_flag = bormannousted
 				has_country_flag = side_with_the_goering
 				has_country_flag = senate_division
+			has_global_flag = COUNTRY_PATH_GER_GOERING
 			}
 		}
 		remove_ideas = GER_HoG_Martin_Bormann
 		set_country_flag = Martin_Bormann_unavailable
 		country_event = { days = 0 id = germanps.991 }
+		ai_chance = {
+			base = 1
+			modifier = {
+				factor = 10000
+				has_global_flag = COUNTRY_PATH_GER_GOERING
+			}
+			
+		}
 	}
+
+	option = {
+		name = germanps.26.c
+		trigger = {
+			OR = {
+			has_country_flag = side_with_the_senate 
+			has_country_flag = heer_neutral
+			has_global_flag = COUNTRY_PATH_GER_ARMY
+			}
+		}
+		remove_ideas = GER_HoG_Martin_Bormann
+		set_country_flag = Martin_Bormann_unavailable
+		country_event = { days = 0 id = germanps.31 }
+		ai_chance = {
+			base = 1
+			modifier = {
+				factor = 10000
+				has_global_flag = COUNTRY_PATH_GER_ARMY
+			}
+			
+		}
+	}
+
+	option = {
+		name = germanps.26.e
+		trigger = {
+			OR = {
+			has_country_flag = sssolelyforce
+			has_country_flag = ssrefusedbormann
+			has_global_flag = COUNTRY_PATH_GER_HIMMLER
+
+			}
+	}
+		ai_chance = {
+			base = 1
+			modifier = {
+				factor = 10000
+				has_global_flag = COUNTRY_PATH_GER_HIMMLER
+			}
+			
+		}
+		remove_ideas = GER_HoG_Martin_Bormann
+		set_country_flag = Martin_Bormann_unavailable
+		country_event = { days = 0 id = germanps.32 }
+	}
+
+	
 }
 country_event = {
 	id = germanps.991
@@ -4577,7 +4734,7 @@ country_event = {
 		OR = {
 			has_country_flag = himmlerbormannbloc
 			has_country_flag = side_with_the_senate
-			check_variable = { var = bormannpower value = 0.6 compare = greater_than }
+			NOT = { check_variable = { himmlerpower > bormannpower } }
 		}
 		NOT = { has_country_flag = sssolelyforce }
 		NOT = {
@@ -4607,6 +4764,13 @@ country_event = {
 			complete_national_focus = GER_Bormann_On_Top
 			set_country_flag = bormanncollapse
 		}
+		ai_chance = {
+			base = 1
+			modifier = {
+				factor =10000
+				has_global_flag = COUNTRY_PATH_GER_BORMANN
+			}
+		}
 	}
 
 	option = {
@@ -4615,7 +4779,7 @@ country_event = {
 			OR = {
 				has_country_flag = himmlerbormannbloc 
 				has_country_flag = sssolelyforce
-				check_variable = { var = himmlerpower value = 0.6 compare = greater_than }
+				check_variable = { himmlerpower > bormannpower }
 			}
 		}
 		retire_country_leader = yes
@@ -4640,6 +4804,13 @@ country_event = {
 		}	
 		complete_national_focus = GER_SS_Security_Coup
 		}
+		ai_chance = {
+			base = 1
+			modifier = {
+				factor =10000
+				has_global_flag = COUNTRY_PATH_GER_HIMMLER
+			}
+		}
 	}
 
 	option = {
@@ -4650,11 +4821,22 @@ country_event = {
 		trigger = {
 		OR = {
 			has_country_flag = side_with_speer_and_goebbels
-			check_variable = { var = goebbelspower value = 0.4 compare = greater_than_or_equals }
-			check_variable = { var = speerpower value = 0.4 compare = greater_than_or_equals }
+			check_variable = { var = goebbelspower value = 0.6 compare = greater_than_or_equals }
+			check_variable = { var = speerpower value = 0.6 compare = greater_than_or_equals }
 			}
 		}
 		country_event = { days = 0 id = germanps.30 }
+		ai_chance = {
+			base = 1
+			modifier = {
+				factor =10000
+				has_global_flag = COUNTRY_PATH_GER_SPEER
+			}
+			modifier = {
+				factor =10000
+				has_global_flag = COUNTRY_PATH_GER_GOEBBELS
+			}
+		}
 	}
 
 	option = {
@@ -4662,12 +4844,19 @@ country_event = {
 		trigger = {
 		OR = {
 			has_country_flag = side_with_the_goering
-			check_variable = { var = goeringpower value = 0.4 compare = greater_than_or_equals }
+			check_variable = { var = goeringpower value = 0.6 compare = greater_than_or_equals }
 			}
 		}
 		remove_ideas = GER_HoG_Martin_Bormann
 		set_country_flag = Martin_Bormann_unavailable
 		country_event = { days = 0 id = germanps.991 }
+		ai_chance = {
+			base = 1
+			modifier = {
+				factor =10000
+				has_global_flag = COUNTRY_PATH_GER_GOERING
+			}
+		}
 	}
 
 
@@ -4682,6 +4871,13 @@ country_event = {
 		remove_ideas = GER_HoG_Martin_Bormann
 		set_country_flag = Martin_Bormann_unavailable
 		country_event = { days = 0 id = germanps.31 }
+		ai_chance = {
+			base = 1
+			modifier = {
+				factor =10000
+				has_global_flag = COUNTRY_PATH_GER_ARMY
+			}
+		}
 	}
 }
 country_event = {
@@ -4832,6 +5028,13 @@ country_event = {
 			GER_CoA_Ferdinand_Schorner
 		}
 		}
+		ai_chance = {
+			base = 1
+			modifier = {
+				factor = 0
+				has_global_flag = COUNTRY_PATH_GER_SPEER
+		}
+		}
 	}
 
 	option = {
@@ -4858,6 +5061,13 @@ country_event = {
 			GER_CoA_Erwin_Rommel
 		}
 		complete_national_focus = GER_Speer_Goebbels_Bloc
+		}
+		ai_chance = {
+			base = 1
+			modifier = {
+				factor = 0
+				has_global_flag = COUNTRY_PATH_GER_GOEBBELS
+			}
 		}
 	}
 }
@@ -4949,40 +5159,57 @@ country_event = {
 
 	option = {
 		name = germanps.33.a
+		custom_effect_tooltip = SS_PURGE_SUCCESS_SPEER_TT
+		hidden_effect = {
 		random_list = {
-			20 = {
+				15 = {
 				country_event = {
 					id = germanps.34
-					days = 1
+						days = 0
 				}
 				modifier = {
-					factor = 0
-					check_variable = { var = himmlerpower value = 0.6 compare = greater_than_or_equals }
-					NOT = {
-						has_global_flag = COUNTRY_PATH_GER_GCW_PREVENT
+						factor = 2.5
+						check_variable = { var = goebbelspower value = 0.6 compare = greater_than_or_equals }
 					}
+					modifier = {
+						factor = 2.5
+						check_variable = { var = speerpower value = 0.6 compare = greater_than_or_equals }
 				}	
 				modifier = {
-					add = 30
-					check_variable = { var = himmlerpower value = 0.4 compare = less_than }
+						factor = 6
+						check_variable = { var = himmlerpower value = 0.3 compare = less_than_or_equals }
 				}
 				modifier = {
 					factor = 0
 					has_global_flag = COUNTRY_PATH_GER_GCW_FORCE
 				}
+					modifier = {
+						add = 1
+						has_global_flag = COUNTRY_PATH_GER_GCW_PREVENT
 			}
-			80 = {
+				}
+				85 = {
 				country_event = {
 					id = germanps.500
-					days = 1
+						days = 0
 				}	
 				modifier = {
-					add = -30
-					check_variable = { var = himmlerpower value = 0.4 compare = less_than }
+						factor = 0
+						count_triggers = {
+							amount = 2
+							check_variable = { var = speerpower value = 0.6 compare = greater_than_or_equals }
+							check_variable = { var = goebbelspower value = 0.6 compare = greater_than_or_equals }
+							check_variable = { var = himmlerpower value = 0.3 compare = less_than_or_equals }
+						}
 				}	
 				modifier = {
 					factor = 0
 					has_global_flag = COUNTRY_PATH_GER_GCW_PREVENT
+					}
+					modifier = {
+						add = 1
+						has_global_flag = COUNTRY_PATH_GER_GCW_FORCE
+					}
 				}
 			}
 		}
@@ -5111,6 +5338,24 @@ country_event = {
 
 	option = {
 		name = germanps.37.a
+		if = {
+			limit = {
+				has_completed_focus = GER_Speer_Goebbels_Bloc
+			}
+			custom_effect_tooltip = HIMMLER_BURGUNDY_SUCCESS_SPEER_TT
+		}
+		if = {
+			limit = {
+				has_completed_focus = GER_Bormann_On_Top
+			}
+			custom_effect_tooltip = BORMANN_SUCCESS_TT
+		}
+		if = {
+			limit = {
+				has_completed_focus = GER_Goering_In
+			}
+			custom_effect_tooltip = HIMMLER_BURGUNDY_SUCCESS_GOERING_TT
+		}
 		trigger = {
 			OR = {
 				NOT = { 
@@ -5119,34 +5364,87 @@ country_event = {
 				has_global_flag = COUNTRY_PATH_GER_GCW_FORCE
 			}
 		}
+		hidden_effect = {
 		random_list = {
-			80 = {
+				15 = {
 				country_event = {
 					id = germanps.38
 					days = 0
 				}
+					
+					modifier = {
+						has_completed_focus = GER_Speer_Goebbels_Bloc
+						factor = 2.5
+						check_variable = { var = goebbelspower value = 0.6 compare = greater_than_or_equals }
+					}
+					modifier = {
+						has_completed_focus = GER_Speer_Goebbels_Bloc
+						factor = 2.5
+						check_variable = { var = speerpower value = 0.6 compare = greater_than_or_equals }
+					}
+					modifier = {
+						has_completed_focus = GER_Bormann_On_Top
+						factor = 2.5
+						check_variable = { var = bormannpower value = 0.6 compare = greater_than_or_equals }
+					}
+					modifier = {
+						has_completed_focus = GER_Goering_In
+						factor = 2.5
+						check_variable = { var = goeringin value = 0.6 compare = greater_than_or_equals }
+					}
+					modifier = {
+						factor = 6
+						check_variable = { var = himmlerpower value = 0.5 compare = less_than_or_equals }
+					}
+					modifier = {
+						factor = 0
+						check_variable = { var = himmlerpower value = 0.8 compare = greater_than_or_equals }
+					}
 				modifier = {
 					factor = 0
 					has_global_flag = COUNTRY_PATH_GER_GCW_FORCE
 				}
+					modifier = {
+						add = 1
+						has_global_flag = COUNTRY_PATH_GER_GCW_PREVENT
 			}
-			0 = {
+				}
+				85 = {
 				country_event = {
 					id = germanps.39
 					days = 0
 				}	
+						
 				modifier = {
-					add = 20
-					check_variable = { var = himmlerpower value = 0.3 compare = greater_than_or_equals }
+						factor = 0
+						has_completed_focus = GER_Speer_Goebbels_Bloc
+						count_triggers = {
+							amount = 2
+							check_variable = { var = speerpower value = 0.6 compare = greater_than_or_equals }
+							check_variable = { var = goebbelspower value = 0.6 compare = greater_than_or_equals }
+							check_variable = { var = himmlerpower value = 0.5 compare = less_than_or_equals }
+						}
 				}
 				modifier = {
-					add = 60
-					check_variable = { var = himmlerpower value = 0.6 compare = greater_than_or_equals }
-				}
-				
+						factor = 0
+						has_completed_focus = GER_Bormann_On_Top
+						check_variable = { var = bormannpower value = 0.6 compare = greater_than_or_equals }
+						check_variable = { var = himmlerpower value = 0.5 compare = less_than_or_equals }
+					}	
+					modifier = {
+						factor = 0
+						has_completed_focus = GER_Goering_In
+						check_variable = { var = goeringpower value = 0.6 compare = greater_than_or_equals }
+						check_variable = { var = himmlerpower value = 0.5 compare = less_than_or_equals }
+					}
 				modifier = {
 					factor = 0
 					has_global_flag = COUNTRY_PATH_GER_GCW_PREVENT
+					}
+					modifier = {
+						add = 1
+						has_global_flag = COUNTRY_PATH_GER_GCW_FORCE
+					}
 				}	
 			}
 		}
@@ -5398,25 +5696,46 @@ country_event = {
 
 	option = {
 		name = germanps.40.a
+		custom_effect_tooltip = MILITARY_SS_PURGE_SUCCESS_TT
+		hidden_effect = {
 		random_list = {
 			15 = {
 				country_event = {
 					id = germanps.34
 					days = 0
 				}
+					
+					modifier = {
+						factor = 6
+						check_variable = { var = himmlerpower value = 0.5 compare = less_than_or_equals }
+					}
 				modifier = {
 					factor = 0
 					has_global_flag = COUNTRY_PATH_GER_GCW_FORCE
 				}
+					modifier = {
+						add = 1
+						has_global_flag = COUNTRY_PATH_GER_GCW_PREVENT
+					}
 			}
 			85 = {
 				country_event = {
 					id = germanps.501
 					days = 0
+					}		
+						
+					modifier = {
+						factor = 0
+						check_variable = { var = himmlerpower value = 0.2 compare = less_than_or_equals }
 				}
 				modifier = {
 					factor = 0
 					has_global_flag = COUNTRY_PATH_GER_GCW_PREVENT
+					}
+					modifier = {
+						add = 1
+						has_global_flag = COUNTRY_PATH_GER_GCW_FORCE
+					}
 				}		
 			}
 		}
@@ -5435,25 +5754,44 @@ country_event = {
 
 	option = {
 		name = germanps.41.a
+		custom_effect_tooltip = SS_MILITARY_PURGE_SUCCESS_TT
+		hidden_effect = {
 		random_list = {
 			15 = {
 				country_event = {
 					id = germanps.42
 					days = 0
+					}
+					modifier = {
+						factor = 6
+						check_variable = { var = himmlerpower value = 0.5 compare = greater_than_or_equals }
 				}
 				modifier = {
 					factor = 0
 					has_global_flag = COUNTRY_PATH_GER_GCW_FORCE
+					}	
+					modifier = {
+						add = 1
+						has_global_flag = COUNTRY_PATH_GER_GCW_PREVENT
 				}
 			}
 			85 = {
 				country_event = {
 					id = germanps.501
 					days = 0
+					}		
+					modifier = {
+						factor = 0
+						check_variable = { var = himmlerpower value = 0.8 compare = greater_than_or_equals }
 				}	
 				modifier = {
 					factor = 0
 					has_global_flag = COUNTRY_PATH_GER_GCW_PREVENT
+					}	
+					modifier = {
+						add = 1
+						has_global_flag = COUNTRY_PATH_GER_GCW_FORCE
+					}
 				}	
 			}
 		}
@@ -5580,6 +5918,8 @@ country_event = {
 
 	option = {
 		name = germanps.44.a
+		custom_effect_tooltip = BORMANN_SUCCESS_TT
+		hidden_effect = {
 		random_list = {
 			15 = {
 				country_event = {
@@ -5587,22 +5927,40 @@ country_event = {
 					days = 1
 				}
 				modifier = {
-				add = 35
+						factor = 6
 				check_variable = { var = bormannpower value = 0.6 compare = greater_than_or_equals }
 				}
+					modifier = {
+						factor = 6
+						check_variable = { var = himmlerpower value = 0.6 compare = greater_than_or_equals }
+					}
 				modifier = {
 					factor = 0
 					has_global_flag = COUNTRY_PATH_GER_GCW_FORCE
 				}
+					modifier = {
+						add = 1
+						has_global_flag = COUNTRY_PATH_GER_GCW_PREVENT
+					}
 			}
 			85 = {
 				country_event = {
 					id = germanps.500
-					days = 1
+						days = 0
+					}
+					modifier = {
+						factor = 0
+						check_variable = { var = bormannpower value = 0.6 compare = greater_than_or_equals }
+						check_variable = { var = himmlerpower value = 0.6 compare = greater_than_or_equals }
 				}	
 				modifier = {
 					factor = 0
 					has_global_flag = COUNTRY_PATH_GER_GCW_PREVENT
+					}	
+					modifier = {
+						add = 1
+						has_global_flag = COUNTRY_PATH_GER_GCW_FORCE
+					}
 				}	
 			}
 		}
@@ -5621,6 +5979,8 @@ country_event = {
 
 	option = {
 		name = germanps.45.a
+		custom_effect_tooltip = BORMANN_SUCCESS_TT
+		hidden_effect = {
 		random_list = {
 			15 = {
 				country_event = {
@@ -5628,22 +5988,40 @@ country_event = {
 					days = 0
 				}
 				modifier = {
-					add = 35
+						factor = 6
 					check_variable = { var = bormannpower value = 0.6 compare = greater_than_or_equals }
 				}
+					modifier = {
+						factor = 6
+						check_variable = { var = himmlerpower value = 0.4 compare = less_than_or_equals }
+					}
 				modifier = {
 					factor = 0
 					has_global_flag = COUNTRY_PATH_GER_GCW_FORCE
 				}
+					modifier = {
+						add = 1
+						has_global_flag = COUNTRY_PATH_GER_GCW_PREVENT
+					}
 			}
 			85 = {
 				country_event = {
 					id = germanps.500
 					days = 0
+					}	
+					modifier = {
+						factor = 0
+						check_variable = { var = bormannpower value = 0.6 compare = greater_than_or_equals }
+						check_variable = { var = himmlerpower value = 0.4 compare = less_than_or_equals }
 				}		
 				modifier = {
 					factor = 0
 					has_global_flag = COUNTRY_PATH_GER_GCW_PREVENT
+					}
+					modifier = {
+						add = 1
+						has_global_flag = COUNTRY_PATH_GER_GCW_FORCE
+					}
 				}	
 			}
 		}
@@ -7132,6 +7510,10 @@ country_event = {
 	is_triggered_only = yes
 	option = {
 		name = germanflavours.102.a
+		set_country_leader_portrait = {
+			ideology = national_socialist
+			portrait = GFX_portrait_hitler
+		}
 		add_political_power = -150
 		hidden_effect = {
 		ROM = {

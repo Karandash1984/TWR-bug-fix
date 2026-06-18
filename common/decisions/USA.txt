@@ -129,6 +129,7 @@ USA_civil_rights_activity = {
 }
 
 
+
 USA_segregationist_activity = {
 	allowed = { tag = USA }
     activation = {
@@ -264,27 +265,6 @@ USA_segregationist_activity = {
 		}
     }
 }
-
-USA_wallace_must_go = {
-		icon = generic_political_discourse
-		allowed = { always = no }
-		available = {
-			has_completed_focus = USA_For_FDRs_Dream
-			NOT = {
-			has_country_flag = WALLACE_IS_FUCKED
-			}
-		}
-
-		cancel_if_not_visible = yes
-		is_good = no
-
-		days_mission_timeout = 130
-
-		timeout_effect = {
-			log = "[GetDateText]: [Root.GetName]: Decision timeout USA_wallace_must_go"
-			country_event = twrUSelection.7
-		}
-	}	
 }
 USA_SCOTUS_category = {
 	USA_pending_court_decision = {
@@ -1405,7 +1385,6 @@ diplomatic_decisions = {
 }
 USA_cia_operations = {
 	psychological_warfare = {
-		cost = 50
 		icon = infiltrate_state
 		available = {
 			NOT = { has_country_flag = ongoing_target }
@@ -1425,7 +1404,10 @@ USA_cia_operations = {
 
 		target_trigger = {
 			FROM = {
-				NOT = { is_neighbor_of = ROOT }
+				OR = {
+					NOT = { is_neighbor_of = ROOT }
+					tag = CUB
+				}
 				has_idea = CENTRAL_drifting_apart
 			}
 		}
@@ -1565,6 +1547,10 @@ support_anti_syrian_movements = {
 			NOT = { has_country_flag = CIA_PERSONNEL_WACK }
 			}
 			has_completed_focus = USA_AfroAsia_Strategy
+			GSR = {
+				exists = yes
+				controls_state = 554
+			}
 		}
 
 		target_trigger = {
@@ -2251,7 +2237,6 @@ USA_supporting_rebels = {
 USA_desegregation_cat = {
 	desegregate_army = { #now a timed decision
 		cost = 50
-        fire_only_once = yes
         icon = generic_military
         days_remove = 60
         is_good = yes
@@ -2279,7 +2264,6 @@ USA_desegregation_cat = {
 	}
 	desegregate_washington_DC = { #now a timed decision
 		cost = 50
-        fire_only_once = yes
         icon = generic_political_discourse
         days_remove = 60
         is_good = yes
@@ -2439,13 +2423,14 @@ USA_desegregation_cat = {
 		allowed = { tag = USA }
 		fire_only_once = no
 		visible = {
-
+			has_completed_focus = USA_Enforce_Morgan_v_Virginia
 		}
 		available = {
 			NOT = {
 				has_country_flag = already_desegregating_transport_flag
 			}
 			NOT = { has_idea = USA_dixiecrat_concessions }
+			has_completed_focus = USA_Enforce_Morgan_v_Virginia
 		}
 		state_target = yes
 	    target_array = USA.core_states
@@ -2835,7 +2820,24 @@ USA_nuclear_retaliation = {
 				has_war_with = HSS
 			}
 		}
+		allowed = {
+			always = no #stupid paradox doesnt let you check for air superiority
+		}
+		days_remove = 14
 		complete_effect = {
+			every_country = {
+				limit = {
+					OR = {
+						tag = GER
+						tag = HGR
+						tag = HSS
+					}
+					has_war_with = USA
+				}
+				country_event = twrta.9999
+			}
+		}
+		remove_effect = {
 			news_event = {
 				id = twrnews.124 days = 1
 			}
@@ -3612,7 +3614,6 @@ USA_europe_cleanup = {
 					AND = {
 						any_controlled_state = {
 							is_coastal = yes
-							
 						}
 						NOT = {
 							tag = ROM
@@ -3624,6 +3625,7 @@ USA_europe_cleanup = {
 					any_neighbor_country = {
 						is_ally_of_ROOT = yes
 					}
+					is_subject = no
 				}
 			capital_scope = {
 				is_on_continent = europe
@@ -3675,6 +3677,7 @@ USA_europe_cleanup = {
 					has_government = fascist
 					has_government = national_socialist
 				}
+				is_subject = no
 				NOT = {
 					is_in_faction_with = ITA
 					tag = UIA
@@ -3745,9 +3748,13 @@ USA_europe_cleanup = {
 
 		complete_effect = {
 			log = "[GetDateText]: [Root.GetName]: Decision stamping_out_fascism target: [From.GetName]"
-			create_wargoal = {
-				type = annex_everything
-				target = FROM
+			custom_effect_tooltip = USA_stamp_out_fascism_timer_tt
+            declare_war_on = {
+                target = FROM
+                type = annex_everything
+            }
+			FROM = {
+				activate_mission = GENERIC_fascist_country_defend_against_accord_timer
 			}
 		}
 
@@ -3763,6 +3770,35 @@ USA_europe_cleanup = {
 						tag = GRE
 					}
 				}
+			}
+		}
+	}
+}
+
+political_actions = {
+	GENERIC_fascist_country_defend_against_accord_timer = {
+		icon = generic_prepare_civil_war
+		allowed = {
+			NOT = {
+				tag = USA
+			}
+		}
+		visible = {
+			has_war_with = USA
+		}
+		available = {
+			NOT = {
+				has_war_with = USA
+			}
+		}
+		activation = {
+			always = no
+		}
+		is_good = no
+		days_mission_timeout = 200
+		timeout_effect = {
+			USA = {
+				white_peace_with_ROOT = yes
 			}
 		}
 	}
@@ -4261,6 +4297,26 @@ USA_LBJ_Great_Society = {
 }
 
 USA_presidential_agenda_cat = {
+	USA_wallace_must_go = {
+		icon = generic_political_discourse
+		allowed = { always = no }
+		available = {
+			has_completed_focus = USA_For_FDRs_Dream
+			NOT = {
+			has_country_flag = WALLACE_IS_FUCKED
+			}
+		}
+
+		cancel_if_not_visible = yes
+		is_good = no
+
+		days_mission_timeout = 130
+
+		timeout_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision timeout USA_wallace_must_go"
+			country_event = twrUSelection.7
+		}
+	}	
 	GENERIC_i_wish_to_fight_crime = {
 	cost = 60
 		fire_only_once = yes
@@ -4425,6 +4481,104 @@ USA_presidential_agenda_cat = {
 			}
 		}
 	}
+	humphrey_fighting_rural_poverty = {
+		cost = 175
+		fire_only_once = yes
+		icon = generic_construction
+		available = {
+		has_completed_focus = USA_Backing_Our_Farmers
+		}
+		visible = {
+			has_country_leader = {
+				name = "Hubert Humphrey"
+				ruling_only = yes
+			}
+		}
+		ai_will_do = {
+            base = 30
+        }
+		days_remove = 125
+		days_re_enable = 365
+		modifier = {
+			consumer_goods_factor = 0.1
+			political_power_cost = 0.05
+		}
+		complete_effect = {
+		}
+		remove_effect = {
+			every_state = {
+			limit = {
+				has_state_flag = US_AGRICULTURAL_STATE
+			}
+			add_building_construction = {
+				type = infrastructure
+				level = 1
+				instant_build = yes
+			}
+		}
+		add_stability = 0.05
+			every_owned_state = {
+				limit = { 
+					has_state_flag = US_AGRICULTURAL_STATE
+				}
+				set_temp_variable = { MODIFY_STATE_LEAN = 1 }
+				US_ELECTORAL_EFFECT = yes
+				}
+					every_owned_state = {
+				   limit = {
+				OR = {
+					has_state_flag = US_AGRICULTURAL_STATE
+						}
+			}
+				add_to_variable = { STATE_LOCAL_SUPPLIES_VARIABLE = 0.1 tooltip = STATE_LOCAL_SUPPLIES_VARIABLE_TOOLTIP }
+				add_to_variable = { STATE_ARMY_SPEED_VARIABLE = 0.05 tooltip = STATE_ARMY_SPEED_VARIABLE_TOOLTIP }
+				add_to_variable = { STATE_RESOURCE_FACTOR_VARIABLE = 0.1 tooltip = STATE_RESOURCE_FACTOR_VARIABLE_TOOLTIP }
+				add_to_variable = { STATE_BUILDING_SLOT_VARIABLE = 1 tooltip = STATE_BUILDING_SLOT_VARIABLE_TOOLTIP }
+				add_to_variable = { STATE_NATIONAL_STABILITY_IMPACT_VARIABLE = 0.05 tooltip = STATE_NATIONAL_STABILITY_IMPACT_VARIABLE_TOOLTIP }
+				force_update_dynamic_modifier = yes
+			}
+		}
+	}
+	humphrey_form_the_job_corps = {
+	cost = 35
+		fire_only_once = yes
+		icon = eng_trade_unions_support
+		available = {
+		has_completed_focus = USA_Labors_Man
+		}
+		visible = {
+			has_country_leader = {
+				name = "Hubert Humphrey"
+				ruling_only = yes
+			}
+		}
+		ai_will_do = {
+            base = 30
+        }
+		complete_effect = {
+		add_ideas = USA_Johnson_Job_Corps
+		}
+	}
+	civil_peace_councils = {
+		cost = 30
+		fire_only_once = yes
+		icon = generic_political_discourse
+		available = {
+		has_completed_focus = USA_Into_The_Bright_Sunshine
+		}
+		visible = {
+			has_country_leader = {
+				name = "Hubert Humphrey"
+				ruling_only = yes
+			}
+		}
+		ai_will_do = {
+            base = 45
+        }
+		complete_effect = {
+		add_ideas = USA_humphrey_civil_peace_councils
+		}
+	}
 	macarthur_america_first_agenda = {
 		cost = 50
 		fire_only_once = yes
@@ -4523,7 +4677,7 @@ USA_presidential_agenda_cat = {
         }
 		complete_effect = {
 		add_to_variable = {
-		DEM_party_popularity_variable = 1
+		DEM_party_popularity_variable = 0.25
 		tooltip = democrat_national_popularity
 		}
 		master_clamping_US = yes
@@ -4546,7 +4700,7 @@ USA_presidential_agenda_cat = {
 		}
 		complete_effect = {
 		add_to_variable = {
-		GOP_party_popularity_variable = 0.5
+		GOP_party_popularity_variable = 0.25
 		tooltip = republican_national_popularity
 		}
 		add_timed_idea = { 
@@ -4578,7 +4732,7 @@ USA_presidential_agenda_cat = {
 	}
 
 	wallace_anti_racism_federal_employment_executive_order = {
-		cost = 50
+		cost = 35
 		fire_only_once = yes
 		icon = generic_political_discourse
 		visible = {
@@ -4611,7 +4765,7 @@ USA_presidential_agenda_cat = {
 		        has_state_flag = REGION_PACIFIC
 		        }
 	    	}
-	        set_temp_variable = { MODIFY_STATE_LEAN = 0.25 }
+	        set_temp_variable = { MODIFY_STATE_LEAN = 0.15 }
 	        US_ELECTORAL_EFFECT = yes
         }
         every_owned_state = {
@@ -4622,7 +4776,7 @@ USA_presidential_agenda_cat = {
 		        }
 	    	}
 	    	add_to_variable = {
-			STATE_NATIONAL_STABILITY_IMPACT_VARIABLE = 0.01
+			STATE_NATIONAL_STABILITY_IMPACT_VARIABLE = 0.005
 			tooltip = STATE_NATIONAL_STABILITY_IMPACT_VARIABLE_TOOLTIP
 				}
         	}
@@ -4925,7 +5079,7 @@ USA_presidential_agenda_cat = {
 		}
 	}
 	warren_economic_planning_executive = {
-		cost = 50
+		cost = 0
 		fire_only_once = no
 		icon = generic_political_discourse
 		days_re_enable = 365
@@ -5429,41 +5583,19 @@ USA_congress = {
 		}
 
 		remove_effect = {
-		random_list = {
-		#BILL FAIL
-		50 = {
-		modifier = {
-		OR = {
-		USA_enough_house_support = no
-		USA_enough_senate_support = no
-		}
-		factor = 2
-			}
-		if = {
-		limit = { USA_enough_house_support = yes }
-		country_event = twrUSCivilRights.9 #Fail in Senate
-			}
-		else_if = {
-		limit = { USA_enough_senate_support = yes }
-		country_event = twrUSCivilRights.9 #Fail in House
-			}
-		else = {
-		country_event = twrUSCivilRights.9 #Fail in general
-			}
-		}
 
-		#BILL SUCCESS BELOW
-		50 = {
-		modifier = {
-		USA_enough_house_support = yes
-		USA_enough_senate_support = yes
-		factor = 2
-		}
-        master_clamping_US = yes
-       	set_country_flag = USA_CRA_ENACTED
-		country_event = twrUSCivilRights.8
-				}
+		if = {
+			limit = {
+				USA_enough_house_support = yes
+				USA_enough_senate_support = yes
 			}
+			master_clamping_US = yes
+			set_country_flag = USA_CRA_ENACTED
+			country_event = twrUSCivilRights.8
+		}
+		else = {
+			country_event = twrUSCivilRights.9
+		}
 		USA_clear_after_bill = yes
 		}
 	}
@@ -5484,6 +5616,13 @@ USA_congress = {
 		has_completed_focus = USA_The_Scars_Of_Poverty
 		has_country_leader = {
 			name = "Lyndon B. Johnson"
+			ruling_only = yes
+			}
+		}
+		AND = {
+		has_completed_focus = USA_The_Great_Paradox
+		has_country_leader = {
+			name = "Hubert Humphrey"
 			ruling_only = yes
 			}
 		}
@@ -5542,7 +5681,7 @@ USA_congress = {
 		country_event = twrUSelection.25
 		every_owned_state = {
         limit = { has_state_flag = US_INDUSTRIAL_STATE }
-        set_temp_variable = { MODIFY_STATE_LEAN = 1 }
+        set_temp_variable = { MODIFY_STATE_LEAN = 0.5 }
         US_ELECTORAL_EFFECT = yes
         }
         master_clamping_US = yes
@@ -5551,6 +5690,18 @@ USA_congress = {
 		limit = {
 		has_country_leader = {
 		name = "Henry A. Wallace"
+		ruling_only = yes
+			}
+		}
+		add_popularity = {
+		ideology = social_democrat
+		popularity = 0.05
+			}
+		}
+		if = {
+		limit = {
+		has_country_leader = {
+		name = "Hubert Humphrey"
 		ruling_only = yes
 			}
 		}
@@ -5951,7 +6102,7 @@ USA_congress = {
 	}
 
 	taft_clearing_slums_act = {
-		cost = 70
+		cost = 35
 		fire_only_once = no
 		icon = eng_trade_unions_support
 		available = {
@@ -5963,7 +6114,7 @@ USA_congress = {
 		has_country_flag = CAN_LEGISLATE_SLUMS
 		NOT = { has_country_flag = USA_PUBLIC_HOUSING_EXPANSION }
 		}
-		days_remove = 100
+		days_remove = 50 
 		days_re_enable = 365
 		ai_will_do = {
             base = 30
@@ -6016,7 +6167,6 @@ USA_congress = {
 		USA_enough_senate_support = yes
 			}
 		country_event = twrnewus.5
-		set_country_flag = USA_PUBLIC_HOUSING_EXPANSION
 		}
 		USA_clear_after_bill = yes
 		}
@@ -6027,9 +6177,9 @@ USA_congress = {
 		fire_only_once = no
 		icon = eng_trade_unions_support
 		available = {
-			NOT = {
+		NOT = {
 		has_country_flag = ONGOING_LEGISLATION_DELIBERATION
-		}
+			}
 		}
 		visible = {
 			OR = {
@@ -6038,6 +6188,7 @@ USA_congress = {
 			has_completed_focus = USA_Support_Public_Education
 			has_completed_focus = USA_Expand_Public_Education
 			has_completed_focus = USA_Federal_Education_Funding
+			has_completed_focus = USA_Point_To_Education
 			}
 			NOT = { has_country_flag = USA_TAFTIST_EDUCATION_EXPANSION }
 		}
@@ -6365,12 +6516,13 @@ USA_congress = {
 		visible = {
 			OR = {
 				has_completed_focus = USA_Universal_Healthcare_Push
-				has_completed_focus = USA_Medicare
+				#has_completed_focus = USA_Medicare
 				has_completed_focus = USA_Push_for_Medicare
 				has_completed_focus = USA_Medicare_Expansion
 				has_completed_focus = USA_Healthcare_Reform
 				has_completed_focus = USA_Expand_Medicare
 				has_completed_focus = USA_Health_Insurance_Push
+				has_completed_focus = USA_Expand_Medical_Coverage
 			}
 			NOT = { has_country_flag = USA_healthcare_plans_shotted_down }
 			NOT = { has_country_flag = USA_medicare_enacted }
@@ -6922,6 +7074,93 @@ USA_congress = {
 		}
 	}
 
+	repeal_right_to_work_from_taft_hartley_house_first = {
+		fire_only_once = yes
+		icon = eng_trade_unions_support
+		available = {
+		NOT = {
+		has_country_flag = ONGOING_LEGISLATION_DELIBERATION
+			}
+		}
+		visible = {
+		has_completed_focus = USA_Ready_For_War
+		}
+		days_remove = 100
+		days_re_enable = 365
+		ai_will_do = {
+            base = 30
+        }
+		complete_effect = {
+			USA_set_dem_lib_support_house = yes
+			set_country_flag = ONGOING_LEGISLATION_DELIBERATION
+			set_country_flag = PROGRESSIVE_BILL
+			set_country_flag = PRO_LABOR_BILL
+			set_country_flag = ONGOING_HOUSE_LEGISLATION_DELIBERATION
+		}
+
+		remove_effect = {
+		clr_country_flag = ONGOING_HOUSE_LEGISLATION_DELIBERATION
+		clr_country_flag = PRO_LABOR_BILL
+		if = {
+		limit = {
+		USA_enough_house_support = yes
+			}
+		country_event = twrusaHumphrey.6
+		USA_clear_after_bill = yes
+		}
+		if = {
+		limit = {
+		USA_enough_house_support = no
+			}
+		country_event = twrusahumphrey.4 
+		}
+		}
+	}
+
+	repeal_right_to_work_from_taft_hartley_senate = {
+		fire_only_once = yes
+		icon = eng_trade_unions_support
+		available = {
+		NOT = {
+		has_country_flag = ONGOING_LEGISLATION_DELIBERATION
+			}
+		}
+		visible = {
+		has_country_flag = RIGHT_TO_WORK_REPEAL_GOES_TO_SENATE
+		}
+		days_remove = 100
+		days_re_enable = 365
+		ai_will_do = {
+            base = 30
+        }
+		complete_effect = {
+			USA_set_dem_lib_support_senate = yes
+			set_country_flag = ONGOING_SENATE_LEGISLATION_DELIBERATION
+			set_country_flag = ONGOING_LEGISLATION_DELIBERATION
+			hidden_effect = {
+			country_event = { id = twrusaHumphrey.8 days = 15} 
+			}
+		}
+
+		remove_effect = {
+		clr_country_flag = ONGOING_SENATE_LEGISLATION_DELIBERATION
+		clr_country_flag = PRO_LABOR_BILL
+		if = {
+		limit = {
+		USA_enough_senate_support = yes
+			}
+		country_event = twrusaHumphrey.8
+		USA_clear_after_bill = yes
+		}
+		if = {
+		limit = {
+		USA_enough_senate_support = no
+			}
+		country_event = twrusahumphrey.15
+		}
+		}
+	}
+
 	GENERIC_immigration_and_nationality_act = {
 		cost = 60
 		fire_only_once = yes
@@ -6935,6 +7174,7 @@ USA_congress = {
 		OR = {
 		has_completed_focus = USA_Fair_Immigration_System
 		has_completed_focus = USA_Ending_Immigration_Preferences
+		has_completed_focus = USA_Gates_Of_Fairness
 		}
 		NOT = {
 		has_country_flag = IMMIGRATION_AND_NATIONALITY_ACT_PASSED
@@ -6956,6 +7196,16 @@ USA_congress = {
 						}
 					}
 			USA_set_all_dem_support = yes
+			}
+			if = {
+			limit = { 
+			has_country_leader = {
+			name = "Hubert Humphrey"
+			ruling_only = yes
+						}
+					}
+			USA_set_gop_lib_support = yes
+			USA_set_dem_lib_support = yes
 			}
 			if = {
 			limit = { 
@@ -7094,7 +7344,7 @@ USA_congress = {
 				has_country_flag = REFUGEE_ACT_PASSED
 			}
 		}
-		days_remove = 100
+		days_remove = 65
 		days_re_enable = 365
 		ai_will_do = {
             base = 30
@@ -7475,6 +7725,7 @@ USA_congress = {
 		}
 		visible = {
 		has_country_flag = ONGOING_LEGISLATION_DELIBERATION
+		NOT = { has_country_flag = ONGOING_SENATE_LEGISLATION_DELIBERATION }
 		NOT = { has_country_flag = TRYING_TO_CONVINCE_HOUSE_BILL }
 		NOT = { OR = { has_country_flag = USA_ANTI_BILL has_country_flag = USA_ANTI_VETO } }
 		check_variable = {
@@ -7493,6 +7744,7 @@ USA_congress = {
 		complete_effect = {
 		set_country_flag = TRYING_TO_CONVINCE_HOUSE_BILL
 		calc_bill_margin_house_rep_lib = yes
+		
 		}
 
 		remove_effect = {
@@ -7532,14 +7784,14 @@ USA_congress = {
 		factor = 1.3
 		has_country_flag = LIBERAL_REPUBLICANS_WILL_HELP_US_OUT
 		}
-
+		
 		set_variable_to_random = {
 		var = SCHIZOPHRENIC_TEMP_NUMBER_BILL
 		min = 1
 		max = SCHIZO_MARGIN_CHECK
 		integer = yes
 		}
-
+		log = "convinced [?SCHIZOPHRENIC_TEMP_NUMBER_BILL]"
 		set_country_flag = DECISION_IS_GOPLIB
 		country_event = twrUSelection.26
 		}
@@ -7556,6 +7808,10 @@ USA_congress = {
 		modifier = {
 		factor = 1.7
 		has_country_flag = CONSERVATIVE_BILL
+		}
+		modifier = {
+		factor = 1.3
+		has_country_flag = PRO_LABOR_BILL
 		}
 		country_event = twrUSelection.27
 		clr_country_flag = TRYING_TO_CONVINCE_HOUSE_BILL
@@ -7583,6 +7839,7 @@ USA_congress = {
 		}
 		visible = {
 		has_country_flag = ONGOING_LEGISLATION_DELIBERATION
+		NOT = { has_country_flag = ONGOING_SENATE_LEGISLATION_DELIBERATION }
 		NOT = { has_country_flag = TRYING_TO_CONVINCE_HOUSE_BILL }
 		NOT = { OR = { has_country_flag = USA_ANTI_BILL has_country_flag = USA_ANTI_VETO } }
 
@@ -7671,6 +7928,10 @@ USA_congress = {
 		factor = 1.5
 		has_country_flag = CONSERVATIVES_HATE_US
 		}
+		modifier = {
+		factor = 100
+		has_country_flag = PRO_LABOR_BILL
+		}
 		country_event = twrUSelection.27
 
 		clr_country_flag = TRYING_TO_CONVINCE_HOUSE_BILL
@@ -7699,6 +7960,7 @@ USA_congress = {
 		}
 		visible = {
 		has_country_flag = ONGOING_LEGISLATION_DELIBERATION
+		NOT = { has_country_flag = ONGOING_SENATE_LEGISLATION_DELIBERATION }
 		NOT = { has_country_flag = TRYING_TO_CONVINCE_HOUSE_BILL }
 		NOT = { OR = { has_country_flag = USA_ANTI_BILL has_country_flag = USA_ANTI_VETO } }
 		check_variable = {
@@ -7798,6 +8060,7 @@ USA_congress = {
 		}
 		visible = {
 		has_country_flag = ONGOING_LEGISLATION_DELIBERATION
+		NOT = { has_country_flag = ONGOING_SENATE_LEGISLATION_DELIBERATION }
 		NOT = { has_country_flag = TRYING_TO_CONVINCE_HOUSE_BILL }
 		NOT = { OR = { has_country_flag = USA_ANTI_BILL has_country_flag = USA_ANTI_VETO } }
 		check_variable = {
@@ -7844,6 +8107,16 @@ USA_congress = {
 		ruling_only = yes
 		}
 		has_completed_focus = USA_Appropriate_Taft_Platform
+			}
+		}
+		modifier = {
+		factor = 1.3
+		AND = {
+		has_country_leader = {
+		name = "Hubert Humphrey"
+		ruling_only = yes
+		}
+		has_completed_focus = USA_Pills_To_Swallow
 			}
 		}
 		modifier = {
@@ -7928,6 +8201,10 @@ USA_congress = {
 				}
 		}
 		modifier = {
+		factor = 2.0
+		has_country_flag = PRO_LABOR_BILL
+		}
+		modifier = {
 		factor = 1.7
 		has_country_flag = LIBERAL_BILL
 		}
@@ -7959,6 +8236,7 @@ USA_congress = {
 		}
 		visible = {
 		has_country_flag = ONGOING_LEGISLATION_DELIBERATION
+		NOT = { has_country_flag = ONGOING_HOUSE_LEGISLATION_DELIBERATION }
 		NOT = { has_country_flag = TRYING_TO_CONVINCE_SENATE_BILL }
 		NOT = { OR = { has_country_flag = USA_ANTI_BILL has_country_flag = USA_ANTI_VETO } }
 		check_variable = {
@@ -8044,6 +8322,10 @@ USA_congress = {
 		has_country_flag = CONSERVATIVE_BILL
 		}
 		modifier = {
+		factor = 1.3
+		has_country_flag = PRO_LABOR_BILL
+		}
+		modifier = {
 		factor = 1.6
 		has_country_leader = {
 		name = "Estes Kefauver"
@@ -8079,6 +8361,7 @@ USA_congress = {
 		}
 		visible = {
 		has_country_flag = ONGOING_LEGISLATION_DELIBERATION
+		NOT = { has_country_flag = ONGOING_HOUSE_LEGISLATION_DELIBERATION }
 		NOT = { has_country_flag = TRYING_TO_CONVINCE_SENATE_BILL }
 		NOT = { OR = { has_country_flag = USA_ANTI_BILL has_country_flag = USA_ANTI_VETO } }
 		check_variable = {
@@ -8169,6 +8452,10 @@ USA_congress = {
 		has_country_flag = CONSERVATIVES_HATE_US
 		}
 		modifier = {
+		factor = 5.0
+		has_country_flag = PRO_LABOR_BILL
+		}
+		modifier = {
 		factor = 2.4
 		has_country_leader = {
 		name = "Estes Kefauver"
@@ -8203,6 +8490,7 @@ USA_congress = {
 		}
 		visible = {
 		has_country_flag = ONGOING_LEGISLATION_DELIBERATION
+		NOT = { has_country_flag = ONGOING_HOUSE_LEGISLATION_DELIBERATION }
 		NOT = { has_country_flag = TRYING_TO_CONVINCE_SENATE_BILL }
 		NOT = { OR = { has_country_flag = USA_ANTI_BILL has_country_flag = USA_ANTI_VETO } }
 		check_variable = {
@@ -8312,6 +8600,7 @@ USA_congress = {
 		}
 		visible = {
 		has_country_flag = ONGOING_LEGISLATION_DELIBERATION
+		NOT = { has_country_flag = ONGOING_HOUSE_LEGISLATION_DELIBERATION }
 		NOT = { has_country_flag = TRYING_TO_CONVINCE_SENATE_BILL }
 		NOT = { OR = { has_country_flag = USA_ANTI_BILL has_country_flag = USA_ANTI_VETO } }
 		check_variable = {
@@ -8354,6 +8643,16 @@ USA_congress = {
 		ruling_only = yes
 		}
 		has_completed_focus = USA_Appropriate_Taft_Platform
+			}
+		}
+		modifier = {
+		factor = 1.3
+		AND = {
+		has_country_leader = {
+		name = "Hubert Humphrey"
+		ruling_only = yes
+		}
+		has_completed_focus = USA_Pills_To_Swallow
 			}
 		}
 		modifier = {
@@ -8446,6 +8745,10 @@ USA_congress = {
 		has_country_flag = LIBERAL_BILL
 		}
 		modifier = {
+		factor = 2.0
+		has_country_flag = PRO_LABOR_BILL
+		}
+		modifier = {
 		factor = 2
 		has_country_leader = {
 		name = "Estes Kefauver"
@@ -8535,13 +8838,15 @@ USA_congress = {
 		factor = 1.3
 		has_country_flag = LIBERAL_REPUBLICANS_WILL_HELP_US_OUT
 		}
-
+		
 		set_variable_to_random = {
 		var = SCHIZOPHRENIC_TEMP_NUMBER_BILL
 		min = 1
 		max = SCHIZO_MARGIN_CHECK
 		integer = yes
 		}
+
+		
 
 		set_country_flag = DECISION_IS_GOPLIB
 		country_event = twrUSelection.26
