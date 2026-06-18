@@ -1,4 +1,4 @@
-Total 15
+Total 14
 
 EN:
 Fixed the incorrect year for the "Cyclic Rate Reducer" and "Spring Washer" technologies
@@ -10,7 +10,6 @@ Mussolini can no longer be appointer as a minister after death
 Banat pillages events now not fire once
 twrbritainpolitics.91.c now doesn't have wrong tooltip
 Converted all statinig to stating on german events
-Changed Re-establish a Czech State to Restablish Czech State to look as other Restablish decisions
 Fix wrong event on attacking or increasing someone influence with senate debate on Hitlers Germany
 Clean SPA_ideas_of_an_european_community focus effects
 Remove n from IRQ_Development_plans_desc
@@ -27,7 +26,6 @@ Friedrich Olbrichf теперь доступен при идеологии на�
 Ивенты итогов рейда на Сербию Банатом теперь не одноразовые
 twrbritainpolitics.91.c теперь не отображает тултип как если бы давал поддержку традиционалистам
 Превратил все statinig в stating в ивентах Шпеера-Геббельса
-Изменил Re-establish a Czech State на Restablish Czech State чтобы выглядело так же как и другие такие решения
 Исправил неправильный ивент при увеличении или уменьшении чьего-либо влияния через сенат при Гитлере
 Изменил эффекты испанского фокуса SPA_ideas_of_an_european_community убрав бесполезную часть
 Убрал лишнюю n в начале IRQ_Development_plans_desc
