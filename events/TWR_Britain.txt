@@ -787,10 +787,10 @@ country_event = { # Minor MP scandal
 		}
 		random_list = {
 			50 = {
-        		country_event = { days = 2 id = twrbritainpolitics.4041 }
+        		country_event = { days = 2 id = twrbritainpolitics.4061 }
     		}
     		50 = {
-        		country_event = { days = 2 id = twrbritainpolitics.4042 }
+        		country_event = { days = 2 id = twrbritainpolitics.4062 }
     		}
     	}
 	}
@@ -6362,6 +6362,11 @@ country_event = { # conscription review (talk about how the government promised 
 			var = ENG_defence_readiness_level
 			value = 3
 		}
+		clamp_variable = {
+			var = ENG_defence_readiness_level
+			min = 0
+			max = 100
+		}
 	}
 	option = {
 		name = twrbritainpolitics.190.b # do nothing
@@ -8017,6 +8022,11 @@ country_event = { # wilson - question of military priority
 			var = ENG_defence_readiness_level
 			value = 5
 		}
+		clamp_variable = {
+			var = ENG_defence_readiness_level
+			min = 0
+			max = 100
+		}
 	}
 	option = { # no military
 		name = twrbritainpolitics.375.b
@@ -8028,6 +8038,11 @@ country_event = { # wilson - question of military priority
 		subtract_from_variable = {
 			var = ENG_defence_readiness_level
 			value = 10
+		}
+		clamp_variable = {
+			var = ENG_defence_readiness_level
+			min = 0
+			max = 100
 		}
 	}
 }
@@ -8726,6 +8741,11 @@ country_event = { #Question of Military Spending
 		subtract_from_variable = {
 			var = ENG_defence_readiness_level
 			value = 10
+		}
+		clamp_variable = {
+			var = ENG_defence_readiness_level
+			min = 0
+			max = 100
 		}
 	}
 }
@@ -10506,7 +10526,6 @@ country_event = { # US sends big loan
 		    idea = ENG_small_american_loan
 		    days = 365
 		}
-		name = twrbritainpolitics.57.a
 		add_stability = -0.1
 	}
 }
@@ -11944,6 +11963,11 @@ country_event = { # national defence review
 		add_to_variable = {
 			var = ENG_defence_readiness_level
 			value = 2
+		}
+		clamp_variable = {
+			var = ENG_defence_readiness_level
+			min = 0
+			max = 100
 		}
 	}
 }
@@ -13815,6 +13839,11 @@ country_event = { # Reforming Conscription
 			var = ENG_defence_readiness_level
 			value = 5
 		}
+		clamp_variable = {
+			var = ENG_defence_readiness_level
+			min = 0
+			max = 100
+		}
 	}
 	option = {
 		name = twrbritain.9.b
@@ -13830,6 +13859,11 @@ country_event = { # Reforming Conscription
 		add_to_variable = {
 			var = ENG_defence_readiness_level
 			value = 5
+		}
+		clamp_variable = {
+			var = ENG_defence_readiness_level
+			min = 0
+			max = 100
 		}
 	}
 }
@@ -14748,14 +14782,15 @@ country_event = { # Accept Italian demands?
 		country_event = { days = 0 id = twrbritainforeign.26 }
 		}
 		EGY = {
-			set_state_owner = 955
-			set_state_owner = 551
-			set_state_owner = 840
-			set_state_owner = 956
-			set_state_owner = 957
-			set_state_owner = 549
-			set_state_owner = 958
-			set_state_owner = 773
+			transfer_state = 955
+			transfer_state = 551
+			transfer_state = 840
+			transfer_state = 956
+			transfer_state = 1248
+			transfer_state = 957
+			transfer_state = 549
+			transfer_state = 958
+			transfer_state = 773
 		}
 		clr_global_flag = anglo_italian_war
 		ai_chance = { 
@@ -16813,7 +16848,7 @@ country_event = { #State of Emergency in Kenya
 		limit = { is_core_of = KEN }
 		add_resistance = 10
 		}
-		547 = {
+		1265 = {
 		add_to_variable = {
 		tooltip = KEN_REBEL_local_factories_tt
     	var = KEN_REBEL_local_factories
@@ -16855,7 +16890,7 @@ country_event = { #State of Emergency in Kenya
 		unlock_decision_tooltip = RAJ_support_mau_mau
 
 		effect_tooltip = {
-		547 = {
+		1265 = {
 		add_to_variable = {
 		tooltip = KEN_REBEL_local_factories_tt
     	var = KEN_REBEL_local_factories

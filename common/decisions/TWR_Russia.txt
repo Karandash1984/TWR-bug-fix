@@ -1680,6 +1680,7 @@ russian_integration_decisions = {
 				RUS_duma_add_seat = yes
 			}
 			219 = { add_core_of = ROOT }
+			928 = { add_core_of = ROOT }
 			247 = { add_core_of = ROOT }
 			1004 = { add_core_of = ROOT }
 			1001 = { add_core_of = ROOT }
@@ -1786,6 +1787,7 @@ russian_integration_decisions = {
 			263 = { add_core_of = ROOT }
 			209 = { add_core_of = ROOT }
 			210 = { add_core_of = ROOT }
+			1236 = { add_core_of = ROOT }
 			if = {
 				limit = {
 				 	OR = {
@@ -1867,9 +1869,11 @@ russian_integration_decisions = {
 				190 = { add_core_of = ROOT }
 				11 = { add_core_of = ROOT }
 				189 = { add_core_of = ROOT }
+				188 = { add_core_of = ROOT }
 				805 = { add_core_of = ROOT }
 				13 = { add_core_of = ROOT }
 				191 = { add_core_of = ROOT }
+				242 = { add_core_of = ROOT }
 			}
 		}
 	}
@@ -1916,6 +1920,7 @@ russian_integration_decisions = {
 			228 = { add_core_of = ROOT }
 			240 = { add_core_of = ROOT }
 			137 = { add_core_of = ROOT }
+			200 = { add_core_of = ROOT }
 			if = {
 				limit = {
 				 	OR = {
@@ -1946,6 +1951,7 @@ russian_integration_decisions = {
 				201 = { add_core_of = ROOT }
 				199 = { add_core_of = ROOT }
 				197 = { add_core_of = ROOT }
+				196 = { add_core_of = ROOT }
 				193 = { add_core_of = ROOT }
 				194 = { add_core_of = ROOT }
 				240 = { add_core_of = ROOT }
@@ -2039,224 +2045,7 @@ russian_integration_decisions = {
 			}
 		}
 	}
-	negotiate_with_rr = {
-		icon = infiltrate_state
-		fire_only_once = yes
-		allowed = { tag = RMD }
-		available = { 
-			is_neighbor_of = RUS
-			has_political_power > 50
-			RMD = {
-			strength_ratio = {
-			tag = RUS
-			ratio < 0.6
-			}
-			}
-		}
-		visible = {
-			AND = {
-				RMD = {
-					exists = yes
-					has_government = paternal_autocrat
-				}
-				RUS = {
-					exists = yes
-					has_government = paternal_autocrat
-				}
-			}
-		}
-		ai_will_do = {
-			factor = 100
-		}
-		days_remove = 7
-		cost = 50
-		is_good = yes
-		remove_effect = {
-			log = "[GetDateText]: [Root.GetName]: Decision negotiate_with_rr"
-			RUS = {
-				country_event = { id = russianreconquest.8 days = 3 }
-			}
-		}
-	}
-	negotiate_with_rfp = {
-		icon = infiltrate_state
-		fire_only_once = yes
-		allowed = { tag = RMD }
-		available = { 
-			is_neighbor_of = RFP
-			has_political_power > 50
-			RFP = {
-			strength_ratio = {
-			tag = RMD
-			ratio < 0.6
-			}
-			}
-		}
-		visible = {
-			AND = {
-				RFP = {
-					exists = yes
-				}
-				RMD = {
-					exists = yes
-				}
-			}
-		}
-		ai_will_do = {
-			factor = 100
-		}
-		days_remove = 7
-		cost = 50
-		is_good = yes
-		remove_effect = {
-			log = "[GetDateText]: [Root.GetName]: Decision negotiate_with_rfp"
-			RFP = {
-				country_event = { id = rfpreunification.6 days = 3 }
-			}
-		}
-	}
-
-	negotiate_with_konr = {
-		icon = infiltrate_state
-		fire_only_once = yes
-		allowed = { tag = RUS }
-		available = { 
-			is_neighbor_of = RMD
-			has_political_power > 50
-			RMD = {
-			strength_ratio = {
-			tag = RUS
-			ratio < 0.6
-			}
-			}
-		}
-		visible = {
-			AND = {
-				RMD = {
-					exists = yes
-					has_government = paternal_autocrat
-				}
-				RUS = {
-					exists = yes
-					has_government = paternal_autocrat
-				}
-			}
-		}
-		ai_will_do = {
-			factor = 100
-		}
-		days_remove = 7
-		cost = 50
-		is_good = yes
-		remove_effect = {
-			log = "[GetDateText]: [Root.GetName]: Decision negotiate_with_konr"
-			RMD = {
-				country_event = { id = russianreconquest.5 days = 3 }
-			}
-		}
-	}
-
-	#Negotiate with MTR
-
-	annex_cossacks = {
-		icon = infiltrate_state
-		fire_only_once = yes
-		allowed = { 
-			OR = {
-				tag = RMD
-				tag = RUS 
-			}
-		}
-		available = { 
-			is_neighbor_of = DON
-			has_war = no
-			NOT = {
-			DON = { has_cosmetic_tag = DON_FAILED }
-			}
-		}
-		visible = {
-			country_exists = DON
-		}
-		ai_will_do = {
-			factor = 100
-		}
-		cost = 50
-		is_good = yes
-		remove_effect = {
-			log = "[GetDateText]: [Root.GetName]: Decision annex_cossacks"
-			DON = {
-				every_unit_leader = {
-					set_nationality = ROOT
-				}
-				every_owned_state = {
-					add_core_of = ROOT
-				}
-			}
-			if = {
-			limit = { DON = { num_subjects > 0 } }
-			DON = {
-			every_subject_country = {
-				DON = {
-				annex_country = {
-					target = PREV
-					transfer_troops = yes
-							}
-						}
-					}
-				}
-			}
-			annex_country = {
-				target = DON
-				transfer_troops = yes
-			}
-
-			country_event = rusreunification.12
-		}
-	}
-
-	annex_pskov = {
-		icon = infiltrate_state
-		fire_only_once = yes
-		allowed = { 
-			OR = {
-				tag = RMD
-				tag = RUS 
-			}
-		}
-		available = { 
-			is_neighbor_of = BLG
-			has_war = no
-		}
-		visible = {
-			country_exists = BLG
-			BLG = { has_cosmetic_tag = BLG_DEFEATED }
-		}
-		ai_will_do = {
-			factor = 100
-		}
-		cost = 50
-		is_good = yes
-		remove_effect = {
-			log = "[GetDateText]: [Root.GetName]: Decision annex_pskov"
-			BLG = {
-				if = {
-				limit = { is_subject = yes }
-				overlord = {
-				country_event = rusreunification.13
-					}
-				}
-				every_owned_state = {
-					add_core_of = ROOT
-				}
-			}
-			annex_country = {
-				target = BLG
-				transfer_troops = yes
-			}
-
-			country_event = rusreunification.14
-		}
-	}
+	
 
 	annex_trot_norilsk = {
 		icon = infiltrate_state
@@ -2868,6 +2657,83 @@ russia_reconquering = {
 		war_with_target_on_remove = yes
 		cost = 10
 		days_remove = 15
+		remove_effect = {
+			declare_war_on = {
+				type = annex_everything
+				target = FROM
+			}
+		}
+	}
+	RUS_restore_central_asian_order = {
+		icon = generic_nationalism
+
+		target_trigger = {
+			FROM = {
+				OR = {
+					tag = TRK
+					tag = TRA 
+					tag = UZB 
+					tag = KYR 
+					tag = TAJ
+					tag = FTK
+					tag = TCC
+					tag = KHV
+				}
+				NOT = {
+				tag = ROOT
+				}
+			}
+		}
+		available = {
+		    has_war = no
+		    OR = {
+		        any_neighbor_country = {
+		            tag = FROM
+		        }
+		        any_other_country = {
+		            is_subject_of = ROOT
+		            any_neighbor_country = {
+		                tag = FROM
+		            }
+		        }
+		    }
+			FROM = {
+				NOT = {
+					is_ally_with = RAJ
+					is_ally_with = CHI
+				}
+			}
+		}
+		visible = {
+			has_country_flag = CENTRAL_ASIA_REUNIFICATION
+			FROM = {
+				NOT = {
+				is_subject_of = ROOT
+				}
+				exists = yes
+				is_subject = no
+				NOT = {
+				tag = ROOT
+				}
+				NOT = {
+				has_country_flag = NOT_INTERESTED_LMAO_SOV
+				}
+			}
+		}
+
+		fire_only_once = yes
+		war_with_target_on_timeout = yes
+		war_with_target_on_remove = yes
+		ai_will_do = {
+			factor = 50
+		}
+
+		cost = 10
+		days_remove = 15
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision SOV_restore_central_russian_order"
+		}
 		remove_effect = {
 			declare_war_on = {
 				type = annex_everything

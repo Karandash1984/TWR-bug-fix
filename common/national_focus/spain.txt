@@ -1863,6 +1863,11 @@ add_building_construction = {
 available = { 
 is_democratic = yes
 NOT = { has_war_with = USA }
+NOT = {
+	SPA = {
+		has_completed_focus = SPA_iberia_first
+	}
+}
 NOT = { 
 OR = { 
 has_idea = SPA_economic_stagnation 
@@ -1886,7 +1891,7 @@ has_idea = SPA_economic_stagnation_3
 				
 			unlock_decision_tooltip = GENERIC_apply_to_join_un
 			set_country_flag = ALLOWED_TO_JOIN_UN
-                        add_ideas = SPA_TA_influence
+			add_ideas = SPA_TA_influence
 		}
 	}
 
@@ -1909,13 +1914,24 @@ has_idea = SPA_economic_stagnation_3
 						exists = no
 					}
 				}
-				
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					has_global_flag = COUNTRY_PATH_SPA_ALL_IBERIA
+					has_global_flag = COUNTRY_PATH_SPA_ALL_ITALY
+				}
 			}
 		}
 available = { 
 is_democratic = no
 is_communist = no
 NOT = { has_war_with = GER }
+NOT = {
+	SPA = {
+		has_completed_focus = SPA_iberia_first
+	}
+}
 NOT = { 
 OR = { 
 has_idea = SPA_economic_stagnation 
@@ -2099,10 +2115,11 @@ NOT = { has_war_with = USA }
 		ai_will_do = {
 			base = 1
 		}
-available = { 
-NOT = { has_war_with = USA }
-NOT = { has_war_with = ENG }
-}
+		available = { 
+		NOT = { has_war_with = USA }
+		NOT = { has_war_with = ENG }
+		no_active_TA_motion = yes
+		}
 		cost = 4
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus SPA_apply_for_membership"
@@ -2227,6 +2244,13 @@ hidden_effect = {
 					is_ally_with = ITA
 					is_ally_with = GER
 					is_ally_with = USA
+				}
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					has_global_flag = COUNTRY_PATH_SPA_ALL_GERMANY
+					has_global_flag = COUNTRY_PATH_SPA_ALL_ITALY
 				}
 			}
 		}
@@ -2585,7 +2609,13 @@ add_political_power = 100
 					is_ally_with = USA
 					is_ally_with = POR
 				}
-				
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					has_global_flag = COUNTRY_PATH_SPA_ALL_IBERIA
+					has_global_flag = COUNTRY_PATH_SPA_ALL_GERMANY
+				}
 			}
 		}
 available = { 
@@ -2596,6 +2626,11 @@ ITA = {
 	is_subject = no
 }
 NOT = { has_war_with = ITA }
+NOT = {
+	SPA = {
+		has_completed_focus = SPA_iberia_first
+	}
+}
 NOT = { 
 OR = { 
 has_idea = SPA_economic_stagnation 
@@ -3724,5 +3759,5 @@ SPA = { has_country_flag = SPA_ANTON }
 		completion_reward = {
 			
 			
+		}
 	}
-}

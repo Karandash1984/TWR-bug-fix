@@ -64,6 +64,9 @@ GER_southern_europe_influence = {
 		visible = {
 			is_faction_leader = yes
 			has_government = national_socialist
+			GRE = {
+				exists = yes
+			}
 			OR = {
 				GRE = {
 					is_subject = no
@@ -74,6 +77,9 @@ GER_southern_europe_influence = {
 		}
 		available = {
 			has_war = no
+			GRE = {
+				exists = yes
+			}
 			OR = {
 				has_non_aggression_pact_with = GRE
 				if = {
@@ -413,7 +419,7 @@ diplomatic_decisions = {
 		icon = generic_construction
 		fire_only_once = yes
 		allowed = {
-			tag = HGR
+			tag = GRM
 		}
 		available = {
 			GGP = {
@@ -455,7 +461,7 @@ diplomatic_decisions = {
 		icon = generic_construction
 		fire_only_once = yes
 		allowed = {
-			tag = HGR
+			tag = GRM
 		}
 		available = {
 			ROS = {
@@ -487,7 +493,7 @@ diplomatic_decisions = {
 		icon = generic_construction
 		fire_only_once = yes
 		allowed = {
-			tag = HGR
+			tag = GRM
 		}
 		available = {
 			RMO = {
@@ -525,7 +531,7 @@ diplomatic_decisions = {
 		icon = generic_construction
 		fire_only_once = yes
 		allowed = {
-			tag = HGR
+			tag = GRM
 		}
 		available = {
 			RKA = {
@@ -563,7 +569,7 @@ diplomatic_decisions = {
 		icon = generic_construction
 		fire_only_once = yes
 		allowed = {
-			tag = HGR
+			tag = GRM
 		}
 		available = {
 			RUK = {
@@ -611,7 +617,7 @@ diplomatic_decisions = {
 		icon = generic_nationalism
 		fire_only_once = yes
 		allowed = {
-			tag = HGR
+			tag = GRM
 		}
 		available = {
 			HGR = {
@@ -641,7 +647,7 @@ diplomatic_decisions = {
 		icon = generic_nationalism
 		fire_only_once = yes
 		allowed = {
-			tag = HGR
+			tag = GRM
 		}
 		visible = {
 			IDE = {
@@ -685,7 +691,7 @@ diplomatic_decisions = {
 		icon = generic_nationalism
 		fire_only_once = yes
 		allowed = {
-			tag = HGR
+			tag = GRM
 		}
 		visible = {
 			has_country_leader = {
@@ -735,7 +741,7 @@ diplomatic_decisions = {
 		icon = generic_nationalism
 		fire_only_once = yes
 		allowed = {
-			tag = HGR
+			tag = GRM
 		}
 		available = {
 			RUK = {
@@ -773,6 +779,7 @@ diplomatic_decisions = {
 			ROS = {
 				is_subject_of = ROOT
 			}
+			has_government = fascist
 		}
 		complete_effect = {
 			log = "[GetDateText]: [Root.GetName]: Decision HGR_REORGANISE_RKS"
@@ -1131,6 +1138,7 @@ GER_ww3_cat = {
 									tag = ICE
 									tag = CYP
 									tag = ENG
+									tag = FIS
 								}
 							}
 							has_capitulated = yes
@@ -1152,6 +1160,7 @@ GER_ww3_cat = {
 			USA = {
 				country_event = twrta.121
 			}
+			set_global_flag = GER_first_ww3_ceasefire_unavailable
 		}
 		cancel_trigger = {
 			NOT = {
@@ -1189,13 +1198,133 @@ GER_ww3_cat = {
 }
 
 GER_civil_war_cat = {
+	GCW_toronto_accord_invasion = {
+		icon = GFX_decision_SWE_set_army_budget
+		allowed = { 
+			OR = {
+				tag = GER
+				tag = HGR
+				tag = HSS
+			}
+		}
+		available = {
+			GER = {
+			OR = {
+				has_capitulated = yes
+				exists = no
+				}
+			}
+			HGR = {
+			OR = {
+				has_capitulated = yes
+				exists = no
+				}
+			}
+			HSS = {
+			OR = {
+				has_capitulated = yes
+				exists = no
+				}
+			}
+		}
+		activation = {
+			has_war_with = TOR
+			has_global_flag = ta_intervention
+			NOT = {
+				has_global_flag = TA_FAILED_TO_INVADE
+			}
+		}
+		is_good = yes
+		fire_only_once = yes
+		days_mission_timeout = 365
+		timeout_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision timeout TA_invasion_of_germany_gcw"
+			effect_tooltip = {
+				every_country = {
+				limit = {
+				is_in_faction_with = USA
+				OR = {
+				has_war_with = HGR
+				has_war_with = GER
+				has_war_with = HSS
+						}
+					}
+				add_war_support = -0.1
+				every_country = {
+					limit = {
+						has_idea = USA_fanatic_german_defence
+					}
+					swap_ideas = {
+						remove_idea = USA_fanatic_german_defence
+						add_idea = USA_fanatic_german_defence_1
+					}
+				}
+
+				}
+			}
+			hidden_effect = {
+			set_global_flag = TA_FAILED_TO_INVADE
+			
+			}
+			custom_effect_tooltip = GER_will_be_able_to_peace_out
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision TA_invasion_of_germany_gcw"
+		}
+		cancel_trigger = {
+			OR = {
+				has_global_flag = TA_FAILED_TO_INVADE
+				NOT = {
+					has_war_with = TOR
+				}
+			}
+		}
+	}
 	GER_enforced_TA_ceasefire = {
 		icon = generic_operation
 		available = {
+			GER = {
 			all_owned_state = {
 				NOT = {
 					controller = {
 						is_in_faction_with = TOR
+					}
+				}
+			}
+			}
+			HGR = {
+				all_owned_state = {
+					NOT = {
+						controller = {
+							is_in_faction_with = TOR
+						}
+					}
+				}
+			}
+			HSS = {
+				all_owned_state = {
+					NOT = {
+						controller = {
+							is_in_faction_with = TOR
+						}
+					}
+				}
+			}
+			RKN = {
+				all_owned_state = {
+					NOT = {
+						controller = {
+							is_in_faction_with = TOR
+						}
+					}
+				}
+			}
+			RKB = {
+				all_owned_state = {
+					NOT = {
+						controller = {
+							is_in_faction_with = TOR
+						}
 					}
 				}
 			}
@@ -1302,56 +1431,7 @@ GER_civil_war_cat = {
 				USA = {
 					white_peace_with_TARGET = yes
 				}
-				every_country = {
-					limit = {
-						NOT = {
-							is_in_faction_with = USA
-							tag = DDR
-						}
-						has_war_with = GER
-					}
-					white_peace = GER
-				}
-				every_country = {
-					limit = {
-						NOT = {
-							is_in_faction_with = USA
-							tag = DDR
-						}
-						has_war_with = HGR
-					}
-					white_peace = HGR
-				}
-				every_country = {
-					limit = {
-						NOT = {
-							is_in_faction_with = USA
-							tag = DDR
-						}
-						has_war_with = HSS
-					}
-					white_peace = HSS
-				}
-				every_country = {
-					limit = {
-						NOT = {
-							is_in_faction_with = USA
-							tag = DDR
-						}
-						has_war_with = RKN
-					}
-					white_peace = RKN
-				}
-				every_country = {
-					limit = {
-						NOT = {
-							is_in_faction_with = USA
-							tag = RKB
-						}
-						has_war_with = RKB
-					}
-					white_peace = RKB
-				}
+				
 			}
 		}
 	}
@@ -2827,7 +2907,11 @@ GER_hitlers_successor = {
 		}
 		cost = 20
 		ai_will_do = {
-			factor = 80
+			base = 80
+			modifier = {
+				factor = 10000
+				has_global_flag = COUNTRY_PATH_GER_SPEER
+			}
 		}
 		visible = {
 			has_country_flag = ALLOWPICK
@@ -2866,7 +2950,11 @@ GER_hitlers_successor = {
 		}
 		cost = 20
 		ai_will_do = {
-			factor = 80
+			base = 80
+			modifier = {
+				factor = 10000
+				has_global_flag = COUNTRY_PATH_GER_BORMANN
+			}
 		}
 		visible = {
 			has_country_flag = ALLOWPICK
@@ -2905,7 +2993,11 @@ GER_hitlers_successor = {
 		}
 		cost = 20
 		ai_will_do = {
-			factor = 80
+			base = 80
+			modifier = {
+				factor = 10000
+				has_global_flag = COUNTRY_PATH_GER_HIMMLER
+			}
 		}
 		visible = {
 			has_country_flag = ALLOWPICK
@@ -2944,7 +3036,11 @@ GER_hitlers_successor = {
 		}
 		cost = 20
 		ai_will_do = {
-			factor = 80
+			base = 80
+			modifier = {
+				factor = 10000
+				has_global_flag = COUNTRY_PATH_GER_GOERING
+			}
 		}
 		visible = {
 			has_country_flag = ALLOWPICK
@@ -2983,7 +3079,11 @@ GER_hitlers_successor = {
 		}
 		cost = 20
 		ai_will_do = {
-			factor = 80
+			base = 80
+			modifier = {
+				factor = 10000
+				has_global_flag = COUNTRY_PATH_GER_GOEBBELS
+			}
 		}
 		visible = {
 			has_country_flag = ALLOWPICK
@@ -3021,7 +3121,17 @@ GER_hitlers_successor = {
 		}
 		cost = 10
 		ai_will_do = {
-			factor = 40
+			base = 80
+			modifier = {
+				factor = 10000
+				OR = {
+					has_global_flag = COUNTRY_PATH_GER_HIMMLER
+					has_global_flag = COUNTRY_PATH_GER_GOEBBELS
+					has_global_flag = COUNTRY_PATH_GER_BORMANN
+					has_global_flag = COUNTRY_PATH_GER_GOERING
+					has_global_flag = COUNTRY_PATH_GER_SPEER
+				}
+			}
 		}
 		visible = {
 			has_country_flag = ALLOWPICK
@@ -7961,14 +8071,13 @@ GER_bring_the_RKs_back_into_the_fold_decisions = {
 			SWI = {
 				white_peace_with_all = yes
 				clr_country_flag = SWI_SUCCESSFUL_REBELLION_INSECURITY
+				transfer_state = 151
+				transfer_state = 3
+				transfer_state = 1289
 			}
 			hidden_effect = {
-				3 = {
-					remove_core_of = GER
-					remove_core_of = HSS
-					remove_core_of = HGR
-				}
-				151 = {
+				every_state = {
+				limit = { is_core_of = SWI }
 					remove_core_of = GER
 					remove_core_of = HSS
 					remove_core_of = HGR
@@ -7981,15 +8090,14 @@ GER_bring_the_RKs_back_into_the_fold_decisions = {
 			add_war_support = -0.3
 			SWI = {
 				white_peace_with_all = yes
+				transfer_state = 151
+				transfer_state = 3
+				transfer_state = 1289
 				clr_country_flag = SWI_SUCCESSFUL_REBELLION_INSECURITY
 			}
 			hidden_effect = {
-				3 = {
-					remove_core_of = GER
-					remove_core_of = HSS
-					remove_core_of = HGR
-				}
-				151 = {
+				every_state = {
+				limit = { is_core_of = SWI }
 					remove_core_of = GER
 					remove_core_of = HSS
 					remove_core_of = HGR
@@ -8388,6 +8496,7 @@ GER_bring_the_RKs_back_into_the_fold_decisions = {
 						original_tag = SBA
 						original_tag = KRU
 						original_tag = ARR
+						original_tag = ABK
 						AND = {
 						original_tag = GEO
 						is_communist = yes
@@ -8413,6 +8522,9 @@ GER_bring_the_RKs_back_into_the_fold_decisions = {
 		visible = {
 			FROM = {
 				exists = yes
+			}
+			NOT = {
+				has_country_flag = speidel_couped_germany_lost
 			}
 		}
 		fire_only_once = yes

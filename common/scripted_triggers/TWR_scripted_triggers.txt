@@ -304,9 +304,6 @@
 				566 = {
 					is_controlled_by = ROOT
 				}
-				1018 = {
-					is_controlled_by = ROOT
-				}
 	}
 	controls_trv = {
 				401 = {
@@ -2594,7 +2591,7 @@
 			OR = {
 				has_country_leader_ideology = pragmatic_socialism
 				has_country_leader_ideology = bulganinism
-			is_communist = yes
+				is_communist = yes
 			}
 			ROOT = { 
 				OR = { is_fascist = yes has_government = paternal_autocrat } 
@@ -2603,7 +2600,7 @@
 					has_country_leader_ideology = bulganinism 
 				} 
 			}
-			}
+		}
 		AND = {
 			is_fascist = yes
 			ROOT = { OR = { is_communist = yes has_country_leader_ideology = pragmatic_socialism has_country_leader_ideology = bulganinism is_democratic = yes } }
@@ -2674,10 +2671,10 @@
 	PA_Minister_Allowed = { OR = { has_government = fascist has_government = paternal_autocrat has_government = conservative is_in_coalition_with_paternal_autocrat = yes } }
 	PAF_Minister_Allowed = { OR = { has_government = fascist has_government = paternal_autocrat has_government = conservative is_in_coalition_with_paternal_autocrat = yes has_government = national_socialist } }
 
-	SC_Minister_Allowed = { OR = { has_government = conservative has_government = paternal_autocrat is_in_coalition_with_conservative = yes } }
+	SC_Minister_Allowed = { OR = { is_democratic = yes has_government = paternal_autocrat is_in_coalition_with_conservative = yes } }
 	ML_Minister_Allowed = { OR = { is_democratic = yes is_in_coalition_with_liberal = yes } }
 	SL_Minister_Allowed = { OR = { is_democratic = yes is_in_coalition_with_liberal = yes } }
-	SD_Minister_Allowed = { OR = { has_government = social_democrat has_government = socialist is_in_coalition_with_social_democrat = yes } }
+	SD_Minister_Allowed = { OR = { is_democratic = yes has_government = socialist is_in_coalition_with_social_democrat = yes } }
 	ANA_Minister_Allowed = { has_government = socialist }
 	
 	LWR_Minister_Allowed = { OR = { is_communist = yes has_government = social_democrat is_in_coalition_with_socialist = yes  } }
@@ -4859,11 +4856,36 @@ is_arab_country = {
 }
 
 TWR_should_have_german_medals_trigger = {
+	OR = {
 	tag = GRM
+	tag = HSS
+	tag = HGR
+	tag = GER
+	tag = RGO
+	}
 	is_democratic = no
+}
+TWR_should_have_soviet_medals_trigger = {
+	OR = {
+		tag = NOV
+		tag = SOV
+		tag = KAZ
+		tag = TRV
+		tag = KRA
+	}
+	is_communist = yes
+}
+TWR_should_have_usa_medals_trigger = {
+	original_tag = USA
+}
+TWR_should_have_english_medals_trigger = {
+	original_tag = ENG
 }
 TWR_should_have_any_unique_medals_trigger = {
 	TWR_should_have_german_medals_trigger = yes
+	TWR_should_have_soviet_medals_trigger = yes
+	TWR_should_have_usa_medals_trigger = yes
+	TWR_should_have_english_medals_trigger = yes
 }
 
 
@@ -5180,6 +5202,27 @@ check_for_resources = {
 	}
 }
 
+is_post_aa_line_russia = {
+	OR = {
+		TAG = BRY
+		TAG = IRK
+		TAG = KAZ
+		TAG = KCS
+		TAG = KRA
+		TAG = NOV
+		TAG = NRI
+		TAG = PEC
+		TAG = RFP
+		TAG = RSB
+		TAG = RUS
+		TAG = SOV
+		TAG = TRV
+		TAG = RFP
+		TAG = BRY
+		TAG = TAN
+	}
+}
+
 ##Lesser Russian Tags
 soviet_splinter_tags = {
 	OR = {
@@ -5229,6 +5272,8 @@ soviet_splinter_tags = {
 	original_tag = KRU
 	original_tag = SIS
 	original_tag = ABK
+	original_tag = RUS
+	original_tag = BRY
 	}
 }
 
@@ -5257,5 +5302,31 @@ caucasus_tags = {
 	original_tag = CDA
 
 	original_tag = WRM
+	}
+}
+
+FROM_is_our_blood_rival = {	
+	if = {
+		limit = { soviet_splinter_tags = yes }
+		custom_trigger_tooltip = {
+		tooltip = blood_revenge_death_RUS
+		FROM = { is_german = yes }
+			}
+		}
+
+	else_if = {
+		limit = { is_german = yes }
+		custom_trigger_tooltip = {
+		tooltip = blood_revenge_death_GER
+		OR = {
+		FROM = { soviet_splinter_tags = yes }
+		FROM = { tag = ISR }
+			}
+		}
+	}
+	else = {
+		hidden_trigger = {
+			always = no
+		}
 	}
 }
