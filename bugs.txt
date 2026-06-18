@@ -1,4 +1,4 @@
-Total 16
+Total 12
 
 EN:
 Fixed the incorrect year for the "Cyclic Rate Reducer" and "Spring Washer" technologies
@@ -9,12 +9,8 @@ Hitler spy decisions now fire only once
 Mussolini can no longer be appointer as a minister after death
 Banat pillages events now not fire once
 twrbritainpolitics.91.c now doesn't have wrong tooltip
-Converted all statinig to stating on german events
-Changed Re-establish a Czech State to Restablish Czech State to look as other Restablish decisions
 Fix wrong event on attacking or increasing someone influence with senate debate on Hitlers Germany
 Clean SPA_ideas_of_an_european_community focus effects
-Remove n from IRQ_Development_plans_desc
-Fixed that UN_transfer_motor_equipment checked for anti tank equipment
 Remove unnecessary prerequisites from some Russian Reunification decisions
 Fixed icbm_equipment to icbm_equipment_equipment_1 in Gotenland decisions
 
@@ -27,11 +23,7 @@ Friedrich Olbrichf теперь доступен при идеологии на�
 Сделал что вы теперь не сможете назначить Муссолини на пост министра после его смерти
 Ивенты итогов рейда на Сербию Банатом теперь не одноразовые
 twrbritainpolitics.91.c теперь не отображает тултип как если бы давал поддержку традиционалистам
-Превратил все statinig в stating в ивентах Шпеера-Геббельса
-Изменил Re-establish a Czech State на Restablish Czech State чтобы выглядело так же как и другие такие решения
 Исправил неправильный ивент при увеличении или уменьшении чьего-либо влияния через сенат при Гитлере
 Изменил эффекты испанского фокуса SPA_ideas_of_an_european_community убрав бесполезную часть
-Убрал лишнюю n в начале IRQ_Development_plans_desc
-Исправил что UN_transfer_motor_equipment вместо моторизации проверял противотанковое снаряжение у ООН
 Убрал лишние требования у некоторых решений Russian Reunification
 Изменил icbm_equipment на icbm_equipment_equipment_1 в решениях Готенленда

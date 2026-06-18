@@ -998,6 +998,7 @@ country_event = { #German Garrison flees - new person in charge
 		clr_country_flag = has_symbolic_figurehead
 		custom_effect_tooltip = divisions_remain_locked_until_swabian_military_tt
 		hidden_effect = {
+			country_lock_all_division_template = no
 			remove_ideas = lg_josef_lapp 
 		}	
 		create_country_leader = {

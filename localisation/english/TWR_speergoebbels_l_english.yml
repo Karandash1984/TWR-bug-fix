@@ -21,7 +21,7 @@ GER_bring_the_RKs_back_into_the_fold_decisions:0 "Reunite the Reichskommissariat
 GER_demand_RK_subjugation_decision:0 "Demand [FROM.GetNameDef]'s Subjugation"
 GER_aid_the_rks_in_fighting:0 "Support [FROM.GetNameDef]"
 GER_annexing_the_cities:0 "Annex [FROM.GetNameDef]"
-GER_restore_order:0 "Crush the [FROM.GetNameDef] Rebels"
+GER_restore_order:0 "Crush [FROM.GetNameDef] Rebels"
 GER_restore_order_to_norway:0 "Restore Order to Norway"
 GER_restore_order_to_denmark:0 "Restore Order to Denmark"
 GER_restore_order_to_denmark_aggressive:0 "Restore Order to Denmark"
@@ -607,7 +607,7 @@ twrspeergoebbels.3.d:0 "The Luftwaffe never got their chance to confront the mig
 twrspeergoebbels.3.a:0 "The sky is ours!"
 #GOEBBELS#
 twrgoebbels.1.t:0 "Germany Announces Total War"
-twrgoebbels.1.d:0 "[This.GetNewspaperHeader]The relatively new leader of the German Reich - Joseph Goebbels, organized a grand speech in the heart of Berlin with a dozen foreign publications invited to partake in this historic occasion. They were not informed about the speech's true intentions and were utterly shocked when two banners greeted them at the top of the stadium - Totaler Krieg.\nWhen these journalists attempted to leave in a panic, they were stopped by the guards, forced to mark every single word of Goebbels' speech. He warned the Toronto Accord of an impending war, calling any preemptive actions to be foolish and futile, telling the Western democracies to 'enjoy their last days on this Aryan Earth.'.\nPolitical analyzers are certain that this is a bluff, a preemptive move to gain somewhat of an advantage in the negotiations on European hegemony."
+twrgoebbels.1.d:0 "[This.GetNewspaperHeader]The relatively new leader of the German Reich - Joseph Goebbels, organized a grand speech in the heart of Berlin with a dozen foreign publications invited to partake in this historic occasion. They were not informed about the speech's true intentions and were utterly shocked when two banners greeted them at the top of the stadium - Totaler Krieg.\nWhen these journalists attempted to leave in a panic, they were stopped by the guards, forced to mark every single word of Goebbels' speech. He warned the Toronto Accord of an impending war, calling any preemptive actions to be foolish and futile, telling the Western democracies to 'enjoy their last days on this Aryan Earth'.\nPolitical analyzers are certain that this is a bluff, a preemptive move to gain somewhat of an advantage in the negotiations on European hegemony."
 twrgoebbels.1.a:0 "Ein Volk, Ein Reich, Ein Führer!"
 twrgoebbels.1.b:0 "What a bluff."
 
@@ -645,7 +645,7 @@ twrgoebbels.8.t:0 "The Jugend Panzergrenadiers"
 twrgoebbels.8.d:0 "Joseph Goebbels and his confidants see the great potential in turning Germany's youth into professional soldiers. The youth, with their highly flexible. Child soldiers are often more agile than adult soldiers, with the additional benefit of being a smaller target. At times, these children's mind can be freely shaped by our authorities, making them the most loyal elements of the army if they were to be deployed.\n\nWith propaganda efforts and an extensive training programme, the concept of child soldiers are no longer a desperate measure, but a honourable act to serve the fatherland with utmost bravery, forming Germany's first professional Youth Panzergrenadier Divisions. These youthful soldiers are the best of the best that Germany has to offer, trained in many forms of warfare and thoroughly indoctrinated. Ultimately becoming Goebbels' elite divisions."
 twrgoebbels.8.a:0 "Children are amazing fighters!"
 
-YOUTH_GRENAIDERS_GOEBBELS:0 "§Y3§!§GElite Jugend Panzergrenadier Divisions are formed!§!"
+YOUTH_GRENAIDERS_GOEBBELS:0 "§Y3§! §GElite Jugend Panzergrenadier Divisions are formed!§!"
 HITLER_YOUTH_MILITARY:0 "§GThe education system is fully militarized!§!"
 
 twrgoebbels.9.t:0 "Militarization of the Youth"
@@ -864,10 +864,6 @@ twrgermany.52.a:0 "And thus, a monster state was born..."
 
 USA_infiltrate_labour_unions: "Infiltrate Labour Unions"
 
-modifier_experience_gain_MBT_combat_factor: "MBT experience gain from combat"
-
-SAF_mining_subsidies: "Mining Subsidies"
-
 RGO_fighter_n_bombers: "Fighters And Bombers"
 
 ideology_PAF:0 "§gAuthoritarian§!"
@@ -903,46 +899,6 @@ helicopter_research: "Helicopter Research Speed"
 GER_Controls_The_Sky_desc: "Air superiority has always been a deciding factor in our military strategy, ever since the days of the Blitzkrieg. Now, if we wish to rule over the land of Berlin, we must rule over its airspace as well. On a very tactical level, we require more aircraft to directly support our brave soldiers...Far more aircraft than what we can currently produce. We must change that."
 
 GER_Victory_At_GCW_desc: "At last, it ends. May we never again see the day where Germans slaughter Germans so readily. May we never again see our homeland destroyed, not through foreign invasion, but our own suicidal fervor. For the sake of those already passed, and for those who reside in whatever future the victors decide to bring about, they must wield the power they earned through bloodshed wisely and unquestionably."
-
-TEMPORARY_TRUCE_GERMANS: "Temporary Truce"
-
-modifier_state_repair_speed_infrastructure_factor: "Infrastucture Repair Speed"
-
-modifier_state_repair_speed_arms_factory_factor: "Arms Factory Repair Speed"
-
-modifier_state_repair_speed_industrial_complex_factor: "Industrial Complex Repair Speed"
-
-modifier_state_repair_speed_air_base_factor: "Air Base Repair Speed"
-
-modifier_state_repair_speed_supply_node_factor: "Supply Node Repair Speed"
-
-modifier_state_repair_speed_rail_way_factor: "Railway Repair Speed"
-
-modifier_state_repair_speed_naval_base_factor: "Naval Base Repair Speed"
-
-modifier_state_repair_speed_bunker_factor: "Bunker Repair Speed"
-
-modifier_state_repair_speed_coastal_bunker_factor: "Coastal Bunker Repair Speed"
-
-modifier_state_repair_speed_dockyard_factor: "Dockyard Repair Speed"
-
-modifier_state_repair_speed_anti_air_building_factor: "Anti-Air Repair Speed"
-
-modifier_state_repair_speed_synthetic_refinery_factor: "Synthetic Refinery Repair Speed"
-
-modifier_state_repair_speed_fuel_silo_factor: "Fuel Silo Repair Speed"
-
-modifier_state_repair_speed_naval_facility_factor: "Naval Facility Repair Speed"
-
-modifier_state_repair_speed_air_facility_factor: "Air Facility Repair Speed"
-
-modifier_state_repair_speed_land_facility_factor: "Land Facility Repair Speed"
-
-modifier_state_repair_speed_nuclear_facility_factor: "Nuclear Facility Repair Speed"
-
-modifier_state_repair_speed_rocket_site_factor: "Rocket Site Repair Speed"
-
-modifier_state_repair_speed_radar_station_factor: "Radar Station Repair Speed"
 
 category_APC: "APC"
 

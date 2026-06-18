@@ -1514,6 +1514,11 @@ technologies = {
 	}
 	support_weapons3 = {
 		on_research_complete = {log = "[GetDateText]: [Root.GetName]: add tech support_weapons3"}
+		allow = {
+			ROOT = {
+				is_special_project_completed = sp:sp_advanced_manufacturing
+			}
+		}
 
 		infantry = {
 			defense = 0.05
