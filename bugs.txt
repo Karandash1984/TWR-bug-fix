@@ -1,4 +1,4 @@
-Total 14
+Total 13
 
 EN:
 Fixed the incorrect year for the "Cyclic Rate Reducer" and "Spring Washer" technologies
@@ -12,7 +12,6 @@ twrbritainpolitics.91.c now doesn't have wrong tooltip
 Converted all statinig to stating on german events
 Fix wrong event on attacking or increasing someone influence with senate debate on Hitlers Germany
 Clean SPA_ideas_of_an_european_community focus effects
-Remove n from IRQ_Development_plans_desc
 Remove unnecessary prerequisites from some Russian Reunification decisions
 Fixed icbm_equipment to icbm_equipment_equipment_1 in Gotenland decisions
 
@@ -28,6 +27,5 @@ twrbritainpolitics.91.c теперь не отображает тултип ка
 Превратил все statinig в stating в ивентах Шпеера-Геббельса
 Исправил неправильный ивент при увеличении или уменьшении чьего-либо влияния через сенат при Гитлере
 Изменил эффекты испанского фокуса SPA_ideas_of_an_european_community убрав бесполезную часть
-Убрал лишнюю n в начале IRQ_Development_plans_desc
 Убрал лишние требования у некоторых решений Russian Reunification
 Изменил icbm_equipment на icbm_equipment_equipment_1 в решениях Готенленда
