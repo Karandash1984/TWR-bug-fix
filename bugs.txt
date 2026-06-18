@@ -1,4 +1,4 @@
-Total 16
+Total 15
 
 EN:
 Fixed the incorrect year for the "Cyclic Rate Reducer" and "Spring Washer" technologies
@@ -14,7 +14,6 @@ Changed Re-establish a Czech State to Restablish Czech State to look as other Re
 Fix wrong event on attacking or increasing someone influence with senate debate on Hitlers Germany
 Clean SPA_ideas_of_an_european_community focus effects
 Remove n from IRQ_Development_plans_desc
-Fixed that UN_transfer_motor_equipment checked for anti tank equipment
 Remove unnecessary prerequisites from some Russian Reunification decisions
 Fixed icbm_equipment to icbm_equipment_equipment_1 in Gotenland decisions
 
@@ -32,6 +31,5 @@ twrbritainpolitics.91.c теперь не отображает тултип ка
 Исправил неправильный ивент при увеличении или уменьшении чьего-либо влияния через сенат при Гитлере
 Изменил эффекты испанского фокуса SPA_ideas_of_an_european_community убрав бесполезную часть
 Убрал лишнюю n в начале IRQ_Development_plans_desc
-Исправил что UN_transfer_motor_equipment вместо моторизации проверял противотанковое снаряжение у ООН
 Убрал лишние требования у некоторых решений Russian Reunification
 Изменил icbm_equipment на icbm_equipment_equipment_1 в решениях Готенленда
