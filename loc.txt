@@ -1,4 +1,4 @@
-Total 27
+Total 30
 USA_infiltrate_labour_unions
 RGO_fighter_n_bombers
 ENOUGH_SUPPORT_IN_NORTH_AFRICA
@@ -26,3 +26,6 @@ aluminium_4_finished
 AKBAR_KHAN_DESC
 nerve_agents
 chemical_raids
+CCTV_EVERYWHERE_HSSs
+BREAKING_THE_Reichskonkordat
+VATICAN_IS_YEETED
