@@ -5,6 +5,7 @@ add_namespace = twritalyforeign
 add_namespace = twritalypolitics
 add_namespace = twritalyeconomy
 add_namespace = twritalygreece
+add_namespace = twritalytunisia
 add_namespace = twritalyborghese
 add_namespace = twrgreeceuprising
 add_namespace = twritalymontenegro
@@ -2443,13 +2444,13 @@ country_event = {
 			target = IEA
 			modifier = volunteer_limit_plus_three
 		}
-		ETH = {
-			load_oob = "ETH_REBEL"
-		}
 		hidden_effect = {
 			news_event = {
 				id = twrnews.120
 				days = 1
+			}
+			ETH = {
+				load_oob = "ETH_REBEL"
 			}
 		}
 	}
@@ -4362,7 +4363,10 @@ country_event = {
 					}
 				}
 				ITA = {
-					puppet = CRO
+					set_autonomy = {
+						target = CRO
+						autonomy_state = autonomy_ITA_autonomous_protectorate
+					}
 				}
 				set_cosmetic_tag = CRO_kingdom
 				set_politics = {
@@ -4385,34 +4389,39 @@ country_event = {
 					}
 					promote_leader = yes 
 				}
+				remove_ideas = CRO_Divided_Home_Guard_idea
 				load_focus_tree = CRO_Kingdom_Tree
 				complete_national_focus = CRO_Kingdom_As_Rome_Commands
-				remove_ideas = {
-					CRO_german_funding_for_supression
-					CRO_dream_of_a_greater_croatia
-					CRO_italian_influence
-					CRO_Divided_Home_Guard_idea
-					CRO_Unstable_Government_idea
-					CRO_Unstable_Government_1_idea
-					CRO_No_More_German_Funding
-					CRO_One_Last_Offensive_idea
-					CRO_The_Croatian_Terror_idea
-					CRO_Slash_and_Burn_idea
-					CRO_No_Mercy_for_Partisans_idea
-					CRO_Roaming_Pacification_Battalions_idea
-					CRO_The_Scapegoat_idea
-					CRO_Indiscriminate_Bombing_Campaigns_idea
-					CRO_Indiscriminate_Bombing_Campaigns_BOS_idea
-					CRO_Purged_Home_Guard_idea
-					CRO_Purged_Government_idea
-					CRO_Everyone_Must_Do_Their_Part_idea
-					CRO_German_Trade_idea
-					CRO_Wehrmacht_Advisors_idea
-					CRO_The_Master_Race_Arrives_idea
-					CRO_The_People_are_Fed_idea
-					CRO_Defeat_at_Srem_idea
-				}
 				country_lock_all_division_template = no
+			}
+			IF = {
+				limit = {
+					BOS = {
+						exists = yes
+						is_ally_with = CRO
+					}
+				}
+				annex_country = {
+					target = BOS
+					transfer_troops = no
+				}
+			}
+			else_if = {
+				limit = {
+					BOS = {
+						exists = no
+						is_ally_with = CRO
+					}
+				}
+				every_state = {
+					limit = {
+						is_core_of = BOS
+						owner = {
+							is_ally_with = CRO
+						}
+					}
+					transfer_state_to = CRO
+				}			
 			}
 			news_event = {
 				id = twrnews.174
@@ -4502,45 +4511,7 @@ country_event = {
 			}
 		}
 	}
-	option = {
-		name = twritalyforeign.15.c
-		ai_chance = {
-			base = 0
-			modifier = {
-				factor = 1
-				NOT = {
-					is_ally_with = GER
-				}
-				OR = {
-					has_global_flag = german_civil_war_started
-					has_global_flag = german_civil_war_over
-				}
-			}
-		}
-		add_ideas = ITA_accepted_mediterranean_union
-		change_to_italian_alignment = yes
-		ITA = {
-			add_to_faction = FRA
-		}
-		ITA = {
-			country_event = {
-				id = twritalyforeign.18
-				days = 1
-			}
-		}
-		trigger = {
-			has_war = no
-			is_in_faction = no
-			NOT = {
-				has_government = marxist_leninist
-				has_government = bolshevik_leninist
-				has_government = socialist
-				has_government = conservative
-				has_government = liberal
-				has_government = social_democrat
-			}
-		}
-	}
+	
 }
 
 country_event = {
@@ -5376,6 +5347,7 @@ country_event = {
 					has_completed_focus = ITA_Adventures_in_Turkey
 				}
 			}
+			is_communist = no
 		}
 		if = {
 			limit = {
@@ -5395,9 +5367,6 @@ country_event = {
 				id = twritalyforeign.451
 				days = 1
 			}
-		}
-		trigger = {
-			is_communist = no
 		}
 	}
 	option = {
@@ -6576,6 +6545,375 @@ country_event = {
 		}
 	}
 }
+
+country_event = {
+	id = twritalytunisia.1
+	title = twritalytunisia.1.t
+	desc = twritalytunisia.1.d
+	picture = GFX_report_event_generic_handshake
+	fire_only_once = yes
+	trigger = {
+		tag = TUN
+		is_subject = no
+		has_government = paternal_autocrat
+	}
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event twritalytunisia.1"
+	}
+	option = {
+		name = twritalytunisia.1.a
+		drop_cosmetic_tag = yes
+		set_politics = {
+			ruling_party = social_democrat
+			elections_allowed = no
+		}
+		add_popularity = {
+			ideology = social_democrat
+			popularity = 0.2
+		}
+		end_coalition = yes
+		hidden_effect = {
+			TUN = {
+				country_event = {
+					id = twritalytunisia.2
+					days = 365
+					random_days = 120
+				}
+			}
+		}
+		set_country_flag = has_symbolic_figurehead
+		add_ideas = mon_lamine_bey
+	}
+}
+
+country_event = {
+	id = twritalytunisia.2
+	title = twritalytunisia.2.t
+	desc = twritalytunisia.2.d
+	picture = GFX_report_event_generic_handshake
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event twritalytunisia.2"
+	}
+	option = {
+		name = twritalytunisia.2.a
+		create_country_leader = {
+			name = "Habib Bourguiba"
+			picture = "Portrait_TUN_Habib_Bourguiba.dds"
+			expire = "2000.1.1"
+			ideology = social_paternalism
+			traits = {
+				#
+			}
+		}
+		set_cosmetic_tag = TUN_REP
+		set_politics = {
+			ruling_party = paternal_autocrat
+			elections_allowed = no
+			name = TUN_social_democrat_party
+			long_name = TUN_social_democrat_party_long
+		}
+		add_popularity = {
+			ideology = paternal_autocrat
+			popularity = 1
+		}
+		hidden_effect = {
+			add_popularity = {
+				ideology = marxist_leninist
+				popularity = 0.02
+			}
+		}
+		clear_all_hos = yes
+		clr_all_alignment = yes
+		news_event = twritalytunisia.3
+		leave_faction = yes
+	}
+}
+
+news_event = {
+	id = twritalytunisia.3
+	title = twritalytunisia.3.t
+	desc = twritalytunisia.3.d
+	picture = GFX_news_event_tunisia_republic
+	major = yes
+	show_major = {
+		OR = {
+			has_country_flag = NEWS_EVENTS_MIDDLE_EAST_FLAG
+			has_country_flag = NEWS_EVENTS_AFRICA_FLAG
+		}
+	}
+	is_triggered_only = yes
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event twritalytunisia.3"
+	}
+	option = {
+		name = twritalytunisia.3.a
+	}
+}
+
+country_event = {
+	id = twritalytunisia.4
+	title = twritalytunisia.4.t
+	desc = twritalytunisia.4.d
+	picture = GFX_report_event_police_investigation
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event twritalytunisia.4"
+	}
+	option = {
+		name = twritalytunisia.4.a
+		hidden_effect = {
+			ITA = {
+				country_event = {
+					id = twritalytunisia.5
+					days = 14
+				}
+			}
+		}
+		TUN = {
+			set_temp_variable = { coalition_partner_var = token:social_democrat }
+			remove_from_coalition = yes
+			add_popularity = {
+				ideology = social_democrat
+				popularity = -0.1
+			}
+		}
+		custom_effect_tooltip = ITA_tunisians_get_mad_tt
+	}
+}
+
+country_event = {
+	id = twritalytunisia.5
+	title = twritalytunisia.5.t
+	desc = twritalytunisia.5.d
+	picture = GFX_report_event_TUN_destour
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event twritalytunisia.5"
+	}
+	option = {
+		name = twritalytunisia.5.a
+		TUN = {
+			add_popularity = {
+				ideology = fascist
+				popularity = 0.1
+			}
+			swap_ideas = {
+				remove_idea = TUN_neo_destour
+				add_idea = TUN_neo_destour_2
+			}
+		}
+		hidden_effect = {
+			TUN = {
+				country_event = {
+					id = twritalytunisia.6
+					days = 365
+					random_days = 120
+				}
+			}
+		}
+		custom_effect_tooltip = ITA_tunisians_are_mad_tt
+	}
+}
+
+
+country_event = {
+	id = twritalytunisia.6
+	title = twritalytunisia.6.t
+	desc = twritalytunisia.6.d
+	picture = GFX_report_event_TUN_destour
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event twritalytunisia.6"
+	}
+	trigger = {
+		TUN = {
+			is_subject_of = ITA
+		}
+	}
+	option = {
+		name = twritalytunisia.6.a
+		
+		overlord = {
+			set_autonomy = {
+				target = TUN
+				autonomy_state = autonomy_free
+			}
+		}
+		set_cosmetic_tag = TUN_REP
+		set_politics = {
+			ruling_party = fascist
+			elections_allowed = no
+		}
+		add_popularity = {
+			ideology = fascist
+			popularity = 0.2
+		}
+		hidden_effect = {
+			set_party_name = {
+				ideology = paternal_autocrat
+				name = TUN_social_democrat_party
+				long_name = TUN_social_democrat_party_long
+			}
+			create_country_leader = {
+				name = "Salah ben Yusuf"
+				picture = "Salah_Ben_Yusuf.dds"
+				expire = "2000.1.1"
+				ideology = national_corporatism
+				traits = {
+					#
+				}
+			}
+		}
+		clear_all_hos = yes
+		end_coalition = yes
+		set_temp_variable = { coalition_partner_var = token:paternal_autocrat }
+		add_to_coalition = yes
+		set_temp_variable = { coalition_partner_var = token:social_democrat }
+		add_to_coalition = yes
+		set_variable = { coalition_stability = 0.7 tooltip = coalition_stability_tooltip }
+		clr_all_alignment = yes
+		ITA = {
+			country_event = twritalytunisia.7
+		}
+		news_event = {
+			id = twritalytunisia.9
+			hours = 6
+		}
+		leave_faction = yes
+	}
+}
+
+
+country_event = {
+	#Revolt in Tunisia
+	id = twritalytunisia.7
+	title = twritalytunisia.7.t
+	desc = twritalytunisia.7.d
+	picture = GFX_report_event_TUN_destour
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event twritalytunisia.7"
+	}
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		#We must invade!
+		name = twritalytunisia.7.a
+		declare_war_on = {
+			target = TUN
+			type = annex_everything
+		}
+		custom_effect_tooltip = ITA_100_days_to_win
+		hidden_effect = {
+			country_event = {
+				id = twritalytunisia.8
+				days = 100
+			}
+		}
+		add_political_power = -50
+		custom_effect_tooltip = ita_increase_unrest_mainland_tt
+		hidden_effect = {
+			add_to_variable = {
+				var = ita_var_domestic_opposition
+				value = 0.05
+			}
+			clamp_italian_variables = yes
+		}
+	}
+	option = {
+		#Not worth it
+		name = twritalytunisia.7.b
+		ai_chance = {
+			base = 0
+		}
+		add_to_variable = {
+			ita_var_coup_chance = 0.1
+		}
+		add_to_variable = {
+			ita_var_domestic_opposition = 0.05
+		}
+		add_to_variable = {
+			ita_var_gcf_loyalty = -0.05
+		}
+		add_to_variable = {
+			ita_var_mvsn_loyalty = -0.1
+		}
+		clamp_italian_variables = yes
+		custom_effect_tooltip = ita_increase_unrest_mainland_tt
+		custom_effect_tooltip = ita_increase_coup_chance_tt
+		custom_effect_tooltip = ita_decrease_loyalty_gcf_tt
+		custom_effect_tooltip = ita_decrease_loyalty_mvsn_tt
+	}
+}
+
+country_event = {
+	#Loss in Tunisia
+	id = twritalytunisia.8
+	title =twritalytunisia.8.t
+	desc = twritalytunisia.8.d
+	picture = GFX_report_event_TUN_destour
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event twritalytunisia.8"
+		
+	}
+	is_triggered_only = yes
+	trigger = {
+		TUN = {
+			exists = yes
+			has_war_with = ITA
+			surrender_progress < 0.7
+			is_subject = no
+		}
+	}
+	fire_only_once = yes
+	option = {
+		#Joever
+		name = twritalytunisia.8.a
+		add_to_variable = {
+			ita_var_domestic_opposition = 0.2
+		}
+		add_to_variable = {
+			ita_var_coup_chance = 0.25
+		}
+		add_to_variable = {
+			ita_var_gcf_loyalty = -0.2
+		}
+		add_to_variable = {
+			ita_var_mvsn_loyalty = -0.25
+		}
+		clamp_italian_variables = yes
+		custom_effect_tooltip = ita_increase_unrest_mainland_tt
+		custom_effect_tooltip = ita_increase_coup_chance_tt
+		custom_effect_tooltip = ita_decrease_loyalty_gcf_tt
+		custom_effect_tooltip = ita_decrease_loyalty_mvsn_tt
+	}
+}
+
+news_event = {
+	id = twritalytunisia.9
+	title = twritalytunisia.9.t
+	desc = twritalytunisia.9.d 
+	picture = GFX_news_event_tunisia_revolution 
+	major = yes
+	show_major = {
+		OR = {
+			has_country_flag = NEWS_EVENTS_MIDDLE_EAST_FLAG
+			has_country_flag = NEWS_EVENTS_AFRICA_FLAG
+		}
+	}
+	is_triggered_only = yes
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event twritalytunisia.9"
+	}
+	option = {
+		name = twritalytunisia.9.a
+	}
+}
+
 
 country_event = {
 	id = twritavar.49012

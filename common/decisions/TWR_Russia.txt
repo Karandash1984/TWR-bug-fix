@@ -2678,6 +2678,7 @@ russia_reconquering = {
 					tag = FTK
 					tag = TCC
 					tag = KHV
+					tag = SIS
 				}
 				NOT = {
 				tag = ROOT
@@ -2698,10 +2699,7 @@ russia_reconquering = {
 		        }
 		    }
 			FROM = {
-				NOT = {
-					is_ally_with = RAJ
-					is_ally_with = CHI
-				}
+				is_in_faction = no
 			}
 		}
 		visible = {
@@ -2717,6 +2715,13 @@ russia_reconquering = {
 				}
 				NOT = {
 				has_country_flag = NOT_INTERESTED_LMAO_SOV
+				}
+			}
+			
+			FROM = {
+				NOT = {
+					is_ally_with = RAJ
+					is_ally_with = CHI
 				}
 			}
 		}

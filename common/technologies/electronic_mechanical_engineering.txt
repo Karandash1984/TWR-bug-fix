@@ -790,11 +790,13 @@ technologies = {
 		}
 	}
 	computing_machine_1960 = {
-		on_research_complete = {log = "[GetDateText]: [Root.GetName]: add tech computing_machine_1960"}
+		on_research_complete = {
+			log = "[GetDateText]: [Root.GetName]: add tech computing_machine_1960"
+			add_research_slot = 1
+		}
 
 		# small boost to research speed
 		research_speed_factor = 0.03
-		on_research_complete = { add_research_slot = 1 }
 		
 		path = {
 			leads_to_tech = encryption_1960 
@@ -1392,6 +1394,7 @@ technologies = {
 	helicopter_engines = {
 		on_research_complete = {
 			log = "[GetDateText]: [Root.GetName]: add tech helicopter_engines"
+			custom_effect_tooltip = HELICOPTER_ENGINES_RESEARCHED
 		}
 		folder = {
 			name = helicopter_techs_folder
@@ -1405,10 +1408,6 @@ technologies = {
 		research_cost = 3
 		
 		desc = "HELICOPTER_ENGINES_SPECIAL"
-
-		on_research_complete = {
-			custom_effect_tooltip = HELICOPTER_ENGINES_RESEARCHED
-		}
 		
 		ai_will_do = {
 			factor = 1
@@ -1423,6 +1422,7 @@ technologies = {
 	jet_engines = {
 		on_research_complete = {
 			log = "[GetDateText]: [Root.GetName]: add tech jet_engines"
+			custom_effect_tooltip = JET_ENGINES_RESEARCHED
 		}
 		path = {
 			leads_to_tech = improved_jet_engines_1 
@@ -1442,10 +1442,6 @@ technologies = {
 		research_cost = 4
 		
 		desc = "JET_ENGINES_SPECIAL"
-
-		on_research_complete = {
-			custom_effect_tooltip = JET_ENGINES_RESEARCHED
-		}
 		
 		ai_will_do = {
 			factor = 1
@@ -1459,6 +1455,7 @@ technologies = {
 	jet_engines_bombers = {
 		on_research_complete = {
 			log = "[GetDateText]: [Root.GetName]: add tech jet_engines_bombers"
+			custom_effect_tooltip = JET_ENGINES_RESEARCHED_BOMBERS
 		}
 		allow = { 	 		
 			ROOT = {
@@ -1478,10 +1475,6 @@ technologies = {
 		research_cost = 3
 		
 		desc = "JET_ENGINES_SPECIAL_BOMBERS"
-
-		on_research_complete = {
-			custom_effect_tooltip = JET_ENGINES_RESEARCHED_BOMBERS
-		}
 		dependencies = {
 			jet_engines = 1
 		}			
@@ -1691,11 +1684,6 @@ technologies = {
 
 		path = {
 			leads_to_tech = wartime_train
-			research_cost_coeff = 1
-		}
-
-		path = {
-			leads_to_tech = armored_train
 			research_cost_coeff = 1
 		}
 		

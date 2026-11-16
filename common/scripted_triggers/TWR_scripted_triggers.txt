@@ -48,6 +48,7 @@
 				tag = KOR
 				tag = TUR
 				tag = IRQ
+				original_tag = PER
 				tag = BUL
 				tag = MEX
 				tag = VEN
@@ -63,9 +64,10 @@
 				tag = ARM
 				original_tag = SYR
 				original_tag = LEB
+				original_tag = IRQ
 				tag = IDE
 				tag = TIB
-				tag = SAR
+				#tag = SAR
 				tag = AUS
 				tag = JAP
 				tag = GER
@@ -100,6 +102,9 @@
 				tag = UNQ
 				tag = ISR
 				tag = PAL
+				tag = EGL
+				tag = SCO
+				tag = FTK
 		}
 	}
 	controls_rmo_to_ural = {
@@ -883,269 +888,353 @@
 	}
 	controls_ostland_fully = {
 			96 = {
-				is_fully_controlled_by = ROOT
+				is_owned_by_ROOT_or_subject = yes
+				is_controlled_by_ROOT_or_subject = yes
 			}
 			95 = {
-				is_fully_controlled_by = ROOT
+				is_owned_by_ROOT_or_subject = yes
+				is_controlled_by_ROOT_or_subject = yes
 			}
 			928 = {
-				is_fully_controlled_by = ROOT
+				is_owned_by_ROOT_or_subject = yes
+				is_controlled_by_ROOT_or_subject = yes
 			}
 			805 = {
-				is_fully_controlled_by = ROOT
+				is_owned_by_ROOT_or_subject = yes
+				is_controlled_by_ROOT_or_subject = yes
 			}
 			206 = {
-				is_fully_controlled_by = ROOT
+				is_owned_by_ROOT_or_subject = yes
+				is_controlled_by_ROOT_or_subject = yes
 			}
 			207 = {
-				is_fully_controlled_by = ROOT
+				is_owned_by_ROOT_or_subject = yes
+				is_controlled_by_ROOT_or_subject = yes
 			}
 			204 = {
-				is_fully_controlled_by = ROOT
+				is_owned_by_ROOT_or_subject = yes
+				is_controlled_by_ROOT_or_subject = yes
 			}
 			191 = {
-				is_fully_controlled_by = ROOT
+				is_owned_by_ROOT_or_subject = yes
+				is_controlled_by_ROOT_or_subject = yes
 			}
 			190 = {
-				is_fully_controlled_by = ROOT
+				is_owned_by_ROOT_or_subject = yes
+				is_controlled_by_ROOT_or_subject = yes
 			}
 			189 = {
-				is_fully_controlled_by = ROOT
+				is_owned_by_ROOT_or_subject = yes
+				is_controlled_by_ROOT_or_subject = yes
 			}
 			13 = {
-				is_fully_controlled_by = ROOT
+				is_owned_by_ROOT_or_subject = yes
+				is_controlled_by_ROOT_or_subject = yes
 			}
 			12 = {
-				is_fully_controlled_by = ROOT
+				is_owned_by_ROOT_or_subject = yes
+				is_controlled_by_ROOT_or_subject = yes
 			}
 			11 = {
-				is_fully_controlled_by = ROOT
+				is_owned_by_ROOT_or_subject = yes
+				is_controlled_by_ROOT_or_subject = yes
 			}
 			1006 = {
-				is_fully_controlled_by = ROOT
+				is_owned_by_ROOT_or_subject = yes
+				is_controlled_by_ROOT_or_subject = yes
 			}
 			242 = {
-				is_fully_controlled_by = ROOT
+				is_owned_by_ROOT_or_subject = yes
+				is_controlled_by_ROOT_or_subject = yes
 			}
 	}
 	controls_moskow_fully = {
 			999 = {
-				is_fully_controlled_by = ROOT
+				is_owned_by_ROOT_or_subject = yes
+				is_controlled_by_ROOT_or_subject = yes
 			}
 			244 = {
-				is_fully_controlled_by = ROOT
+				is_owned_by_ROOT_or_subject = yes
+				is_controlled_by_ROOT_or_subject = yes
 			}
 			351 = {
-				is_fully_controlled_by = ROOT
+				is_owned_by_ROOT_or_subject = yes
+				is_controlled_by_ROOT_or_subject = yes
 			}
 			264 = {
-				is_fully_controlled_by = ROOT
+				is_owned_by_ROOT_or_subject = yes
+				is_controlled_by_ROOT_or_subject = yes
 			}
 			254 = {
-				is_fully_controlled_by = ROOT
+				is_owned_by_ROOT_or_subject = yes
+				is_controlled_by_ROOT_or_subject = yes
 			}
 			253 = {
-				is_fully_controlled_by = ROOT
+				is_owned_by_ROOT_or_subject = yes
+				is_controlled_by_ROOT_or_subject = yes
 			}
 			248 = {
-				is_fully_controlled_by = ROOT
+				is_owned_by_ROOT_or_subject = yes
+				is_controlled_by_ROOT_or_subject = yes
 			}
 			246 = {
-				is_fully_controlled_by = ROOT
+				is_owned_by_ROOT_or_subject = yes
+				is_controlled_by_ROOT_or_subject = yes
 			}
 			247 = {
-				is_fully_controlled_by = ROOT
+				is_owned_by_ROOT_or_subject = yes
+				is_controlled_by_ROOT_or_subject = yes
 			}
 			243 = {
-				is_fully_controlled_by = ROOT
+				is_owned_by_ROOT_or_subject = yes
+				is_controlled_by_ROOT_or_subject = yes
 			}
 			223 = {
-				is_fully_controlled_by = ROOT
+				is_owned_by_ROOT_or_subject = yes
+				is_controlled_by_ROOT_or_subject = yes
 			}
 			219 = {
-				is_fully_controlled_by = ROOT
+				is_owned_by_ROOT_or_subject = yes
+				is_controlled_by_ROOT_or_subject = yes
 			}
 			205 = {
-				is_fully_controlled_by = ROOT
+				is_owned_by_ROOT_or_subject = yes
+				is_controlled_by_ROOT_or_subject = yes
 			}
 			1007 = {
-				is_fully_controlled_by = ROOT
+				is_owned_by_ROOT_or_subject = yes
+				is_controlled_by_ROOT_or_subject = yes
 			}
 			1004 = {
-				is_fully_controlled_by = ROOT
+				is_owned_by_ROOT_or_subject = yes
+				is_controlled_by_ROOT_or_subject = yes
 			}
 			1005 = {
-				is_fully_controlled_by = ROOT
+				is_owned_by_ROOT_or_subject = yes
+				is_controlled_by_ROOT_or_subject = yes
 			}
 			1002 = {
-				is_fully_controlled_by = ROOT
+				is_owned_by_ROOT_or_subject = yes
+				is_controlled_by_ROOT_or_subject = yes
 			}
 			1003 = {
-				is_fully_controlled_by = ROOT
+				is_owned_by_ROOT_or_subject = yes
+				is_controlled_by_ROOT_or_subject = yes
 			}
 			1000 = {
-				is_fully_controlled_by = ROOT
+				is_owned_by_ROOT_or_subject = yes
+				is_controlled_by_ROOT_or_subject = yes
 			}
 			1001 = {
-				is_fully_controlled_by = ROOT
+				is_owned_by_ROOT_or_subject = yes
+				is_controlled_by_ROOT_or_subject = yes
 			}
 			224 = {
-				is_fully_controlled_by = ROOT
+				is_owned_by_ROOT_or_subject = yes
+				is_controlled_by_ROOT_or_subject = yes
 			}
 			220 = {
-				is_fully_controlled_by = ROOT
+				is_owned_by_ROOT_or_subject = yes
+				is_controlled_by_ROOT_or_subject = yes
 			}
 			260 = {
-				is_fully_controlled_by = ROOT
+				is_owned_by_ROOT_or_subject = yes
+				is_controlled_by_ROOT_or_subject = yes
 			}
 			257 = {
-				is_fully_controlled_by = ROOT
+				is_owned_by_ROOT_or_subject = yes
+				is_controlled_by_ROOT_or_subject = yes
 			}
 			258 = {
-				is_fully_controlled_by = ROOT
+				is_owned_by_ROOT_or_subject = yes
+				is_controlled_by_ROOT_or_subject = yes
 			}
 			222 = {
-				is_fully_controlled_by = ROOT
+				is_owned_by_ROOT_or_subject = yes
+				is_controlled_by_ROOT_or_subject = yes
 			}	
 	}
 	controls_rka_fully = {
 			976 = {
-				is_fully_controlled_by = ROOT
+				is_owned_by_ROOT_or_subject = yes
+				is_controlled_by_ROOT_or_subject = yes
 			}
 			977 = {
-				is_fully_controlled_by = ROOT
+				is_owned_by_ROOT_or_subject = yes
+				is_controlled_by_ROOT_or_subject = yes
 			}
 			974 = {
-				is_fully_controlled_by = ROOT
+				is_owned_by_ROOT_or_subject = yes
+				is_controlled_by_ROOT_or_subject = yes
 			}
 			975 = {
-				is_fully_controlled_by = ROOT
+				is_owned_by_ROOT_or_subject = yes
+				is_controlled_by_ROOT_or_subject = yes
 			}
 			972 = {
-				is_fully_controlled_by = ROOT
+				is_owned_by_ROOT_or_subject = yes
+				is_controlled_by_ROOT_or_subject = yes
 			}
 			973 = {
-				is_fully_controlled_by = ROOT
+				is_owned_by_ROOT_or_subject = yes
+				is_controlled_by_ROOT_or_subject = yes
 			}
 			970 = {
-				is_fully_controlled_by = ROOT
+				is_owned_by_ROOT_or_subject = yes
+				is_controlled_by_ROOT_or_subject = yes
 			}
 			971 = {
-				is_fully_controlled_by = ROOT
+				is_owned_by_ROOT_or_subject = yes
+				is_controlled_by_ROOT_or_subject = yes
 			}
 			#964 = {
 			#	is_fully_controlled_by = ROOT
 			#}
 			265 = {
-				is_fully_controlled_by = ROOT
+				is_owned_by_ROOT_or_subject = yes
+				is_controlled_by_ROOT_or_subject = yes
 			}
 			245 = {
-				is_fully_controlled_by = ROOT
+				is_owned_by_ROOT_or_subject = yes
+				is_controlled_by_ROOT_or_subject = yes
 			}
 			238 = {
-				is_fully_controlled_by = ROOT
+				is_owned_by_ROOT_or_subject = yes
+				is_controlled_by_ROOT_or_subject = yes
 			}
 			237 = {
-				is_fully_controlled_by = ROOT
+				is_owned_by_ROOT_or_subject = yes
+				is_controlled_by_ROOT_or_subject = yes
 			}
 			233 = {
-				is_fully_controlled_by = ROOT
+				is_owned_by_ROOT_or_subject = yes
+				is_controlled_by_ROOT_or_subject = yes
 			}
 			234 = {
-				is_fully_controlled_by = ROOT
+				is_owned_by_ROOT_or_subject = yes
+				is_controlled_by_ROOT_or_subject = yes
 			}
 			235 = {
-				is_fully_controlled_by = ROOT
+				is_owned_by_ROOT_or_subject = yes
+				is_controlled_by_ROOT_or_subject = yes
 			}
 			232 = {
-				is_fully_controlled_by = ROOT
+				is_owned_by_ROOT_or_subject = yes
+				is_controlled_by_ROOT_or_subject = yes
 			}
 			217 = {
-				is_fully_controlled_by = ROOT
+				is_owned_by_ROOT_or_subject = yes
+				is_controlled_by_ROOT_or_subject = yes
 			}
 			218 = {
-				is_fully_controlled_by = ROOT
+				is_owned_by_ROOT_or_subject = yes
+				is_controlled_by_ROOT_or_subject = yes
 			}
 	}
 	controls_ruk_fully = {
 			992 = {
-				is_fully_controlled_by = ROOT
+				is_owned_by_ROOT_or_subject = yes
+				is_controlled_by_ROOT_or_subject = yes
 			}
 			990 = {
-				is_fully_controlled_by = ROOT
+				is_owned_by_ROOT_or_subject = yes
+				is_controlled_by_ROOT_or_subject = yes
 			}
 			991 = {
-				is_fully_controlled_by = ROOT
+				is_owned_by_ROOT_or_subject = yes
+				is_controlled_by_ROOT_or_subject = yes
 			}
 			989 = {
-				is_fully_controlled_by = ROOT
+				is_owned_by_ROOT_or_subject = yes
+				is_controlled_by_ROOT_or_subject = yes
 			}
 			987 = {
-				is_fully_controlled_by = ROOT
+				is_owned_by_ROOT_or_subject = yes
+				is_controlled_by_ROOT_or_subject = yes
 			}
 			988 = {
-				is_fully_controlled_by = ROOT
+				is_owned_by_ROOT_or_subject = yes
+				is_controlled_by_ROOT_or_subject = yes
 			}
 			986 = {
-				is_fully_controlled_by = ROOT
+				is_owned_by_ROOT_or_subject = yes
+				is_controlled_by_ROOT_or_subject = yes
 			}
 			94 = {
-				is_fully_controlled_by = ROOT
+				is_owned_by_ROOT_or_subject = yes
+				is_controlled_by_ROOT_or_subject = yes
 			}
 			93 = {
-				is_fully_controlled_by = ROOT
+				is_owned_by_ROOT_or_subject = yes
+				is_controlled_by_ROOT_or_subject = yes
 			}
 
 
 			259 = {
-				is_fully_controlled_by = ROOT
+				is_owned_by_ROOT_or_subject = yes
+				is_controlled_by_ROOT_or_subject = yes
 			}
 
 			241 = {
-				is_fully_controlled_by = ROOT
+				is_owned_by_ROOT_or_subject = yes
+				is_controlled_by_ROOT_or_subject = yes
 			}
 
 			227 = {
-				is_fully_controlled_by = ROOT
+				is_owned_by_ROOT_or_subject = yes
+				is_controlled_by_ROOT_or_subject = yes
 			}
 			228 = {
-				is_fully_controlled_by = ROOT
+				is_owned_by_ROOT_or_subject = yes
+				is_controlled_by_ROOT_or_subject = yes
 			}
 			225 = {
-				is_fully_controlled_by = ROOT
+				is_owned_by_ROOT_or_subject = yes
+				is_controlled_by_ROOT_or_subject = yes
 			}
 			226 = {
-				is_fully_controlled_by = ROOT
+				is_owned_by_ROOT_or_subject = yes
+				is_controlled_by_ROOT_or_subject = yes
 			}
 			221 = {
-				is_fully_controlled_by = ROOT
+				is_owned_by_ROOT_or_subject = yes
+				is_controlled_by_ROOT_or_subject = yes
 			}
 			200 = {
-				is_fully_controlled_by = ROOT
+				is_owned_by_ROOT_or_subject = yes
+				is_controlled_by_ROOT_or_subject = yes
 			}
 			202 = {
-				is_fully_controlled_by = ROOT
+				is_owned_by_ROOT_or_subject = yes
+				is_controlled_by_ROOT_or_subject = yes
 			}
 			203 = {
-				is_fully_controlled_by = ROOT
+				is_owned_by_ROOT_or_subject = yes
+				is_controlled_by_ROOT_or_subject = yes
 			}
 			201 = {
-				is_fully_controlled_by = ROOT
+				is_owned_by_ROOT_or_subject = yes
+				is_controlled_by_ROOT_or_subject = yes
 			}
 			199 = {
-				is_fully_controlled_by = ROOT
+				is_owned_by_ROOT_or_subject = yes
+				is_controlled_by_ROOT_or_subject = yes
 			}
 			197 = {
-				is_fully_controlled_by = ROOT
+				is_owned_by_ROOT_or_subject = yes
+				is_controlled_by_ROOT_or_subject = yes
 			}
 			193 = {
-				is_fully_controlled_by = ROOT
+				is_owned_by_ROOT_or_subject = yes
+				is_controlled_by_ROOT_or_subject = yes
 			}
 			194 = {
-				is_fully_controlled_by = ROOT
+				is_owned_by_ROOT_or_subject = yes
+				is_controlled_by_ROOT_or_subject = yes
 			}
 			240 = {
-				is_fully_controlled_by = ROOT
+				is_owned_by_ROOT_or_subject = yes
+				is_controlled_by_ROOT_or_subject = yes
 			}
 	}
 	controls_usa = {
@@ -2471,6 +2560,15 @@
 		}
 	}
 
+	is_actual_communist = {
+		OR = {
+			has_government = marxist_leninist
+			has_government = bolshevik_leninist
+			has_country_leader_ideology = pragmatic_socialism
+			has_country_leader_ideology = bulganinism
+		}
+	}
+
 	is_german = {
 		OR = {
 			has_country_flag = german_and_germanrk
@@ -2535,7 +2633,7 @@
 		}
 		AND = {
 		is_communist = yes
-		PREV = { OR = { is_fascist = yes has_government = paternal_autocrat
+		PREV = { OR = { is_fascist = yes is_democratic = yes has_government = paternal_autocrat
 		NOT = { 
 		has_country_leader_ideology = pragmatic_socialism
 		has_country_leader_ideology = bulganinism
@@ -2549,6 +2647,10 @@
 		}
 		AND = {
 			has_government = paternal_autocrat
+			NOT = { 
+			has_country_leader_ideology = pragmatic_socialism
+			has_country_leader_ideology = bulganinism
+				}
 			PREV = { is_communist = yes }
 			}
 		}
@@ -2576,6 +2678,10 @@
 		}
 		AND = {
 			has_government = paternal_autocrat
+			NOT = { 
+			has_country_leader_ideology = pragmatic_socialism
+			has_country_leader_ideology = bulganinism
+				}
 			FROM = { is_communist = yes }
 			}
 		}
@@ -2607,6 +2713,10 @@
 		}
 		AND = {
 			has_government = paternal_autocrat
+			NOT = { 
+			has_country_leader_ideology = pragmatic_socialism
+			has_country_leader_ideology = bulganinism
+				}
 			ROOT = { OR = { is_communist = yes has_country_leader_ideology = pragmatic_socialism has_country_leader_ideology = bulganinism } }
 			}
 		}
@@ -3719,205 +3829,126 @@
 
 	10_subsphere_influence_on_FROM = {
 	custom_trigger_tooltip = {
-	tooltip = OTHER_SECONDARY_POWERS_HAS_INFLUENCE
+	tooltip = SUBSPHERE_TEN_INFLUENCE_ONLY
+
+	#FIRST STEP - GET OUR SPHERE VAR
 	if = {
-		limit = { ROOT = { NOT = { tag = BR3 } } }
+		limit = { ROOT = { tag = BR3 } }
 		FROM = {
-		check_variable = {
-		var = ENG_subsphere_influence
-		value = 10
-		compare = greater_than_or_equals
+		set_temp_variable = { ROOT_subsphere_influence = ENG_subsphere_influence }
 			}
+		}
+	if = {
+		limit = { ROOT = { tag = FA3 } }
+		FROM = {
+		set_temp_variable = { ROOT_subsphere_influence = FRA_subsphere_influence }
+	}
+		}
+	if = {
+		limit = { ROOT = { tag = FR3 } }
+		FROM = {
+		set_temp_variable = { ROOT_subsphere_influence = FFR_subsphere_influence }
+			}
+		}
+	if = {
+		limit = { ROOT = { tag = JP3 } }
+		FROM = {
+		set_temp_variable = { ROOT_subsphere_influence = JAP_subsphere_influence }
+			}
+		}
+	if = {
+		limit = { ROOT = { tag = VN3 } }
+		FROM = {
+		set_temp_variable = { ROOT_subsphere_influence = VIN_subsphere_influence }
+			}
+		}
+	if = {
+		limit = { ROOT = { tag = AG3 } }
+		FROM = {
+		set_temp_variable = { ROOT_subsphere_influence = ARG_subsphere_influence }
+			}
+		}
+	if = {
+		limit = { ROOT = { tag = BZ3 } }
+		FROM = {
+		set_temp_variable = { ROOT_subsphere_influence = BRA_subsphere_influence }
+			}
+		}
+	if = {
+		limit = { ROOT = { tag = MX3 } }
+		FROM = {
+		set_temp_variable = { ROOT_subsphere_influence = MEX_subsphere_influence }
+			}
+		}
+	if = {
+		limit = { ROOT = { tag = EG3 } }
+		FROM = {
+		set_temp_variable = { ROOT_subsphere_influence = EGY_subsphere_influence }
 		}
 	}
 
 	if = {
-		limit = { ROOT = { NOT = { tag = FA3 } } }
+		limit = { ROOT = { tag = SD3 } }
 		FROM = {
-		check_variable = {
-		var = FRA_subsphere_influence
-		value = 10
-		compare = greater_than_or_equals
+		set_temp_variable = { ROOT_subsphere_influence = SAU_subsphere_influence }
 			}
+		}
+	if = {
+		limit = { ROOT = { tag = SA3 } }
+		FROM = {
+		set_temp_variable = { ROOT_subsphere_influence = SAF_subsphere_influence }
+			}
+		}
+	if = {
+		limit = { ROOT = { tag = IR3 } }
+		FROM = {
+		set_temp_variable = { ROOT_subsphere_influence = IRQ_subsphere_influence }
+			}
+		}
+	if = {
+		limit = { ROOT = { tag = SI3 } }
+		FROM = {
+		set_temp_variable = { ROOT_subsphere_influence = SIA_subsphere_influence }
+			}
+		}
+	if = {
+		limit = { ROOT = { tag = IN3 } }
+		FROM = {
+		set_temp_variable = { ROOT_subsphere_influence = INS_subsphere_influence }
+			}
+		}
+	if = {
+		limit = { ROOT = { tag = TK3 } }
+		FROM = {
+		set_temp_variable = { ROOT_subsphere_influence = TUR_subsphere_influence }
 		}
 	}
 
 	if = {
-		limit = { ROOT = { NOT = { tag = FR3 } } }
+		limit = { ROOT = { tag = DR3 } }
 		FROM = {
-		check_variable = {
-		var = FFR_subsphere_influence
-		value = 10
-		compare = greater_than_or_equals
+		set_temp_variable = { ROOT_subsphere_influence = DDR_subsphere_influence }
 			}
+		}
+	if = {
+		limit = { ROOT = { tag = PL3 } }
+		FROM = {
+		set_temp_variable = { ROOT_subsphere_influence = POL_subsphere_influence }
+			}
+		}
+	if = {
+		limit = { ROOT = { tag = YUG } }
+		FROM = {
+		set_temp_variable = { ROOT_subsphere_influence = YUG_subsphere_influence }
 		}
 	}
 
-	if = {
-		limit = { ROOT = { NOT = { tag = JP3 } } }
-		FROM = {
+	#SECOND STEP
 		check_variable = {
-		var = JAP_subsphere_influence
+		var = ROOT_subsphere_influence
 		value = 10
 		compare = greater_than_or_equals
 			}
-		}
-	}
-
-	if = {
-		limit = { ROOT = { NOT = { tag = VN3 } } }
-		FROM = {
-		check_variable = {
-		var = VIN_subsphere_influence
-		value = 10
-		compare = greater_than_or_equals
-			}
-		}
-	}
-
-	if = {
-		limit = { ROOT = { NOT = { tag = AG3 } } }
-		FROM = {
-		check_variable = {
-		var = ARG_subsphere_influence
-		value = 10
-		compare = greater_than_or_equals
-			}
-		}
-	}
-
-	if = {
-		limit = { ROOT = { NOT = { tag = BZ3 } } }
-		FROM = {
-		check_variable = {
-		var = BRA_subsphere_influence
-		value = 10
-		compare = greater_than_or_equals
-			}
-		}
-	}
-
-	if = {
-		limit = { ROOT = { NOT = { tag = EG3 } } }
-		FROM = {
-		check_variable = {
-		var = EGY_subsphere_influence
-		value = 10
-		compare = greater_than_or_equals
-			}
-		}
-	}
-
-	if = {
-		limit = { ROOT = { NOT = { tag = MX3 } } }
-		FROM = {
-		check_variable = {
-		var = MEX_subsphere_influence
-		value = 10
-		compare = greater_than_or_equals
-			}
-		}
-	}
-
-	if = {
-		limit = { ROOT = { NOT = { tag = SD3 } } }
-		FROM = {
-		check_variable = {
-		var = SAU_subsphere_influence
-		value = 10
-		compare = greater_than_or_equals
-			}
-		}
-	}
-	
-	if = {
-		limit = { ROOT = { NOT = { tag = SA3 } } }
-		FROM = {
-		check_variable = {
-		var = SAF_subsphere_influence
-		value = 10
-		compare = greater_than_or_equals
-			}
-		}
-	}
-
-	if = {
-		limit = { ROOT = { NOT = { tag = IR3 } } }
-		FROM = {
-		check_variable = {
-		var = IRQ_subsphere_influence
-		value = 10
-		compare = greater_than_or_equals
-			}
-		}
-	}
-
-	if = {
-		limit = { ROOT = { NOT = { tag = SI3 } } }
-		FROM = {
-		check_variable = {
-		var = SIA_subsphere_influence
-		value = 10
-		compare = greater_than_or_equals
-			}
-		}
-	}
-
-	if = {
-		limit = { ROOT = { NOT = { tag = IN3 } } }
-		FROM = {
-		check_variable = {
-		var = INS_subsphere_influence
-		value = 10
-		compare = greater_than_or_equals
-			}
-		}
-	}
-
-	if = {
-		limit = { ROOT = { NOT = { tag = TK3 } } }
-		FROM = {
-		check_variable = {
-		var = TUR_subsphere_influence
-		value = 10
-		compare = greater_than_or_equals
-			}
-		}
-	}
-
-	if = {
-		limit = { ROOT = { NOT = { tag = DR3 } } }
-		FROM = {
-		check_variable = {
-		var = DDR_subsphere_influence
-		value = 10
-		compare = greater_than_or_equals
-			}
-		}
-	}
-
-	if = {
-		limit = { ROOT = { NOT = { tag = PL3 } } }
-		FROM = {
-		check_variable = {
-		var = POL_subsphere_influence
-		value = 10
-		compare = greater_than_or_equals
-			}
-		}
-	}
-
-	if = {
-		limit = { ROOT = { NOT = { tag = YUG } } }
-		FROM = {
-		check_variable = {
-		var = YUG_subsphere_influence
-		value = 10
-		compare = greater_than_or_equals
-			}
-		}
-	}
-
 		}
 	}
 
@@ -5244,7 +5275,6 @@ soviet_splinter_tags = {
 	original_tag = PET
 	original_tag = STR 
 	original_tag = WSP 
-	original_tag = BGS
 	original_tag = GEO
 	original_tag = AZR
 	original_tag = RAC
@@ -5274,6 +5304,11 @@ soviet_splinter_tags = {
 	original_tag = ABK
 	original_tag = RUS
 	original_tag = BRY
+	original_tag = TCC
+	original_tag = TRA
+	original_tag = UZB
+	original_tag = KYR
+	original_tag =FTK
 	}
 }
 
@@ -5327,6 +5362,245 @@ FROM_is_our_blood_rival = {
 	else = {
 		hidden_trigger = {
 			always = no
+		}
+	}
+}
+
+###Subregion Check
+
+is_west_african_tag = {
+	OR = {
+		original_tag = GHA
+		original_tag = LIB
+		original_tag = CHA
+		original_tag = NGA
+		original_tag = DAH
+		original_tag = TOG
+		original_tag = IVO
+		original_tag = VOL
+		original_tag = MLI
+		original_tag = SIE
+		original_tag = GNA
+		original_tag = GNB
+		original_tag = SEN
+		original_tag = GAM
+		original_tag = NGR
+		original_tag = MRT
+		original_tag = SAH
+		original_tag = BIA
+		original_tag = SOK
+		original_tag = SAC
+		original_tag = BAR
+	}
+}
+
+is_east_african_tag = {
+	OR = {
+	original_tag = ZAN
+	original_tag = TZN
+	original_tag = UGA
+	original_tag = KEN
+	original_tag = SOM
+	original_tag = ERI
+	original_tag = ETH
+	original_tag = RWA
+	original_tag = BRD
+	original_tag = SUD
+	original_tag = DRF
+	original_tag = DJI
+
+	original_tag = EAF
+	
+	original_tag = BUG
+	original_tag = BYO
+	original_tag = BUS
+	original_tag = ANK
+	original_tag = ACH
+	}
+}
+
+is_north_african_tag = {
+	OR = {
+	original_tag = TUN
+	original_tag = EGY
+	original_tag = LBA
+	original_tag = ALG
+	original_tag = ORA
+	original_tag = MOR
+	}
+}
+
+is_south_african_tag = {
+	OR = {
+	original_tag = SAF
+	original_tag = RHD
+	original_tag = ZIM
+	original_tag = MLW
+	original_tag = ZAM
+	original_tag = BRT
+	original_tag = ANG
+	original_tag = NMB
+	original_tag = MZB
+	original_tag = BOT
+	original_tag = ANC
+	original_tag = ORJ
+	original_tag = TSW
+	original_tag = PDI
+	original_tag = VND
+	original_tag = TSO
+	original_tag = XHO
+	original_tag = MPG
+	original_tag = BEM
+	}
+}
+
+is_central_african_tag = {
+	OR = {
+		original_tag = GAB
+		original_tag = COG
+		original_tag = CAR
+		original_tag = CMR
+		original_tag = CHA
+		original_tag = EQG
+		original_tag = WES
+		original_tag = KAT
+		original_tag = ZAI
+		original_tag = KVU
+		original_tag = KAI
+		original_tag = UCG
+	}
+}
+
+is_americas_tag = {
+	OR = {
+		AND = {
+		has_country_flag = NEWS_EVENTS_PERMANENT_AMERICAS_FLAG
+		}
+		NOT = {
+		is_west_african_tag = yes
+		is_east_african_tag = yes
+		is_north_african_tag = yes
+		is_south_african_tag = yes
+		is_central_african_tag = yes
+		is_indo_pacific_tag = yes
+		is_middle_east_tag = yes
+		}
+	}
+}
+
+#basically, strat region Indian Ocean tags
+is_indo_pacific_tag = {
+	OR = {
+		original_tag = MAD
+		original_tag = MAU
+		original_tag = SEY
+		original_tag = MLD
+		original_tag = CMS
+		original_tag = SRL
+		original_tag = USV
+	}
+}
+
+is_asian_tag = {
+	OR = {
+		AND = {
+		OR = {
+		has_country_flag = NEWS_EVENTS_PERMANENT_SOUTH_ASIA_FLAG
+		has_country_flag = NEWS_EVENTS_PERMANENT_EAST_ASIA_FLAG
+			}
+		NOT = {
+		is_west_african_tag = yes
+		is_east_african_tag = yes
+		is_north_african_tag = yes
+		is_south_african_tag = yes
+		is_central_african_tag = yes
+		is_americas_tag = yes
+		is_indo_pacific_tag = yes
+		is_middle_east_tag = yes
+			}
+		}
+	}
+}
+
+is_middle_east_tag = {
+	OR = {
+		AND = {
+		has_country_flag = NEWS_EVENTS_PERMANENT_MIDDLE_EAST_FLAG
+		NOT = {
+		is_west_african_tag = yes
+		is_east_african_tag = yes
+		is_north_african_tag = yes
+		is_south_african_tag = yes
+		is_central_african_tag = yes
+		is_americas_tag = yes
+		is_indo_pacific_tag = yes
+		is_asian_tag = yes
+			}
+		}
+	}
+}
+
+colonial_decision_trigger_check = {
+	if = {
+	limit = { is_middle_east_tag = yes }
+	ROOT = { NOT = { has_country_flag = MID_EAST_COLONIAL_OUTREACH_DISABLED } }
+		}
+	if = {
+	limit = { is_east_african_tag = yes }
+	ROOT = { NOT = { has_country_flag = EAST_AFRI_COLONIAL_OUTREACH_DISABLED } }
+		}
+	if = {
+	limit = { is_south_african_tag = yes }
+	ROOT = { NOT = { has_country_flag = SOUTH_AFRI_COLONIAL_OUTREACH_DISABLED } }
+		}
+	if = {
+	limit = { is_central_african_tag = yes }
+	ROOT = { NOT = { has_country_flag = CEN_AFRI_COLONIAL_OUTREACH_DISABLED } }
+		}
+	if = {
+	limit = { is_west_african_tag = yes }
+	ROOT = { NOT = { has_country_flag = WEST_AFRI_COLONIAL_OUTREACH_DISABLED } }
+		}
+	if = {
+	limit = { is_north_african_tag = yes }
+	ROOT = { NOT = { has_country_flag = NORTH_AFRI_COLONIAL_OUTREACH_DISABLED } }
+		}
+	if = {
+	limit = { is_indo_pacific_tag = yes }
+	ROOT = { NOT = { has_country_flag = INDO_COLONIAL_OUTREACH_DISABLED } }
+		}
+	if = {
+	limit = { is_asian_tag = yes }
+	ROOT = { NOT = { has_country_flag = ASIAN_COLONIAL_OUTREACH_DISABLED } }
+		}
+	if = {
+	limit = { is_americas_tag = yes }
+	ROOT = { NOT = { has_country_flag = AMER_COLONIAL_OUTREACH_DISABLED } }
+		}
+}
+
+middle_east_iraq_egypt_aligned = {
+	OR = {
+		AND = {
+			EGY = {
+				has_government = socialist
+			}
+			IRQ = {
+				OR = {
+					has_government = socialist
+					has_government = fascist
+				}
+			}
+		}
+		AND = {
+			EGY = {
+				has_country_leader = {
+					name = "Anwar Sadat"
+				}
+			}
+			IRQ = {
+				has_government = fascist
+			}
 		}
 	}
 }

@@ -934,7 +934,7 @@ diplomatic_decisions = {
 				}
 				add_timed_idea = {
 					idea = GER_european_trains
-					days = 180
+					days = 260
 				}
 			}
 			set_country_flag = PHASE_II_EC
@@ -1139,6 +1139,7 @@ GER_ww3_cat = {
 									tag = CYP
 									tag = ENG
 									tag = FIS
+									tag = MNC
 								}
 							}
 							has_capitulated = yes
@@ -1164,6 +1165,7 @@ GER_ww3_cat = {
 		}
 		cancel_trigger = {
 			NOT = {
+				AND = {
 					custom_trigger_tooltip = {
 					tooltip = GER_all_TA_in_europe_defeated
 					USA = {
@@ -1177,6 +1179,8 @@ GER_ww3_cat = {
 										tag = ICE
 										tag = CYP
 										tag = ENG
+											tag = FIS
+											tag = MNC
 									}
 								}
 								has_capitulated = yes
@@ -1195,6 +1199,7 @@ GER_ww3_cat = {
 			}
 		}
 	}
+}
 }
 
 GER_civil_war_cat = {
@@ -8312,7 +8317,6 @@ GER_bring_the_RKs_back_into_the_fold_decisions = {
 					tag = PET
 					tag = STR
 					tag = WSP
-					tag = BGS
 					tag = SGR
 				}
 				NOT = {
@@ -8364,7 +8368,6 @@ GER_bring_the_RKs_back_into_the_fold_decisions = {
 					tag = PET
 					tag = STR
 					tag = WSP
-					tag = BGS
 					tag = SGR
 				}
 				is_subject_of = ROOT
@@ -8384,7 +8387,6 @@ GER_bring_the_RKs_back_into_the_fold_decisions = {
 					tag = PET
 					tag = STR
 					tag = WSP
-					tag = BGS
 					tag = SGR
 				}
 				is_subject_of = ROOT
@@ -8418,7 +8420,6 @@ GER_bring_the_RKs_back_into_the_fold_decisions = {
 					tag = PET
 					tag = STR
 					tag = WSP
-					tag = BGS
 					tag = SGR
 				}
 				NOT = {
@@ -8502,7 +8503,7 @@ GER_bring_the_RKs_back_into_the_fold_decisions = {
 						is_communist = yes
 						}
 						AND = {
-						original_tag = AZR
+						original_tag = AZE
 						is_communist = yes
 						}
 					}
@@ -8803,8 +8804,8 @@ GER_bring_the_RKs_back_into_the_fold_decisions = {
 					}
 					set_party_name = {
 						ideology = national_socialist
-						long_name = "Schutzstaffel"
-						name = "SS"
+						long_name = SS_LOC_LONG
+						name = SS_LOC
 					}
 					set_popularities = {
 						national_socialist = 100
@@ -8900,8 +8901,8 @@ GER_bring_the_RKs_back_into_the_fold_decisions = {
 				clear_all_hos = yes
 				set_party_name = {
 					ideology = national_socialist
-					long_name = "Schutzstaffel"
-					name = "SS"
+					long_name = SS_LOC_LONG
+					name = SS_LOC
 				}
 				set_popularities = {
 					national_socialist = 100
@@ -8971,8 +8972,8 @@ GER_bring_the_RKs_back_into_the_fold_decisions = {
 				}
 				set_party_name = {
 					ideology = national_socialist
-					long_name = "Schutzstaffel"
-					name = "SS"
+					long_name = SS_LOC_LONG
+					name = SS_LOC
 				}
 				set_popularities = {
 					national_socialist = 100
@@ -9388,8 +9389,8 @@ GER_bring_the_RKs_back_into_the_fold_decisions = {
 				}
 				set_party_name = {
 					ideology = national_socialist
-					long_name = "Schutzstaffel"
-					name = "SS"
+					long_name = SS_LOC_LONG
+					name = SS_LOC
 				}
 				set_country_flag = is_ss_puppet
 			}
@@ -9591,8 +9592,8 @@ GER_bring_the_RKs_back_into_the_fold_decisions = {
 						}
 						set_party_name = {
 							ideology = national_socialist
-							long_name = "Schutzstaffel"
-							name = "SS"
+							long_name = SS_LOC_LONG
+							name = SS_LOC
 						}
 						set_popularities = {
 							national_socialist = 100
@@ -9817,8 +9818,8 @@ GER_bring_the_RKs_back_into_the_fold_decisions = {
 						}
 						set_party_name = {
 							ideology = national_socialist
-							long_name = "Schutzstaffel"
-							name = "SS"
+							long_name = SS_LOC_LONG
+							name = SS_LOC
 						}
 						set_popularities = {
 							national_socialist = 100
@@ -9925,8 +9926,8 @@ GER_bring_the_RKs_back_into_the_fold_decisions = {
 						}
 						set_party_name = {
 							ideology = national_socialist
-							long_name = "Schutzstaffel"
-							name = "SS"
+							long_name = SS_LOC_LONG
+							name = SS_LOC
 						}
 						set_popularities = {
 							national_socialist = 100
@@ -10198,8 +10199,8 @@ GER_bring_the_RKs_back_into_the_fold_decisions = {
 						}
 						set_party_name = {
 							ideology = national_socialist
-							long_name = "Schutzstaffel"
-							name = "SS"
+							long_name = SS_LOC_LONG
+							name = SS_LOC
 						}
 						set_popularities = {
 							national_socialist = 100
@@ -10296,6 +10297,9 @@ GER_bring_the_RKs_back_into_the_fold_decisions = {
 		}
 		cost = 30
 		fire_only_once = yes
+		war_with_on_timeout = RUZ
+		war_with_on_timeout = SOV
+		war_with_on_timeout = FROM
 		days_remove = 50
 		ai_will_do = {
 			factor = 20
@@ -10600,6 +10604,7 @@ GER_build_breitspurbahns = {
 		}
 		available = {
 			owns_state = 5
+			OR = {
 				AND = {
 					RMO = {
 						is_puppet_of = ROOT
@@ -10608,6 +10613,12 @@ GER_build_breitspurbahns = {
 				ROS = {
 					is_puppet_of = ROOT
 				}
+			}
+			ROS = {
+				exists = yes
+				is_subject_of = ROOT
+				has_cosmetic_tag = OSTEUROPA
+			}
 			}
 			has_country_flag = CAN_BUILD_MOSCOW_KONIGSBERG_LINE
 		}
@@ -10668,6 +10679,10 @@ operations = {
 		}
 		visible = {
 			has_country_flag = SWISS_TERRORIST_ATTACKS
+			NOT = {
+				has_country_flag = terror_cell_crushed
+			}
+			has_war = no
 		}
 		ai_will_do = {
 			factor = 50
