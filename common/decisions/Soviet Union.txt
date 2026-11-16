@@ -604,11 +604,9 @@ operations = {
 		cost = freedec?0
 		complete_effect = {
 			KAZ = { country_event = { id = twrUSSR.24 days = 3 } }
-			country_event = { id = twrkazan.10 }
 		}
 		timeout_effect = {
 			KAZ = { country_event = { id = twrUSSR.24 days = 3 } }
-			country_event = { id = twrkazan.10 }
 		}
 	}
 	TRV_fight_vlasov_fail_safe = {
@@ -2614,7 +2612,7 @@ SOV_ASSR_decisions = {
         }	
 			create_field_marshal = {
 				name = "Georgy Khetagurov"
-				portrait_path = "gfx/leaders/ZHU/Georgy_Khetagurov.dds"
+				picture = "gfx/leaders/ZHU/Georgy_Khetagurov.dds"
 				traits = { }
 				skill = 3
 				attack_skill = 3
@@ -2709,7 +2707,7 @@ SOV_ASSR_decisions = {
         }
 			create_field_marshal = {
 				name = "Mahmud Abilov"
-				portrait_path = "gfx/leaders/LZG/Mahmud_Abilov.dds"
+				picture = "gfx/leaders/LZG/Mahmud_Abilov.dds"
 				traits = { }
 				skill = 2
 				attack_skill = 2
@@ -3899,6 +3897,7 @@ SOV_turkenich_decisions = {
 		}
 		remove_effect = {
 		SOV_leadership_distrust_effect = yes
+		SOV_beria_thaw_effect = yes
 		country_event = twrTURKENICH.19
 		set_country_flag = ADOPTED_KALINIST_AS_PARTY_IDEOLOGY_TURKENICH
 		}
@@ -3949,6 +3948,28 @@ SOV_turkenich_decisions = {
 		add_stability = 0.05
 		}
 	}
+	SOV_glorify_the_union = {
+	allowed = {
+	tag = SOV
+	}
+		icon = eng_trade_unions_support
+		available = {
+		has_completed_focus = SOV_better_perfect_union
+		}
+
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 50
+		}
+
+		cost = 50
+		days_remove = 40
+		remove_effect = {
+		SOV_beria_thaw_effect = yes
+		add_war_support = 0.05
+		}
+	}
 	SOV_stabilize_the_party = {
 	allowed = {
 	tag = SOV
@@ -3970,6 +3991,7 @@ SOV_turkenich_decisions = {
 		cost = 80
 		complete_effect = {
 		SOV_leadership_distrust_effect = yes
+		SOV_beria_thaw_effect = yes
 		}
 	}
 	SOV_purge_suslov = {
@@ -3994,6 +4016,7 @@ SOV_turkenich_decisions = {
 		cost = 90
 		complete_effect = {
 		SOV_leadership_distrust_effect = yes
+		SOV_beria_thaw_effect = yes
 		country_event = twrTURKENICH.20
 		}
 	}
@@ -4107,7 +4130,9 @@ russian_reconquest = {
 		target_trigger = {
 			FROM = {
 				soviet_splinter_tags = yes
-				
+				NOT = {
+					tag = TRA
+				}
 				NOT = { is_subject_of = ROOT }
 				NOT = {
 				tag = ROOT
@@ -4117,6 +4142,7 @@ russian_reconquest = {
 				is_neighbor_of = ROOT
 				OR = {
 					is_post_aa_line_russia = no
+					
 					AND = {
 						ROOT = {
 							tag = SOV
@@ -4134,7 +4160,13 @@ russian_reconquest = {
 				limit = {
 					FROM = {
 						is_post_aa_line_russia = no
+						NOT = {
+							original_tag = TCC
+							original_tag = KYR
+							original_tag = TAJ
 					}
+				}
+					
 				}
 				owns_state = 398
 				owns_state = 408
@@ -4331,6 +4363,9 @@ russian_reconquest = {
 			is_neighbor_of = DON
 			NOT = {
 			DON = { has_cosmetic_tag = DON_FAILED }
+			}
+			DON = {
+				has_war = no
 			}
 		}
 		visible = {
@@ -4697,7 +4732,6 @@ russian_reconquest = {
 					tag = WSP
 					tag = STR
 					tag = PET
-					tag = BGS
 				}
 				NOT = {
 				tag = ROOT
@@ -5114,6 +5148,7 @@ russian_reconquest = {
 					tag = FTK
 					tag = TCC
 					tag = KHV
+					tag = SIS
 				}
 				NOT = {
 				tag = ROOT
@@ -5133,6 +5168,12 @@ russian_reconquest = {
 		            }
 		        }
 		    }
+			FROM = {
+				NOT = {
+					is_ally_with = RAJ
+					is_ally_with = CHI
+				}
+			}
 		}
 		visible = {
 			has_country_flag = CENTRAL_ASIA_REUNIFICATION
@@ -6999,11 +7040,11 @@ SOV_diplo_decisions = {
 			has_war = no
 		}
 
-		cost = 50
+		cost = 25
 		days_remove = 15
 
 		fire_only_once = yes
-		war_with_target_on_remove = yes
+		#war_with_target_on_remove = yes    why??
 
 		complete_effect = {
 			log = "[GetDateText]: [Root.GetName]: Decision SOV_diplo_invite_mongolia"
@@ -7011,6 +7052,38 @@ SOV_diplo_decisions = {
 		remove_effect = {
 			log = "[GetDateText]: [Root.GetName]: Decision remove SOV_diplo_invite_mongolia"
 			MON = { country_event = twrsovdiplo.3 }
+		}
+	}
+	SOV_diplo_invite_afghanistan = {
+		icon = eng_trade_unions_support
+		visible = {
+			is_faction_leader = yes
+			country_exists = AFG
+			AFG = {
+				OR = {
+					has_government = socialist
+					has_government = bolshevik_leninist
+					has_government = marxist_leninist
+				}
+			}
+		}
+
+		available = {
+			has_war = no
+		}
+
+		cost = 25
+		days_remove = 15
+
+		fire_only_once = yes
+		#war_with_target_on_remove = yes    why??
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision SOV_diplo_invite_afghanistan"
+		}
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision remove SOV_diplo_invite_afghanistan"
+			AFG = { country_event = twrsovdiplo.3 }
 		}
 	}
 	SOV_diplo_start_civil_war_in_afghanistan = {

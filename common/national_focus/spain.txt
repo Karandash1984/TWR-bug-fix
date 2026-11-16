@@ -35,7 +35,7 @@ available = { has_full_control_of_state = 178 }
 			base = 1
 		} 
                 prerequisite = { focus = SPA_modernize_the_canary_islands }
-		cost = 5
+		cost = 3
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus SPA_acknowledge_economic_stagnation"
 178 = { add_extra_state_shared_building_slots = 3 }
@@ -54,7 +54,7 @@ add_stability = 0.03
 			base = 1
 		} 
                 prerequisite = { focus = SPA_modernize_the_canary_islands }
-		cost = 5
+		cost = 3
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus SPA_acknowledge_economic_stagnation"
 				178 = {
@@ -79,7 +79,7 @@ add_stability = 0.03
 			base = 1
 		} 
                 prerequisite = { focus = SPA_expand_tourist_capacity }
-		cost = 5
+		cost = 3
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus SPA_acknowledge_economic_stagnation"
 			178 = {
@@ -102,7 +102,7 @@ add_stability = 0.03
 		ai_will_do = {
 			base = 1
 		}
-		cost = 5
+		cost = 3
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus SPA_acknowledge_economic_stagnation"
 		add_war_support = 0.05
@@ -119,7 +119,7 @@ add_stability = 0.03
 		ai_will_do = {
 			base = 1
 		}
-		cost = 6
+		cost = 4
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus SPA_acknowledge_economic_stagnation"
 		navy_experience = 25
@@ -148,7 +148,7 @@ add_ideas = { SPA_armada }
                 prerequisite = { 
                    focus = SPA_spanish_armada
                 }
-		cost = 5
+		cost = 4
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus SPA_acknowledge_economic_stagnation"
 	custom_effect_tooltip = SPA_ALLOWS_DEC_ATLANTIC_WALL
@@ -168,7 +168,7 @@ set_country_flag = SPA_ATLANTIK
                 prerequisite = { 
                    focus = SPA_spanish_armada
                 }
-		cost = 8
+		cost = 5
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus SPA_acknowledge_economic_stagnation"
 	random_owned_state = {
@@ -199,7 +199,7 @@ add_building_construction = {
                 mutually_exclusive = { 
                    focus = SPA_embrace_the_american_doctrine
                 }
-		cost = 8
+		cost = 5
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus SPA_acknowledge_economic_stagnation"
 			add_doctrine_cost_reduction = {
@@ -232,7 +232,7 @@ add_building_construction = {
                 mutually_exclusive = { 
                    focus = SPA_embrace_the_old_german_doctrine
                 }
-		cost = 7
+		cost = 5
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus SPA_acknowledge_economic_stagnation"
 			add_doctrine_cost_reduction = {
@@ -263,7 +263,7 @@ add_building_construction = {
                    focus = SPA_embrace_the_american_doctrine focus = SPA_embrace_the_old_german_doctrine
                 }
 available = { has_idea = SPA_armada_2 }
-		cost = 5
+		cost = 4
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus SPA_acknowledge_economic_stagnation"
 		swap_ideas = { remove_idea = SPA_armada_2 add_idea = SPA_armada_3 }
@@ -289,7 +289,7 @@ available = { has_idea = SPA_armada_2 }
                 mutually_exclusive = { 
  focus = SPA_copy_plan_Z
                 }
-		cost = 7
+		cost = 4
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus SPA_acknowledge_economic_stagnation"
 			add_tech_bonus = {
@@ -317,7 +317,7 @@ available = { has_idea = SPA_armada_2 }
                 mutually_exclusive = { 
  focus = SPA_submarine_warfare
                 }
-		cost = 7
+		cost = 4
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus SPA_acknowledge_economic_stagnation"
 			add_tech_bonus = {
@@ -342,7 +342,7 @@ available = { has_idea = SPA_armada_2 }
  focus = SPA_embrace_the_american_doctrine
                 }
 
-		cost = 5
+		cost = 4
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus SPA_acknowledge_economic_stagnation"
 		add_timed_idea = { idea = SPA_reach_of_spain days = 200 }	
@@ -365,7 +365,7 @@ available = { any_owned_state = { NOT = { is_on_continent = africa } } }
                 prerequisite = { 
  focus = SPA_transport_and_trade_benefits
                 }
-		cost = 6
+		cost = 4
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus SPA_acknowledge_economic_stagnation"
 	random_owned_state = {
@@ -405,7 +405,7 @@ add_building_construction = {
               mutually_exclusive = { 
                    focus = SPA_buy_old_german_equipment
                 }
-		cost = 5
+		cost = 4
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus SPA_acknowledge_economic_stagnation"
 			add_ideas = { SPA_modern_army }
@@ -425,10 +425,10 @@ add_building_construction = {
                 prerequisite = { 
                    focus = SPA_push_for_modernization focus = SPA_buy_old_german_equipment
                 }
-		cost = 6
+		cost = 4
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus SPA_acknowledge_economic_stagnation"
-	add_ideas = { SPA_increase_army_conscription }		
+	add_ideas = SPA_increase_army_conscription 
 		}
 	}
 
@@ -444,7 +444,7 @@ add_building_construction = {
                 prerequisite = { 
                    focus = SPA_expand_the_armed_forces
                 }
-		cost = 8
+		cost = 5
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus SPA_acknowledge_economic_stagnation"
 	random_owned_state = {
@@ -478,7 +478,7 @@ add_building_construction = {
                 prerequisite = { 
                    focus = SPA_nationalize_arms_factories
                 }
-		cost = 5
+		cost = 3
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus SPA_acknowledge_economic_stagnation"
 			add_tech_bonus = {
@@ -502,7 +502,7 @@ add_building_construction = {
                 prerequisite = { 
                    focus = SPA_artillery_innovation
                 }
-		cost = 5
+		cost = 3
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus SPA_acknowledge_economic_stagnation"
 			add_tech_bonus = {
@@ -526,7 +526,7 @@ add_building_construction = {
                 prerequisite = { 
                    focus = SPA_nationalize_arms_factories
                 }
-		cost = 6
+		cost = 3
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus SPA_acknowledge_economic_stagnation"	
 			add_doctrine_cost_reduction = {
@@ -550,12 +550,11 @@ add_building_construction = {
                 prerequisite = { 
                    focus = SPA_learn_from_the_moroccan_conflict
                 }
-		cost = 5
+		cost = 4
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus SPA_acknowledge_economic_stagnation"
                         add_war_support = 0.05
 			swap_ideas = { remove_idea = SPA_increase_army_conscription add_idea = SPA_increase_army_conscription_1 }
-
 		}
 	}
 
@@ -571,7 +570,7 @@ add_building_construction = {
                 prerequisite = { 
                    focus = SPA_support_the_military_police
                 }
-		cost = 5
+		cost = 3
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus SPA_acknowledge_economic_stagnation"
 		swap_ideas = { remove_idea = SPA_brigada_politico_social_1 add_idea = SPA_brigada_politico_social_2 }	
@@ -590,7 +589,7 @@ add_building_construction = {
                 prerequisite = { 
                    focus = SPA_surpression_tactics
                 }
-		cost = 6
+		cost = 3
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus SPA_acknowledge_economic_stagnation"
 			swap_ideas = { remove_idea = SPA_brigada_politico_social_2 add_idea = SPA_brigada_politico_social_3 }
@@ -616,7 +615,7 @@ add_building_construction = {
                 mutually_exclusive = { 
                    focus = SPA_foreign_espionage
                 }
-		cost = 5
+		cost = 4
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus SPA_acknowledge_economic_stagnation"
 			swap_ideas = { remove_idea = SPA_quality_intelligence_service add_idea = SPA_brigada_politico_social_1 }
@@ -642,7 +641,7 @@ add_building_construction = {
                 mutually_exclusive = { 
                    focus = SPA_support_the_military_police
                 }
-		cost = 5
+		cost = 4
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus SPA_acknowledge_economic_stagnation"
 			swap_ideas = { remove_idea = SPA_quality_intelligence_service add_idea = SPA_foreign_espionage_department_1 }
@@ -663,7 +662,7 @@ add_political_power = -50
                    focus = SPA_foreign_espionage
                 }
 
-		cost = 5
+		cost = 3
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus SPA_acknowledge_economic_stagnation"
 			swap_ideas = { remove_idea = SPA_foreign_espionage_department_1 add_idea = SPA_foreign_espionage_department_2 }			
@@ -683,7 +682,7 @@ add_political_power = -50
                    focus = SPA_push_for_modernization focus = SPA_buy_old_german_equipment
                 }
 
-		cost = 6
+		cost = 3
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus SPA_acknowledge_economic_stagnation"
 				add_tech_bonus = {
@@ -708,7 +707,7 @@ add_political_power = -50
                    focus = SPA_expand_the_air_force 
                 }
 
-		cost = 5
+		cost = 4
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus SPA_acknowledge_economic_stagnation"
 				add_tech_bonus = {
@@ -734,7 +733,7 @@ air_experience = 15
                    focus = SPA_german_example
                 }
 
-		cost = 5
+		cost = 4
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus SPA_acknowledge_economic_stagnation"
 				add_tech_bonus = {
@@ -759,7 +758,7 @@ air_experience = 15
                    focus = SPA_fire_bombing_runs
                 }
 
-		cost = 5
+		cost = 3
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus SPA_acknowledge_economic_stagnation"
 				add_tech_bonus = {
@@ -785,7 +784,7 @@ air_experience = 15
                 }
 
 
-		cost = 6
+		cost = 3
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus SPA_acknowledge_economic_stagnation"
 			swap_ideas = { remove_idea = SPA_foreign_espionage_department_2 add_idea = SPA_foreign_espionage_department_3 }			
@@ -807,8 +806,7 @@ air_experience = 15
 		cost = 5
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus SPA_acknowledge_economic_stagnation"
-		add_ideas = { SPA_quality_intelligence_service }
-                	
+		add_ideas = SPA_quality_intelligence_service
 		}
 	}
 
@@ -827,10 +825,10 @@ air_experience = 15
               mutually_exclusive = { 
                    focus = SPA_push_for_modernization
 }
-		cost = 5
+		cost = 4
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus SPA_acknowledge_economic_stagnation"
-	add_ideas = { SPA_traditional_army }	
+	add_ideas = SPA_traditional_army 
         army_experience = 15	
 		}
 	}
@@ -845,7 +843,7 @@ air_experience = 15
 		ai_will_do = {
 			base = 1
 		}
-		cost = 7
+		cost = 5
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus SPA_acknowledge_economic_stagnation"
 	SPA_economic_stagnation_improved = yes		
@@ -865,7 +863,7 @@ air_experience = 15
 		ai_will_do = {
 			base = 1
 		}
-		cost = 5
+		cost = 3
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus SPA_sort_out_our_bureaucracy"
 add_political_power = 50
@@ -894,7 +892,7 @@ has_country_flag = SPR_MOR_WIN
 				has_global_flag = COUNTRY_PATH_SPA_V_MILITARY
 			}
 		}
-		cost = 7
+		cost = 5
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus SPA_fresh_young_falangists"
                 add_popularity = { ideology = fascist popularity = 0.1 }
@@ -924,7 +922,7 @@ has_country_flag = SPR_MOR_WIN
 		ai_will_do = {
 			base = 1
 		}
-		cost = 8
+		cost = 5
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus SPA_propagate_conflict_economics"
 swap_ideas = { remove_idea = SPA_young_blood_falangists add_idea = SPA_young_blood_falangists_1 }
@@ -952,7 +950,7 @@ swap_ideas = { remove_idea = SPA_young_blood_falangists add_idea = SPA_young_blo
 		ai_will_do = {
 			base = 1
 		}
-		cost = 8
+		cost = 5
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus SPA_virtues_of_welfare"
 swap_ideas = { remove_idea = SPA_young_blood_falangists_1 add_idea = SPA_young_blood_falangists_2 }
@@ -981,11 +979,11 @@ swap_ideas = { remove_idea = SPA_young_blood_falangists_1 add_idea = SPA_young_b
 		ai_will_do = {
 			base = 1
 		}
-		cost = 8
+		cost = 5
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus SPA_veteran_syndicates"
         add_stability = 0.05
-        add_popularity = { ideology = fascist popularity = 0.1 }
+			add_popularity = { ideology = fascist popularity = 0.15 }
 	SPA_end_of_economics = yes				
 		}
 	}
@@ -1010,7 +1008,7 @@ swap_ideas = { remove_idea = SPA_young_blood_falangists_1 add_idea = SPA_young_b
 		ai_will_do = {
 			base = 1
 		}
-		cost = 7
+		cost = 4
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus SPA_true_national_syndicalism"
 		add_popularity = { ideology = fascist popularity = 0.1 }
@@ -1041,7 +1039,7 @@ swap_ideas = { remove_idea = SPA_young_blood_falangists_1 add_idea = SPA_young_b
 		ai_will_do = {
 			base = 1
 		}
-		cost = 8
+		cost = 3
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus SPA_servitude_to_the_state"
 		add_stability = 0.1
@@ -1109,7 +1107,7 @@ OR = { has_country_flag = SPR_MOR_WIN has_country_flag = SPR_MOR_LOSS }
 				has_global_flag = COUNTRY_PATH_SPA_V_FALANGIST
 			}
 		}
-		cost = 7
+		cost = 5
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus SPA_wise_veterans"
                 add_popularity = { ideology = fascist popularity = -0.05 }
@@ -1132,7 +1130,7 @@ swap_ideas = { remove_idea = SPA_old_shirt_falangists add_idea = SPA_old_shirt_v
 		ai_will_do = {
 			base = 1
 		}
-		cost = 7
+		cost = 5
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus SPA_stick_to_autarky"
 		add_stability = -0.05
@@ -1154,7 +1152,7 @@ swap_ideas = { remove_idea = SPA_old_shirt_falangists add_idea = SPA_old_shirt_v
 		ai_will_do = {
 			base = 1
 		}
-		cost = 7
+		cost = 5
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus SPA_conservative_economic_policies"
                 add_popularity = { ideology = paternal_autocrat popularity = 0.05 }
@@ -1180,7 +1178,7 @@ swap_ideas = { remove_idea = SPA_old_shirt_falangists add_idea = SPA_old_shirt_v
 		ai_will_do = {
 			base = 1
 		}
-		cost = 7
+		cost = 5
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus SPA_stimulate_national_industry"
 random_owned_state = {
@@ -1226,10 +1224,11 @@ add_building_construction = {
 		ai_will_do = {
 			base = 1
 		}
-		cost = 5
+		cost = 3
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus SPA_appoint_more_falangists"
-	add_popularity = { ideology = fascist popularity = 0.15 }
+	add_popularity = { ideology = fascist popularity = 0.05 }
+	add_popularity = { ideology = paternal_autocrat popularity = 0.05 }
 		
 		}
 	}
@@ -1254,11 +1253,11 @@ add_building_construction = {
                 has_government = paternal_autocrat 
                 }
 		}
-		cost = 5
+		cost = 3
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus SPA_isolate_the_carlists"
 	add_popularity = { ideology = paternal_autocrat popularity = -0.1 }
-        add_ideas = { SPA_political_hegemony }			
+        add_ideas = SPA_political_hegemony
 		}
 	}
 
@@ -1292,21 +1291,27 @@ add_building_construction = {
 		x = -2
 		y = 1
                 available = { 
-                has_country_flag = SPR_MOR_WIN 
+                OR = {
+					has_government = fascist
+					has_government = paternal_autocrat
+				}
                 }
 		prerequisite = {
 			focus = SPA_after_franco
 		}
 		relative_position_id = SPA_after_franco
+		mutually_exclusive = {
+			focus = SPA_change_of_course
+		}
 		ai_will_do = {
 			base = 1
 		}
-		cost = 7
+		cost = 4
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus SPA_isolate_the_carlists"
 add_ideas = { SPA_Century_Falangism }
 add_popularity = { ideology = fascist popularity = 0.05 }
-			
+add_popularity = { ideology = paternal_autocrat popularity = 0.05 }
 		}
 	}
 
@@ -1325,7 +1330,7 @@ add_popularity = { ideology = fascist popularity = 0.05 }
 		ai_will_do = {
 			base = 1
 		}
-		cost = 10
+		cost = 3
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus SPA_isolate_the_carlists"
 	add_ideas = { SPA_Idiolized_Soldier }
@@ -1339,7 +1344,7 @@ add_popularity = { ideology = fascist popularity = 0.05 }
 		icon = GFX_GENERIC_agricultural_subsidies
 		x = 0
 		y = 2
-available = { has_political_power > 50 }
+		available = {  }
 		prerequisite = {
 			focus = SPA_continue_the_falangist_course
 		}
@@ -1348,12 +1353,12 @@ available = { has_political_power > 50 }
 		ai_will_do = {
 			base = 1
 		}
-		cost = 4
+		cost = 3
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus SPA_isolate_the_carlists"
-		add_popularity = { ideology = fascist popularity = 0.1 }
-                add_stability = 0.02
-                add_political_power = -50	
+			add_popularity = { ideology = paternal_autocrat popularity = 0.05 }
+            add_stability = 0.05
+            add_political_power = -30
 		}
 	}
 
@@ -1372,7 +1377,7 @@ available = { has_political_power > 50 }
 		ai_will_do = {
 			base = 1
 		}
-		cost = 5
+		cost = 3
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus SPA_isolate_the_carlists"
 add_popularity = { ideology = paternal_autocrat popularity = -0.1 }
@@ -1395,7 +1400,7 @@ add_popularity = { ideology = national_socialist popularity = -0.1 }
 		ai_will_do = {
 			base = 1
 		}
-		cost = 10
+		cost = 3
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus SPA_isolate_the_carlists"
 		add_stability = -0.05
@@ -1420,7 +1425,7 @@ add_popularity = { ideology = national_socialist popularity = -0.1 }
 		ai_will_do = {
 			base = 1
 		}
-		cost = 8
+		cost = 3
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus SPA_isolate_the_carlists"
 				add_tech_bonus = {
@@ -1453,7 +1458,7 @@ add_popularity = { ideology = national_socialist popularity = -0.1 }
 		ai_will_do = {
 			base = 1
 		}
-		cost = 9
+		cost = 3
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus SPA_isolate_the_carlists"
 				add_tech_bonus = {
@@ -1472,7 +1477,6 @@ add_popularity = { ideology = national_socialist popularity = -0.1 }
 		x = 0
 		y = 2
 
-
 		prerequisite = {
 			 focus = SPA_change_of_course focus = SPA_continue_the_falangist_course
 		}
@@ -1480,7 +1484,7 @@ add_popularity = { ideology = national_socialist popularity = -0.1 }
 		ai_will_do = {
 			base = 1
 		}
-		cost = 6
+		cost = 4
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus SPA_isolate_the_carlists"
 	add_stability = 0.05
@@ -1507,10 +1511,13 @@ add_building_construction = {
 		}
 
 		relative_position_id = SPA_after_franco
+		mutually_exclusive = {
+			focus = SPA_continue_the_falangist_course
+		}
 		ai_will_do = {
 			base = 1
 		}
-		cost = 7
+		cost = 4
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus SPA_isolate_the_carlists"
 	add_ideas = { SPA_Liberalized_System }		
@@ -1531,7 +1538,7 @@ add_building_construction = {
 		ai_will_do = {
 			base = 1
 		}
-		cost = 5
+		cost = 3
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus SPA_isolate_the_carlists"
 		add_popularity = { ideology = paternal_autocrat popularity = -0.02 }	
@@ -1557,7 +1564,7 @@ add_building_construction = {
 		ai_will_do = {
 			base = 1
 		}
-		cost = 5
+		cost = 4
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus SPA_isolate_the_carlists"
  random_owned_state = {
@@ -1594,7 +1601,7 @@ available = { owns_state = 177 owns_state = 178 }
 		ai_will_do = {
 			base = 1
 		}
-		cost = 8
+		cost = 4
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus SPA_isolate_the_carlists"
 177 = { 
@@ -1627,7 +1634,7 @@ add_resource = {
 		ai_will_do = {
 			base = 1
 		}
-		cost = 5
+		cost = 3
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus SPA_isolate_the_carlists"
 		add_stability = 0.1	
@@ -1651,7 +1658,7 @@ add_resource = {
 		ai_will_do = {
 			base = 1
 		}
-		cost = 7
+		cost = 3
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus SPA_isolate_the_carlists"
  random_owned_state = {
@@ -1681,19 +1688,17 @@ available = { owns_state = 165 }
 		ai_will_do = {
 			base = 1
 		}
-		cost = 7
+		cost = 4
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus SPA_isolate_the_carlists"
  165 = {
-add_extra_state_shared_building_slots = 1
+add_extra_state_shared_building_slots = 2
 add_building_construction = {
     type = industrial_complex
     level = 2
     instant_build = yes
 }
 }  
-			
-			
 		}
 	}
 	shared_focus = {
@@ -1711,7 +1716,7 @@ add_building_construction = {
 		ai_will_do = {
 			base = 1
 		}
-		cost = 4
+		cost = 2
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus SPA_isolate_the_carlists"
 			add_stability = 0.05
@@ -1733,29 +1738,24 @@ available = { owns_state = 41 }
 		ai_will_do = {
 			base = 1
 		}
-		cost = 9
+		cost = 4
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus SPA_isolate_the_carlists"
  41 = {
-add_extra_state_shared_building_slots = 1
+add_extra_state_shared_building_slots = 4
 add_building_construction = {
     type = industrial_complex
     level = 2
     instant_build = yes
 }
-}  
- 41 = {
-add_extra_state_shared_building_slots = 1
 add_building_construction = {
     type = arms_factory
-    level = 1
+    level = 2
     instant_build = yes
 }
 }  			
 		}
 	}
-
-	
 	shared_focus = {
 	cancelable = no
 		id = SPA_abandon_falangist_principles
@@ -1773,16 +1773,19 @@ add_building_construction = {
 		ai_will_do = {
 			base = 1
 		}
-		cost = 5
+		cost = 3
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus SPA_abandon_falangist_principles"
 		add_popularity = { ideology = fascist popularity = -0.15 }
                 add_stability = -0.05
                 custom_effect_tooltip = SPA_ANGERY	
 hidden_effect = { 
-random_list = {
-70 = { country_event = { id = twrspain.40 days = 5 } }
-30 = { country_event = { id = twrspain.39 days = 5 } }
+	country_event = { id = twrspain.40 days = 1 }
+	if = {
+		limit = {
+			has_country_flag = SPA_BLUE_WILL_REBEL
+		}
+		country_event = { id = twrspain.39 days = 3 }
 }
 }
 		}
@@ -1801,7 +1804,7 @@ random_list = {
 		ai_will_do = {
 			base = 1
 		}
-		cost = 5
+		cost = 3
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus SPA_puppets_tied_by_power"
 			add_political_power = -100
@@ -1833,7 +1836,7 @@ add_building_construction = {
 		ai_will_do = {
 			base = 1
 		}
-		cost = 6
+		cost = 5
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus SPA_control_the_universities"
 		add_political_power = 150
@@ -2504,7 +2507,7 @@ GER = { country_event = { id = twrspain.71 days = 0 } }
 		ai_will_do = {
 			base = 1
 		}
-available = { has_political_power > 50 }
+available = {  }
 		cost = 4
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus SPA_deescalate_spanish_axis_relations"

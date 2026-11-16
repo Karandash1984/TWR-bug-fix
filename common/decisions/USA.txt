@@ -1,3 +1,139 @@
+USA_debug_category = {
+	USA_second_term_wallace_tree = {
+		complete_effect = {
+			set_country_flag = HENRY_WALLACE_ELECTED
+			USA_inauguration_effect = yes
+			load_focus_tree = USA_Wallace_Tree
+			mark_focus_tree_layout_dirty = yes
+		}
+	}
+	USA_first_term_kefauver_tree = {
+		complete_effect = {
+			set_country_flag = ESTES_KEFAUVER_ELECTED_1952
+			USA_inauguration_effect = yes
+			mark_focus_tree_layout_dirty = yes
+		}
+	}
+	USA_first_term_stevenson_tree = {
+		complete_effect = {
+			set_country_flag = ADLAI_STEVENSON_ELECTED_1952
+			USA_inauguration_effect = yes
+			mark_focus_tree_layout_dirty = yes
+		}
+	}
+	USA_first_term_warren_tree = {
+		complete_effect = {
+			set_country_flag = EARL_WARREN_ELECTED_1952
+			USA_inauguration_effect = yes
+			mark_focus_tree_layout_dirty = yes
+		}
+	}
+	USA_first_term_macarthur_tree = {
+		complete_effect = {
+			set_country_flag = DOUGLAS_MACARTHUR_ELECTED_1952
+			USA_inauguration_effect = yes
+			mark_focus_tree_layout_dirty = yes
+		}
+	}
+	USA_first_term_taft_tree = {
+		complete_effect = {
+			set_country_flag = ROBERT_TAFT_ELECTED
+			USA_inauguration_effect = yes
+			mark_focus_tree_layout_dirty = yes
+		}
+	}
+	kill_taft = {
+		complete_effect = {
+		create_country_leader = {
+			name = "William Knowland"
+			desc = "William_Knowland_TAFT_VP_DESC"
+			picture = "William_Knowland.dds"
+			expire = "1985.1.1"
+			ideology = conservative_republicans
+			traits = { Republican }
+		}
+		remove_ideas = USA_HoG_William_Knowland
+		clr_country_flag = VP_William_Knowland
+		hidden_effect = {
+		load_focus_tree = { tree = USA_Knowland_Tree keep_completed = yes }
+		complete_national_focus = USA_President_Knowland
+		set_country_flag = William_Knowland_Successor_of_Taft
+		set_country_flag = PRESIDENT_PRO_CIVIL_RIGHTS
+		}
+		}
+	}
+	USA_pepper_tree = {
+		complete_effect = {
+			set_country_flag = CLAUDE_PEPPER_ELECTED_1956
+			USA_inauguration_effect = yes
+			mark_focus_tree_layout_dirty = yes
+		}
+	}
+	USA_lbj_tree = {
+		complete_effect = {
+			set_country_flag = LBJ_ELECTED_1956
+			USA_inauguration_effect = yes
+			mark_focus_tree_layout_dirty = yes
+		}
+	}
+	USA_stassen_tree = {
+		complete_effect = {
+			set_country_flag = HAROLD_STASSEN_ELECTED_1956
+			USA_inauguration_effect = yes
+			mark_focus_tree_layout_dirty = yes
+		}
+	}
+	USA_knowland_tree = {
+		complete_effect = {
+			set_country_flag = WILLIAM_KNOWLAND_ELECTED_1956
+			USA_inauguration_effect = yes
+			mark_focus_tree_layout_dirty = yes
+		}
+	}
+	USA_humphrey_tree = {
+		complete_effect = {
+			set_country_flag = HUBERT_HUMPHREY_ELECTED_1960
+			USA_inauguration_effect = yes
+			mark_focus_tree_layout_dirty = yes
+		}
+	}
+	USA_jpk_tree = {
+		complete_effect = {
+			set_country_flag = JPK_ELECTED_1960
+			USA_inauguration_effect = yes
+			mark_focus_tree_layout_dirty = yes
+		}
+	}
+	USA_lodge_tree = {
+		complete_effect = {
+			set_country_flag = HENRY_CABOT_LODGE_ELECTED_1960
+			USA_inauguration_effect = yes
+			mark_focus_tree_layout_dirty = yes
+		}
+	}
+	USA_rockefeller_tree = {
+		complete_effect = {
+			set_country_flag = NELSON_ROCKEFELLER_ELECTED_1960
+			USA_inauguration_effect = yes
+			mark_focus_tree_layout_dirty = yes
+		}
+	}
+	USA_goldwater_tree = {
+		complete_effect = {
+			set_country_flag = BARRY_GOLDWATER_ELECTED_1960
+			USA_inauguration_effect = yes
+			mark_focus_tree_layout_dirty = yes
+		}
+	}
+	USA_judd_tree = {
+		complete_effect = {
+			set_country_flag = WALTER_JUDD_ELECTED_1960
+			USA_inauguration_effect = yes
+			mark_focus_tree_layout_dirty = yes
+		}
+	}
+}
+
 political_actions = {
 #Racists and Civil Rights Activists fight
 USA_civil_rights_activity = {
@@ -1397,7 +1533,10 @@ USA_cia_operations = {
 		visible = {
 			FROM = { has_idea = CENTRAL_drifting_apart }
 			FROM = {
+				OR = {
 				NOT = { is_neighbor_of = ROOT }
+					tag = CUB
+				}
 			}
 			NOT = { has_country_flag = ongoing_target }
 		}
@@ -1406,7 +1545,6 @@ USA_cia_operations = {
 			FROM = {
 				OR = {
 					NOT = { is_neighbor_of = ROOT }
-					tag = CUB
 				}
 				has_idea = CENTRAL_drifting_apart
 			}
@@ -1450,12 +1588,6 @@ USA_cia_operations = {
 					}
 					AND = {
 						FROM = {
-							tag = CUB
-						}
-						has_global_flag = COUNTRY_PATH_CUB_COUP_YES
-					}
-					AND = {
-						FROM = {
 							tag = DOM
 						}
 						has_global_flag = COUNTRY_PATH_DOM_COUP_YES
@@ -1476,6 +1608,13 @@ support_anti_nazi_movements = {
 		visible = {
 			FROM = {
 			NOT = { has_country_flag = CIA_PERSONNEL_WACK }
+			NOT = {
+				OR = {
+					is_in_faction_with = GER
+					is_in_faction_with = HSS
+					is_in_faction_with = HGR
+				}
+			}
 			}
 			NOT = { has_country_flag = ongoing_target }
 			has_completed_focus = USA_European_Strategy
@@ -1484,13 +1623,20 @@ support_anti_nazi_movements = {
 		target_trigger = {
 			FROM = {
 			NOT = { has_country_flag = CIA_PERSONNEL_WACK }
+			NOT = {
+				OR = {
+					is_in_faction_with = GER
+					is_in_faction_with = HSS
+					is_in_faction_with = HGR
+				}
+			}
 			OR = {
 			tag = POL
 			tag = UKW
 			tag = DDR
 			tag = SWI
 			tag = CZE
-			tag = LUX
+			tag = BGS
 			AND = {
 			tag = NOR
 			is_fascist = no
@@ -1935,12 +2081,6 @@ covert_support_vietnamese_government = {
 			}
 			if = {
 				limit = {
-					FROM = { TAG = CUB }
-				}   
-				FROM = { country_event = { id = twrlatinamerica.2 days = 1 } }
-			}
-			if = {
-				limit = {
 					FROM = { TAG = GUA }
 				}   
 				FROM = { country_event = { id = twrlatinamerica.3 days = 1 } }
@@ -1960,12 +2100,6 @@ covert_support_vietnamese_government = {
 							tag = GUA
 						}
 						has_global_flag = COUNTRY_PATH_GUA_COUP_YES
-					}
-					AND = {
-						FROM = {
-							tag = CUB
-						}
-						has_global_flag = COUNTRY_PATH_CUB_COUP_YES
 					}
 					AND = {
 						FROM = {
@@ -3640,7 +3774,6 @@ USA_europe_cleanup = {
 					tag = UIA
 					tag = UKR
 					tag = RMD
-					tag = BGS
 					tag = BKU
 					tag = STR
 					tag = PET
@@ -3683,7 +3816,6 @@ USA_europe_cleanup = {
 					tag = UIA
 					tag = UKR
 					tag = RMD
-					tag = BGS
 					tag = BKU
 					tag = STR
 					tag = PET
@@ -3721,7 +3853,6 @@ USA_europe_cleanup = {
 					tag = UIA
 					tag = UKR
 					tag = RMD
-					tag = BGS
 					tag = BKU
 					tag = STR
 					tag = PET
@@ -3746,7 +3877,9 @@ USA_europe_cleanup = {
 
 		fire_only_once = yes
 
-		complete_effect = {
+		days_remove = 30
+		war_with_target_on_remove = yes
+		remove_effect = {
 			log = "[GetDateText]: [Root.GetName]: Decision stamping_out_fascism target: [From.GetName]"
 			custom_effect_tooltip = USA_stamp_out_fascism_timer_tt
             declare_war_on = {
@@ -3798,7 +3931,34 @@ political_actions = {
 		days_mission_timeout = 200
 		timeout_effect = {
 			USA = {
-				white_peace_with_ROOT = yes
+				country_event = twrta.16
+			}
+		}
+	}
+	ITA_fascist_country_defend_against_accord_timer = {
+		icon = generic_prepare_civil_war
+		name = GENERIC_fascist_country_defend_against_accord_timer
+		allowed = {
+			NOT = {
+				tag = USA
+			}
+		}
+		visible = {
+			has_war_with = USA
+		}
+		available = {
+			NOT = {
+				has_war_with = USA
+			}
+		}
+		activation = {
+			always = no
+		}
+		is_good = no
+		days_mission_timeout = 365
+		timeout_effect = {
+			USA = {
+				country_event = twrta.16
 			}
 		}
 	}
@@ -7106,14 +7266,11 @@ USA_congress = {
 		USA_enough_house_support = yes
 			}
 		country_event = twrusaHumphrey.6
-		USA_clear_after_bill = yes
 		}
-		if = {
-		limit = {
-		USA_enough_house_support = no
-			}
+		else = {
 		country_event = twrusahumphrey.4 
 		}
+		USA_clear_after_bill = yes
 		}
 	}
 
@@ -7137,27 +7294,21 @@ USA_congress = {
 			USA_set_dem_lib_support_senate = yes
 			set_country_flag = ONGOING_SENATE_LEGISLATION_DELIBERATION
 			set_country_flag = ONGOING_LEGISLATION_DELIBERATION
-			hidden_effect = {
-			country_event = { id = twrusaHumphrey.8 days = 15} 
-			}
 		}
 
 		remove_effect = {
-		clr_country_flag = ONGOING_SENATE_LEGISLATION_DELIBERATION
-		clr_country_flag = PRO_LABOR_BILL
 		if = {
 		limit = {
 		USA_enough_senate_support = yes
 			}
 		country_event = twrusaHumphrey.8
-		USA_clear_after_bill = yes
 		}
-		if = {
-		limit = {
-		USA_enough_senate_support = no
+		else = {		
+		country_event = twrusaHumphrey.9
 			}
-		country_event = twrusahumphrey.15
-		}
+		clr_country_flag = ONGOING_SENATE_LEGISLATION_DELIBERATION
+		clr_country_flag = PRO_LABOR_BILL
+		USA_clear_after_bill = yes
 		}
 	}
 
@@ -9110,7 +9261,7 @@ USA_congress = {
 		}
 		complete_effect = {
 		set_country_flag = TRYING_TO_CONVINCE_HOUSE_BILL
-		calc_bill_margin_house_dem_con = yes
+		calc_bill_negative_margin_house_dem_con = yes
 		}
 
 		remove_effect = {

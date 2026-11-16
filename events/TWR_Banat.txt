@@ -1051,10 +1051,8 @@ country_event = { #Strahammer joins GER
 		SBA = {
 			every_unit_leader = {
 				limit = {
-					AND = {
 						has_trait = commando 
 						has_trait = paratrooper 
-					}
 				}
 				set_nationality = GER
 			}
