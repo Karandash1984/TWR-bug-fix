@@ -2054,6 +2054,13 @@ country_event = { #2nd Election Results - labour wins
 			ideology = social_democrat
 			popularity = 0.05
 			}
+			
+			add_ideas = {
+				ENG_HoG_Harold_Wilson
+				ENG_FM_Michael_Stewart
+				ENG_MoS_George_Oliver
+				ENG_AM_George_Brown
+			}
 		}
 		#Check these later - Aga
 	}
@@ -2218,6 +2225,12 @@ country_event = { #2nd Election - con-lib coalition formed
 				ideology = liberal_conservatism
 				traits = {}
 			}
+			add_ideas = {
+				ENG_HoG_Duncan_Sandys
+				ENG_PA_Alec_DouglasHome
+				ENG_MoS_Jo_Grimond
+				ENG_AM_Reginald_Maudling
+			}
 		}
 	}
 }
@@ -2268,11 +2281,17 @@ country_event = { #2nd Election - lab-lib coalition formed
 			complete_national_focus = ENG_wilson_minister
 			create_country_leader = {
 				name = "Harold Wilson"
-				desc = "POLITICS_MACMILLAN_DESC"
+				desc = "POLITICS_WILSON_DESC"
 				picture = "Harold_Wilson.dds"
 				expire = "1985.1.1"
 				ideology = social_democracy
 				traits = {}
+			}
+			add_ideas = {
+				ENG_HoG_Harold_Wilson
+				ENG_FM_Michael_Stewart
+				ENG_MoS_Jo_Grimond
+				ENG_AM_George_Brown
 			}
 		}
 	}
@@ -4059,6 +4078,7 @@ country_event = { # Commonwealth trade system implemented (toned down)
 }
 
 country_event = { # for UK - success after US backs down from demanding major changes
+    id = twrbritainpolitics.127
 	immediate = {log = "[GetDateText]: [Root.GetName]: event twrbritainpolitics.127"}
 	title = twrbritainpolitics.127.t
 	desc = twrbritainpolitics.127.d
@@ -4227,6 +4247,7 @@ country_event = { # UK refuses to back down
 }
 
 country_event = { # for UK - 'success' despite US threats
+    id = twrbritainpolitics.132
 	immediate = {log = "[GetDateText]: [Root.GetName]: event twrbritainpolitics.132"}
 	title = twrbritainpolitics.132.t
 	desc = twrbritainpolitics.132.d
@@ -7149,7 +7170,15 @@ country_event = { # macmillan - colonial challenge
 
 	option = {
 		name = twrbritainpolitics.327.a
-		add_political_power = -50
+		add_political_power = 50
+		if = {
+		limit = { has_completed_focus = ENG_the_sun_never_sets }
+		uncomplete_national_focus = {
+		focus = ENG_the_sun_never_sets
+		uncomplete_children = yes
+		refund_political_power = no
+			}
+		}
 	}
 }
 
@@ -7747,6 +7776,15 @@ country_event = { # freeman - decolonisation promises
 		    id = ENG_empire_mechanic
 		    value = 0.1
 		    tooltip_side = ENG_imperial_stability
+		}
+
+		if = {
+		limit = { has_completed_focus = ENG_the_sun_never_sets }
+		uncomplete_national_focus = {
+		focus = ENG_the_sun_never_sets
+		uncomplete_children = yes
+		refund_political_power = no
+			}
 		}
 	}
 }
@@ -9350,10 +9388,10 @@ country_event = { # SHUT THE FUCK UP MOSLEYIST - denounce mosleyism
 		add_popularity = {
 			ideology = fascist
 			popularity = -0.06
+		}
 			add_stability = -0.05
 		}
 	}
-}
 
 country_event = { # SHUT THE FUCK UP MOSLEYIST no 2
 	id = twrbritainpolitics.46
@@ -9470,12 +9508,12 @@ country_event = { #Conservative-Liberal Merger
 		set_party_name = { 
 			ideology = liberal
 			long_name = ENG_NDP_long
-			name = "New Democratic Party"
+			name = ENG_NDP_short
 		}
 		set_party_name = { 
 			ideology = conservative
-			long_name = "National Liberal Party"
-			name = "National Liberals"
+			long_name = ENG_NATLIB_LONG
+			name = ENG_NATLIB
 		}
 		create_country_leader = {
 			name = "Rab Butler"
@@ -9531,7 +9569,7 @@ country_event = { #con-lib leadership election
 		retire_country_leader = yes
 		create_country_leader = {
 			name = "Clement Davies"
-			desc = "nothing"
+			desc = ""
 			picture = "Britain_SL_Clement_Davies.tga"
 			expire = "1985.1.1"
 			ideology = classical_Liberalism
@@ -9553,7 +9591,7 @@ country_event = { #con-lib leadership election
 		retire_country_leader = yes
 		create_country_leader = {
 			name = "Jo Grimond"
-			desc = "nothing"
+			desc = ""
 			picture = "Britain_SL_Jo_Grimond.tga"
 			expire = "1985.1.1"
 			ideology = social_liberalism
@@ -9732,17 +9770,22 @@ country_event = { # Mosley Assassinated
 	option = {
 		name = twrbritainpolitics.57.a
 		add_stability = -0.01
-		create_country_leader = {
-			name = "Jeffrey Hamm"
-			desc = "nothing"
-			picture = "Britain_FA_Jeffrey_Hamm.tga"
-			expire = "1985.1.1"
-			ideology = third_positionism
-			traits = {}
-		}
+		kill_ideology_leader = fascist
 		add_popularity = {
 		    ideology = fascist
 		    popularity = -0.02
+		}
+		set_party_name = {
+			ideology = fascist
+			long_name = ENG_paternal_autocrat_party_long
+			name = ENG_paternal_autocrat_party
+		}	
+		create_country_leader = {
+			name = "Barry Domvile"
+			desc = "Barry_Domville_DESC"
+			picture = "Barry_Domville.dds"
+			expire = "1964.1.1"
+			ideology = pragmatic_fascism
 		}
 		country_event = { id = twrbritainpolitics.58 days = 2 }
 		news_event = { days = 0 id = twrnews.55 }
@@ -11134,22 +11177,14 @@ country_event = { #King is dead
 		name = twrbritainflavour.3.a
 		add_political_power = -50
 		add_stability = -0.05
-		kill_ideology_leader = paternal_autocrat
 		custom_effect_tooltip = ELIZABETH_II_NEW_QUEEN
 		hidden_effect = {
 			change_hos = yes
 			add_ideas = queen_elizabeth
+			add_ideas = hos_popular_figurehead
 			set_country_flag = ENG_king_has_passed
 			complete_national_focus = ENG_passing_king
 			news_event = twrbritainflavour.303030
-			create_country_leader = {
-			name = "Elizabeth II"
-			desc = ""
-			picture = "Britain_PA_Elizabeth.dds"
-			expire = "1985.1.1"
-			ideology = monarchism
-			traits = {}
-			}
 		}
 	}
 }
@@ -12217,7 +12252,19 @@ country_event = { # festival of britain
 		name = twrbritainflavour.59.a
 		add_stability = 0.02
 		add_war_support = 0.02
-		add_political_power = 100
+		add_political_power = 50
+		if = {
+		limit = {
+			has_power_balance = {
+			id = ENG_empire_mechanic
+				}
+			}
+		add_power_balance_value = {
+    		id = ENG_empire_mechanic
+    		value = 0.03
+    		tooltip_side = ENG_imperial_stability
+			}
+		}
 	}
 }
 
@@ -15533,9 +15580,6 @@ country_event = { # Netherlands Accept
 			HOL = {
 				remove_ideas = ENG_rotterdam_investments
 			}
-			LUX = {
-				remove_ideas = ENG_rotterdam_investments
-			}
 		}
 		if = {
 			limit = {
@@ -15544,19 +15588,6 @@ country_event = { # Netherlands Accept
 				}
 			}
 			HOL = { 
-				add_timed_idea = {
-					idea = ENG_rotterdam_investments
-					days = 150
-				}
-			}
-		}
-		if = {
-			limit = {
-				LUX = { 
-					owns_state = 7
-				}
-			}
-			LUX = { 
 				add_timed_idea = {
 					idea = ENG_rotterdam_investments
 					days = 150
@@ -15688,7 +15719,12 @@ country_event = { #Sierra Leone
 
 	option = {
 		name = twrbritaindecol.1.a
-		release = SIE
+		SIE = {
+			add_popularity = {
+				ideology = conservative
+				popularity = 0.5
+			}
+		}
 	}
 }
 
@@ -16549,12 +16585,10 @@ country_event = { #Nyasaland
     		value = -0.05
     		tooltip_side = ENG_imperial_collapse
 		}
-		country_event = { id = twrbritaindecol.36 days = 30 }
 	}
 	option = {
 		name = twrbritaindecol.35.b #Keep Nyasaland in the proposed Federation
 		set_global_flag = NYASALAND_IN_RHODESIAN
-		country_event = { id = twrbritaindecol.36 days = 30 }
 	}
 }
 
@@ -16570,9 +16604,8 @@ country_event = { #Central African Federation Act
 
 	option = {
 		name = twrbritaindecol.36.a #Very epic
-		set_country_flag = CENTRAL_AFRICAN_FEDERATION_ACT
-		unlock_decision_tooltip = ENG_central_african_federation_act
-		activate_mission = ENG_central_africa_unrest
+		activate_mission = ENG_central_african_voting
+		SAF = { country_event = twr_decolonisation.9 }
 	}
 }
 
@@ -16595,22 +16628,10 @@ country_event = { #British Central African Unrest
     	value = -0.15
     	tooltip_side = ENG_imperial_collapse
 		}
-		remove_decision = ENG_central_african_federation_act
-		clr_country_flag = CENTRAL_AFRICAN_FEDERATION_ACT
-		activate_mission = ENG_Northern_Rhodesia_Question
-		activate_mission = ENG_Nyasaland_Question
 	}
 	option = {
 		name = twrbritaindecol.37.b #An opportunity
 		trigger = { tag = RAJ }
-		effect_tooltip = {
-			ENG = {
-			activate_mission = ENG_Northern_Rhodesia_Question
-			activate_mission = ENG_Nyasaland_Question
-			}
-		}
-		unlock_decision_tooltip = RAJ_support_MLW_activists
-		unlock_decision_tooltip = RAJ_support_ZAM_activists
 	}
 }
 
@@ -16684,7 +16705,6 @@ country_event = { #Rhodesia Asserts Independence
     		value = -0.1
     		tooltip_side = ENG_imperial_collapse
 		}
-		activate_mission = ENG_Southern_Rhodesia_Secession
 		release_puppet = RHD
 		hidden_effect = {
 		RHD = {
@@ -16713,7 +16733,18 @@ news_event = { #Rhodesian Bush War
 	id = twrbritaindecol.40
 	immediate = {log = "[GetDateText]: [Root.GetName]: event twrbritaindecol.40"}
 	title = twrbritaindecol.40.t
-	desc = twrbritaindecol.40.d
+	desc = {
+        text = twrbritaindecol.40.d
+        trigger = {
+            NOT = { has_global_flag = ZAMBIAN_REVOLT_RHD_FED }
+        }
+    }
+	desc = {
+        text = twr_decolonisation.40.d.a
+        trigger = {
+            has_global_flag = ZAMBIAN_REVOLT_RHD_FED
+        }
+    }
 	picture = GFX_news_event_rhodesian_bush_war
 	trigger = {
 		OR = {
@@ -16755,7 +16786,7 @@ news_event = { #Mau Mau Rebellion Crushed
 	title = twrbritaindecol.41.t
 	desc = twrbritaindecol.41.d
 	picture = GFX_news_event_crushed_mau_mau
-	trigger = {
+	show_major = {
 		OR = {
 			has_country_flag = INVESTED_IN_MAU_MAU
 			tag = ENG
@@ -16770,11 +16801,8 @@ news_event = { #Mau Mau Rebellion Crushed
 	option = {
 		name = twrbritaindecol.41.a
 		trigger = { tag = ENG }
-		add_power_balance_value = {
-    		id = ENG_empire_mechanic
-    		value = 0.05
-    		tooltip_side = ENG_imperial_stability
-		}
+
+		custom_effect_tooltip = REFORMS_IN_EAST_AFRICA
 	}
 	option = {
 		name = twrbritaindecol.41.b
@@ -16849,6 +16877,7 @@ country_event = { #State of Emergency in Kenya
 		add_resistance = 10
 		}
 		1265 = {
+		add_resistance = 15
 		add_to_variable = {
 		tooltip = KEN_REBEL_local_factories_tt
     	var = KEN_REBEL_local_factories
@@ -17137,26 +17166,9 @@ country_event = { #East African Movements
 	fire_only_once = no
 
 	option = {
-		name = twrbritaindecol.50.a #Oof
-		trigger = { tag = ENG }
-		activate_mission = ENG_Tanganyikan_self_rule
-		activate_mission = ENG_Ugandan_Question
-		add_power_balance_value = {
-    		id = ENG_empire_mechanic
-    		value = -0.03
-    		tooltip_side = ENG_imperial_collapse
-		}
-	}
-	option = {
-		name = twrbritaindecol.50.b #Epic
-		trigger = { tag = RAJ }
-		effect_tooltip = {
-		ENG = {
-		activate_mission = ENG_Tanganyikan_self_rule
-		activate_mission = ENG_Ugandan_Question
-			}	
-		}
-		unlock_decision_tooltip = RAJ_support_UGA_activists
+		name = twrbritaindecol.50.b #Indian Event
+
+		#INDIA UNLOCKS DECISIONS
 	}
 }
 
@@ -17172,7 +17184,6 @@ country_event = { #Botswana Movement
 
 	option = {
 		name = twrbritaindecol.51.a #Not epic
-		activate_mission = ENG_Botswana_self_rule
 	}
 }
 
@@ -17207,7 +17218,7 @@ country_event = { #Botswana Freedom
 		#Become battleground for TA and RAJ and China and SAF
 		custom_effect_tooltip = colonial_battleground_tt
 
-		activate_mission = ENG_Lesotho_and_Swaziland_self_rule
+		#activate_mission = ENG_Lesotho_and_Swaziland_self_rule
 	}
 }
 
@@ -17528,12 +17539,14 @@ country_event = { #Swaziland and Lesotho
 		release = SWA
 		LES = {
 		add_ideas = COM_commonwealth_of_nations
+		drop_cosmetic_tag = yes
 		set_country_flag = NORMAL_COL_FREE
 		set_country_flag = VALID_SUBSPHERELING_BATTLE_ENG
 		set_country_flag = FLAG_TA_BATTLEGROUND
 		}
 		SWA = {
 		add_ideas = COM_commonwealth_of_nations
+		drop_cosmetic_tag = yes
 		set_country_flag = NORMAL_COL_FREE
 		set_country_flag = VALID_SUBSPHERELING_BATTLE_ENG
 		set_country_flag = FLAG_TA_BATTLEGROUND
@@ -18871,6 +18884,10 @@ country_event = { # Debug set military readiness to 75%
 		set_variable = {
 		    var = ENG_defence_readiness_level
 		    value = 75
+		}
+
+		NGA = {
+			set_variable = { colonial_will = 0 }
 		}
 	}
 }

@@ -18,7 +18,7 @@ RGO_matters = {
 			OR = {
 			tag = DON
 			tag = MTR 
-			tag = AZR 
+			tag = AZE 
 			tag = ARM
 			original_tag = KAM 
 			tag = NOG 
@@ -48,7 +48,6 @@ RGO_matters = {
 			tag = PET 
 			tag = STR 
 			tag = WSP 
-			tag = BGS
 			tag = ZHU
 			}
 			exists = yes

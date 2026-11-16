@@ -1,7 +1,5 @@
-Total 30
+Total 26
 USA_infiltrate_labour_unions
-RGO_fighter_n_bombers
-ENOUGH_SUPPORT_IN_NORTH_AFRICA
 UMBERTO_II_DESC
 ship_hull_very_light
 ship_hull_more_light
@@ -27,5 +25,3 @@ AKBAR_KHAN_DESC
 nerve_agents
 chemical_raids
 CCTV_EVERYWHERE_HSSs
-BREAKING_THE_Reichskonkordat
-VATICAN_IS_YEETED
